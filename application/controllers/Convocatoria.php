@@ -99,15 +99,37 @@ class Convocatoria extends CI_Controller{
                 'convocatoria_dcto' => $foto,
             );
             $convocatoria_id = $this->Convocatoria_model->add_convocatoria($params);
-            redirect('convocatoria/index');
+            
+            $los_requisitos = $this->input->post('requisitos');
+            $this->load->model('Convocatoria_requisito_model');
+            foreach ($los_requisitos as $requisito) {
+                $paramsreq = array(
+                    'requisito_id' => $requisito,
+                    'convocatoria_id' => $convocatoria_id,
+                    'beca_id' => $this->input->post('beca_id'),
+                );
+                $convoreq_id = $this->Convocatoria_requisito_model->add_convocatoria_requisito($paramsreq);
+            }
+            
+            $this->load->model('Plazas_beca_model');
+            $paramsplaz = array(
+                'beca_id' => $this->input->post('beca_id'),
+                'convocatoria_id' => $convocatoria_id,
+                'plaza_cantidad' => $this->input->post('plaza_cantidad'),
+            );
+            $plaza_id = $this->Plazas_beca_model->add_plazas_beca($paramsplaz);
+            redirect('convocatoria');
         }
         else
         {
             $this->load->model('Gestion_model');
             $data['all_gestion'] = $this->Gestion_model->get_all_gestion();
+            
+            $this->load->model('Requisito_model');
+            $data['all_requisito'] = $this->Requisito_model->get_all_requisito();
 
-            /*$this->load->model('Estado_model');
-            $data['all_estado'] = $this->Estado_model->get_all_estado();*/
+            $this->load->model('Beca_model');
+            $data['all_beca'] = $this->Beca_model->get_all_beca();
             
             $data['_view'] = 'convocatoria/add';
             $this->load->view('layouts/main',$data);
@@ -194,25 +216,59 @@ class Convocatoria extends CI_Controller{
                     $foto = $foto1;
                 }
                 $params = array(
-					'gestion_id' => $this->input->post('gestion_id'),
-					'estado_id' => $this->input->post('estado_id'),
-					'convocatoria_fecha' => $this->input->post('convocatoria_fecha'),
-					'convocatoria_hora' => $this->input->post('convocatoria_hora'),
-					'convocatoria_descripcion' => $this->input->post('convocatoria_descripcion'),
-					'convocatoria_fechalimite' => $this->input->post('convocatoria_fechalimite'),
-					'convocatoria_dcto' => $foto,
+                    'gestion_id' => $this->input->post('gestion_id'),
+                    'estado_id' => $this->input->post('estado_id'),
+                    'convocatoria_fecha' => $this->input->post('convocatoria_fecha'),
+                    'convocatoria_hora' => $this->input->post('convocatoria_hora'),
+                    'convocatoria_descripcion' => $this->input->post('convocatoria_descripcion'),
+                    'convocatoria_fechalimite' => $this->input->post('convocatoria_fechalimite'),
+                    'convocatoria_dcto' => $foto,
                 );
-
-                $this->Convocatoria_model->update_convocatoria($convocatoria_id,$params);            
-                redirect('convocatoria/index');
-            }
-            else
-            {
-				$this->load->model('Gestion_model');
-				$data['all_gestion'] = $this->Gestion_model->get_all_gestion();
-
-				$this->load->model('Estado_model');
-				$data['all_estado'] = $this->Estado_model->get_all_estado();
+                $this->Convocatoria_model->update_convocatoria($convocatoria_id,$params);
+                
+                $los_requisitos = $this->input->post('requisitos');
+                $this->load->model('Convocatoria_requisito_model');
+                $this->Convocatoria_requisito_model->eliminar_convocatoria_requisito($convocatoria_id);
+                foreach ($los_requisitos as $requisito) {
+                    $paramsreq = array(
+                        'requisito_id' => $requisito,
+                        'convocatoria_id' => $convocatoria_id,
+                        'beca_id' => $this->input->post('beca_id'),
+                    );
+                    $convoreq_id = $this->Convocatoria_requisito_model->add_convocatoria_requisito($paramsreq);
+                }
+                $this->load->model('Plazas_beca_model');
+                if(isset($data['convocatoria']['plaza_id'])){
+                    $paramsplaz = array(
+                        'beca_id' => $this->input->post('beca_id'),
+                        'convocatoria_id' => $convocatoria_id,
+                        'plaza_cantidad' => $this->input->post('plaza_cantidad'),
+                    );
+                    $this->Plazas_beca_model->update_plazas_beca($data['convocatoria']['plaza_id'],$paramsplaz);
+                }else{
+                    $paramsplaz = array(
+                        'beca_id' => $this->input->post('beca_id'),
+                        'convocatoria_id' => $convocatoria_id,
+                        'plaza_cantidad' => $this->input->post('plaza_cantidad'),
+                    );
+                    $plaza_id = $this->Plazas_beca_model->add_plazas_beca($paramsplaz);
+                }
+                redirect('convocatoria');
+            }else{
+                $this->load->model('Gestion_model');
+                $data['all_gestion'] = $this->Gestion_model->get_all_gestion();
+                
+                $this->load->model('Requisito_model');
+                $data['all_requisito'] = $this->Requisito_model->get_all_requisito();
+                
+                $this->load->model('Convocatoria_requisito_model');
+                $data['los_requisitos'] = $this->Convocatoria_requisito_model->get_all_requisitos($convocatoria_id);
+                
+                $this->load->model('Beca_model');
+                $data['all_beca'] = $this->Beca_model->get_all_beca();
+                
+                $this->load->model('Estado_model');
+                $data['all_estado'] = $this->Estado_model->get_all_estado();
 
                 $data['_view'] = 'convocatoria/edit';
                 $this->load->view('layouts/main',$data);
@@ -237,6 +293,20 @@ class Convocatoria extends CI_Controller{
         }
         else
             show_error('The convocatoria you are trying to delete does not exist.');
+    }
+    /* buscar requistos de una convocatoria */
+    function get_requisitos()
+    {
+        //if($this->acceso(103)) {
+            if ($this->input->is_ajax_request()) {
+                $convocatoria_id = $this->input->post('convocatoria_id');
+                $this->load->model('Convocatoria_requisito_model');
+                $datos = $this->Convocatoria_requisito_model->get_all_requisitos($convocatoria_id);
+                echo json_encode($datos);
+            }else{                 
+                show_404();
+            }
+        //}
     }
     
 }

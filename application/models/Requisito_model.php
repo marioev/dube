@@ -24,7 +24,7 @@ class Requisito_model extends CI_Model
      */
     function get_all_requisito()
     {
-        $this->db->order_by('requisito_id', 'desc');
+        $this->db->order_by('requisito_nombre', 'asc');
         return $this->db->get('requisito')->result_array();
     }
         

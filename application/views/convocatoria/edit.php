@@ -1,3 +1,12 @@
+<script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
+<script type="text/javascript">
+function toggle(source) {
+  checkboxes = document.getElementsByClassName('checkbox');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
+</script>
 <div class="row">
     <div class="col-md-12">
       	<div class="box box-info">
@@ -11,6 +20,31 @@
                         <label for="convocatoria_descripcion" class="control-label"><span class="text-danger">*</span>Descripción</label>
                         <div class="form-group">
                             <input type="text" name="convocatoria_descripcion" value="<?php echo ($this->input->post('convocatoria_descripcion') ? $this->input->post('convocatoria_descripcion') : $convocatoria['convocatoria_descripcion']); ?>" class="form-control" id="convocatoria_descripcion"  autofocus autocomplete="off" required onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <label for="beca_id" class="control-label"><span class="text-danger">*</span>Beca</label>
+                        <div class="form-group">
+                            <select name="beca_id" class="form-control" required>
+                                <?php
+                                if(isset($los_requisitos)){
+                                    $estabeca = $los_requisitos[0]['beca_id'];
+                                }else{
+                                    $estabeca = "";
+                                }
+                                foreach($all_beca as $beca)
+                                {
+                                    $selected = ($beca['beca_id'] == $estabeca) ? ' selected="selected"' : "";
+                                    echo '<option value="'.$beca['beca_id'].'" '.$selected.'>'.$beca['beca_nombre'].'</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="plaza_cantidad" class="control-label"><span class="text-danger">*</span>Plazas</label>
+                        <div class="form-group">
+                            <input type="number" name="plaza_cantidad" value="<?php echo ($this->input->post('plaza_cantidad') ? $this->input->post('plaza_cantidad') : $convocatoria['plaza_cantidad']); ?>" class="form-control" id="plaza_cantidad"  autocomplete="off" required />
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -66,6 +100,36 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-md-12 text-bold text-center"><u>REQUISITOS</u></div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">
+                                <input type="checkbox" id="select_all" onclick="toggle(this)" checked />Seleccionar Todos</label>
+                            </div>
+                        </div>
+                        <?php
+                        foreach($all_requisito as $requisito){
+                            $checked = "";
+                            foreach($los_requisitos as $requi){
+                                if($requi["requisito_id"] == $requisito["requisito_id"]){
+                                    $checked = "checked";
+                                    break;
+                                }
+                            }
+                            /*$checked = "";
+                            if($rolpadre['rolusuario_asignado'] == 1){
+                                $checked = "checked";
+                            }*/
+                            ?>
+                        <div class="col-md-6 text-right">
+                            <label class="normal" title="<?php //echo $requisito['requisisto_nombre']; ?>">
+                                <u><?php echo $requisito['requisito_nombre']; ?>
+                                    <input style="display: inline" class="checkbox" type="checkbox" name="requisitos[]" id="requisisto_id<?php echo $requisito['requisito_id']; ?>" value="<?php echo $requisito['requisito_id']; ?>" <?php echo $checked; ?> />
+                                </u>
+                            </label>
+                            <!--<input type="hidden" name="id_rol_usuario<?php //echo $i; ?>" id="id_rol_usuario<?php //echo $i; ?>" value="<?php //echo $rolhijo['id_rol_usuario']; ?>" />-->
+                        </div>
+                        <?php } ?>
                 </div>
             </div>
             <div class="box-footer">

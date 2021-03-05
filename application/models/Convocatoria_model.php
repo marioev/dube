@@ -16,7 +16,16 @@ class Convocatoria_model extends CI_Model
      */
     function get_convocatoria($convocatoria_id)
     {
-        return $this->db->get_where('convocatoria',array('convocatoria_id'=>$convocatoria_id))->row_array();
+        $convocatoria = $this->db->query("
+            SELECT
+                c.*, pb.plaza_id, pb.plaza_cantidad
+            FROM
+                convocatoria as c
+            left join plazas_becas as pb on c.convocatoria_id = pb.convocatoria_id
+            WHERE
+                c.convocatoria_id = $convocatoria_id
+        ")->row_array();
+        return $convocatoria;
     }
         
     /*
@@ -24,12 +33,17 @@ class Convocatoria_model extends CI_Model
      */
     function get_all_convocatoria()
     {
-        $this->db->select('c.*, g.gestion_descripcion, e.estado_descripcion, e.estado_color');
-        $this->db->from('convocatoria as c');
-        $this->db->join('gestion as g','c.gestion_id = g.gestion_id');
-        $this->db->join('estado as e','c.estado_id = e.estado_id');
-        $this->db->order_by('convocatoria_id', 'desc');
-        return $this->db->get()->result_array();
+        $convocatoria = $this->db->query("
+            SELECT
+                c.*, g.gestion_descripcion, e.estado_descripcion, e.estado_color, pb.plaza_cantidad
+            FROM
+                convocatoria as c
+            left join gestion as g on c.gestion_id = g.gestion_id
+            left join estado as e on c.estado_id = e.estado_id
+            left join plazas_becas as pb on c.convocatoria_id = pb.convocatoria_id
+            ORDER BY c.convocatoria_id desc
+        ")->result_array();
+        return $convocatoria;
     }
         
     /*
