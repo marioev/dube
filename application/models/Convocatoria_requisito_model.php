@@ -60,7 +60,7 @@ class Convocatoria_requisito_model extends CI_Model
     {
         $requisito = $this->db->query("
             SELECT
-                cr.requisito_id, r.requisito_nombre, cr.beca_id
+                cr.convoreq_id, cr.requisito_id, r.requisito_nombre, cr.beca_id
             FROM
                 `convocatoria_requisito` cr
             left join requisito r on cr.requisito_id = r.requisito_id
@@ -79,21 +79,4 @@ class Convocatoria_requisito_model extends CI_Model
     {
         return $this->db->delete('convocatoria_requisito',array('convocatoria_id'=>$convocatoria_id));
     }
-    /*
-     * Get beca_id dado una covocatoria
-     */
-    /*function get_beca_id($convocatoria_id)
-    {
-        $requisito = $this->db->query("
-            SELECT
-                cr.beca_id
-            FROM
-                `convocatoria_requisito` cr
-            WHERE
-                cr.convocatoria_id = $convocatoria_id
-
-        ")->row_array();
-
-        return $requisito;
-    }*/
 }

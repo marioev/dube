@@ -9,38 +9,56 @@ class Cargo extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Cargo_model');
-    } 
+        if ($this->session->userdata('logged_in')) {
+            $this->session_data = $this->session->userdata('logged_in');
+        }else {
+            redirect('', 'refresh');
+        }
+    }
+    private function acceso($id_rol){
+        $rolusuario = $this->session_data['rol'];
+        if($rolusuario[$id_rol-1]['rolusuario_asignado'] == 1){
+            return true;
+        }else{
+            $data['_view'] = 'login/mensajeacceso';
+            $this->load->view('layouts/main',$data);
+        }
+    }
 
     /*
      * Listing of cargo
      */
     function index()
     {
-        $data['cargo'] = $this->Cargo_model->get_all_cargo();
-        
-        $data['_view'] = 'cargo/index';
-        $this->load->view('layouts/main',$data);
+        if($this->acceso(23)) {
+            $data['cargo'] = $this->Cargo_model->get_all_cargo();
+
+            $data['_view'] = 'cargo/index';
+            $this->load->view('layouts/main',$data);
+        }
     }
 
     /*
      * Adding a new cargo
      */
     function add()
-    {   
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('cargo_nombre','Cargo Nombre','trim|required', array('required' => 'Este Campo no debe ser vacio'));
-        if($this->form_validation->run())
-        {
-            $params = array(
-                'cargo_nombre' => $this->input->post('cargo_nombre'),
-            );
-            $cargo_id = $this->Cargo_model->add_cargo($params);
-            redirect('cargo/index');
-        }
-        else
-        {            
-            $data['_view'] = 'cargo/add';
-            $this->load->view('layouts/main',$data);
+    {
+        if($this->acceso(23)) {
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('cargo_nombre','Cargo Nombre','trim|required', array('required' => 'Este Campo no debe ser vacio'));
+            if($this->form_validation->run())
+            {
+                $params = array(
+                    'cargo_nombre' => $this->input->post('cargo_nombre'),
+                );
+                $cargo_id = $this->Cargo_model->add_cargo($params);
+                redirect('cargo/index');
+            }
+            else
+            {            
+                $data['_view'] = 'cargo/add';
+                $this->load->view('layouts/main',$data);
+            }
         }
     }  
 
@@ -49,34 +67,36 @@ class Cargo extends CI_Controller{
      */
     function edit($cargo_id)
     {
-        // check if the cargo exists before trying to edit it
-        $data['cargo'] = $this->Cargo_model->get_cargo($cargo_id);
-        if(isset($data['cargo']['cargo_id']))
-        {
-            $this->load->library('form_validation');
-            $this->form_validation->set_rules('cargo_nombre','Cargo Nombre','trim|required', array('required' => 'Este Campo no debe ser vacio'));
-            if($this->form_validation->run())     
-            {   
-                $params = array(
-                    'cargo_nombre' => $this->input->post('cargo_nombre'),
-                );
-                $this->Cargo_model->update_cargo($cargo_id,$params);            
-                redirect('cargo/index');
+        if($this->acceso(23)) {
+            // check if the cargo exists before trying to edit it
+            $data['cargo'] = $this->Cargo_model->get_cargo($cargo_id);
+            if(isset($data['cargo']['cargo_id']))
+            {
+                $this->load->library('form_validation');
+                $this->form_validation->set_rules('cargo_nombre','Cargo Nombre','trim|required', array('required' => 'Este Campo no debe ser vacio'));
+                if($this->form_validation->run())     
+                {   
+                    $params = array(
+                        'cargo_nombre' => $this->input->post('cargo_nombre'),
+                    );
+                    $this->Cargo_model->update_cargo($cargo_id,$params);            
+                    redirect('cargo/index');
+                }
+                else
+                {
+                    $data['_view'] = 'cargo/edit';
+                    $this->load->view('layouts/main',$data);
+                }
             }
             else
-            {
-                $data['_view'] = 'cargo/edit';
-                $this->load->view('layouts/main',$data);
-            }
+                show_error('The cargo you are trying to edit does not exist.');
         }
-        else
-            show_error('The cargo you are trying to edit does not exist.');
     } 
 
     /*
      * Deleting cargo
      */
-    function remove($cargo_id)
+    /*function remove($cargo_id)
     {
         $cargo = $this->Cargo_model->get_cargo($cargo_id);
 
@@ -88,6 +108,6 @@ class Cargo extends CI_Controller{
         }
         else
             show_error('The cargo you are trying to delete does not exist.');
-    }
+    }*/
     
 }

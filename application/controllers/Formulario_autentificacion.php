@@ -25,7 +25,7 @@ class Formulario_autentificacion extends CI_Controller{
     /*
      * Adding a new formulario_autentificacion
      */
-    function add()
+    /*function add()
     {   
         if(isset($_POST) && count($_POST) > 0)     
         {   
@@ -54,12 +54,12 @@ class Formulario_autentificacion extends CI_Controller{
             $data['_view'] = 'formulario_autentificacion/add';
             $this->load->view('layouts/main',$data);
         }
-    }  
+    }*/
 
     /*
      * Editing a formulario_autentificacion
      */
-    function edit($formulario_id)
+    /*function edit($formulario_id)
     {   
         // check if the formulario_autentificacion exists before trying to edit it
         $data['formulario_autentificacion'] = $this->Formulario_autentificacion_model->get_formulario_autentificacion($formulario_id);
@@ -96,12 +96,12 @@ class Formulario_autentificacion extends CI_Controller{
         }
         else
             show_error('The formulario_autentificacion you are trying to edit does not exist.');
-    } 
+    }*/
 
     /*
      * Deleting formulario_autentificacion
      */
-    function remove($formulario_id)
+    /*function remove($formulario_id)
     {
         $formulario_autentificacion = $this->Formulario_autentificacion_model->get_formulario_autentificacion($formulario_id);
 
@@ -113,6 +113,6 @@ class Formulario_autentificacion extends CI_Controller{
         }
         else
             show_error('The formulario_autentificacion you are trying to delete does not exist.');
-    }
+    }*/
     
 }

@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="plaza_id" class="control-label">Plazas Beca</label>
+                            <label for="plaza_id" class="control-label">Beca(Plazas)</label>
                             <div class="form-group">
                                 <select name="plaza_id" class="form-control">
                                     <!--<option value="">select plazas_beca</option>-->
@@ -31,7 +31,7 @@
                                     foreach($all_plazas_becas as $plazas_beca)
                                     {
                                         $selected = ($plazas_beca['plaza_id'] == $postulante['plaza_id']) ? ' selected="selected"' : "";
-                                        echo '<option value="'.$plazas_beca['plaza_id'].'" '.$selected.'>'.$plazas_beca['plaza_cantidad'].'</option>';
+                                        echo '<option value="'.$plazas_beca['plaza_id'].'" '.$selected.'>'.$plazas_beca['beca_nombre']." (".$plazas_beca['plaza_cantidad'].')</option>';
                                     } 
                                     ?>
                                 </select>

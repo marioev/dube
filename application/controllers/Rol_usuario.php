@@ -31,9 +31,9 @@ class Rol_usuario extends CI_Controller{
     /*
      * Listing of rol_usuario
      */
-    function index()
+    /*function index()
     {
-        if($this->acceso(146)){
+        if($this->acceso(46)){
             $this->load->model('Rol_model');
             $rol['all_rol'] = $this->Rol_model->get_all_rol();    
             $this->load->library('form_validation');
@@ -72,15 +72,15 @@ class Rol_usuario extends CI_Controller{
                 $this->load->view('layouts/main',$data);
             }
         }
-    }  
+    }*/
     
 
     /*
      * Adding a new rol_usuario
      */
-    function add()
+    /*function add()
     {
-        if($this->acceso(146)){
+        if($this->acceso(46)){
             $this->load->model('Rol_model');
             $rol['all_rol'] = $this->Rol_model->get_all_rol();    
             $this->load->library('form_validation');
@@ -119,7 +119,7 @@ class Rol_usuario extends CI_Controller{
                 $this->load->view('layouts/main',$data);
             }
         }
-    }  
+    }*/
 
     function check_user() {
         $tipousuario_id = $this->input->post('tipousuario_id');// get tipo de usuario
@@ -141,9 +141,9 @@ class Rol_usuario extends CI_Controller{
     /*
      * Editing a rol_usuario
      */
-    function edit($id_rol_usuario)
+    /*function edit($id_rol_usuario)
     {
-        if($this->acceso(146)){
+        if($this->acceso(46)){
             // check if the rol_usuario exists before trying to edit it
             $data['rol_usuario'] = $this->Rol_usuario_model->get_rol_usuario($id_rol_usuario);
 
@@ -173,6 +173,6 @@ class Rol_usuario extends CI_Controller{
             else
                 show_error('The rol_usuario you are trying to edit does not exist.');
         }
-    }
+    }*/
     
 }

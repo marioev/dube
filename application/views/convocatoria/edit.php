@@ -100,36 +100,7 @@ function toggle(source) {
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-12 text-bold text-center"><u>REQUISITOS</u></div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="control-label">
-                                <input type="checkbox" id="select_all" onclick="toggle(this)" checked />Seleccionar Todos</label>
-                            </div>
-                        </div>
-                        <?php
-                        foreach($all_requisito as $requisito){
-                            $checked = "";
-                            foreach($los_requisitos as $requi){
-                                if($requi["requisito_id"] == $requisito["requisito_id"]){
-                                    $checked = "checked";
-                                    break;
-                                }
-                            }
-                            /*$checked = "";
-                            if($rolpadre['rolusuario_asignado'] == 1){
-                                $checked = "checked";
-                            }*/
-                            ?>
-                        <div class="col-md-6 text-right">
-                            <label class="normal" title="<?php //echo $requisito['requisisto_nombre']; ?>">
-                                <u><?php echo $requisito['requisito_nombre']; ?>
-                                    <input style="display: inline" class="checkbox" type="checkbox" name="requisitos[]" id="requisisto_id<?php echo $requisito['requisito_id']; ?>" value="<?php echo $requisito['requisito_id']; ?>" <?php echo $checked; ?> />
-                                </u>
-                            </label>
-                            <!--<input type="hidden" name="id_rol_usuario<?php //echo $i; ?>" id="id_rol_usuario<?php //echo $i; ?>" value="<?php //echo $rolhijo['id_rol_usuario']; ?>" />-->
-                        </div>
-                        <?php } ?>
+                    
                 </div>
             </div>
             <div class="box-footer">

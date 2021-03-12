@@ -9,43 +9,59 @@ class Unidad extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Unidad_model');
-    } 
+        if ($this->session->userdata('logged_in')) {
+            $this->session_data = $this->session->userdata('logged_in');
+        }else {
+            redirect('', 'refresh');
+        }
+    }
+    private function acceso($id_rol){
+        $rolusuario = $this->session_data['rol'];
+        if($rolusuario[$id_rol-1]['rolusuario_asignado'] == 1){
+            return true;
+        }else{
+            $data['_view'] = 'login/mensajeacceso';
+            $this->load->view('layouts/main',$data);
+        }
+    }
 
     /*
      * Listing of unidad
      */
     function index()
     {
-        $data['unidad'] = $this->Unidad_model->get_all_unidad();
-        
-        $data['_view'] = 'unidad/index';
-        $this->load->view('layouts/main',$data);
+        if($this->acceso(39)) {
+            $data['unidad'] = $this->Unidad_model->get_all_unidad();
+
+            $data['_view'] = 'unidad/index';
+            $this->load->view('layouts/main',$data);
+        }
     }
 
     /*
      * Adding a new unidad
      */
     function add()
-    {   
-        $this->load->library('form_validation');
+    {
+        if($this->acceso(40)) {
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('unidad_nombre','Unidad Nombre','required');
+            if($this->form_validation->run())
+            {   
+                $params = array(
+                    'unidad_nombre' => $this->input->post('unidad_nombre'),
+                    'unidad_dependencia' => $this->input->post('unidad_dependencia'),
+                    'unidad_responsable' => $this->input->post('unidad_responsable'),
+                );
 
-		$this->form_validation->set_rules('unidad_nombre','Unidad Nombre','required');
-		
-		if($this->form_validation->run())     
-        {   
-            $params = array(
-				'unidad_nombre' => $this->input->post('unidad_nombre'),
-				'unidad_dependencia' => $this->input->post('unidad_dependencia'),
-				'unidad_responsable' => $this->input->post('unidad_responsable'),
-            );
-            
-            $unidad_id = $this->Unidad_model->add_unidad($params);
-            redirect('unidad/index');
-        }
-        else
-        {            
-            $data['_view'] = 'unidad/add';
-            $this->load->view('layouts/main',$data);
+                $unidad_id = $this->Unidad_model->add_unidad($params);
+                redirect('unidad/index');
+            }
+            else
+            {            
+                $data['_view'] = 'unidad/add';
+                $this->load->view('layouts/main',$data);
+            }
         }
     }  
 
@@ -53,41 +69,41 @@ class Unidad extends CI_Controller{
      * Editing a unidad
      */
     function edit($unidad_id)
-    {   
-        // check if the unidad exists before trying to edit it
-        $data['unidad'] = $this->Unidad_model->get_unidad($unidad_id);
-        
-        if(isset($data['unidad']['unidad_id']))
-        {
-            $this->load->library('form_validation');
+    {
+        if($this->acceso(41)) {
+            // check if the unidad exists before trying to edit it
+            $data['unidad'] = $this->Unidad_model->get_unidad($unidad_id);
 
-			$this->form_validation->set_rules('unidad_nombre','Unidad Nombre','required');
-		
-			if($this->form_validation->run())     
-            {   
-                $params = array(
-					'unidad_nombre' => $this->input->post('unidad_nombre'),
-					'unidad_dependencia' => $this->input->post('unidad_dependencia'),
-					'unidad_responsable' => $this->input->post('unidad_responsable'),
-                );
+            if(isset($data['unidad']['unidad_id']))
+            {
+                $this->load->library('form_validation');
+                $this->form_validation->set_rules('unidad_nombre','Unidad Nombre','required');
+                if($this->form_validation->run())     
+                {   
+                    $params = array(
+                        'unidad_nombre' => $this->input->post('unidad_nombre'),
+                        'unidad_dependencia' => $this->input->post('unidad_dependencia'),
+                        'unidad_responsable' => $this->input->post('unidad_responsable'),
+                    );
 
-                $this->Unidad_model->update_unidad($unidad_id,$params);            
-                redirect('unidad/index');
+                    $this->Unidad_model->update_unidad($unidad_id,$params);            
+                    redirect('unidad/index');
+                }
+                else
+                {
+                    $data['_view'] = 'unidad/edit';
+                    $this->load->view('layouts/main',$data);
+                }
             }
             else
-            {
-                $data['_view'] = 'unidad/edit';
-                $this->load->view('layouts/main',$data);
-            }
+                show_error('The unidad you are trying to edit does not exist.');
         }
-        else
-            show_error('The unidad you are trying to edit does not exist.');
     } 
 
     /*
      * Deleting unidad
      */
-    function remove($unidad_id)
+    /*function remove($unidad_id)
     {
         $unidad = $this->Unidad_model->get_unidad($unidad_id);
 
@@ -99,6 +115,6 @@ class Unidad extends CI_Controller{
         }
         else
             show_error('The unidad you are trying to delete does not exist.');
-    }
+    }*/
     
 }

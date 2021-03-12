@@ -53,4 +53,34 @@ class Formulario_autentificacion_model extends CI_Model
     {
         return $this->db->delete('formulario_autentificacion',array('formulario_id'=>$formulario_id));
     }
+    /*
+     * function to delete formulario_autentificacion de un postulante
+     */
+    function delete_formulario_postulante($postulante_id)
+    {
+        return $this->db->delete('formulario_autentificacion',array('postulante_id'=>$postulante_id));
+    }
+    /*
+     * Get all formulario_autentificacion de un postulante
+     */
+    function get_all_formulario_postulante($postulante_id)
+    {
+        $formulario = $this->db->query("
+            SELECT
+                f.*, r.requisito_nombre
+            FROM
+                `formulario_autentificacion` f
+            left join convocatoria_requisito cr on f.convoreq_id = cr.convoreq_id
+            left join requisito r on cr.requisito_id = r.requisito_id
+            WHERE
+                f.postulante_id = $postulante_id
+            ORDER BY r.requisito_nombre ASC
+        ")->result_array();
+
+        return $formulario;
+        
+        
+        $this->db->order_by('formulario_id', 'desc');
+        return $this->db->get('formulario_autentificacion')->result_array();
+    }
 }

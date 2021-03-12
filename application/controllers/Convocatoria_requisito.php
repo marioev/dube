@@ -25,7 +25,7 @@ class Convocatoria_requisito extends CI_Controller{
     /*
      * Adding a new convocatoria_requisito
      */
-    function add()
+    /*function add()
     {   
         if(isset($_POST) && count($_POST) > 0)     
         {   
@@ -52,12 +52,12 @@ class Convocatoria_requisito extends CI_Controller{
             $data['_view'] = 'convocatoria_requisito/add';
             $this->load->view('layouts/main',$data);
         }
-    }  
+    }*/
 
     /*
      * Editing a convocatoria_requisito
      */
-    function edit($convoreq_id)
+    /*function edit($convoreq_id)
     {   
         // check if the convocatoria_requisito exists before trying to edit it
         $data['convocatoria_requisito'] = $this->Convocatoria_requisito_model->get_convocatoria_requisito($convoreq_id);
@@ -92,12 +92,12 @@ class Convocatoria_requisito extends CI_Controller{
         }
         else
             show_error('The convocatoria_requisito you are trying to edit does not exist.');
-    } 
+    }*/
 
     /*
      * Deleting convocatoria_requisito
      */
-    function remove($convoreq_id)
+    /*function remove($convoreq_id)
     {
         $convocatoria_requisito = $this->Convocatoria_requisito_model->get_convocatoria_requisito($convoreq_id);
 
@@ -109,6 +109,6 @@ class Convocatoria_requisito extends CI_Controller{
         }
         else
             show_error('The convocatoria_requisito you are trying to delete does not exist.');
-    }
+    }*/
     
 }

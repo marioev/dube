@@ -9,41 +9,59 @@ class Dube extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Dube_model');
-    } 
+        if ($this->session->userdata('logged_in')) {
+            $this->session_data = $this->session->userdata('logged_in');
+        }else {
+            redirect('', 'refresh');
+        }
+    }
+    private function acceso($id_rol){
+        $rolusuario = $this->session_data['rol'];
+        if($rolusuario[$id_rol-1]['rolusuario_asignado'] == 1){
+            return true;
+        }else{
+            $data['_view'] = 'login/mensajeacceso';
+            $this->load->view('layouts/main',$data);
+        }
+    }
 
     /*
      * Listing of dube
      */
     function index()
     {
-        $data['dube'] = $this->Dube_model->get_all_dube();
-        
-        $data['_view'] = 'dube/index';
-        $this->load->view('layouts/main',$data);
+        if($this->acceso(35)) {
+            $data['dube'] = $this->Dube_model->get_all_dube();
+
+            $data['_view'] = 'dube/index';
+            $this->load->view('layouts/main',$data);
+        }
     }
 
     /*
      * Adding a new dube
      */
     function add()
-    {   
-        if(isset($_POST) && count($_POST) > 0)     
-        {   
-            $params = array(
-				'dube_organigrama' => $this->input->post('dube_organigrama'),
-				'dube_autoridadades' => $this->input->post('dube_autoridadades'),
-				'dube_mision' => $this->input->post('dube_mision'),
-				'dube_vision' => $this->input->post('dube_vision'),
-				'dube_objetivo' => $this->input->post('dube_objetivo'),
-            );
-            
-            $dube_id = $this->Dube_model->add_dube($params);
-            redirect('dube/index');
-        }
-        else
-        {            
-            $data['_view'] = 'dube/add';
-            $this->load->view('layouts/main',$data);
+    {
+        if($this->acceso(35)) {
+            if(isset($_POST) && count($_POST) > 0)     
+            {   
+                $params = array(
+                                    'dube_organigrama' => $this->input->post('dube_organigrama'),
+                                    'dube_autoridadades' => $this->input->post('dube_autoridadades'),
+                                    'dube_mision' => $this->input->post('dube_mision'),
+                                    'dube_vision' => $this->input->post('dube_vision'),
+                                    'dube_objetivo' => $this->input->post('dube_objetivo'),
+                );
+
+                $dube_id = $this->Dube_model->add_dube($params);
+                redirect('dube/index');
+            }
+            else
+            {            
+                $data['_view'] = 'dube/add';
+                $this->load->view('layouts/main',$data);
+            }
         }
     }  
 
@@ -51,39 +69,41 @@ class Dube extends CI_Controller{
      * Editing a dube
      */
     function edit($dube_id)
-    {   
-        // check if the dube exists before trying to edit it
-        $data['dube'] = $this->Dube_model->get_dube($dube_id);
-        
-        if(isset($data['dube']['dube_id']))
-        {
-            if(isset($_POST) && count($_POST) > 0)     
-            {   
-                $params = array(
-					'dube_organigrama' => $this->input->post('dube_organigrama'),
-					'dube_autoridadades' => $this->input->post('dube_autoridadades'),
-					'dube_mision' => $this->input->post('dube_mision'),
-					'dube_vision' => $this->input->post('dube_vision'),
-					'dube_objetivo' => $this->input->post('dube_objetivo'),
-                );
+    {
+        if($this->acceso(35)) {
+            // check if the dube exists before trying to edit it
+            $data['dube'] = $this->Dube_model->get_dube($dube_id);
 
-                $this->Dube_model->update_dube($dube_id,$params);            
-                redirect('dube/index');
+            if(isset($data['dube']['dube_id']))
+            {
+                if(isset($_POST) && count($_POST) > 0)     
+                {   
+                    $params = array(
+                                            'dube_organigrama' => $this->input->post('dube_organigrama'),
+                                            'dube_autoridadades' => $this->input->post('dube_autoridadades'),
+                                            'dube_mision' => $this->input->post('dube_mision'),
+                                            'dube_vision' => $this->input->post('dube_vision'),
+                                            'dube_objetivo' => $this->input->post('dube_objetivo'),
+                    );
+
+                    $this->Dube_model->update_dube($dube_id,$params);            
+                    redirect('dube/index');
+                }
+                else
+                {
+                    $data['_view'] = 'dube/edit';
+                    $this->load->view('layouts/main',$data);
+                }
             }
             else
-            {
-                $data['_view'] = 'dube/edit';
-                $this->load->view('layouts/main',$data);
-            }
+                show_error('The dube you are trying to edit does not exist.');
         }
-        else
-            show_error('The dube you are trying to edit does not exist.');
     } 
 
     /*
      * Deleting dube
      */
-    function remove($dube_id)
+    /*function remove($dube_id)
     {
         $dube = $this->Dube_model->get_dube($dube_id);
 
@@ -95,6 +115,6 @@ class Dube extends CI_Controller{
         }
         else
             show_error('The dube you are trying to delete does not exist.');
-    }
+    }*/
     
 }

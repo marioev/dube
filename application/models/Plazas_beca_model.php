@@ -24,8 +24,17 @@ class Plazas_beca_model extends CI_Model
      */
     function get_all_plazas_becas()
     {
-        $this->db->order_by('plaza_id', 'desc');
-        return $this->db->get('plazas_becas')->result_array();
+        $plazas = $this->db->query("
+            SELECT
+                pb.*, b.beca_nombre
+            FROM
+                `plazas_becas` pb
+            left join beca b on pb.beca_id = b.beca_id
+            WHERE
+                1 = 1
+            ORDER BY b.beca_nombre ASC
+        ")->result_array();
+        return $plazas;
     }
         
     /*

@@ -18,7 +18,7 @@
     <font size='4' face='Arial'><b>Requisito</b></font>
     <br><font size='2' face='Arial'>Registros Encontrados: <?php echo sizeof($requisito); ?></font>
     <div class="box-tools no-print">
-        <a href="<?php echo site_url('requisito/add'); ?>" class="btn btn-success btn-sm"><fa class='fa fa-pencil-square-o'></fa> Registrar Cargo</a>
+        <a href="<?php echo site_url('requisito/add'); ?>" class="btn btn-success btn-sm"><fa class='fa fa-pencil-square-o'></fa> Registrar Requisito</a>
     </div>
 </div>
 <div class="row">

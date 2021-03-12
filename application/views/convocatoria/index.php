@@ -50,7 +50,7 @@
                         <th>Fecha</th>
                         <th>Hora</th>
                         <th>Descripción</th>
-                        <th>Plazas</th>
+                        <th>Beca/Plazas</th>
                         <th>Fecha limite</th>
                         <th>Documento</th>
                         <th>Estado</th>
@@ -66,7 +66,7 @@
                         <td class="text-center"><?php echo date("d/m/Y", strtotime($c['convocatoria_fecha'])); ?></td>
                         <td class="text-center"><?php echo $c['convocatoria_hora']; ?></td>
                         <td><?php echo $c['convocatoria_descripcion']; ?></td>
-                        <td><?php echo $c['plaza_cantidad']; ?></td>
+                        <td class="text-center"><?php echo $c['beca_nombre']."<br>".$c['plaza_cantidad']; ?></td>
                         <td class="text-center"><?php echo date("d/m/Y", strtotime($c['convocatoria_fechalimite'])); ?></td>
                         <td>
                             <a href="<?php echo site_url('/resources/images/convocatoria/'.$c['convocatoria_dcto']) ?>" target="_blank"><?php echo $c['convocatoria_dcto']; ?></a>
@@ -74,6 +74,7 @@
                         <td class="text-center"><?php echo $c['estado_descripcion']; ?></td>
                         <td>
                             <a href="<?php echo site_url('convocatoria/edit/'.$c['convocatoria_id']); ?>" class="btn btn-info btn-xs" title="Modificar convocatoria"><span class="fa fa-pencil"></span></a>
+                            <a href="<?php echo site_url('convocatoria/modif_requisito/'.$c['convocatoria_id']); ?>" class="btn btn-success btn-xs" title="Modificar requisitos"><span class="fa fa-check-square-o"></span></a>
                             <a onclick="mostrar_requisitos(<?php echo $c['convocatoria_id']; ?>)" class="btn btn-facebook btn-xs" title="Ver requisitos">
                                 <i class="fa fa-list-ol"></i>
                             </a>
@@ -91,7 +92,7 @@
     </div>
 </div>
 
-<!------------------------ INICIO modal para Seleccioanr nuevo asociado ------------------->
+<!------------------------ INICIO modal para ver requisitos ------------------->
 <div class="modal fade" id="modalrequisito" tabindex="-1" role="dialog" aria-labelledby="modalrequisitolabel">
     <div class="modal-dialog" role="document">
         <br><br>
@@ -125,4 +126,4 @@
         </div>
     </div>
 </div>
-<!------------------------ FIN modal para Seleccionar nuevo asociado ------------------->
+<!------------------------ FIN modal para ver requisitos ------------------->

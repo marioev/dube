@@ -98,258 +98,164 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('administrativo');?>">
-                                <i class="fa fa-address-book"></i> <span>Administrativo</span>
+                            <a href="#">
+                                <i class="fa fa-book"></i> <span>Registro</span>
                             </a>
+                            <ul class="treeview-menu">
+                                <?php
+                                if($rolusuario[1-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li class="active">
+                                    <a href="<?php echo site_url('beca');?>"><i class="fa fa-handshake-o"></i> Beca</a>
+                                </li>
+                                <?php } ?>
+                                <?php
+                                if($rolusuario[4-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('convocatoria');?>"><i class="fa fa-list-alt"></i> Convocatoria</a>
+                                </li>
+                                <?php } ?>
+                                <?php
+                                if($rolusuario[8-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('estudiante');?>"><i class="fa fa-user"></i> Estudiante</a>
+                                </li>
+                                <?php } ?>
+                                <?php
+                                if($rolusuario[11-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('gestion');?>"><i class="fa fa-calendar"></i> Gestión</a>
+                                </li>
+                                <?php } ?>
+                                <?php
+                                if($rolusuario[14-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('postulante');?>"><i class="fa fa-address-card"></i> Postulante</a>
+                                </li>
+                                <?php } ?>
+                                <?php
+                                if($rolusuario[20-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('publicacion');?>"><i class="fa fa-file-text"></i> Publicaciones</a>
+                                </li>
+                                <?php } ?>
+                            </ul>
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-list-ol"></i> <span>Beca</span>
+                                <i class="fa fa-newspaper-o"></i> <span>Categoria</span>
                             </a>
                             <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('beca/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                <?php
+                                if($rolusuario[23-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li class="active">
+                                    <a href="<?php echo site_url('cargo');?>"><i class="fa fa-align-center"></i> Cargo</a>
                                 </li>
-								<li>
-                                    <a href="<?php echo site_url('beca/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                <?php } ?>
+                                <?php
+                                if($rolusuario[24-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('estado');?>"><i class="fa fa-toggle-on"></i> Estado</a>
                                 </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
-                                <i class="fa fa-newspaper-o"></i> <span>Cargo</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('cargo/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                <?php } ?>
+                                <?php
+                                if($rolusuario[25-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('requisito');?>"><i class="fa fa-list-ul"></i> Requisito</a>
                                 </li>
-								<li>
-                                    <a href="<?php echo site_url('cargo/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
-                                </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
-                                <i class="fa fa-copyright"></i> <span>Comision</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('comision/add');?>"><i class="fa fa-plus"></i> Add</a>
-                                </li>
-								<li>
-                                    <a href="<?php echo site_url('comision/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
-                                </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
-                                <i class="fa fa-creative-commons"></i> <span>Comision Postulante</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('comision_postulante/add');?>"><i class="fa fa-plus"></i> Add</a>
-                                </li>
-								<li>
-                                    <a href="<?php echo site_url('comision_postulante/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
-                                </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
-                                <i class="fa fa-list-alt"></i> <span>Convocatoria</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('convocatoria/add');?>"><i class="fa fa-plus"></i> Add</a>
-                                </li>
-								<li>
-                                    <a href="<?php echo site_url('convocatoria/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
-                                </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Convocatoria Requisito</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('convocatoria_requisito/add');?>"><i class="fa fa-plus"></i> Add</a>
-                                </li>
-								<li>
-                                    <a href="<?php echo site_url('convocatoria_requisito/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
-                                </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
-                                <i class="fa fa-sun-o"></i> <span>Direccion Universitaria</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('direccion_universitaria/add');?>"><i class="fa fa-plus"></i> Add</a>
-                                </li>
-								<li>
-                                    <a href="<?php echo site_url('direccion_universitaria/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
-                                </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Dube</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('dube/add');?>"><i class="fa fa-plus"></i> Add</a>
-                                </li>
-								<li>
-                                    <a href="<?php echo site_url('dube/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
-                                </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Estado</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('estado/add');?>"><i class="fa fa-plus"></i> Add</a>
-                                </li>
-								<li>
-                                    <a href="<?php echo site_url('estado/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
-                                </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Estudiante</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('estudiante/add');?>"><i class="fa fa-plus"></i> Add</a>
-                                </li>
-								<li>
-                                    <a href="<?php echo site_url('estudiante/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
-                                </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Formulario Autentificacion</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('formulario_autentificacion/add');?>"><i class="fa fa-plus"></i> Add</a>
-                                </li>
-								<li>
-                                    <a href="<?php echo site_url('formulario_autentificacion/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
-                                </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Gestion</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('gestion/add');?>"><i class="fa fa-plus"></i> Add</a>
-                                </li>
-								<li>
-                                    <a href="<?php echo site_url('gestion/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
-                                </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Plazas Beca</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('plazas_beca/add');?>"><i class="fa fa-plus"></i> Add</a>
-                                </li>
-								<li>
-                                    <a href="<?php echo site_url('plazas_beca/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
-                                </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Postulante</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('postulante/add');?>"><i class="fa fa-plus"></i> Add</a>
-                                </li>
-								<li>
-                                    <a href="<?php echo site_url('postulante/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
-                                </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Publicacion</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('publicacion/add');?>"><i class="fa fa-plus"></i> Add</a>
-                                </li>
-								<li>
-                                    <a href="<?php echo site_url('publicacion/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
-                                </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Requisito</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('requisito/add');?>"><i class="fa fa-plus"></i> Add</a>
-                                </li>
-								<li>
-                                    <a href="<?php echo site_url('requisito/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
-                                </li>
-							</ul>
+                                <?php } ?>
+                            </ul>
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Solicitud Unidade</span>
+                                <i class="fa fa-cog"></i> <span>Parametros</span>
                             </a>
                             <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('solicitud_unidade/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                <?php
+                                if($rolusuario[28-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li class="active">
+                                    <a href="<?php echo site_url('administrativo');?>"><i class="fa fa-font"></i> Administrativo</a>
                                 </li>
-								<li>
-                                    <a href="<?php echo site_url('solicitud_unidade/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                <?php } ?>
+                                <?php
+                                if($rolusuario[31-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('comision');?>"><i class="fa fa-copyright"></i> Comisión</a>
                                 </li>
-							</ul>
-                        </li>
-						<li>
-                            <a href="#">
-                                <i class="fa fa-desktop"></i> <span>Unidad</span>
-                            </a>
-                            <ul class="treeview-menu">
-								<li class="active">
-                                    <a href="<?php echo site_url('unidad/add');?>"><i class="fa fa-plus"></i> Add</a>
+                                <?php } ?>
+                                <?php
+                                if($rolusuario[42-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('comision_postulante');?>"><i class="fa fa-creative-commons"></i> Comisión Postualnte</a>
                                 </li>
-								<li>
-                                    <a href="<?php echo site_url('unidad/index');?>"><i class="fa fa-list-ul"></i> Listing</a>
+                                <?php } ?>
+                                <?php
+                                if($rolusuario[34-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('direccion_universitaria');?>"><i class="fa fa-sun-o"></i> Dir. Universitaria</a>
                                 </li>
-							</ul>
+                                <?php } ?>
+                                <?php
+                                if($rolusuario[35-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('dube');?>"><i class="fa fa-first-order"></i> Dube</a>
+                                </li>
+                                <?php } ?>
+                                <?php
+                                if($rolusuario[36-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('solicitud_unidad');?>"><i class="fa fa-list-ol"></i> Solicitud Unidad</a>
+                                </li>
+                                <?php } ?>
+                                <?php
+                                if($rolusuario[39-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('unidad');?>"><i class="fa fa-vimeo"></i> Unidad</a>
+                                </li>
+                                <?php } ?>
+                            </ul>
                         </li>
                         <li>
                             <a href="#">
                                 <i class="fa fa-lock"></i> <span>Seguridad</span>
                             </a>
                             <ul class="treeview-menu">
+                                <?php
+                                if($rolusuario[45-1]['rolusuario_asignado'] == 1){
+                                ?>
                                 <li class="active">
                                     <a href="<?php echo site_url('rol');?>"><i class="fa fa-gg"></i>Roles</a>
                                 </li>
+                                <?php } ?>
+                                <?php
+                                if($rolusuario[46-1]['rolusuario_asignado'] == 1){
+                                ?>
                                 <li>
                                     <a href="<?php echo site_url('tipo_usuario');?>"><i class="fa fa-list-ul"></i>Tipo Usuario</a>
                                 </li>
+                                <?php } ?>
+                                <?php
+                                if($rolusuario[47-1]['rolusuario_asignado'] == 1){
+                                ?>
                                 <li>
                                     <a href="<?php echo site_url('usuario');?>"><i class="fa fa-users"></i>Usuarios</a>
                                 </li>
+                                <?php } ?>
                             </ul>
                         </li>
                     </ul>

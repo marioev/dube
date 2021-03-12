@@ -25,7 +25,7 @@ class Plazas_beca extends CI_Controller{
     /*
      * Adding a new plazas_beca
      */
-    function add()
+    /*function add()
     {   
         $this->load->library('form_validation');
 
@@ -53,12 +53,12 @@ class Plazas_beca extends CI_Controller{
             $data['_view'] = 'plazas_beca/add';
             $this->load->view('layouts/main',$data);
         }
-    }  
+    }*/
 
     /*
      * Editing a plazas_beca
      */
-    function edit($plaza_id)
+    /*function edit($plaza_id)
     {   
         // check if the plazas_beca exists before trying to edit it
         $data['plazas_beca'] = $this->Plazas_beca_model->get_plazas_beca($plaza_id);
@@ -94,12 +94,12 @@ class Plazas_beca extends CI_Controller{
         }
         else
             show_error('The plazas_beca you are trying to edit does not exist.');
-    } 
+    }*/
 
     /*
      * Deleting plazas_beca
      */
-    function remove($plaza_id)
+    /*function remove($plaza_id)
     {
         $plazas_beca = $this->Plazas_beca_model->get_plazas_beca($plaza_id);
 
@@ -111,6 +111,6 @@ class Plazas_beca extends CI_Controller{
         }
         else
             show_error('The plazas_beca you are trying to delete does not exist.');
-    }
+    }*/
     
 }
