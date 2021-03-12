@@ -93,7 +93,7 @@
                     <ul class="sidebar-menu">
                         <li class="header">MENU</li>
                         <li>
-                            <a href="<?php echo site_url();?>">
+                            <a href="<?php echo site_url("admin/dashb");?>">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
