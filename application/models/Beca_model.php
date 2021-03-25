@@ -64,4 +64,23 @@ class Beca_model extends CI_Model
     {
         return $this->db->delete('beca',array('beca_id'=>$beca_id));
     }
+    /*
+     * Get all becas abiertas
+     */
+    function getall_becas_abiertas()
+    {
+        $beca = $this->db->query("
+            SELECT
+                b.*, e.estado_descripcion, e.estado_color
+            FROM
+                `beca` b
+            left join estado e on b.estado_id = e.estado_id
+            WHERE
+                b.estado_id = 1
+
+            ORDER BY `beca_nombre` ASC
+        ")->result_array();
+
+        return $beca;
+    }
 }

@@ -48,6 +48,62 @@ class Publicacion extends CI_Controller{
             $this->form_validation->set_rules('publicacion_fecha','Publicacion Fecha','required');
             if($this->form_validation->run())     
             {
+                /* *********************INICIO imagen***************************** */
+                $foto="";
+                if (!empty($_FILES['publicacion_dcto']['name'])){
+
+                    $this->load->library('image_lib');
+                    $config['upload_path'] = './resources/images/publicacion/';
+                    $img_full_path = $config['upload_path'];
+
+                    //$config['allowed_types'] = 'gif|jpeg|jpg|png';
+                    $config['allowed_types'] = '*';
+                    $config['image_library'] = 'gd2';
+                    $config['max_size'] = 0;
+                    $config['max_width'] = 0;
+                    $config['max_height'] = 0;
+
+                    $new_name = time(); //str_replace(" ", "_", $this->input->post('proveedor_nombre'));
+                    $config['file_name'] = $new_name; //.$extencion;
+                    $config['file_ext_tolower'] = TRUE;
+
+                    $this->load->library('upload', $config);
+                    $this->upload->do_upload('publicacion_dcto');
+
+                    $img_data = $this->upload->data();
+                    $extension = $img_data['file_ext'];
+                    /* ********************INICIO para resize***************************** */
+                    if ($img_data['file_ext'] == ".jpg" || $img_data['file_ext'] == ".png" || $img_data['file_ext'] == ".jpeg" || $img_data['file_ext'] == ".gif") {
+                        $conf['image_library'] = 'gd2';
+                        $conf['source_image'] = $img_data['full_path'];
+                        $conf['new_image'] = './resources/images/publicacion/';
+                        $conf['maintain_ratio'] = TRUE;
+                        $conf['create_thumb'] = FALSE;
+                        $conf['width'] = 800;
+                        $conf['height'] = 600;
+                        $this->image_lib->clear();
+                        $this->image_lib->initialize($conf);
+                        if(!$this->image_lib->resize()){
+                            echo $this->image_lib->display_errors('','');
+                        }
+                        $confi['image_library'] = 'gd2';
+                        $confi['source_image'] = './resources/images/publicacion/'.$new_name.$extension;
+                        $confi['new_image'] = './resources/images/publicacion/'."thumb_".$new_name.$extension;
+                        $confi['create_thumb'] = FALSE;
+                        $confi['maintain_ratio'] = TRUE;
+                        $confi['width'] = 100;
+                        $confi['height'] = 100;
+
+                        $this->image_lib->clear();
+                        $this->image_lib->initialize($confi);
+                        $this->image_lib->resize();
+                    }
+                    /* ********************F I N  para resize***************************** */
+
+
+                    $foto = $new_name.$extension;
+                }
+                /* *********************FIN imagen***************************** */
                 $estado = 1;
                 $params = array(
                     'dube_id' => $this->input->post('dube_id'),
@@ -57,6 +113,7 @@ class Publicacion extends CI_Controller{
                     'publicacion_autor' => $this->input->post('publicacion_autor'),
                     'publicacion_enlace' => $this->input->post('publicacion_enlace'),
                     'publicacion_texto' => $this->input->post('publicacion_texto'),
+                    'publicacion_dcto' => $foto,
                 );
 
                 $publicacion_id = $this->Publicacion_model->add_publicacion($params);
@@ -93,7 +150,74 @@ class Publicacion extends CI_Controller{
                 $this->load->library('form_validation');
                 $this->form_validation->set_rules('publicacion_fecha','Publicacion Fecha','required');
                 if($this->form_validation->run())
-                {   
+                {
+                    /* *********************INICIO imagen***************************** */
+                    $foto="";
+                        $foto1= $this->input->post('publicacion_dcto1');
+                    if (!empty($_FILES['publicacion_dcto']['name']))
+                    {
+                        $this->load->library('image_lib');
+                        $config['upload_path'] = './resources/images/publicacion/';
+                        //$config['allowed_types'] = 'gif|jpeg|jpg|png';
+                        $config['allowed_types'] = '*';
+                        $config['max_size'] = 0;
+                        $config['max_width'] = 0;
+                        $config['max_height'] = 0;
+
+                        $new_name = time();
+                        $config['file_name'] = $new_name; //.$extencion;
+                        $config['file_ext_tolower'] = TRUE;
+
+                        $this->load->library('upload', $config);
+                        $this->upload->do_upload('publicacion_dcto');
+
+                        $img_data = $this->upload->data();
+                        $extension = $img_data['file_ext'];
+                        /* ********************INICIO para resize***************************** */
+                        if($img_data['file_ext'] == ".jpg" || $img_data['file_ext'] == ".png" || $img_data['file_ext'] == ".jpeg" || $img_data['file_ext'] == ".gif") {
+                            $conf['image_library'] = 'gd2';
+                            $conf['source_image'] = $img_data['full_path'];
+                            $conf['new_image'] = './resources/images/publicacion/';
+                            $conf['maintain_ratio'] = TRUE;
+                            $conf['create_thumb'] = FALSE;
+                            $conf['width'] = 800;
+                            $conf['height'] = 600;
+                            $this->image_lib->clear();
+                            $this->image_lib->initialize($conf);
+                            if(!$this->image_lib->resize()){
+                                echo $this->image_lib->display_errors('','');
+                            }
+
+                            $confi['image_library'] = 'gd2';
+                            $confi['source_image'] = './resources/images/publicacion/'.$new_name.$extension;
+                            $confi['new_image'] = './resources/images/publicacion/'."thumb_".$new_name.$extension;
+                            $confi['create_thumb'] = FALSE;
+                            $confi['maintain_ratio'] = TRUE;
+                            $confi['width'] = 100;
+                            $confi['height'] = 100;
+
+                            $this->image_lib->clear();
+                            $this->image_lib->initialize($confi);
+                            $this->image_lib->resize();
+                        }
+                        /* ********************F I N  para resize***************************** */
+                        //$directorio = base_url().'resources/imagenes/';
+                        $directorio = FCPATH.'resources\images\publicacion\\';
+                        //$directorio = $_SERVER['DOCUMENT_ROOT'].'/ximpleman_web/resources/images/productos/';
+                        if(isset($foto1) && !empty($foto1)){
+                          if(file_exists($directorio.$foto1)){
+                              unlink($directorio.$foto1);
+                              $mimagenthumb = "thumb_".$foto1;
+                              //$mimagenthumb = str_replace(".", "_thumb.", $foto1);
+                              if($img_data['file_ext'] == ".jpg" || $img_data['file_ext'] == ".png" || $img_data['file_ext'] == ".jpeg" || $img_data['file_ext'] == ".gif") {
+                                  unlink($directorio.$mimagenthumb);
+                              }
+                          }
+                      }
+                        $foto = $new_name.$extension;
+                    }else{
+                        $foto = $foto1;
+                    }
                     $params = array(
                         'dube_id' => $this->input->post('dube_id'),
                         'beca_id' => $this->input->post('beca_id'),
@@ -102,6 +226,7 @@ class Publicacion extends CI_Controller{
                         'publicacion_autor' => $this->input->post('publicacion_autor'),
                         'publicacion_enlace' => $this->input->post('publicacion_enlace'),
                         'publicacion_texto' => $this->input->post('publicacion_texto'),
+                        'publicacion_dcto' => $foto,
                     );
 
                     $this->Publicacion_model->update_publicacion($publicacion_id,$params);            
@@ -116,7 +241,8 @@ class Publicacion extends CI_Controller{
                     $data['all_beca'] = $this->Beca_model->get_all_beca();
 
                     $this->load->model('Estado_model');
-                    $data['all_estado'] = $this->Estado_model->get_all_estado();
+                    $tipo = 1;
+                    $data['all_estado'] = $this->Estado_model->get_tipo_estado($tipo);
 
                     $data['_view'] = 'publicacion/edit';
                     $this->load->view('layouts/main',$data);

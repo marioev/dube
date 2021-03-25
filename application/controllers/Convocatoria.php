@@ -104,7 +104,7 @@ class Convocatoria extends CI_Controller{
                 /* *********************FIN imagen***************************** */
                 $fecha_res = date('Y-m-d');
                 $hora_res = date('H:i:s');
-                $gestion_id = 1;
+                //$gestion_id = 1;
                 $estado_id = 1;
                 $params = array(
                     'gestion_id' => $this->input->post('gestion_id'),
@@ -287,7 +287,8 @@ class Convocatoria extends CI_Controller{
                     $data['all_beca'] = $this->Beca_model->get_all_beca();
 
                     $this->load->model('Estado_model');
-                    $data['all_estado'] = $this->Estado_model->get_all_estado();
+                    $tipo = 1;
+                    $data['all_estado'] = $this->Estado_model->get_tipo_estado($tipo);
 
                     $data['_view'] = 'convocatoria/edit';
                     $this->load->view('layouts/main',$data);

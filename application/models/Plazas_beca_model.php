@@ -26,10 +26,11 @@ class Plazas_beca_model extends CI_Model
     {
         $plazas = $this->db->query("
             SELECT
-                pb.*, b.beca_nombre
+                pb.*, b.beca_nombre, c.convocatoria_descripcion
             FROM
                 `plazas_becas` pb
             left join beca b on pb.beca_id = b.beca_id
+            left join convocatoria c on pb.convocatoria_id = c.convocatoria_id
             WHERE
                 1 = 1
             ORDER BY b.beca_nombre ASC

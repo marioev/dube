@@ -66,4 +66,25 @@ class Publicacion_model extends CI_Model
     {
         return $this->db->delete('publicacion',array('publicacion_id'=>$publicacion_id));
     }
+    /*
+     * Get all publicaciones abiertas
+     */
+    function getall_publicaciones_abiertas()
+    {
+        $publicacion = $this->db->query("
+            SELECT
+                p.*, b.beca_nombre, e.estado_descripcion, e.estado_color
+            FROM
+                `publicacion` p
+            left join dube d on p.dube_id = d.dube_id
+            left join beca b on p.beca_id = b.beca_id
+            left join estado e on p.estado_id = e.estado_id
+            WHERE
+                p.estado_id = 1
+
+            ORDER BY `publicacion_id` DESC
+        ")->result_array();
+
+        return $publicacion;
+    }
 }

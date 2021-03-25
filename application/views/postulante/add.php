@@ -36,7 +36,7 @@
                                     foreach($all_plazas_becas as $plazas_beca)
                                     {
                                         $selected = ($plazas_beca['plaza_id'] == $this->input->post('plaza_id')) ? ' selected="selected"' : "";
-                                        echo '<option value="'.$plazas_beca['plaza_id'].'" '.$selected.'>'.$plazas_beca['beca_nombre']." (".$plazas_beca['plaza_cantidad'].")".'</option>';
+                                        echo '<option value="'.$plazas_beca['plaza_id'].'" '.$selected.'>'.$plazas_beca['convocatoria_descripcion']."(".$plazas_beca['plaza_cantidad'].") (".$plazas_beca['beca_nombre'].")".'</option>';
                                     } 
                                     ?>
                                 </select>

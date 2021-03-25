@@ -35,6 +35,7 @@
                         <th>Fecha Publicación</th>
                         <th>Autor</th>
                         <th>Enlace</th>
+                        <th>Documento</th>
                         <th>Texto</th>
                         <th>Estado</th>
                         <th></th>
@@ -50,6 +51,9 @@
                         <td><?php echo $p['publicacion_fecha']; ?></td>
                         <td><?php echo $p['publicacion_autor']; ?></td>
                         <td><?php echo $p['publicacion_enlace']; ?></td>
+                        <td>
+                            <a href="<?php echo site_url('/resources/images/publicacion/'.$p['publicacion_dcto']) ?>" target="_blank"><?php echo $p['publicacion_dcto']; ?></a>
+                        </td>
                         <td><?php echo $p['publicacion_texto']; ?></td>
                         <td><?php echo $p['estado_descripcion']; ?></td>
                         <td>

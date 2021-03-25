@@ -76,10 +76,10 @@ function toggle(source) {
                         <?php
                         foreach ($all_requisito as $requisito) {
                             ?>
-                        <div class="col-md-6 text-right">
+                        <div class="col-md-6 text-left">
                             <label class="normal" title="<?php //echo $requisito['requisisto_nombre']; ?>">
-                                <u><?php echo $requisito['requisito_nombre']; ?>
-                                    <input style="display: inline" class="checkbox" type="checkbox" name="requisitos[]" id="requisisto_id<?php echo $requisito['requisito_id']; ?>" value="<?php echo $requisito['requisito_id']; ?>" checked />
+                                <u><input style="display: inline" class="checkbox" type="checkbox" name="requisitos[]" id="requisisto_id<?php echo $requisito['requisito_id']; ?>" value="<?php echo $requisito['requisito_id']; ?>" checked />
+                                    <?php echo $requisito['requisito_nombre']; ?>
                                 </u>
                             </label>
                             <!--<input type="hidden" name="id_rol_usuario<?php //echo $i; ?>" id="id_rol_usuario<?php //echo $i; ?>" value="<?php //echo $rolhijo['id_rol_usuario']; ?>" />-->

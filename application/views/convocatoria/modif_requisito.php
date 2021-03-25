@@ -40,10 +40,10 @@ function toggle(source) {
                             $checked = "checked";
                         }*/
                         ?>
-                    <div class="col-md-6 text-right">
+                    <div class="col-md-6 text-left">
                         <label class="normal" title="<?php //echo $requisito['requisisto_nombre']; ?>">
-                            <u><?php echo $requisito['requisito_nombre']; ?>
-                                <input style="display: inline" class="checkbox" type="checkbox" name="requisitos[]" id="requisito_id<?php echo $requisito['requisito_id']; ?>" value="<?php echo $requisito['requisito_id']; ?>" <?php echo $checked; ?> />
+                            <u><input style="display: inline" class="checkbox" type="checkbox" name="requisitos[]" id="requisito_id<?php echo $requisito['requisito_id']; ?>" value="<?php echo $requisito['requisito_id']; ?>" <?php echo $checked; ?> />
+                                <?php echo $requisito['requisito_nombre']; ?>
                             </u>
                         </label>
                         <!--<input type="hidden" name="id_rol_usuario<?php //echo $i; ?>" id="id_rol_usuario<?php //echo $i; ?>" value="<?php //echo $rolhijo['id_rol_usuario']; ?>" />-->

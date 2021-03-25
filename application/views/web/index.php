@@ -10,7 +10,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <title>D.U.B.E.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Beca, Educaciónumss" />
+<meta name="keywords" content="Beca, Educación, umss" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- css files -->
 <?php $raiz = base_url('resources/web/'); ?>
@@ -33,22 +33,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <a href="#index.html" class="logo"><h1>Collegiate</h1></a>
+                <a href="http://www.umss.edu.bo/" class="logo" target="_blank">
+                    <img src="<?php echo $raiz;?>images/logoumss.png" width="50%" height="50%">
+                    <!--<h1>Collegiate</h1>-->
+                </a>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <ul class="social-icons1">
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                 </ul>
-            </div>
+            </div>-->
         </div>
     </div>
 </section>
 <!-- /Top Bar -->
 <!-- Navigation Bar -->
-<div class="navbar-wrapper">
+<div class="navbar-wrapper" style="margin-top: 100px">
     <div class="container">
         <nav class="navbar navbar-inverse navbar-static-top cl-effect-21">
             <div class="container">
@@ -62,12 +65,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#curriculum">Curriculum</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <!--<li class="active"><a href="#">Inicio</a></li>-->
+                        <li class="active"><a href="#about">Convocatorias</a></li>
+                        <li><a href="#services">Becas</a></li>
+                        <li><a href="#curriculum">Publicaciones</a></li>
+                        <li><a href="#gallery">Solicitudes</a></li>
+                        <li><a href="#contact">Contactos</a></li>
+                        <li><a href="<?php echo base_url("login"); ?>">Ingresar</a></li>
                     </ul>
                 </div>
             </div>
@@ -120,83 +124,164 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- /Banner Section -->
 <!-- About Section -->
 <section class="about-us" id="about">
-	<h3 class="text-center slideanim">About Us</h3>
-	<p class="text-center slideanim">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6 col-md-6">
-				<div class="about-details">
-					<div class="row">
-						<div class="col-sm-2 col-xs-12">
-							<img src="<?php echo $raiz;?>images/about-img1.png" class="img-responsive slideanim" alt="about-img">
-						</div>
-						<div class="col-sm-10 col-xs-12">						
-							<div class="about-info slideanim">
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-							</div>
-						</div>
-					</div>						
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6">
-				<div class="about-details">
-					<div class="row">
-						<div class="col-sm-2 col-xs-12">
-							<img src="<?php echo $raiz;?>images/about-img2.png" class="img-responsive slideanim" alt="about-img">
-						</div>	
-						<div class="col-sm-10 col-xs-12">
-							<div class="about-info slideanim">
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-							</div>
-						</div>
-					</div>		
-				</div>
-			</div>
-		</div>
-		<div class="row below">
-			<div class="col-lg-6 col-md-6">
-				<div class="about-details">
-					<div class="row">
-						<div class="col-sm-2 col-xs-12">
-							<img src="<?php echo $raiz;?>images/about-img3.png" class="img-responsive slideanim" alt="about-img">
-						</div>
-						<div class="col-sm-10 col-xs-12">
-							<div class="about-info slideanim">
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-							</div>
-						</div>
-					</div>		
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6">
-				<div class="about-details">
-					<div class="row">
-						<div class="col-sm-2 col-xs-12">
-							<img src="<?php echo $raiz;?>images/about-img4.png" class="img-responsive slideanim" alt="about-img">
-						</div>
-						<div class="col-sm-10 col-xs-12">
-							<div class="about-info slideanim">
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-							</div>
-						</div>
-					</div>		
-				</div>
-			</div>
-		</div>	
-	</div>
+    <h3 class="text-center slideanim">Convocatorias</h3>
+    <p class="text-center slideanim"><!--Lorem Ipsum is simply dummy text of the printing and typesetting industry.--></p>
+    <div class="container">
+        <?php
+        if(count($las_convocatorias) > 0){ ?>
+        <div class="row">
+        <?php
+        //foreach($las_convocatorias as $convocatoria){
+            $cont = 0;
+            while($cont <=1 && count($las_convocatorias) >$cont){
+        ?>
+        
+            <?php if($cont == 0){ ?>
+            <div class="col-lg-6 col-md-6">
+                <div class="about-details">
+                    <div class="row">
+                        <div class="col-sm-2 col-xs-12">
+                            <!--<img src="<?php //echo $raiz;?>images/about-img1.png" class="img-responsive slideanim" alt="about-img">-->
+                        </div>
+                        <div class="col-sm-10 col-xs-12">						
+                            <div class="about-info slideanim text-justify">
+                                <p><?php echo $las_convocatorias[$cont]['convocatoria_descripcion']; ?></p>
+                                <a href="<?php echo site_url('/resources/images/convocatoria/'.$las_convocatorias[$cont]['convocatoria_dcto']) ?>" target="_blank"><?php echo $las_convocatorias[$cont]['convocatoria_dcto']; ?></a>
+                            </div>
+                        </div>
+                    </div>						
+                </div>
+            </div>
+            <?php }
+            if($cont == 1){?>
+            <div class="col-lg-6 col-md-6">
+                <div class="about-details">
+                    <div class="row">
+                        <div class="col-sm-2 col-xs-12">
+                            <!--<img src="<?php //echo $raiz;?>images/about-img2.png" class="img-responsive slideanim" alt="about-img">-->
+                        </div>	
+                        <div class="col-sm-10 col-xs-12">
+                            <div class="about-info slideanim">
+                                <p><?php echo $las_convocatorias[$cont]['convocatoria_descripcion']; ?></p>
+                                <a href="<?php echo site_url('/resources/images/convocatoria/'.$las_convocatorias[$cont]['convocatoria_dcto']) ?>" target="_blank"><?php echo $las_convocatorias[$cont]['convocatoria_dcto']; ?></a>
+                            </div>
+                        </div>
+                    </div>		
+                </div>
+            </div>
+            <?php
+            break;
+            } ?>
+        
+        <?php
+        $cont ++;
+            }
+        ?>
+        </div>
+        <div class="row below">
+            <?php
+            if(count($las_convocatorias) > 1){ ?>
+            <?php
+        //foreach($las_convocatorias as $convocatoria){
+            $cont = 2;
+            while($cont <=3 && count($las_convocatorias) >$cont){
+            ?>
+            <?php if($cont == 2){ ?>
+            <div class="col-lg-6 col-md-6">
+                <div class="about-details">
+                    <div class="row">
+                        <div class="col-sm-2 col-xs-12">
+                            <!--<img src="<?php //echo $raiz;?>images/about-img3.png" class="img-responsive slideanim" alt="about-img">-->
+                        </div>
+                        <div class="col-sm-10 col-xs-12">
+                            <div class="about-info slideanim">
+                                <p><?php echo $las_convocatorias[$cont]['convocatoria_descripcion']; ?></p>
+                                <a href="<?php echo site_url('/resources/images/convocatoria/'.$las_convocatorias[$cont]['convocatoria_dcto']) ?>" target="_blank"><?php echo $las_convocatorias[$cont]['convocatoria_dcto']; ?></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+            <?php if($cont == 3){ ?>
+            <div class="col-lg-6 col-md-6">
+                <div class="about-details">
+                    <div class="row">
+                        <div class="col-sm-2 col-xs-12">
+                            <!--<img src="<?php //echo $raiz;?>images/about-img4.png" class="img-responsive slideanim" alt="about-img">-->
+                        </div>
+                        <div class="col-sm-10 col-xs-12">
+                            <div class="about-info slideanim">
+                                <p><?php echo $las_convocatorias[$cont]['convocatoria_descripcion']; ?></p>
+                                <a href="<?php echo site_url('/resources/images/convocatoria/'.$las_convocatorias[$cont]['convocatoria_dcto']) ?>" target="_blank"><?php echo $las_convocatorias[$cont]['convocatoria_dcto']; ?></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+                break;
+            } ?>
+            <?php $cont++;
+            } ?>
+            <?php } ?>
+        </div>
+        <?php
+        if(count($num_convocatorias)> 4){ ?>
+            
+            <div class="row below">
+            <div class="col-lg-6 col-md-6">
+                <div class="about-details">
+                    <div class="row">
+                        <div class="col-sm-2 col-xs-12">
+                            <!--<img src="<?php //echo $raiz;?>images/about-img3.png" class="img-responsive slideanim" alt="about-img">-->
+                        </div>
+                        <div class="col-sm-10 col-xs-12">
+                            <div class="about-info slideanim">
+                                <a href="<?php echo site_url('/website/masconvocatoria/') ?>" target="_blank">Mas convocatorias...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        <?php
+        }
+        }
+        ?>
+    </div>
 </section>
 <!-- /About Section -->	
 <!-- Our Services -->
 <section class="our-services" id="services">
-	<h3 class="text-center slideanim">Our Services</h3>
-	<p class="text-center slideanim">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-	<div class="container">
+	<h3 class="text-center slideanim">BECAS</h3>
+	<p class="text-center slideanim"><!--Lorem Ipsum is simply dummy text of the printing and typesetting industry.--></p>
+        <div class="container">
+            <div class="row">
+                <?php
+                foreach ($las_becas as $beca) {
+                ?>
+                <div class="col-md-6">
+                    <div class="serv-details">
+                        <div class="serv-img-details slideanim">
+                            <h4><?php echo $beca['beca_nombre']; ?></h4>
+                            <!--<p>Lorem Ipsum</p>-->
+                        </div>
+                        <div class="serv-info slideanim text-justify">
+                            <p><?php echo $beca['beca_descripcion']; ?></p>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+            </div>
+        </div>
+	<!--<div class="container">
 		<div class="row">
 			<div class="col-lg-6 col-md-6">
 				<div class="serv-details">
 					<div class="row">
 						<div class="col-sm-6 col-xs-6">
-							<img src="<?php echo $raiz;?>images/serv-img1.jpg" alt="" class="img-responsive slideanim">
+							<img src="<?php //echo $raiz;?>images/serv-img1.jpg" alt="" class="img-responsive slideanim">
 						</div>
 						<div class="col-sm-6 col-xs-6">
 							<div class="serv-img-details slideanim">
@@ -214,7 +299,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="serv-details">
 					<div class="row">
 						<div class="col-sm-6 col-xs-6">
-							<img src="<?php echo $raiz;?>images/serv-img2.jpg" alt="" class="img-responsive slideanim">
+							<img src="<?php //echo $raiz;?>images/serv-img2.jpg" alt="" class="img-responsive slideanim">
 						</div>
 						<div class="col-sm-6 col-xs-6">
 							<div class="serv-img-details slideanim">
@@ -234,7 +319,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="serv-details">
 					<div class="row">
 						<div class="col-sm-6 col-xs-6">
-							<img src="<?php echo $raiz;?>images/serv-img3.jpg" alt="" class="img-responsive slideanim">
+							<img src="<?php //echo $raiz;?>images/serv-img3.jpg" alt="" class="img-responsive slideanim">
 						</div>
 						<div class="col-sm-6 col-xs-6">		
 							<div class="serv-img-details slideanim">
@@ -252,7 +337,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="serv-details">
 					<div class="row">
 						<div class="col-sm-6 col-xs-6">
-							<img src="<?php echo $raiz;?>images/serv-img4.jpg" alt="" class="img-responsive slideanim">
+							<img src="<?php //echo $raiz;?>images/serv-img4.jpg" alt="" class="img-responsive slideanim">
 						</div>
 						<div class="col-sm-6 col-xs-6">
 							<div class="serv-img-details slideanim">
@@ -267,9 +352,103 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>-->
 </section>
 <!-- /Our Services -->
+<!-- Our Curriculum -->
+<section class="curriculum" id="curriculum">
+    <h3 class="text-center slideanim">Publicaciones</h3>
+    <p class="text-center slideanim"><!--Lorem Ipsum is simply dummy text of the printing and typesetting industry.--></p>
+    <div class="container">
+        <div class="row">
+            <?php foreach ($las_publicaciones as $publicacion) {
+            ?>
+            <div class="col-md-6">
+                <div class="cur-details slideanim">
+                    <h4><?php echo $publicacion['beca_nombre']; ?></h4>
+                    <h5>
+                        <?php
+                        echo date("d/m/Y H:i:s", strtotime($publicacion['publicacion_fecha']));
+                        if($publicacion['publicacion_autor'] !="" || $publicacion['publicacion_autor'] !=null){
+                            echo "  Autor:".$publicacion['publicacion_autor'];
+                        }
+                        ?>
+                    </h5>
+                    <p class="cur1" style="padding-bottom: 1px !important"><?php echo $publicacion['publicacion_texto']; ?></p>
+                    <h5>
+                        <?php
+                        if($publicacion['publicacion_enlace'] !="" || $publicacion['publicacion_enlace'] !=null){
+                        ?>
+                        <a href="<?php echo $publicacion['publicacion_enlace']; ?>" target="_blank"><?php echo $publicacion['publicacion_enlace']; ?></a>
+                        <?php
+                        }
+                        if($publicacion['publicacion_dcto'] !="" || $publicacion['publicacion_dcto'] !=null){
+                        ?>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo site_url('/resources/images/publicacion/'.$publicacion['publicacion_dcto']) ?>" target="_blank"><?php echo "Dcto: ".$publicacion['publicacion_dcto']; ?></a>
+                        <?php
+                        }
+                        ?>
+                    </h5>
+                </div>
+            </div>
+            <?php } ?>
+        </div>
+    </div>
+	<!--<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="cur-details slideanim">
+					<h4>Our Important Aspects</h4>
+					<p class="cur1">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+					<div class="curriculum-info">
+						<div>	
+							<i class="fa fa-fort-awesome"></i>
+							<h5>Collegiate Stays On Track</h5> 
+							<p class="cur2">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
+						</div>
+						<div>
+							<i class="fa fa-book"></i>
+							<h5>Bigger, Better Education</h5>
+							<p class="cur2">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
+						</div>
+						<div>
+							<i class="fa fa-graduation-cap"></i>
+							<h5>Step Into Graduation</h5> 
+							<p class="cur2">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
+						</div>
+					</div>
+				</div>	
+			</div>
+			<div class="col-lg-6 col-md-6 slideanim">
+				<div class="video"> 
+					<iframe src="https://player.vimeo.com/video/15428374?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				</div>	
+			</div>
+		</div>
+	</div>-->
+</section>
+<!-- /Our Curriculum -->
+
+<!-- Our Gallery -->
+<section class="our-gallery" id="gallery">
+	<h3 class="text-center slideanim">Our Gallery</h3>
+	<p class="text-center slideanim">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> 
+	<div class="container">
+		<div class="content slideanim">
+			<div class="chroma-gallery mygallery">
+				<img src="<?php echo $raiz;?>images/gallery-img1.jpg" alt="Click" data-largesrc="images/gallery-img1-1.jpg">
+				<img src="<?php echo $raiz;?>images/gallery-img2.jpg" alt="Click" data-largesrc="images/gallery-img2-2.jpg">
+				<img src="<?php echo $raiz;?>images/gallery-img3.jpg" alt="Click" data-largesrc="images/gallery-img3-3.jpg">
+				<img src="<?php echo $raiz;?>images/gallery-img4.jpg" alt="Click" data-largesrc="images/gallery-img4-4.jpg">
+				<img src="<?php echo $raiz;?>images/gallery-img5.jpg" alt="Click" data-largesrc="images/gallery-img5-5.jpg">
+				<img src="<?php echo $raiz;?>images/gallery-img6.jpg" alt="Click" data-largesrc="images/gallery-img6-6.jpg">
+				<img src="<?php echo $raiz;?>images/gallery-img7.jpg" alt="Click" data-largesrc="images/gallery-img7-7.jpg">
+				<img src="<?php echo $raiz;?>images/gallery-img8.jpg" alt="Click" data-largesrc="images/gallery-img8-8.jpg">
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /Our Gallery -->
 <!-- Our Information -->
 <section class="our-info">
 	<h3 class="text-center slideanim">Our Information</h3>
@@ -314,64 +493,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 </section>
 <!-- /Our Information -->
-<!-- Our Gallery -->
-<section class="our-gallery" id="gallery">
-	<h3 class="text-center slideanim">Our Gallery</h3>
-	<p class="text-center slideanim">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> 
-	<div class="container">
-		<div class="content slideanim">
-			<div class="chroma-gallery mygallery">
-				<img src="<?php echo $raiz;?>images/gallery-img1.jpg" alt="Click" data-largesrc="images/gallery-img1-1.jpg">
-				<img src="<?php echo $raiz;?>images/gallery-img2.jpg" alt="Click" data-largesrc="images/gallery-img2-2.jpg">
-				<img src="<?php echo $raiz;?>images/gallery-img3.jpg" alt="Click" data-largesrc="images/gallery-img3-3.jpg">
-				<img src="<?php echo $raiz;?>images/gallery-img4.jpg" alt="Click" data-largesrc="images/gallery-img4-4.jpg">
-				<img src="<?php echo $raiz;?>images/gallery-img5.jpg" alt="Click" data-largesrc="images/gallery-img5-5.jpg">
-				<img src="<?php echo $raiz;?>images/gallery-img6.jpg" alt="Click" data-largesrc="images/gallery-img6-6.jpg">
-				<img src="<?php echo $raiz;?>images/gallery-img7.jpg" alt="Click" data-largesrc="images/gallery-img7-7.jpg">
-				<img src="<?php echo $raiz;?>images/gallery-img8.jpg" alt="Click" data-largesrc="images/gallery-img8-8.jpg">
-			</div>
-		</div>
-	</div>
-</section>
-<!-- /Our Gallery -->
-<!-- Our Curriculum -->
-<section class="curriculum" id="curriculum">
-	<h3 class="text-center slideanim">Our Curriculum</h3>
-	<p class="text-center slideanim">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6 col-md-6">
-				<div class="cur-details slideanim">
-					<h4>Our Important Aspects</h4>
-					<p class="cur1">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-					<div class="curriculum-info">
-						<div>	
-							<i class="fa fa-fort-awesome"></i>
-							<h5>Collegiate Stays On Track</h5> 
-							<p class="cur2">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
-						</div>
-						<div>
-							<i class="fa fa-book"></i>
-							<h5>Bigger, Better Education</h5>
-							<p class="cur2">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
-						</div>
-						<div>
-							<i class="fa fa-graduation-cap"></i>
-							<h5>Step Into Graduation</h5> 
-							<p class="cur2">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
-						</div>
-					</div>
-				</div>	
-			</div>
-			<div class="col-lg-6 col-md-6 slideanim">
-				<div class="video"> 
-					<iframe src="https://player.vimeo.com/video/15428374?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-				</div>	
-			</div>
-		</div>
-	</div>
-</section>
-<!-- /Our Curriculum -->
 <!-- Google Map -->
 <section class="map">
 	<div class="container-fluid">

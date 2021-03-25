@@ -73,4 +73,48 @@ class Convocatoria_model extends CI_Model
     {
         return $this->db->delete('convocatoria',array('convocatoria_id'=>$convocatoria_id));
     }
+    
+    /*
+     * Get all convocatoria con estados ABIERTO con limite de 4
+     */
+    function getall_convocatoria_abierto()
+    {
+        $convocatoria = $this->db->query("
+            SELECT
+                c.*, g.gestion_descripcion, e.estado_descripcion, e.estado_color,
+                pb.plaza_cantidad, b.beca_nombre
+            FROM
+                convocatoria as c
+            left join gestion as g on c.gestion_id = g.gestion_id
+            left join estado as e on c.estado_id = e.estado_id
+            left join plazas_becas as pb on c.convocatoria_id = pb.convocatoria_id
+            left join beca as b on pb.beca_id = b.beca_id
+            where
+                c.estado_id = 1
+            ORDER BY c.convocatoria_id desc
+            limit 4
+        ")->result_array();
+        return $convocatoria;
+    }
+    /*
+     * Get all convocatoria con estados ABIERTO
+     */
+    function getall_convocatorias_abiertas()
+    {
+        $convocatoria = $this->db->query("
+            SELECT
+                c.*, g.gestion_descripcion, e.estado_descripcion, e.estado_color,
+                pb.plaza_cantidad, b.beca_nombre
+            FROM
+                convocatoria as c
+            left join gestion as g on c.gestion_id = g.gestion_id
+            left join estado as e on c.estado_id = e.estado_id
+            left join plazas_becas as pb on c.convocatoria_id = pb.convocatoria_id
+            left join beca as b on pb.beca_id = b.beca_id
+            where
+                c.estado_id = 1
+            ORDER BY c.convocatoria_id desc
+        ")->result_array();
+        return $convocatoria;
+    }
 }

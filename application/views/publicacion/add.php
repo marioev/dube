@@ -4,7 +4,7 @@
             <div class="box-header with-border">
               	<h3 class="box-title">Añadir Publicación</h3>
             </div>
-            <?php echo form_open('publicacion/add'); ?>
+            <?php echo form_open_multipart('publicacion/add'); ?>
           	<div class="box-body">
                     <div class="row clearfix">
                         <div class="col-md-6">
@@ -54,6 +54,12 @@
                             <label for="publicacion_enlace" class="control-label">Enlace</label>
                             <div class="form-group">
                                 <input type="text" name="publicacion_enlace" value="<?php echo $this->input->post('publicacion_enlace'); ?>" class="form-control" id="publicacion_enlace" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="publicacion_dcto" class="control-label">Documento</label>
+                            <div class="form-group">
+                                <input type="file" name="publicacion_dcto" value="<?php echo $this->input->post('publicacion_dcto'); ?>" class="form-control" id="publicacion_dcto" />
                             </div>
                         </div>
                         <div class="col-md-6">

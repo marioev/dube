@@ -39,9 +39,24 @@ class Website extends CI_Controller{
         $data['categorias'] = $this->Categoria_producto_model->get_all_categoria_producto(); //tipo 2
         $data['parametro'] = $this->Parametro_model->get_parametros();
         */
+        $this->load->model('Convocatoria_model');
+        $data['las_convocatorias'] = $this->Convocatoria_model->getall_convocatoria_abierto();
+        $data['num_convocatorias'] = $this->Convocatoria_model->getall_convocatorias_abiertas();
+        $this->load->model('Beca_model');
+        $data['las_becas'] = $this->Beca_model->getall_becas_abiertas();
+        $this->load->model('Publicacion_model');
+        $data['las_publicaciones'] = $this->Publicacion_model->getall_publicaciones_abiertas();
         $data['_view'] = 'website';
 //        $this->load->view('layouts/login',$data);
         $this->load->view('web/index',$data);
+    }
+    function masconvocatoria()
+    {
+        $this->load->model('Convocatoria_model');
+        $data['mas_convocatorias'] = $this->Convocatoria_model->getall_convocatorias_abiertas();
+        //$data['_view'] = 'web/masconvocatoria';
+        //$data['_view'] = 'website';
+        $this->load->view('web/masconvocatoria',$data);
     }
     
 }
