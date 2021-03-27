@@ -46,6 +46,9 @@ class Website extends CI_Controller{
         $data['las_becas'] = $this->Beca_model->getall_becas_abiertas();
         $this->load->model('Publicacion_model');
         $data['las_publicaciones'] = $this->Publicacion_model->getall_publicaciones_abiertas();
+        $this->load->model('Dube_model');
+        $dube_id = 1;
+        $data['dube'] = $this->Dube_model->get_dube($dube_id);
         $data['_view'] = 'website';
 //        $this->load->view('layouts/login',$data);
         $this->load->view('web/index',$data);

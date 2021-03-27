@@ -69,7 +69,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <li class="active"><a href="#about">Convocatorias</a></li>
                         <li><a href="#services">Becas</a></li>
                         <li><a href="#curriculum">Publicaciones</a></li>
-                        <li><a href="#gallery">Solicitudes</a></li>
+                        <li><a href="#gallery">D.U.B.E.</a></li>
                         <li><a href="#contact">Contactos</a></li>
                         <li><a href="<?php echo base_url("login"); ?>">Ingresar</a></li>
                     </ul>
@@ -431,74 +431,72 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <!-- Our Gallery -->
 <section class="our-gallery" id="gallery">
-	<h3 class="text-center slideanim">Our Gallery</h3>
-	<p class="text-center slideanim">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> 
+	<h3 class="text-center slideanim">D.U.B.E.</h3>
+	<p class="text-center slideanim"><!--Lorem Ipsum is simply dummy text of the printing and typesetting industry.--></p> 
 	<div class="container">
-		<div class="content slideanim">
+            <div class="row" style="color: white !important">
+                <?php
+                if($dube['dube_mision'] != "" || $dube['dube_mision'] != null) {
+                ?>
+                <div class="col-md-12 text-center" style="padding-bottom: 20px">
+                    <h4 class="text-center">MISION</h4>
+                    <p class="text-justify"><?php echo $dube['dube_mision']; ?></p>
+                </div>
+                <?php } ?>
+                <?php
+                if($dube['dube_vision'] != "" || $dube['dube_vision'] != null) {
+                ?>
+                <div class="col-md-12" style="padding-bottom: 20px">
+                    <h4 class="text-center">VISION</h4>
+                    <p class="text-justify"><?php echo $dube['dube_vision']; ?></p>
+                </div>
+                <?php } ?>
+                <?php
+                if($dube['dube_objetivo'] != "" || $dube['dube_objetivo'] != null) {
+                ?>
+                <div class="col-md-12" style="padding-bottom: 20px">
+                    <h4 class="text-center">OBJETIVO</h4>
+                    <p class="text-justify"><?php echo $dube['dube_objetivo']; ?></p>
+                </div>
+                <?php } ?>
+                <?php
+                if($dube['dube_organigrama'] != "" || $dube['dube_organigrama'] != null) {
+                ?>
+                <div class="col-md-12" style="padding-bottom: 20px">
+                    <h4 class="text-center">ORGANIGRAMA</h4>
+                    <p class="text-justify"><?php echo $dube['dube_organigrama']; ?></p>
+                </div>
+                <?php } ?>
+                <?php
+                if($dube['dube_autoridadades'] != "" || $dube['dube_autoridadades'] != null) {
+                ?>
+                <div class="col-md-12">
+                    <h4 class="text-center">AUTORIDADES</h4>
+                    <p class="text-justify"><?php echo $dube['dube_autoridadades']; ?></p>
+                </div>
+                <?php } ?>
+            </div>
+		<!--<div class="content slideanim">
 			<div class="chroma-gallery mygallery">
-				<img src="<?php echo $raiz;?>images/gallery-img1.jpg" alt="Click" data-largesrc="images/gallery-img1-1.jpg">
+				<img src="<?php /*echo $raiz;?>images/gallery-img1.jpg" alt="Click" data-largesrc="images/gallery-img1-1.jpg">
 				<img src="<?php echo $raiz;?>images/gallery-img2.jpg" alt="Click" data-largesrc="images/gallery-img2-2.jpg">
 				<img src="<?php echo $raiz;?>images/gallery-img3.jpg" alt="Click" data-largesrc="images/gallery-img3-3.jpg">
 				<img src="<?php echo $raiz;?>images/gallery-img4.jpg" alt="Click" data-largesrc="images/gallery-img4-4.jpg">
 				<img src="<?php echo $raiz;?>images/gallery-img5.jpg" alt="Click" data-largesrc="images/gallery-img5-5.jpg">
 				<img src="<?php echo $raiz;?>images/gallery-img6.jpg" alt="Click" data-largesrc="images/gallery-img6-6.jpg">
 				<img src="<?php echo $raiz;?>images/gallery-img7.jpg" alt="Click" data-largesrc="images/gallery-img7-7.jpg">
-				<img src="<?php echo $raiz;?>images/gallery-img8.jpg" alt="Click" data-largesrc="images/gallery-img8-8.jpg">
+				<img src="<?php echo $raiz;*/?>images/gallery-img8.jpg" alt="Click" data-largesrc="images/gallery-img8-8.jpg">
 			</div>
-		</div>
+		</div>-->
 	</div>
 </section>
 <!-- /Our Gallery -->
-<!-- Our Information -->
-<section class="our-info">
-	<h3 class="text-center slideanim">Our Information</h3>
-	<p class="text-center slideanim">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-	<div class="container">
-		<div class="row info-part">
-			<div class="col-lg-6 col-md-6 col-sm-6 info-specs">
-				<div class="info-details slideanim">
-					<h4>Collegiate, The Meaning Of Life</h4>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6 col-sm-6 info-specs">
-				<img src="<?php echo $raiz;?>images/info-img.jpg" alt="" class="img-responsive main-img slideanim">
-			</div>
-		</div>
-		<div class="info-pics">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-2 col-md-2 col-sm-2 info-images">
-						<img src="<?php echo $raiz;?>images/info-img1.jpg" alt="" class="img-responsive slideanim">
-					</div>
-					<div class="col-lg-2 col-md-2 col-sm-2 info-images">
-						<img src="<?php echo $raiz;?>images/info-img2.jpg" alt="" class="img-responsive slideanim">
-					</div>
-					<div class="col-lg-2 col-md-2 col-sm-2 info-images">
-						<img src="<?php echo $raiz;?>images/info-img3.jpg" alt="" class="img-responsive slideanim">
-					</div>
-					<div class="col-lg-2 col-md-2 col-sm-2 info-images">
-						<img src="<?php echo $raiz;?>images/info-img4.jpg" alt="" class="img-responsive slideanim">
-					</div>
-					<div class="col-lg-2 col-md-2 col-sm-2 info-images">
-						<img src="<?php echo $raiz;?>images/info-img5.jpg" alt="" class="img-responsive slideanim">
-					</div>
-					<div class="col-lg-2 col-md-2 col-sm-2 info-images">
-						<img src="<?php echo $raiz;?>images/info-img6.jpg" alt="" class="img-responsive slideanim">
-					</div>
-				</div>
-			</div>
-		</div>	
-	</div>
-</section>
-<!-- /Our Information -->
 <!-- Google Map -->
 <section class="map">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12 slideanim">
-				<iframe class="googlemaps" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d380510.6741687111!2d-88.01234121699822!3d41.83390417061058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1455598377120" frameborder="0" style="border:0" allowfullscreen></iframe>
+				<!--<iframe class="googlemaps" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d380510.6741687111!2d-88.01234121699822!3d41.83390417061058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1455598377120" frameborder="0" style="border:0" allowfullscreen></iframe>-->
 			</div>	
 		</div>
 	</div>
