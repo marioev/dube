@@ -502,40 +502,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 </section>
 <!-- /Google Map -->
-<!-- Contact Section -->
-<section class="our-contacts" id="contact">
-	<h3 class="text-center slideanim">Contact Us</h3>
-	<p class="text-center slideanim">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<form role="form">
-					<div class="row">
-						<div class="form-group col-lg-4 slideanim">
-							<input type="text" class="form-control user-name" placeholder="Your Name" required/>
-						</div>
-						<div class="form-group col-lg-4 slideanim">
-							<input type="email" class="form-control mail" placeholder="Your Email" required/>
-						</div>
-						<div class="form-group col-lg-4 slideanim">
-							<input type="tel" class="form-control pno" placeholder="Your Phone Number" required/>
-						</div>
-						<div class="clearfix"></div>
-						<div class="form-group col-lg-12 slideanim">
-							<textarea class="form-control" rows="6" placeholder="Your Message" required/></textarea>
-						</div>
-						<div class="form-group col-lg-12 slideanim">
-							<button type="submit" href="#" class="btn-outline1">Submit</button>
-						</div>
-					</div>
-				</form>
-			</div>	
-		</div>
-	</div>
-</section>
-<!-- /Contact Section -->
+
 <!-- Footer Section -->
-<section class="footer">
+<section class="footer" id="contact">
 	<h2 class="text-center">THANKS FOR VISITING US</h2>
 	<hr>
 	<div class="container">
@@ -550,7 +519,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div class="phone">
 						<i class="glyphicon glyphicon-phone-alt"></i>
-						<p class="p4">+00 1010101010</p>
+						<p class="p4">+591 4 4233926</p>
 					</div>
 					<div class="email-info">
 						<i class="glyphicon glyphicon-envelope"></i>
@@ -585,7 +554,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<h4>Support Us</h4>
 				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
 				<ul class="social-icons2">
-					<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="https://www.facebook.com/UmssDube/" target="_blank"><i class="fa fa-facebook"></i></a></li>
 					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 					<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
 					<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
