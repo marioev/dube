@@ -100,7 +100,7 @@ class Rol extends CI_Controller{
                     $data['all_rolpadre'] = $this->Rol_model->get_allrol_padre();
                     $estado_tipo = 1;
                     $this->load->model('Estado_model');
-                    $data['all_estado'] = $this->Estado_model->get_estado_tipo($estado_tipo);
+                    $data['all_estado'] = $this->Estado_model->get_tipo_estado($estado_tipo);
                     $data['page_title'] = "Rol";
                     $data['_view'] = 'rol/edit';
                     $this->load->view('layouts/main',$data);

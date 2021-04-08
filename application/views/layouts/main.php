@@ -232,6 +232,34 @@
                         </li>
                         <li>
                             <a href="#">
+                                <i class="fa fa-clipboard"></i> <span>Reportes</span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <?php
+                                if($rolusuario[45-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li class="active">
+                                    <a href="<?php echo site_url('reporte/rep_sunidad');?>"><i class="fa fa-list-ul"></i>Solicitud Unidades</a>
+                                </li>
+                                <?php } ?>
+                                <?php
+                                /*if($rolusuario[46-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('tipo_usuario');?>"><i class="fa fa-list-ul"></i>Tipo Usuario</a>
+                                </li>
+                                <?php } ?>
+                                <?php
+                                if($rolusuario[47-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('usuario');?>"><i class="fa fa-users"></i>Usuarios</a>
+                                </li>
+                                <?php }*/ ?>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
                                 <i class="fa fa-lock"></i> <span>Seguridad</span>
                             </a>
                             <ul class="treeview-menu">

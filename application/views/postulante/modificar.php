@@ -20,7 +20,7 @@ function toggle(source) {
             <?php echo form_open_multipart('postulante/modificar/'.$postulante['postulante_id']); ?>
             <div class="box-body">
                 <div class="row clearfix">
-                    <div class="col-md-12 text-bold text-center"><u>MODIFICAR REQUISITOS</u><br><br></div>
+                    <div class="col-md-12 text-bold text-center"><u>FORMULARIO DE AUTENTIFICACION DE POSTULANTE</u><br><br></div>
                     <?php if($con_convocatoria == "1"){ ?>
                         <div class="col-md-12">
                             <div class="form-group">
