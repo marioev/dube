@@ -117,4 +117,20 @@ class Convocatoria_model extends CI_Model
         ")->result_array();
         return $convocatoria;
     }
+    /*
+     * Get all convocatorias de una determinada gestion
+     */
+    function getall_convocatorias_degetion($gestion_id)
+    {
+        $convocatoria = $this->db->query("
+            SELECT
+                c.*
+            FROM
+                convocatoria as c
+            where
+                c.gestion_id = $gestion_id
+            ORDER BY c.convocatoria_id desc
+        ")->result_array();
+        return $convocatoria;
+    }
 }

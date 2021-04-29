@@ -24,7 +24,7 @@ class Cargo_model extends CI_Model
      */
     function get_all_cargo()
     {
-        $this->db->order_by('cargo_id', 'desc');
+        $this->db->order_by('cargo_nombre', 'asc');
         return $this->db->get('cargo')->result_array();
     }
         

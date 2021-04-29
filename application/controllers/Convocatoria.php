@@ -128,13 +128,17 @@ class Convocatoria extends CI_Controller{
                     $convoreq_id = $this->Convocatoria_requisito_model->add_convocatoria_requisito($paramsreq);
                 }
 
+                $this->load->model('Beca_model');
+                $all_becas = $this->Beca_model->getall_becas_abiertas();
                 $this->load->model('Plazas_beca_model');
-                $paramsplaz = array(
-                    'beca_id' => $this->input->post('beca_id'),
-                    'convocatoria_id' => $convocatoria_id,
-                    'plaza_cantidad' => $this->input->post('plaza_cantidad'),
-                );
-                $plaza_id = $this->Plazas_beca_model->add_plazas_beca($paramsplaz);
+                foreach ($all_becas as $beca) {
+                    $paramsplaz = array(
+                        'beca_id' => $beca["beca_id"],
+                        'convocatoria_id' => $convocatoria_id,
+                        'plaza_cantidad' => $this->input->post('plaza_cantidad'),
+                    );
+                    $plaza_id = $this->Plazas_beca_model->add_plazas_beca($paramsplaz);
+                }
                 redirect('convocatoria');
             }
             else
@@ -368,6 +372,19 @@ class Convocatoria extends CI_Controller{
             else
                 show_error('The convocatoria you are trying to edit does not exist.');
         }
+    }
+    /* buscar convocatorias de una gestion */
+    function obtener_convocatorias()
+    {
+        //if($this->acceso(103)) {
+            if ($this->input->is_ajax_request()) {
+                $gestion_id = $this->input->post('gestion_id');
+                $datos = $this->Convocatoria_model->getall_convocatorias_degetion($gestion_id);
+                echo json_encode($datos);
+            }else{                 
+                show_404();
+            }
+        //}
     }
     
 }

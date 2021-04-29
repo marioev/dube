@@ -49,7 +49,7 @@ class Administrativo extends CI_Controller{
             $this->form_validation->set_rules('admin_apellido','Admin Apellido','required');
             if($this->form_validation->run())     
             {
-                $estado = 1;
+                $estado = 9; // estado ACTIVO
                 $params = array(
                     'cargo_id' => $this->input->post('cargo_id'),
                     'direccionuniv_id' => $this->input->post('direccionuniv_id'),
@@ -125,7 +125,8 @@ class Administrativo extends CI_Controller{
                     $data['all_direccion_universitaria'] = $this->Direccion_universitaria_model->get_all_direccion_universitaria();
 
                     $this->load->model('Estado_model');
-                    $data['all_estado'] = $this->Estado_model->get_all_estado();
+                    $tipo = 4;
+                    $data['all_estado'] = $this->Estado_model->get_tipo_estado($tipo);
 
                     $data['_view'] = 'administrativo/edit';
                     $this->load->view('layouts/main',$data);

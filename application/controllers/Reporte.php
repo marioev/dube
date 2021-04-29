@@ -50,5 +50,54 @@ class Reporte extends CI_Controller{
             show_404();
         }
     }
+    /* reporte de postulantes */
+    function rep_postulante()
+    {
+        if($this->acceso(36)) {
+            $this->load->model('Gestion_model');
+            $data['all_gestion'] = $this->Gestion_model->get_all_gestion();
+
+            $this->load->model('Estado_model');
+            $tipo = 2;
+            $data['all_estado'] = $this->Estado_model->get_tipo_estado($tipo);
+            $data['_view'] = 'reporte/rep_postulante';
+            $this->load->view('layouts/main',$data);
+        }
+    }
+    /* busca postulantes */
+    function buscar_postulante()
+    {
+        if ($this->input->is_ajax_request()) {
+            $gestion_id = $this->input->post('gestion_id');
+            $convocatoria_id = $this->input->post('convocatoria_id');
+            $estado_id = $this->input->post('estado_id');
+            $datos = $this->Reporte_model->get_all_postulante($gestion_id, $convocatoria_id, $estado_id);
+            echo json_encode($datos);
+        }else{
+            show_404();
+        }
+    }
+    /* reporte de administrativos */
+    function rep_administrativo()
+    {
+        if($this->acceso(36)) {
+            $this->load->model('Cargo_model');
+            $data['all_cargo'] = $this->Cargo_model->get_all_cargo();
+            
+            $data['_view'] = 'reporte/rep_administrativo';
+            $this->load->view('layouts/main',$data);
+        }
+    }
+    /* busca administrativos */
+    function buscar_administrativo()
+    {
+        if ($this->input->is_ajax_request()) {
+            $cargo_id = $this->input->post('cargo_id');
+            $datos = $this->Reporte_model->get_all_administrativo($cargo_id);
+            echo json_encode($datos);
+        }else{
+            show_404();
+        }
+    }
     
 }

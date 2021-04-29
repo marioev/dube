@@ -35,5 +35,63 @@ class Reporte_model extends CI_Model
 
         return $solicitud_unidad;
     }
+    /*
+     * Get all postulantes
+     */
+    function get_all_postulante($gestion_id, $convocatoria_id, $estado_id)
+    {
+        $filtro = "";
+        if($gestion_id != 0){
+            $filtro = " and c.gestion_id = ".$gestion_id;
+        }
+        if($convocatoria_id != 0){
+            $filtro = $filtro." and pb.convocatoria_id = ".$convocatoria_id;
+        }
+        if($estado_id != 0){
+            $filtro = $filtro." and p.estado_id = ".$estado_id;
+        }
+        $postulante = $this->db->query("
+            SELECT
+                p.*, e.`estudiante_nombre`, e.`estudiante_apellidos`,
+                e.`estudiante_celular`, e.`estudiante_telefono`, e.`estudiante_email`,
+                es.`estado_descripcion`, es.`estado_color`
+            FROM
+                `postulante` p
+            left join `estudiante` as e on p.estudiante_id = e.estudiante_id
+            left join `plazas_becas` as pb on p.plaza_id = pb.plaza_id
+            left join `convocatoria` as c on pb.convocatoria_id = c.convocatoria_id
+            left join `gestion` as g on c.gestion_id = g.gestion_id
+            left join `estado` as es on p.estado_id = es.estado_id
+            WHERE
+                1 = 1
+                ".$filtro."
+            ORDER BY e.`estudiante_apellidos` ASC, e.`estudiante_nombre` ASC
+        ")->result_array();
+
+        return $postulante;
+    }
+    /*
+     * Get all postulantes
+     */
+    function get_all_administrativo($cargo_id)
+    {
+        $filtro = "";
+        if($cargo_id != 0){
+            $filtro = " and a.cargo_id = ".$cargo_id;
+        }
+        $postulante = $this->db->query("
+            SELECT
+                a.*, e.`estado_descripcion`, e.`estado_color`
+            FROM
+                `administrativo` a
+            left join `estado` as e on a.estado_id = e.estado_id
+            WHERE
+                1 = 1
+                ".$filtro."
+            ORDER BY a.`admin_apellido` ASC, a.`admin_nombre` ASC
+        ")->result_array();
+
+        return $postulante;
+    }
     
 }
