@@ -22,12 +22,12 @@ function toggle(source) {
                             <input type="text" name="convocatoria_descripcion" value="<?php echo ($this->input->post('convocatoria_descripcion') ? $this->input->post('convocatoria_descripcion') : $convocatoria['convocatoria_descripcion']); ?>" class="form-control" id="convocatoria_descripcion"  autofocus autocomplete="off" required onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                         </div>
                     </div>
-                    <div class="col-md-9">
+                    <!--<div class="col-md-9">
                         <label for="beca_id" class="control-label"><span class="text-danger">*</span>Beca</label>
                         <div class="form-group">
                             <select name="beca_id" class="form-control" required>
                                 <?php
-                                if(isset($los_requisitos)){
+                                /*if(isset($los_requisitos)){
                                     $estabeca = $los_requisitos[0]['beca_id'];
                                 }else{
                                     $estabeca = "";
@@ -44,9 +44,9 @@ function toggle(source) {
                     <div class="col-md-3">
                         <label for="plaza_cantidad" class="control-label"><span class="text-danger">*</span>Plazas</label>
                         <div class="form-group">
-                            <input type="number" name="plaza_cantidad" value="<?php echo ($this->input->post('plaza_cantidad') ? $this->input->post('plaza_cantidad') : $convocatoria['plaza_cantidad']); ?>" class="form-control" id="plaza_cantidad"  autocomplete="off" required />
+                            <input type="number" name="plaza_cantidad" value="<?php echo ($this->input->post('plaza_cantidad') ? $this->input->post('plaza_cantidad') : $convocatoria['plaza_cantidad']);*/ ?>" class="form-control" id="plaza_cantidad"  autocomplete="off" required />
                         </div>
-                    </div>
+                    </div>-->
                     <div class="col-md-3">
                         <label for="gestion_id" class="control-label">Gestión</label>
                         <div class="form-group">

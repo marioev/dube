@@ -46,11 +46,11 @@
                 <table class="table table-striped" id="mitabla">
                     <tr>
                         <th>#</th>
+                        <th>Descripción</th>
                         <th>Gestion</th>
                         <th>Fecha</th>
                         <th>Hora</th>
-                        <th>Descripción</th>
-                        <th>Beca/Plazas</th>
+                        <th>Total Plazas</th>
                         <th>Fecha limite</th>
                         <th>Documento</th>
                         <th>Estado</th>
@@ -62,11 +62,11 @@
                     foreach($convocatoria as $c){ ?>
                     <tr>
                         <td class="text-center"><?php echo $i+1; ?></td>
+                        <td><?php echo $c['convocatoria_descripcion']; ?></td>
                         <td class="text-center"><?php echo $c['gestion_descripcion']; ?></td>
                         <td class="text-center"><?php echo date("d/m/Y", strtotime($c['convocatoria_fecha'])); ?></td>
                         <td class="text-center"><?php echo $c['convocatoria_hora']; ?></td>
-                        <td><?php echo $c['convocatoria_descripcion']; ?></td>
-                        <td class="text-center"><?php echo $c['beca_nombre']."<br>".$c['plaza_cantidad']; ?></td>
+                        <td class="text-center"><?php echo $c['plaza_cantidad']; ?></td>
                         <td class="text-center"><?php echo date("d/m/Y", strtotime($c['convocatoria_fechalimite'])); ?></td>
                         <td>
                             <a href="<?php echo site_url('/resources/images/convocatoria/'.$c['convocatoria_dcto']) ?>" target="_blank"><?php echo $c['convocatoria_dcto']; ?></a>
@@ -74,10 +74,11 @@
                         <td class="text-center"><?php echo $c['estado_descripcion']; ?></td>
                         <td>
                             <a href="<?php echo site_url('convocatoria/edit/'.$c['convocatoria_id']); ?>" class="btn btn-info btn-xs" title="Modificar convocatoria"><span class="fa fa-pencil"></span></a>
-                            <a href="<?php echo site_url('convocatoria/modif_requisito/'.$c['convocatoria_id']); ?>" class="btn btn-success btn-xs" title="Modificar requisitos"><span class="fa fa-check-square-o"></span></a>
-                            <a onclick="mostrar_requisitos(<?php echo $c['convocatoria_id']; ?>)" class="btn btn-facebook btn-xs" title="Ver requisitos">
+                            <a href="<?php echo site_url('convocatoria/numbeca/'.$c['convocatoria_id']); ?>" class="btn btn-facebook btn-xs" title="Modificar numero de becas"><span class="fa fa-list-ol"></span></a>
+                            <!--<a href="<?php //echo site_url('convocatoria/modif_requisito/'.$c['convocatoria_id']); ?>" class="btn btn-success btn-xs" title="Modificar requisitos"><span class="fa fa-check-square-o"></span></a>
+                            <a onclick="mostrar_requisitos(<?php //echo $c['convocatoria_id']; ?>)" class="btn btn-facebook btn-xs" title="Ver requisitos">
                                 <i class="fa fa-list-ol"></i>
-                            </a>
+                            </a>-->
                             <!--<a href="<?php //echo site_url('convocatoria/remove/'.$c['convocatoria_id']); ?>" class="btn btn-danger btn-xs" title="Eliminar convocatoria"><span class="fa fa-trash"></span></a>-->
                         </td>
                     </tr>

@@ -11,12 +11,12 @@ function toggle(source) {
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Modificar Requisitos de la Convocatoria:</h3>
+              	<h3 class="box-title">Modificar Requisitos de la Beca:</h3>
                 <div class="col-md-12 text-center">
-                    <h3 class="box-title"><?php echo $convocatoria['convocatoria_descripcion']; ?></h3>
+                    <h3 class="box-title"><?php echo $beca['beca_nombre']; ?></h3>
                 </div>
             </div>
-            <?php echo form_open_multipart('convocatoria/modif_requisito/'.$convocatoria['convocatoria_id']); ?>
+            <?php echo form_open_multipart('convocatoria/modif_requisito/'.$convocatoria['convocatoria_id'].'/'.$beca['beca_id']); ?>
             <div class="box-body">
                 <div class="row clearfix">
                     <div class="col-md-12 text-bold text-center"><u>REQUISITOS</u></div>

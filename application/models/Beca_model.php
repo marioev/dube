@@ -83,4 +83,23 @@ class Beca_model extends CI_Model
 
         return $beca;
     }
+    /*
+     * Get all becas de una convocatoria
+     */
+    function get_all_becaconvocatoria($convocatoria_id)
+    {
+        $beca = $this->db->query("
+            SELECT
+                b.`beca_id`, b.`beca_nombre`, p.`plaza_id`, p.`plaza_cantidad`
+            FROM
+                `plazas_becas` p
+            left join beca b on p.beca_id = b.beca_id
+            WHERE
+                p.convocatoria_id = $convocatoria_id
+
+            ORDER BY b.`beca_nombre` ASC
+        ")->result_array();
+
+        return $beca;
+    }
 }

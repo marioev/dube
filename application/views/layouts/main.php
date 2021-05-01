@@ -110,6 +110,13 @@
                                 </li>
                                 <?php } ?>
                                 <?php
+                                if($rolusuario[1-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('convocatoria/beca_requisito');?>"><i class="fa fa-list"></i> Beca Requisito</a>
+                                </li>
+                                <?php } ?>
+                                <?php
                                 if($rolusuario[4-1]['rolusuario_asignado'] == 1){
                                 ?>
                                 <li>

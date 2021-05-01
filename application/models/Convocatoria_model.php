@@ -36,13 +36,13 @@ class Convocatoria_model extends CI_Model
         $convocatoria = $this->db->query("
             SELECT
                 c.*, g.gestion_descripcion, e.estado_descripcion, e.estado_color,
-                pb.plaza_cantidad, b.beca_nombre
+                SUM(`pb`.`plaza_cantidad`) as plaza_cantidad
             FROM
                 convocatoria as c
             left join gestion as g on c.gestion_id = g.gestion_id
             left join estado as e on c.estado_id = e.estado_id
             left join plazas_becas as pb on c.convocatoria_id = pb.convocatoria_id
-            left join beca as b on pb.beca_id = b.beca_id
+            group by c.convocatoria_id
             ORDER BY c.convocatoria_id desc
         ")->result_array();
         return $convocatoria;
@@ -129,6 +129,26 @@ class Convocatoria_model extends CI_Model
                 convocatoria as c
             where
                 c.gestion_id = $gestion_id
+            ORDER BY c.convocatoria_id desc
+        ")->result_array();
+        return $convocatoria;
+    }
+    /*
+     * Get all becas de una convocatoria
+     */
+    function getall_becas_convocatoria($convocatoria_id)
+    {
+        $convocatoria = $this->db->query("
+            SELECT
+                c.`convocatoria_descripcion`, g.gestion_descripcion, e.estado_descripcion,
+                e.estado_color, pb.plaza_cantidad, b.beca_nombre, b.beca_id
+            FROM
+                convocatoria as c
+            left join gestion as g on c.gestion_id = g.gestion_id
+            left join estado as e on c.estado_id = e.estado_id
+            left join plazas_becas as pb on c.convocatoria_id = pb.convocatoria_id
+            left join beca as b on pb.beca_id = b.beca_id
+            where c.`convocatoria_id` = $convocatoria_id
             ORDER BY c.convocatoria_id desc
         ")->result_array();
         return $convocatoria;

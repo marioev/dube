@@ -56,7 +56,7 @@ class Convocatoria_requisito_model extends CI_Model
     /*
      * Get todos los requisitos de una convocatoria
      */
-    function get_all_requisitos($convocatoria_id)
+    function get_all_requisitos($convocatoria_id, $beca_id)
     {
         $requisito = $this->db->query("
             SELECT
@@ -66,6 +66,7 @@ class Convocatoria_requisito_model extends CI_Model
             left join requisito r on cr.requisito_id = r.requisito_id
             WHERE
                 cr.convocatoria_id = $convocatoria_id
+                and cr.beca_id = $beca_id
 
             ORDER BY r.requisito_nombre ASC
         ")->result_array();
@@ -75,8 +76,8 @@ class Convocatoria_requisito_model extends CI_Model
     /*
      * function to delete convocatoria_requisito de una convocatoria
      */
-    function eliminar_convocatoria_requisito($convocatoria_id)
+    function eliminar_convocatoria_requisito($convocatoria_id, $beca_id)
     {
-        return $this->db->delete('convocatoria_requisito',array('convocatoria_id'=>$convocatoria_id));
+        return $this->db->delete('convocatoria_requisito',array('convocatoria_id'=>$convocatoria_id, 'beca_id'=>$beca_ids));
     }
 }

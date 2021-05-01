@@ -22,12 +22,13 @@ function toggle(source) {
                                 <input type="text" name="convocatoria_descripcion" value="<?php echo $this->input->post('convocatoria_descripcion'); ?>" class="form-control" id="convocatoria_descripcion" autofocus autocomplete="off" required onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                             </div>
                         </div>
+                        <!--
                         <div class="col-md-9">
                             <label for="beca_id" class="control-label"><span class="text-danger">*</span>Beca</label>
                             <div class="form-group">
                                 <select name="beca_id" class="form-control" required>
                                     <?php 
-                                    foreach($all_beca as $beca)
+                                    /*foreach($all_beca as $beca)
                                     {
                                         echo '<option value="'.$beca['beca_id'].'">'.$beca['beca_nombre'].'</option>';
                                     } 
@@ -38,10 +39,11 @@ function toggle(source) {
                         <div class="col-md-3">
                             <label for="plaza_cantidad" class="control-label"><span class="text-danger">*</span>Plazas</label>
                             <div class="form-group">
-                                <input type="number" name="plaza_cantidad" value="<?php echo ($this->input->post('plaza_cantidad') ? $this->input->post('plaza_cantidad') : "0"); ?>" class="form-control" id="plaza_cantidad"  autocomplete="off" required />
+                                <input type="number" name="plaza_cantidad" value="<?php echo ($this->input->post('plaza_cantidad') ? $this->input->post('plaza_cantidad') : "0");*/ ?>" class="form-control" id="plaza_cantidad"  autocomplete="off" required />
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        -->
+                        <div class="col-md-4">
                             <label for="gestion_id" class="control-label">Gestion</label>
                             <div class="form-group">
                                 <select name="gestion_id" class="form-control">
@@ -60,7 +62,7 @@ function toggle(source) {
                                 <input type="date" name="convocatoria_fechalimite" value="<?php echo ($this->input->post('convocatoria_fechalimite') ? $this->input->post('convocatoria_fechalimite') : date('Y-m-d')); ?>" class="form-control" id="convocatoria_fechalimite" required />
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <label for="convocatoria_dcto" class="control-label"><span class="text-danger">*</span>Documento</label>
                             <div class="form-group">
                                 <input type="file" name="convocatoria_dcto" value="<?php echo $this->input->post('convocatoria_dcto'); ?>" class="form-control" id="convocatoria_dcto" required/>

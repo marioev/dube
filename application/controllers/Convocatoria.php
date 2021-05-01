@@ -135,11 +135,11 @@ class Convocatoria extends CI_Controller{
                     $paramsplaz = array(
                         'beca_id' => $beca["beca_id"],
                         'convocatoria_id' => $convocatoria_id,
-                        'plaza_cantidad' => $this->input->post('plaza_cantidad'),
+                        'plaza_cantidad' => 0,
                     );
                     $plaza_id = $this->Plazas_beca_model->add_plazas_beca($paramsplaz);
                 }
-                redirect('convocatoria');
+                redirect('convocatoria/numbeca/'.$convocatoria_id);
             }
             else
             {
@@ -260,7 +260,7 @@ class Convocatoria extends CI_Controller{
                         );
                         $convoreq_id = $this->Convocatoria_requisito_model->add_convocatoria_requisito($paramsreq);
                     }*/
-                    $this->load->model('Plazas_beca_model');
+                    /*$this->load->model('Plazas_beca_model');
                     if(isset($data['convocatoria']['plaza_id'])){
                         $paramsplaz = array(
                             'beca_id' => $this->input->post('beca_id'),
@@ -275,7 +275,7 @@ class Convocatoria extends CI_Controller{
                             'plaza_cantidad' => $this->input->post('plaza_cantidad'),
                         );
                         $plaza_id = $this->Plazas_beca_model->add_plazas_beca($paramsplaz);
-                    }
+                    }*/
                     redirect('convocatoria');
                 }else{
                     $this->load->model('Gestion_model');
@@ -287,8 +287,8 @@ class Convocatoria extends CI_Controller{
                     $this->load->model('Convocatoria_requisito_model');
                     $data['los_requisitos'] = $this->Convocatoria_requisito_model->get_all_requisitos($convocatoria_id);
                     */
-                    $this->load->model('Beca_model');
-                    $data['all_beca'] = $this->Beca_model->get_all_beca();
+                    //$this->load->model('Beca_model');
+                    //$data['all_beca'] = $this->Beca_model->get_all_beca();
 
                     $this->load->model('Estado_model');
                     $tipo = 1;
@@ -336,7 +336,7 @@ class Convocatoria extends CI_Controller{
     /*
      * Modifcar requisistos de una convocatoria
      */
-    function modif_requisito($convocatoria_id)
+    function modif_requisito($convocatoria_id, $beca_id)
     {
         if($this->acceso(7)) {
             // check if the convocatoria exists before trying to edit it
@@ -348,22 +348,25 @@ class Convocatoria extends CI_Controller{
                 {
                     $los_requisitos = $this->input->post('requisitos');
                     $this->load->model('Convocatoria_requisito_model');
-                    $this->Convocatoria_requisito_model->eliminar_convocatoria_requisito($convocatoria_id);
+                    $this->Convocatoria_requisito_model->eliminar_convocatoria_requisito($convocatoria_id, $beca_id);
                     foreach ($los_requisitos as $requisito) {
                         $paramsreq = array(
                             'requisito_id' => $requisito,
                             'convocatoria_id' => $convocatoria_id,
-                            'beca_id' => $this->input->post('beca_id'),
+                            'beca_id' => $beca_id,
                         );
                         $convoreq_id = $this->Convocatoria_requisito_model->add_convocatoria_requisito($paramsreq);
                     }
-                    redirect('convocatoria');
+                    redirect('convocatoria/beca_requisito');
                 }else{
+                    $this->load->model('Beca_model');
+                    $data['beca'] = $this->Beca_model->get_beca($beca_id);
+                    
                     $this->load->model('Requisito_model');
                     $data['all_requisito'] = $this->Requisito_model->get_all_requisito();
 
                     $this->load->model('Convocatoria_requisito_model');
-                    $data['los_requisitos'] = $this->Convocatoria_requisito_model->get_all_requisitos($convocatoria_id);
+                    $data['los_requisitos'] = $this->Convocatoria_requisito_model->get_all_requisitos($convocatoria_id, $beca_id);
 
                     $data['_view'] = 'convocatoria/modif_requisito';
                     $this->load->view('layouts/main',$data);
@@ -380,6 +383,70 @@ class Convocatoria extends CI_Controller{
             if ($this->input->is_ajax_request()) {
                 $gestion_id = $this->input->post('gestion_id');
                 $datos = $this->Convocatoria_model->getall_convocatorias_degetion($gestion_id);
+                echo json_encode($datos);
+            }else{                 
+                show_404();
+            }
+        //}
+    }
+    /*
+     * muestra formulario para añadir nunumero de becas
+     */
+    function numbeca($convocatoria_id)
+    {
+        if($this->acceso(5)) {
+            $data['convocatoria'] = $this->Convocatoria_model->get_convocatoria($convocatoria_id);
+            $this->load->model('Beca_model');
+            $data['all_beca'] = $this->Beca_model->get_all_becaconvocatoria($convocatoria_id);
+
+            $data['_view'] = 'convocatoria/numbeca';
+            $this->load->view('layouts/main',$data);
+        }
+    }
+    /*
+     * registra numero de becas de una convocatoria
+     */
+    function reg_numbeca($convocatoria_id)
+    {
+        if($this->acceso(5)) {
+            $this->load->model('Plazas_beca_model');
+            $this->load->model('Beca_model');
+            $all_beca = $this->Beca_model->get_all_becaconvocatoria($convocatoria_id);
+            foreach ($all_beca as $beca) {
+                $paramsplaz = array(
+                    'plaza_cantidad' => $this->input->post('numbeca'.$beca['plaza_id']),
+                );
+                $this->Plazas_beca_model->update_plazas_beca($beca['plaza_id'],$paramsplaz);
+            }
+            /*
+            $data['convocatoria'] = $this->Convocatoria_model->get_convocatoria($convocatoria_id);
+            $this->load->model('Beca_model');
+            $data['all_beca'] = $this->Beca_model->get_all_becaconvocatoria($convocatoria_id);
+            */
+            redirect('convocatoria');
+        }
+    }
+    /*
+     * muestra los requisitos de las diferentes becas de una convocatoria
+     */
+    function beca_requisito()
+    {
+        if($this->acceso(5)) {
+            $data['all_convocatoria'] = $this->Convocatoria_model->get_all_convocatoria();
+            //$this->load->model('Beca_model');
+            //$data['all_beca'] = $this->Beca_model->get_all_becaconvocatoria($convocatoria_id);
+
+            $data['_view'] = 'convocatoria/beca_requisito';
+            $this->load->view('layouts/main',$data);
+        }
+    }
+    /* buscar becas de una convocatoria */
+    function get_becas_deconvocatoria()
+    {
+        //if($this->acceso(103)) {
+            if ($this->input->is_ajax_request()) {
+                $convocatoria_id = $this->input->post('convocatoria_id');
+                $datos = $this->Convocatoria_model->getall_becas_convocatoria($convocatoria_id);
                 echo json_encode($datos);
             }else{                 
                 show_404();
