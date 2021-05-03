@@ -10,7 +10,7 @@
             <?php echo form_open('postulante/add'); ?>
           	<div class="box-body">
                     <div class="row clearfix">
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <label for="estudiante_id" class="control-label">Estudiante</label>
                             <div class="form-group" style="display: flex">
                                 <select class="form-control" name="estudiante_id" id="estudiante_id">
@@ -27,17 +27,47 @@
                                 <i class="fa fa-plus-circle"></i></a>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <label for="plaza_id" class="control-label">Beca(Plazas)</label>
+                        <div class="col-md-3">
+                            <label for="gestion_id" class="control-label">Gestión</label>
                             <div class="form-group">
-                                <select name="plaza_id" class="form-control">
+                                <select name="gestion_id" class="form-control" id="gestion_id" onchange="mostrar_convocatoria(this.value)">
                                     <!--<option value="">select plazas_beca</option>-->
                                     <?php 
-                                    foreach($all_plazas_becas as $plazas_beca)
+                                    foreach($all_gestion as $gestion)
+                                    {
+                                        //$selected = ($plazas_beca['plaza_id'] == $this->input->post('plaza_id')) ? ' selected="selected"' : "";
+                                        echo '<option value="'.$gestion['gestion_id'].'">'.$gestion['gestion_descripcion'].'</option>';
+                                    } 
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="convocatoria_id" class="control-label"><span class="text-danger">*</span>Convocatoria</label>
+                            <div class="form-group">
+                                <select name="convocatoria_id" class="form-control" id="convocatoria_id" required>
+                                    <option value="">Seleccione una convocatoria</option>
+                                    <?php 
+                                    /*foreach($all_gestion as $gestion)
+                                    {
+                                        //$selected = ($plazas_beca['plaza_id'] == $this->input->post('plaza_id')) ? ' selected="selected"' : "";
+                                        echo '<option value="'.$gestion['gestion_id'].'">'.$gestion['gestion_descripcion'].'</option>';
+                                    }*/
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="plaza_id" class="control-label"><span class="text-danger">*</span>Beca</label>
+                            <div class="form-group">
+                                <select name="plaza_id" class="form-control" id="plaza_id" required>
+                                    <option value="">Elegir beca</option>
+                                    <?php 
+                                    /*foreach($all_plazas_becas as $plazas_beca)
                                     {
                                         $selected = ($plazas_beca['plaza_id'] == $this->input->post('plaza_id')) ? ' selected="selected"' : "";
                                         echo '<option value="'.$plazas_beca['plaza_id'].'" '.$selected.'>'.$plazas_beca['convocatoria_descripcion']."(".$plazas_beca['plaza_cantidad'].") (".$plazas_beca['beca_nombre'].")".'</option>';
-                                    } 
+                                    }*/
                                     ?>
                                 </select>
                             </div>

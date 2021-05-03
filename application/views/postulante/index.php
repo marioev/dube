@@ -41,12 +41,14 @@
             <input id="filtrar" type="text" class="form-control" placeholder="Ingrese nombre, apellido..">
         </div>
         <div class="box">
-            <div class="box-body">
+            <div class="box-body table-responsive">
                 <table class="table table-striped" id="mitabla">
                     <tr>
                         <th>#</th>
                         <th>Estudiante</th>
-                        <th>Beca/Plaza</th>
+                        <th>Gestión</th>
+                        <th>Convocatoria</th>
+                        <th>Beca</th>
                         <th>Padres Tutores</th>
                         <th>Observación</th>
                         <th>Corrección</th>
@@ -60,7 +62,9 @@
                     <tr style="background: <?php echo $p["estado_color"]; ?>">
                         <td class="text-center"><?php echo $i+1; ?></td>
                         <td><?php echo $p['estudiante_apellidos']." ".$p['estudiante_nombre']; ?></td>
-                        <td class="text-center"><?php echo $p['beca_nombre']."<br>".$p['plaza_cantidad']; ?></td>
+                        <td><?php echo $p['gestion_descripcion']; ?></td>
+                        <td><?php echo $p['convocatoria_descripcion']; ?></td>
+                        <td><?php echo $p['beca_nombre']; ?></td>
                         <td><?php echo $p['padres_tutores']; ?></td>
                         <td><?php echo $p['postulante_observacion']; ?></td>
                         <td><?php echo $p['postulante_correccion']; ?></td>

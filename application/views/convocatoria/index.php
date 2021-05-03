@@ -42,7 +42,7 @@
             <input id="filtrar" type="text" class="form-control" placeholder="Ingrese la descripción de la convocatoria..">
         </div>
         <div class="box">            
-            <div class="box-body">
+            <div class="box-body table-responsive">
                 <table class="table table-striped" id="mitabla">
                     <tr>
                         <th>#</th>
@@ -75,6 +75,7 @@
                         <td>
                             <a href="<?php echo site_url('convocatoria/edit/'.$c['convocatoria_id']); ?>" class="btn btn-info btn-xs" title="Modificar convocatoria"><span class="fa fa-pencil"></span></a>
                             <a href="<?php echo site_url('convocatoria/numbeca/'.$c['convocatoria_id']); ?>" class="btn btn-facebook btn-xs" title="Modificar numero de becas"><span class="fa fa-list-ol"></span></a>
+                            <a href="<?php echo site_url('convocatoria/beca_requisito/'.$c['convocatoria_id']); ?>" class="btn btn-primary btn-xs" title="Ver, modificar requisitos"><span class="fa fa-list"></span></a>
                             <!--<a href="<?php //echo site_url('convocatoria/modif_requisito/'.$c['convocatoria_id']); ?>" class="btn btn-success btn-xs" title="Modificar requisitos"><span class="fa fa-check-square-o"></span></a>
                             <a onclick="mostrar_requisitos(<?php //echo $c['convocatoria_id']; ?>)" class="btn btn-facebook btn-xs" title="Ver requisitos">
                                 <i class="fa fa-list-ol"></i>

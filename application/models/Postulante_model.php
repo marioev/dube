@@ -61,13 +61,16 @@ class Postulante_model extends CI_Model
         $postulante = $this->db->query("
             SELECT
                 p.*, e.estudiante_nombre, e.estudiante_apellidos, pl.plaza_cantidad,
-                b.beca_nombre, es.estado_color, es.estado_descripcion
+                b.beca_nombre, es.estado_color, es.estado_descripcion,
+                c.convocatoria_descripcion, g.gestion_descripcion
             FROM
                 `postulante` p
             left join estudiante e on p.estudiante_id = e.estudiante_id
             left join plazas_becas pl on p.plaza_id = pl.plaza_id
             left join beca b on pl.beca_id = b.beca_id
             left join estado es on p.estado_id = es.estado_id
+            left join convocatoria c on pl.convocatoria_id = c.convocatoria_id
+            left join gestion g on c.gestion_id = g.gestion_id
             WHERE
                 1 = 1
 
@@ -84,12 +87,14 @@ class Postulante_model extends CI_Model
         $postulante = $this->db->query("
             SELECT
                 p.*, b.beca_nombre, e.estudiante_apellidos, e.estudiante_nombre,
-                pl.convocatoria_id
+                pl.convocatoria_id, c.gestion_id, pl.plaza_id, pl.beca_id
             FROM
                 `postulante` p
                 left join estudiante e on p.estudiante_id = e.estudiante_id
                 left join plazas_becas pl on p.plaza_id = pl.plaza_id
                 left join beca b on pl.beca_id = b.beca_id
+                left join convocatoria c on pl.convocatoria_id = c.convocatoria_id
+                left join gestion g on c.gestion_id = g.gestion_id
             WHERE
                 p.postulante_id = $postulante_id
         ")->row_array();

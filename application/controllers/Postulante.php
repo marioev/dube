@@ -63,15 +63,15 @@ class Postulante extends CI_Controller{
             }
             else
             {
-                /*$this->load->model('Estado_model');
-                $data['all_estado'] = $this->Estado_model->get_all_estado();
-                */
+                $this->load->model('Gestion_model');
+                $data['all_gestion'] = $this->Gestion_model->get_all_gestion();
+                
                 $this->load->model('Estudiante_model');
                 $data['all_estudiante'] = $this->Estudiante_model->get_all_estudiante();
-
+                /*
                 $this->load->model('Plazas_beca_model');
                 $data['all_plazas_becas'] = $this->Plazas_beca_model->get_all_plazas_becas();
-
+                */
                 $data['_view'] = 'postulante/add';
                 $this->load->view('layouts/main',$data);
             }
@@ -105,16 +105,19 @@ class Postulante extends CI_Controller{
                 }
                 else
                 {
+                    $this->load->model('Gestion_model');
+                    $data['all_gestion'] = $this->Gestion_model->get_all_gestion();
+                
                     $this->load->model('Estado_model');
                     $tipo = 2; // tipo 2 ==>diferentes estados del postulante
                     $data['all_estado'] = $this->Estado_model->get_tipo_estado($tipo);
 
                     $this->load->model('Estudiante_model');
                     $data['all_estudiante'] = $this->Estudiante_model->get_all_estudiante();
-
+                    /*
                     $this->load->model('Plazas_beca_model');
                     $data['all_plazas_becas'] = $this->Plazas_beca_model->get_all_plazas_becas();
-
+                    */
                     $data['_view'] = 'postulante/edit';
                     $this->load->view('layouts/main',$data);
                 }
@@ -154,7 +157,7 @@ class Postulante extends CI_Controller{
                 if(isset($_POST) && count($_POST) > 0)
                 {
                     $this->load->model('Formulario_autentificacion_model');
-                    $all_requisito = $this->Convocatoria_requisito_model->get_all_requisitos($data['postulante']['convocatoria_id']);
+                    $all_requisito = $this->Convocatoria_requisito_model->get_all_requisitos($data['postulante']['convocatoria_id'], $data['postulante']['beca_id']);
                     foreach ($all_requisito as $req) {
                         $cumple = $this->input->post('requisito_id'.$req["requisito_id"]);
                         if(isset($cumple)){
@@ -181,7 +184,7 @@ class Postulante extends CI_Controller{
                 }else{
                     if(isset($data['postulante']['convocatoria_id'])){
                         $data["con_convocatoria"] = "1";
-                        $data['all_requisito'] = $this->Convocatoria_requisito_model->get_all_requisitos($data['postulante']['convocatoria_id']);
+                        $data['all_requisito'] = $this->Convocatoria_requisito_model->get_all_requisitos($data['postulante']['convocatoria_id'], $data['postulante']['beca_id']);
                     }else{
                         $data["con_convocatoria"] = "0";
                     }
@@ -207,7 +210,7 @@ class Postulante extends CI_Controller{
                 $this->load->model('Formulario_autentificacion_model');
                 if(isset($_POST) && count($_POST) > 0)
                 {
-                    $all_requisito = $this->Convocatoria_requisito_model->get_all_requisitos($data['postulante']['convocatoria_id']);
+                    $all_requisito = $this->Convocatoria_requisito_model->get_all_requisitos($data['postulante']['convocatoria_id'], $data['postulante']['beca_id']);
                     $formulario_id = $this->Formulario_autentificacion_model->delete_formulario_postulante($postulante_id);
                     foreach ($all_requisito as $req) {
                         $cumple = $this->input->post('requisito_id'.$req["requisito_id"]);
@@ -235,7 +238,7 @@ class Postulante extends CI_Controller{
                 }else{
                     if(isset($data['postulante']['convocatoria_id'])){
                         $data["con_convocatoria"] = "1";
-                        $data['all_requisito'] = $this->Convocatoria_requisito_model->get_all_requisitos($data['postulante']['convocatoria_id']);
+                        $data['all_requisito'] = $this->Convocatoria_requisito_model->get_all_requisitos($data['postulante']['convocatoria_id'], $data['postulante']['beca_id']);
                         $data['all_formulario'] = $this->Formulario_autentificacion_model->get_all_formulario_postulante($postulante_id);
                     }else{
                         $data["con_convocatoria"] = "0";

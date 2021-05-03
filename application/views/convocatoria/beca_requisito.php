@@ -39,12 +39,19 @@
 </div>
 <div class="row">
     <div class="col-md-4">
+        <?php
+        $convoc = 0;
+        if(isset($convocatoria_id)){
+            $convoc = $convocatoria_id;
+        }
+        ?>
         Convocatoria:
         <select id="convocatoria_id" name="convocatoria_id" class="btn btn-primary btn-sm form-control" >
                 <?php 
                 foreach($all_convocatoria as $convocatoria)
                 {
-                    echo '<option value="'.$convocatoria['convocatoria_id'].'">'.$convocatoria['convocatoria_descripcion'].'</option>';
+                    $selected = ($convocatoria['convocatoria_id'] == $convoc) ? ' selected="selected"' : "";
+                    echo '<option value="'.$convocatoria['convocatoria_id'].'" '.$selected.'>'.$convocatoria['convocatoria_descripcion'].'</option>';
                 } 
                 ?>
             </select>
@@ -59,7 +66,7 @@
             <input id="filtrar" type="text" class="form-control" placeholder="Ingrese la descripción de la convocatoria..">
         </div>-->
         <div class="box">            
-            <div class="box-body">
+            <div class="box-body table-responsive">
                 <table class="table table-striped" id="mitabla">
                     <tr>
                         <th>#</th>

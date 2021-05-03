@@ -141,7 +141,7 @@ class Convocatoria_model extends CI_Model
         $convocatoria = $this->db->query("
             SELECT
                 c.`convocatoria_descripcion`, g.gestion_descripcion, e.estado_descripcion,
-                e.estado_color, pb.plaza_cantidad, b.beca_nombre, b.beca_id
+                e.estado_color, pb.plaza_cantidad, b.beca_nombre, b.beca_id, pb.plaza_id
             FROM
                 convocatoria as c
             left join gestion as g on c.gestion_id = g.gestion_id
