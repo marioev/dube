@@ -63,6 +63,10 @@
         &nbsp;
         <a class="btn btn-facebook btn-sm form-control" onclick="buscar_reporte()"><i class="fa fa-search"> Buscar</i></a>
     </div>
+    <div class="col-md-2">
+        &nbsp;
+        <a class="btn btn-success btn-sm form-control" onclick="imprimir_reporte()"><i class="fa fa-print"> Imprimir</i></a>
+    </div>
 </div>
 <span id="lagestion"></span>
 <span id="launidad"></span>
@@ -73,8 +77,14 @@
                 <table class="table table-striped" id="mitabla">
                     <tr>
                         <th>#</th>
-                        <th>Solicitud Unidad</th>
+                        <th>Unidad Solicitante</th>
+                        <th>Unidad</th>
+                        <th>Requerimiento</th>
+                        <th>Actividad</th>
                         <th>Cantidad Becarios</th>
+                        <th>Becarios Aceptados</th>
+                        <th>Disponibilidad de Becas</th>
+                        <th>Resp. Unidad</th>
                     </tr>
                     <tbody class="buscar" id="mostrarsolicitudes"></tbody>
                 </table>

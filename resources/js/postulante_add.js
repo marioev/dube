@@ -14,8 +14,25 @@ function registrarnuevoestudiante(){
     var estudiante_carrera = document.getElementById('estudiante_carrera').value;
     var estudiante_celular = document.getElementById('estudiante_celular').value;
     var estudiante_telefono = document.getElementById('estudiante_telefono').value;
+    var mensaje = "";
     if(estudiante_nombre =="" || estudiante_apellidos == ""){
-        alert("Nombres y Apellidos no deben estar en blanco");
+        mensaje += "Nombres y Apellidos no deben estar en blanco";
+    }
+    if(estudiante_ci ==""){
+        mensaje += ", C.I. no debe estar en blanco";
+    }
+    if(estudiante_codsis ==""){
+        mensaje += ", Codigo SIS no debe estar en blanco";
+    }
+    if(estudiante_email ==""){
+        mensaje += ", Correo Electronico no debe estar en blanco";
+    }
+    if(estudiante_carrera ==""){
+        mensaje += ", Carrera no debe estar en blanco";
+    }
+    
+    if(mensaje != ""){
+        alert(mensaje);
     }else{
         controlador = base_url+'postulante/nuevoestudiante/';
         $('#modalestudiante').modal('hide');
@@ -69,7 +86,7 @@ function mostrar_convocatoria(gestion_id){
                     $("#convocatoria_id").replaceWith(html);
                     html1 = "";
                     html1 += "<select name='plaza_id' class='form-control' id='plaza_id' required >";
-                    html1 += "<option value=''>Elegir beca</option>";
+                    html1 += "<option value=''>Elegir tipo de beca</option>";
                     html1 += "</select>";
                     $("#plaza_id").replaceWith(html1);
             }
@@ -94,7 +111,7 @@ function mostrar_beca(convocatoria_id){
                     var n = registros.length; //tamaño del arreglo de la consulta
                     html = "";
                     html += "<select name='plaza_id' class='form-control' id='plaza_id' required>";
-                    html += "<option value='' selected>Elegir beca</option>";
+                    html += "<option value='' selected>Elegir tipo de beca</option>";
                     for (var i = 0; i < n ; i++){
                         html += "<option value='"+registros[i]["plaza_id"]+"'>";
                         html += registros[i]["beca_nombre"];

@@ -58,10 +58,10 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <label for="plaza_id" class="control-label"><span class="text-danger">*</span>Beca</label>
+                            <label for="plaza_id" class="control-label"><span class="text-danger">*</span>Tipo de Beca</label>
                             <div class="form-group">
                                 <select name="plaza_id" class="form-control" id="plaza_id" required>
-                                    <option value="">Elegir beca</option>
+                                    <option value="">Elegir tipo de beca</option>
                                     <?php 
                                     /*foreach($all_plazas_becas as $plazas_beca)
                                     {
@@ -128,25 +128,25 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <label for="estudiante_ci" class="control-label">C.I.</label>
+                    <label for="estudiante_ci" class="control-label"><span class="text-danger">*</span>C.I.</label>
                     <div class="form-group">
                         <input type="text" name="estudiante_ci" value="<?php echo $this->input->post('estudiante_ci'); ?>" class="form-control" id="estudiante_ci" autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <label for="estudiante_codsis" class="control-label">Codsis</label>
+                    <label for="estudiante_codsis" class="control-label"><span class="text-danger">*</span>Codsis</label>
                     <div class="form-group">
                         <input type="text" name="estudiante_codsis" value="<?php echo $this->input->post('estudiante_codsis'); ?>" class="form-control" id="estudiante_codsis" />
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <label for="estudiante_email" class="control-label">Email</label>
+                    <label for="estudiante_email" class="control-label"><span class="text-danger">*</span>Email</label>
                     <div class="form-group">
                         <input type="email" name="estudiante_email" value="<?php echo $this->input->post('estudiante_email'); ?>" class="form-control" id="estudiante_email" />
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <label for="estudiante_carrera" class="control-label">Carrera</label>
+                    <label for="estudiante_carrera" class="control-label"><span class="text-danger">*</span>Carrera</label>
                     <div class="form-group">
                         <input type="text" name="estudiante_carrera" value="<?php echo $this->input->post('estudiante_carrera'); ?>" class="form-control" id="estudiante_carrera" autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                     </div>

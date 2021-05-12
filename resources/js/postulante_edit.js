@@ -35,7 +35,7 @@ function mostrar_convocatoria(gestion_id){
                     $("#convocatoria_id").replaceWith(html);
                     html1 = "";
                     html1 += "<select name='plaza_id' class='form-control' id='plaza_id' required >";
-                    html1 += "<option value=''>Elegir beca</option>";
+                    html1 += "<option value=''>Elegir tipo de beca</option>";
                     html1 += "</select>";
                     $("#plaza_id").replaceWith(html1);
             }
@@ -62,7 +62,7 @@ function mostrar_beca(convocatoria_id){
                     var selected = "";
                     html = "";
                     html += "<select name='plaza_id' class='form-control' id='plaza_id' required>";
-                    html += "<option value='' selected>Elegir beca</option>";
+                    html += "<option value='' selected>Elegir tipo de beca</option>";
                     for (var i = 0; i < n ; i++){
                         if(registros[i]["plaza_id"] == estepostulante['plaza_id']){
                             selected = "selected='selected'";

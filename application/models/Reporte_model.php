@@ -24,13 +24,36 @@ class Reporte_model extends CI_Model
         }
         $solicitud_unidad = $this->db->query("
             SELECT
-                s.*
+                s.*, u.unidad_nombre, u.unidad_responsable,
+                count(`ud`.`solunidad_id`) as becarios_aceptados,
+                (s.`solicitud_cantidad_becarios` - count(`ud`.`solunidad_id`)) as cantidad_disponible
             FROM
                 `solicitud_unidades` s
+            left join unidad u on s.unidad_id = u.unidad_id
+            left join `solunidad_postulante` ud on s.solicitud_id = ud.solicitud_id
             WHERE
                 1 = 1
                 ".$filtro."
+            group by s.solicitud_id
             ORDER BY s.`solicitud_id` DESC
+            
+
+
+
+/*
+            SELECT
+                s.*, g.gestion_descripcion, u.unidad_nombre, u.unidad_responsable,
+                (s.`solicitud_cantidad_becarios` - count(`ud`.`solunidad_id`)) as cantidad_disponible
+            FROM
+                `solicitud_unidades` s
+            left join gestion g on s.gestion_id = g.gestion_id
+            left join unidad u on s.unidad_id = u.unidad_id
+            left join `solunidad_postulante` ud on s.solicitud_id = ud.solicitud_id
+            WHERE
+                s.gestion_id = $gestion_id
+            group by s.solicitud_id
+            ORDER BY s.`solicitud_id` DESC*/
+            
         ")->result_array();
 
         return $solicitud_unidad;

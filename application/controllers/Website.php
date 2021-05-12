@@ -8,37 +8,10 @@ class Website extends CI_Controller{
     function __construct()
     {
         parent::__construct();
-        /*$this->load->model('Pagina_web_model');
-        $this->load->model('Producto_model');
-        $this->load->model('Parametro_model');
-        $this->load->model('Inventario_model');
-        $this->load->model('Categoria_producto_model');
-        $this->load->model('Imagen_producto_model');
-        $this->load->model('Venta_model');
-        $this->load->model('producto_model');
-        $this->load->model('Cliente_model');
-        $this->load->model('Configuracion_email_model');
-        $this->load->helper('cookie');*/
     }            
 
     function index()
     {
-        
-        /*$data['idioma_id'] = $idioma_id;
-        $data['pagina_web'] = $this->Pagina_web_model->get_pagina($idioma_id);
-        $data['menu_cabecera'] = $this->Pagina_web_model->get_menu_cabecera($idioma_id);
-        $data['menu_principal'] = $this->Pagina_web_model->get_menu_principal($idioma_id);
-        $data['menu_item'] = $this->Pagina_web_model->get_menu_item($idioma_id);
-        $data['slider'] = $this->Pagina_web_model->get_slider(1,$idioma_id); //tipo 1
-        $data['seccion1'] = $this->Pagina_web_model->get_seccion(1,$idioma_id); //seccion 1
-        $data['seccion2'] = $this->Pagina_web_model->get_seccion(2,$idioma_id); //seccion 2
-        $data['seccion3'] = $this->Pagina_web_model->get_seccion(3,$idioma_id); //seccion 3        
-        $data['ofertasemanal'] = $this->Pagina_web_model->get_oferta_semanal(); //seccion 3
-        $data['ofertasdia'] = $this->Pagina_web_model->get_oferta_dia(); //seccion 3
-        $data['slider2'] = $this->Pagina_web_model->get_slider(2,$idioma_id); //tipo 2
-        $data['categorias'] = $this->Categoria_producto_model->get_all_categoria_producto(); //tipo 2
-        $data['parametro'] = $this->Parametro_model->get_parametros();
-        */
         $this->load->model('Convocatoria_model');
         $data['las_convocatorias'] = $this->Convocatoria_model->getall_convocatoria_abierto();
         $data['num_convocatorias'] = $this->Convocatoria_model->getall_convocatorias_abiertas();

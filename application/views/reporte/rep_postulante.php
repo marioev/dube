@@ -87,6 +87,7 @@
                         <th>Teléfono</th>
                         <th>Celular</th>
                         <th>Email</th>
+                        <th>Obs.</th>
                         <th>Estado</th>
                     </tr>
                     <tbody class="buscar" id="mostrarpostulantes"></tbody>

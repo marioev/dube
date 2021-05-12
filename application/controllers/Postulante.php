@@ -158,6 +158,7 @@ class Postulante extends CI_Controller{
                 {
                     $this->load->model('Formulario_autentificacion_model');
                     $all_requisito = $this->Convocatoria_requisito_model->get_all_requisitos($data['postulante']['convocatoria_id'], $data['postulante']['beca_id']);
+                    $mas_observacion = $data['postulante']['postulante_observacion'];
                     foreach ($all_requisito as $req) {
                         $cumple = $this->input->post('requisito_id'.$req["requisito_id"]);
                         if(isset($cumple)){
@@ -173,10 +174,14 @@ class Postulante extends CI_Controller{
                             'formulario_observacion' => $this->input->post('formulario_observacion'.$req["requisito_id"]),
                         );
                         $formulario_id = $this->Formulario_autentificacion_model->add_formulario_autentificacion($params);
+                        if($this->input->post('formulario_observacion'.$req["requisito_id"]) != ""){
+                            $mas_observacion = $mas_observacion." ".$this->input->post('formulario_observacion'.$req["requisito_id"]);
+                        }
                     }
                     $estado_id = 4; // 4 ==> estado REVISADO
                     $params = array(
                         'estado_id' => $estado_id,
+                        'postulante_observacion' => $mas_observacion,
                     );
                     $this->Postulante_model->update_postulante($postulante_id,$params);
 
@@ -212,6 +217,7 @@ class Postulante extends CI_Controller{
                 {
                     $all_requisito = $this->Convocatoria_requisito_model->get_all_requisitos($data['postulante']['convocatoria_id'], $data['postulante']['beca_id']);
                     $formulario_id = $this->Formulario_autentificacion_model->delete_formulario_postulante($postulante_id);
+                    $mas_observacion = $data['postulante']['postulante_observacion'];
                     foreach ($all_requisito as $req) {
                         $cumple = $this->input->post('requisito_id'.$req["requisito_id"]);
                         if(isset($cumple)){
@@ -227,10 +233,14 @@ class Postulante extends CI_Controller{
                             'formulario_observacion' => $this->input->post('formulario_observacion'.$req["requisito_id"]),
                         );
                         $formulario_id = $this->Formulario_autentificacion_model->add_formulario_autentificacion($params);
+                        if($this->input->post('formulario_observacion'.$req["requisito_id"]) != ""){
+                            $mas_observacion = $mas_observacion." ".$this->input->post('formulario_observacion'.$req["requisito_id"]);
+                        }
                     }
                     $estado_id = 4; // 4 ==> estado REVISADO
                     $params = array(
                         'estado_id' => $estado_id,
+                        'postulante_observacion' => $mas_observacion,
                     );
                     $this->Postulante_model->update_postulante($postulante_id,$params);
 
@@ -287,6 +297,48 @@ class Postulante extends CI_Controller{
         else
         {                 
             show_404();
+        }
+    }
+    function solunidad($postulante_id)
+    {
+        if($this->acceso(16)) {
+            // check if the postulante exists before trying to edit it
+            $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
+
+            if(isset($data['postulante']['postulante_id']))
+            {
+                if(isset($_POST) && count($_POST) > 0)     
+                {
+                    $estado_id = 1;
+                    $params = array(
+                        'estado_id' => $estado_id,
+                        'solicitud_id' => $this->input->post('solicitud_id'),
+                        'postulante_id' => $postulante_id,
+                        'solunidad_inicio' => $this->input->post('solunidad_inicio'),
+                    );
+                    $this->load->model('Solunidad_postulante_model');
+                    $this->Solunidad_postulante_model->add_solunidad_postulante($params);            
+                    redirect('postulante/index');
+                }
+                else
+                {
+                
+                    $this->load->model('Estado_model');
+                    $tipo = 2; // tipo 2 ==>diferentes estados del postulante
+                    $data['all_estado'] = $this->Estado_model->get_tipo_estado($tipo);
+                    
+                    $this->load->model('Solicitud_unidad_model');
+                    $data['all_solicitud_unidad'] = $this->Solicitud_unidad_model->get_all_solicitudunidad_gestion($data['postulante']['gestion_id']);
+                    /*
+                    $this->load->model('Convocatoria_model');
+                    $data['all_plazas_becas'] = $this->Convocatoria_model->getall_becas_convocatoria($data['postulante']['convocatoria_id']);
+                    */
+                    $data['_view'] = 'postulante/solunidad';
+                    $this->load->view('layouts/main',$data);
+                }
+            }
+            else
+                show_error('The postulante you are trying to edit does not exist.');
         }
     }
 }

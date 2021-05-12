@@ -26,6 +26,90 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- js files -->
 <script src="<?php echo $raiz;?>js/modernizr.custom.js"></script>
 <!-- /js files -->
+<style type="text/css">
+    [tooltip] {
+      position: relative;
+    }
+
+    [tooltip]::before,
+    [tooltip]::after {
+      text-transform: none;
+      font-size: .9em;
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      position: absolute;
+      display: none;
+      opacity: 0;
+    }
+    [tooltip]::before {
+      content: '';
+      border: 5px solid transparent;
+      z-index: 1001;
+    }
+    [tooltip]::after {
+      content: attr(tooltip);
+
+      text-align: center;
+
+      min-width: 3em;
+      max-width: 21em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 1ch 1.5ch;
+      border-radius: .3ch;
+      box-shadow: 0 1em 2em -.5em rgba(0, 0, 0, 0.35);
+      background: #fc8213;
+      color: #fff;
+      z-index: 1000;
+    }
+
+    [tooltip]:hover::before,
+    [tooltip]:hover::after {
+      display: block;
+    }
+
+    [tooltip='']::before,
+    [tooltip='']::after {
+      display: none !important;
+    }
+
+    [tooltip][flow^="left"]::before {
+      top: 50%;
+      border-right-width: 0;
+      border-left-color: #fc8213;
+      left: calc(0em - 5px);
+      transform: translate(-.5em, -50%);
+    }
+    [tooltip][flow^="left"]::after {
+      top: 50%;
+      right: calc(100% + 5px);
+      transform: translate(-.5em, -50%);
+    }
+
+
+    /* KEYFRAMES */
+    @keyframes tooltips-vert {
+      to {
+        opacity: .9;
+        transform: translate(-50%, 0);
+      }
+    }
+
+    @keyframes tooltips-horz {
+      to {
+        opacity: .9;
+        transform: translate(0, -50%);
+      }
+    }
+
+    [tooltip][flow^="left"]:hover::before,
+    [tooltip][flow^="left"]:hover::after{
+      animation: tooltips-horz 300ms ease-out forwards;
+    }
+
+</style>
 </head>
 <body id="index.html" data-spy="scroll" data-target=".navbar" data-offset="60">
 <!-- Top Bar -->
@@ -143,8 +227,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="col-sm-2 col-xs-12">
                             <!--<img src="<?php //echo $raiz;?>images/about-img1.png" class="img-responsive slideanim" alt="about-img">-->
                         </div>
-                        <div class="col-sm-10 col-xs-12">						
-                            <div class="about-info slideanim text-justify">
+                        <div class="col-sm-10 col-xs-12">
+                            <div class="about-info slideanim text-justify" tooltip="<?php echo "Fecha Límite: ".date("d/m/Y", strtotime($las_convocatorias[$cont]['convocatoria_fechalimite'])); ?>" flow="left">
                                 <p><?php echo $las_convocatorias[$cont]['convocatoria_descripcion']; ?></p>
                                 <a href="<?php echo site_url('/resources/images/convocatoria/'.$las_convocatorias[$cont]['convocatoria_dcto']) ?>" target="_blank"><?php echo $las_convocatorias[$cont]['convocatoria_dcto']; ?></a>
                             </div>
@@ -161,7 +245,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <!--<img src="<?php //echo $raiz;?>images/about-img2.png" class="img-responsive slideanim" alt="about-img">-->
                         </div>	
                         <div class="col-sm-10 col-xs-12">
-                            <div class="about-info slideanim">
+                            <div class="about-info slideanim" tooltip="<?php echo "Fecha Límite: ".date("d/m/Y", strtotime($las_convocatorias[$cont]['convocatoria_fechalimite'])); ?>" flow="left">
                                 <p><?php echo $las_convocatorias[$cont]['convocatoria_descripcion']; ?></p>
                                 <a href="<?php echo site_url('/resources/images/convocatoria/'.$las_convocatorias[$cont]['convocatoria_dcto']) ?>" target="_blank"><?php echo $las_convocatorias[$cont]['convocatoria_dcto']; ?></a>
                             </div>
@@ -194,7 +278,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <!--<img src="<?php //echo $raiz;?>images/about-img3.png" class="img-responsive slideanim" alt="about-img">-->
                         </div>
                         <div class="col-sm-10 col-xs-12">
-                            <div class="about-info slideanim">
+                            <div class="about-info slideanim" tooltip="<?php echo "Fecha Límite: ".date("d/m/Y", strtotime($las_convocatorias[$cont]['convocatoria_fechalimite'])); ?>" flow="left">
                                 <p><?php echo $las_convocatorias[$cont]['convocatoria_descripcion']; ?></p>
                                 <a href="<?php echo site_url('/resources/images/convocatoria/'.$las_convocatorias[$cont]['convocatoria_dcto']) ?>" target="_blank"><?php echo $las_convocatorias[$cont]['convocatoria_dcto']; ?></a>
                             </div>
@@ -211,7 +295,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <!--<img src="<?php //echo $raiz;?>images/about-img4.png" class="img-responsive slideanim" alt="about-img">-->
                         </div>
                         <div class="col-sm-10 col-xs-12">
-                            <div class="about-info slideanim">
+                            <div class="about-info slideanim" tooltip="<?php echo "Fecha Límite: ".date("d/m/Y", strtotime($las_convocatorias[$cont]['convocatoria_fechalimite'])); ?>" flow="left">
                                 <p><?php echo $las_convocatorias[$cont]['convocatoria_descripcion']; ?></p>
                                 <a href="<?php echo site_url('/resources/images/convocatoria/'.$las_convocatorias[$cont]['convocatoria_dcto']) ?>" target="_blank"><?php echo $las_convocatorias[$cont]['convocatoria_dcto']; ?></a>
                             </div>

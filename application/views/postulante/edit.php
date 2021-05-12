@@ -57,10 +57,10 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <label for="plaza_id" class="control-label"><span class="text-danger">*</span>Beca</label>
+                            <label for="plaza_id" class="control-label"><span class="text-danger">*</span>Tipo de Beca</label>
                             <div class="form-group">
                                 <select name="plaza_id" class="form-control" id="plaza_id" required>
-                                    <option value="">Elegir beca</option>
+                                    <option value="">Elegir tipo de beca</option>
                                     <?php 
                                     /*foreach($all_plazas_becas as $plazas_beca)
                                     {

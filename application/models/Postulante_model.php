@@ -62,7 +62,7 @@ class Postulante_model extends CI_Model
             SELECT
                 p.*, e.estudiante_nombre, e.estudiante_apellidos, pl.plaza_cantidad,
                 b.beca_nombre, es.estado_color, es.estado_descripcion,
-                c.convocatoria_descripcion, g.gestion_descripcion
+                c.convocatoria_descripcion, g.gestion_descripcion, b.beca_id
             FROM
                 `postulante` p
             left join estudiante e on p.estudiante_id = e.estudiante_id
@@ -87,7 +87,8 @@ class Postulante_model extends CI_Model
         $postulante = $this->db->query("
             SELECT
                 p.*, b.beca_nombre, e.estudiante_apellidos, e.estudiante_nombre,
-                pl.convocatoria_id, c.gestion_id, pl.plaza_id, pl.beca_id
+                pl.convocatoria_id, c.gestion_id, pl.plaza_id, pl.beca_id,
+                g.gestion_descripcion, c.convocatoria_descripcion
             FROM
                 `postulante` p
                 left join estudiante e on p.estudiante_id = e.estudiante_id

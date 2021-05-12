@@ -19,12 +19,13 @@ function buscar_postulantes(){
                     for (var i = 0; i < n ; i++){
                         //total += Number(datos[i].solicitud_cantidad_becarios);
                         html += "<tr style='background: "+datos[i].estado_color+"'>";
-                        html += "<td align='center' style='width:5px;'>"+(i+1)+"</td>";
-                        html += "<td> "+datos[i].estudiante_apellidos+" "+datos[i].estudiante_nombre+" </td>";
-                        html += "<td class='text-right'> "+datos[i].estudiante_telefono+" </td>";
-                        html += "<td class='text-right'> "+datos[i].estudiante_celular+" </td>";
-                        html += "<td class='text-right'> "+datos[i].estudiante_email+" </td>";
-                        html += "<td class='text-right'> "+datos[i].estado_descripcion+" </td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px; width:5px;' align='center'>"+(i+1)+"</td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px;'> "+datos[i].estudiante_apellidos+" "+datos[i].estudiante_nombre+" </td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px;' class='text-right'> "+datos[i].estudiante_telefono+" </td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px;' class='text-right'> "+datos[i].estudiante_celular+" </td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px;' class='text-right'> "+datos[i].estudiante_email+" </td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px;' class='text-right'> "+datos[i].postulante_observacion+" </td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px;' class='text-right'> "+datos[i].estado_descripcion+" </td>";
                         html += "</tr>";
                     }
                     /*html += "<tr>";

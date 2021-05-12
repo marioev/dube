@@ -13,18 +13,30 @@ function buscar_reporte(){
                     var nom_unidad  = $("#unidad_id option:selected").text();
                     var n = datos.length;
                     var total = Number(0);
+                    var aceptados = Number(0);
+                    var disponibles = Number(0);
                     html = "";
                     for (var i = 0; i < n ; i++){
                         total += Number(datos[i].solicitud_cantidad_becarios);
+                        aceptados += Number(datos[i].becarios_aceptados);
+                        disponibles += Number(datos[i].cantidad_disponible);
                         html += "<tr>";
-                        html += "<td align='center' style='width:5px;'>"+(i+1)+"</td>";
-                        html += "<td> "+datos[i].solicitud_unidad+" </td>";
-                        html += "<td class='text-right'> "+datos[i].solicitud_cantidad_becarios+" </td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px; width:5px;' align='center'>"+(i+1)+"</td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px'> "+datos[i].solicitud_unidad+" </td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px'> "+datos[i].unidad_nombre+" </td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px'> "+datos[i].solicitud_carreras_requiremiento+" </td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px'> "+datos[i].solicitud_actividad+" </td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px' class='text-right'> "+datos[i].solicitud_cantidad_becarios+" </td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px' class='text-right'> "+datos[i].becarios_aceptados+" </td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px' class='text-right'> "+datos[i].cantidad_disponible+" </td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px'> "+datos[i].unidad_responsable+" </td>";
                         html += "</tr>";
                     }
                     html += "<tr>";
-                    html += "<td colspan='2' class='text-right text-bold'> Total: </td>";
+                    html += "<td colspan='5' class='text-right text-bold'> Total: </td>";
                     html += "<td class='text-right text-bold'> "+total+" </td>";
+                    html += "<td class='text-right text-bold'> "+aceptados+" </td>";
+                    html += "<td class='text-right text-bold'> "+disponibles+" </td>";
                     html += "</tr>";
                    $("#mostrarsolicitudes").html(html);
                    $("#lagestion").html("Gestion: <b>"+nom_gestion+"</b><br>");
@@ -35,4 +47,7 @@ function buscar_reporte(){
                 }
         }
     })
+}
+function imprimir_reporte(){
+    window.print();
 }
