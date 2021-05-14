@@ -62,7 +62,7 @@ class Postulante_model extends CI_Model
             SELECT
                 p.*, e.estudiante_nombre, e.estudiante_apellidos, pl.plaza_cantidad,
                 b.beca_nombre, es.estado_color, es.estado_descripcion,
-                c.convocatoria_descripcion, g.gestion_descripcion, b.beca_id
+                c.convocatoria_descripcion, g.gestion_descripcion, b.beca_id, sp.solunidad_id
             FROM
                 `postulante` p
             left join estudiante e on p.estudiante_id = e.estudiante_id
@@ -71,6 +71,7 @@ class Postulante_model extends CI_Model
             left join estado es on p.estado_id = es.estado_id
             left join convocatoria c on pl.convocatoria_id = c.convocatoria_id
             left join gestion g on c.gestion_id = g.gestion_id
+            left join solunidad_postulante sp on p.postulante_id = sp.postulante_id
             WHERE
                 1 = 1
 

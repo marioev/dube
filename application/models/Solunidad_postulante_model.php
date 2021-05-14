@@ -9,7 +9,30 @@ class Solunidad_postulante_model extends CI_Model
     function __construct()
     {
         parent::__construct();
-    } 
+    }
+    /*
+     * Get solunidad_postulante by solunidad_id
+     */
+    function get_solunidad_postulante($solunidad_id)
+    {
+        return $this->db->get_where('solunidad_postulante',array('solunidad_id'=>$solunidad_id))->row_array();
+    }
+    /*
+     * Get solunidad_postulante by postulante_id
+     */
+    function esreg_solunidad_postulante($postulante_id)
+    {
+        $esregistrado = $this->db->query("
+            SELECT
+                sp.*
+            FROM
+                `solunidad_postulante` sp
+            WHERE
+                sp.`postulante_id` = $postulante_id
+        ")->row_array();
+        
+        return $esregistrado;
+    }
     /*
      * function to add new solunidad_postulante
      */
@@ -17,5 +40,20 @@ class Solunidad_postulante_model extends CI_Model
     {
         $this->db->insert('solunidad_postulante',$params);
         return $this->db->insert_id();
+    }
+    /*
+     * function to update solunidad_postulante
+     */
+    function update_solunidad_postulante($solunidad_id,$params)
+    {
+        $this->db->where('solunidad_id',$solunidad_id);
+        return $this->db->update('solunidad_postulante',$params);
+    }
+    /*
+     * function to delete solunidad_postulante
+     */
+    function delete_solunidad_postulante($solunidad_id)
+    {
+        return $this->db->delete('solunidad_postulante',array('solunidad_id'=>$solunidad_id));
     }
 }

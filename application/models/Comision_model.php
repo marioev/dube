@@ -39,8 +39,8 @@ class Comision_model extends CI_Model
         ")->result_array();
 
         return $comision;
-        $this->db->order_by('comision_id', 'desc');
-        return $this->db->get('comision')->result_array();
+        /*$this->db->order_by('comision_id', 'desc');
+        return $this->db->get('comision')->result_array();*/
     }
         
     /*

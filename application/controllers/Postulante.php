@@ -309,7 +309,7 @@ class Postulante extends CI_Controller{
             {
                 if(isset($_POST) && count($_POST) > 0)     
                 {
-                    $estado_id = 1;
+                    $estado_id = 9; // estado ACTIVO
                     $params = array(
                         'estado_id' => $estado_id,
                         'solicitud_id' => $this->input->post('solicitud_id'),
@@ -317,28 +317,66 @@ class Postulante extends CI_Controller{
                         'solunidad_inicio' => $this->input->post('solunidad_inicio'),
                     );
                     $this->load->model('Solunidad_postulante_model');
-                    $this->Solunidad_postulante_model->add_solunidad_postulante($params);            
+                    $solunidad_id = $this->Solunidad_postulante_model->add_solunidad_postulante($params);
                     redirect('postulante/index');
                 }
                 else
                 {
-                
-                    $this->load->model('Estado_model');
-                    $tipo = 2; // tipo 2 ==>diferentes estados del postulante
-                    $data['all_estado'] = $this->Estado_model->get_tipo_estado($tipo);
-                    
                     $this->load->model('Solicitud_unidad_model');
                     $data['all_solicitud_unidad'] = $this->Solicitud_unidad_model->get_all_solicitudunidad_gestion($data['postulante']['gestion_id']);
-                    /*
-                    $this->load->model('Convocatoria_model');
-                    $data['all_plazas_becas'] = $this->Convocatoria_model->getall_becas_convocatoria($data['postulante']['convocatoria_id']);
-                    */
                     $data['_view'] = 'postulante/solunidad';
                     $this->load->view('layouts/main',$data);
                 }
             }
             else
                 show_error('The postulante you are trying to edit does not exist.');
+        }
+    }
+    /* modifica solicitud unida postulante*/
+    function modif_solunidad($solunidad_id)
+    {
+        if($this->acceso(16)) {
+            $this->load->model('Solunidad_postulante_model');
+            $data['esregistrado'] = $this->Solunidad_postulante_model->get_solunidad_postulante($solunidad_id);
+            if(isset($data['esregistrado']['postulante_id'])){
+                $postulante_id = $data['esregistrado']['postulante_id'];
+                $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
+                if(isset($data['postulante']['postulante_id']))
+                {
+                    if(isset($_POST) && count($_POST) > 0)     
+                    {
+                        $this->load->model('Solunidad_postulante_model');
+                        /*$esregistrado = $this->Solunidad_postulante_model->esreg_solunidad_postulante($data['postulante']['postulante_id']);
+                        if(isset($esregistrado)){
+                            $esregistrado = $this->Solunidad_postulante_model->delete_solunidad_postulante($esregistrado["solunidad_id"]);
+                        }
+                        $estado_id = 1;*/
+                        $params = array(
+                            'estado_id' => $this->input->post('estado_id'),
+                            'solicitud_id' => $this->input->post('solicitud_id'),
+                            'solunidad_inicio' => $this->input->post('solunidad_inicio'),
+                            'solunidad_fin' => $this->input->post('solunidad_fin'),
+                        );
+                        $this->Solunidad_postulante_model->update_solunidad_postulante($solunidad_id, $params);
+                        redirect('postulante/index');
+                    }
+                    else
+                    {
+                        $this->load->model('Estado_model');
+                        $tipo = 4; // tipo 4 ==>activo/inactivo
+                        $data['all_estado'] = $this->Estado_model->get_tipo_estado($tipo);
+
+                        $this->load->model('Solicitud_unidad_model');
+                        $data['all_solicitud_unidad'] = $this->Solicitud_unidad_model->get_all_solicitudunidad_gestion($data['postulante']['gestion_id']);
+                        $data['_view'] = 'postulante/modif_solunidad';
+                        $this->load->view('layouts/main',$data);
+                    }
+                }
+                else
+                    show_error('The postulante you are trying to edit does not exist.');
+            }else{
+                show_error('informacion de postulante incorrecto');
+            }
         }
     }
 }

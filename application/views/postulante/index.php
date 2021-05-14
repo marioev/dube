@@ -75,9 +75,16 @@
                                 <a href="<?php echo site_url('postulante/cumplir/'.$p['postulante_id']); ?>" class="btn btn-success btn-xs" title="Calificar requisitos"><i class="fa fa-file-text-o"></i></a>
                             <?php }elseif($p["estado_id"] == 5){
                                 if($p["beca_id"] == 9){
+                                    if(isset($p["solunidad_id"]) && $p["solunidad_id"] >0){
                                 ?>
+                                <a href="<?php echo site_url('postulante/modif_solunidad/'.$p['solunidad_id']); ?>" class="btn btn-warning btn-xs" title="Modificar unidad solicitante"><i class="fa fa-briefcase"></i></a>
+                                    <?php }
+                                    else{
+                                        ?>
                                 <a href="<?php echo site_url('postulante/solunidad/'.$p['postulante_id']); ?>" class="btn btn-warning btn-xs" title="Elegir unidad solicitante"><i class="fa fa-briefcase"></i></a>
-                                <?php }else{ ?>
+                                <?php
+                                    }
+                                    }else{ ?>
                                     <a href="<?php echo site_url('postulante/solunidad1/'.$p['postulante_id']); ?>" class="btn btn-warning btn-xs" title="Generar contrato"><i class="fa fa-list"></i></a>
                                 <?php
                                 }
