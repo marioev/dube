@@ -85,7 +85,7 @@
                                 <?php
                                     }
                                     }else{ ?>
-                                    <a href="<?php echo site_url('postulante/solunidad1/'.$p['postulante_id']); ?>" class="btn btn-warning btn-xs" title="Generar contrato"><i class="fa fa-list"></i></a>
+                                    <a href="<?php echo site_url('postulante/modelocontrato/'.$p['postulante_id']); ?>" class="btn btn-warning btn-xs" title="Generar contrato"><i class="fa fa-list"></i></a>
                                 <?php
                                 }
                                 }elseif($p["estado_id"] == 4 || $p["estado_id"] == 11){ ?>

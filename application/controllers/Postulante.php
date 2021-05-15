@@ -379,4 +379,38 @@ class Postulante extends CI_Controller{
             }
         }
     }
+    /* modelo de contrato de un postulante aceptado */
+    function modelocontrato($postulante_id)
+    {
+        if($this->acceso(16)) {
+            // check if the postulante exists before trying to edit it
+            $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
+
+            if(isset($data['postulante']['postulante_id']))
+            {
+                if(isset($_POST) && count($_POST) > 0)     
+                {
+                    $estado_id = 9; // estado ACTIVO
+                    $params = array(
+                        'estado_id' => $estado_id,
+                        'solicitud_id' => $this->input->post('solicitud_id'),
+                        'postulante_id' => $postulante_id,
+                        'solunidad_inicio' => $this->input->post('solunidad_inicio'),
+                    );
+                    $this->load->model('Solunidad_postulante_model');
+                    $solunidad_id = $this->Solunidad_postulante_model->add_solunidad_postulante($params);
+                    redirect('postulante/index');
+                }
+                else
+                {
+                    $this->load->model('Solicitud_unidad_model');
+                    $data['all_solicitud_unidad'] = $this->Solicitud_unidad_model->get_all_solicitudunidad_gestion($data['postulante']['gestion_id']);
+                    $data['_view'] = 'postulante/modelocontrato';
+                    $this->load->view('layouts/main',$data);
+                }
+            }
+            else
+                show_error('The postulante you are trying to edit does not exist.');
+        }
+    }
 }
