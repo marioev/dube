@@ -99,5 +99,29 @@ class Reporte extends CI_Controller{
             show_404();
         }
     }
-    
+    /* reporte de postulantes aceptados en una unidad! */
+    function rep_spostulante()
+    {
+        if($this->acceso(36)) {
+            $this->load->model('Gestion_model');
+            $data['all_gestion'] = $this->Gestion_model->get_all_gestion();
+
+            $this->load->model('Unidad_model');
+            $data['all_unidad'] = $this->Unidad_model->get_all_unidad();
+            $data['_view'] = 'reporte/rep_spostulante';
+            $this->load->view('layouts/main',$data);
+        }
+    }
+    /* reporte de postulantes en una unidad */
+    function buscar_postulanteunidad()
+    {
+        if ($this->input->is_ajax_request()) {
+            $gestion_id = $this->input->post('gestion_id');
+            $unidad_id = $this->input->post('unidad_id');
+            $datos = $this->Reporte_model->get_all_postulante_unidad($gestion_id, $unidad_id);
+            echo json_encode($datos);
+        }else{
+            show_404();
+        }
+    }
 }

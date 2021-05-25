@@ -24,7 +24,7 @@ class Unidad_model extends CI_Model
      */
     function get_all_unidad()
     {
-        $this->db->order_by('unidad_id', 'desc');
+        $this->db->order_by('unidad_nombre', 'asc');
         return $this->db->get('unidad')->result_array();
     }
         

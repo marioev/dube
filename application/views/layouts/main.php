@@ -246,7 +246,7 @@
                                 if($rolusuario[45-1]['rolusuario_asignado'] == 1){
                                 ?>
                                 <li class="active">
-                                    <a href="<?php echo site_url('reporte/rep_sunidad');?>"><i class="fa fa-list-ul"></i>Solicitud Unidades</a>
+                                    <a href="<?php echo site_url('reporte/rep_administrativo');?>"><i class="fa fa-list-ul"></i>Administrativos</a>
                                 </li>
                                 <?php }
                                 if($rolusuario[45-1]['rolusuario_asignado'] == 1){
@@ -258,23 +258,16 @@
                                 if($rolusuario[45-1]['rolusuario_asignado'] == 1){
                                 ?>
                                 <li>
-                                    <a href="<?php echo site_url('reporte/rep_administrativo');?>"><i class="fa fa-list-ul"></i>Administrativos</a>
+                                    <a href="<?php echo site_url('reporte/rep_spostulante');?>"><i class="fa fa-users"></i>Postulantes a Unidades</a>
                                 </li>
-                                <?php } ?>
-                                <?php
-                                /*if($rolusuario[46-1]['rolusuario_asignado'] == 1){
+                                <?php }
+                                if($rolusuario[45-1]['rolusuario_asignado'] == 1){
                                 ?>
                                 <li>
-                                    <a href="<?php echo site_url('tipo_usuario');?>"><i class="fa fa-list-ul"></i>Tipo Usuario</a>
+                                    <a href="<?php echo site_url('reporte/rep_sunidad');?>"><i class="fa fa-list-ul"></i>Solicitud Unidades</a>
                                 </li>
-                                <?php } ?>
-                                <?php
-                                if($rolusuario[47-1]['rolusuario_asignado'] == 1){
+                                <?php }
                                 ?>
-                                <li>
-                                    <a href="<?php echo site_url('usuario');?>"><i class="fa fa-users"></i>Usuarios</a>
-                                </li>
-                                <?php }*/ ?>
                             </ul>
                         </li>
                         <li>

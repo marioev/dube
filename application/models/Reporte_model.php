@@ -116,5 +116,37 @@ class Reporte_model extends CI_Model
 
         return $postulante;
     }
+    /*
+     * obtiene postulantes de que trabajaran en una unidad
+     */
+    function get_all_postulante_unidad($gestion_id, $unidad_id)
+    {
+        $filtro = "";
+        if($gestion_id != 0){
+            $filtro = " and s.gestion_id = ".$gestion_id;
+        }
+        if($unidad_id != 0){
+            $filtro = $filtro." and s.unidad_id = ".$unidad_id;
+        }
+        $solicitud_unidad = $this->db->query("
+            SELECT
+                s.*, u.unidad_nombre, u.unidad_responsable,
+                e.`estudiante_apellidos`, e.`estudiante_nombre`,
+                ud.solunidad_inicio, ud.solunidad_fin
+            FROM
+                `solicitud_unidades` s
+            left join unidad u on s.unidad_id = u.unidad_id
+            left join `solunidad_postulante` ud on s.solicitud_id = ud.solicitud_id
+            left join postulante p on ud.postulante_id = p.postulante_id
+            left join estudiante e on p.estudiante_id = e.estudiante_id
+            WHERE
+                1 = 1
+                ".$filtro."
+            ORDER BY e.`estudiante_apellidos` ASC, e.`estudiante_nombre` ASC
+            
+        ")->result_array();
+
+        return $solicitud_unidad;
+    }
     
 }
