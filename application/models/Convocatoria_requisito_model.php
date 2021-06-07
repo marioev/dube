@@ -78,6 +78,6 @@ class Convocatoria_requisito_model extends CI_Model
      */
     function eliminar_convocatoria_requisito($convocatoria_id, $beca_id)
     {
-        return $this->db->delete('convocatoria_requisito',array('convocatoria_id'=>$convocatoria_id, 'beca_id'=>$beca_ids));
+        return $this->db->delete('convocatoria_requisito',array('convocatoria_id'=>$convocatoria_id, 'beca_id'=>$beca_id));
     }
 }

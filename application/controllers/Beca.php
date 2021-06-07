@@ -131,4 +131,18 @@ class Beca extends CI_Controller{
             show_error('The beca you are trying to delete does not exist.');
     }*/
     
+    /* buscar becas de una convocatoria */
+    function obtener_becas()
+    {
+        //if($this->acceso(103)) {
+            if ($this->input->is_ajax_request()) {
+                $convocatoria_id = $this->input->post('convocatoria_id');
+                $datos = $this->Beca_model->get_all_becaconvocatoria($convocatoria_id);
+                echo json_encode($datos);
+            }else{                 
+                show_404();
+            }
+        //}
+    }
+    
 }

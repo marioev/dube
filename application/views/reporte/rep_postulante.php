@@ -50,7 +50,13 @@
     </div>
     <div class="col-md-3">
         Convocatoria:
-        <select name="convocatoria_id" class="btn-primary btn-sm btn-block form-control" id="convocatoria_id">
+        <select name="convocatoria_id" class="btn-primary btn-sm btn-block form-control" id="convocatoria_id" onchange="mostrar_beca(this.value)">
+            <option value="0" disabled selected >-TODAS-</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        Beca:
+        <select name="beca_id" class="btn-primary btn-sm btn-block form-control" id="beca_id">
             <option value="0" disabled selected >-TODAS-</option>
         </select>
     </div>
@@ -87,6 +93,7 @@
                         <th>Teléfono</th>
                         <th>Celular</th>
                         <th>Email</th>
+                        <th>Beca</th>
                         <th>Obs.</th>
                         <th>Estado</th>
                     </tr>

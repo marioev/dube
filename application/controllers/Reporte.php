@@ -70,8 +70,9 @@ class Reporte extends CI_Controller{
         if ($this->input->is_ajax_request()) {
             $gestion_id = $this->input->post('gestion_id');
             $convocatoria_id = $this->input->post('convocatoria_id');
+            $beca_id = $this->input->post('beca_id');
             $estado_id = $this->input->post('estado_id');
-            $datos = $this->Reporte_model->get_all_postulante($gestion_id, $convocatoria_id, $estado_id);
+            $datos = $this->Reporte_model->get_all_postulante($gestion_id, $convocatoria_id, $beca_id, $estado_id);
             echo json_encode($datos);
         }else{
             show_404();

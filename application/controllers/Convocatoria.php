@@ -124,7 +124,7 @@ class Convocatoria extends CI_Controller{
                     $paramsplaz = array(
                         'beca_id' => $beca["beca_id"],
                         'convocatoria_id' => $convocatoria_id,
-                        'plaza_cantidad' => 0,
+                        //'plaza_cantidad' => "",
                     );
                     $plaza_id = $this->Plazas_beca_model->add_plazas_beca($paramsplaz);
                 }

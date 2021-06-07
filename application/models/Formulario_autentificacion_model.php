@@ -67,13 +67,15 @@ class Formulario_autentificacion_model extends CI_Model
     {
         $formulario = $this->db->query("
             SELECT
-                f.*, r.requisito_nombre
+                f.*, r.requisito_nombre, e.estado_descripcion, e.estado_color
             FROM
                 `formulario_autentificacion` f
             left join convocatoria_requisito cr on f.convoreq_id = cr.convoreq_id
             left join requisito r on cr.requisito_id = r.requisito_id
+            left join estado e on f.estado_id = e.estado_id
             WHERE
                 f.postulante_id = $postulante_id
+            group by cr.`convoreq_id`
             ORDER BY r.requisito_nombre ASC
         ")->result_array();
 

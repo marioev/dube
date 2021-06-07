@@ -413,4 +413,22 @@ class Postulante extends CI_Controller{
                 show_error('The postulante you are trying to edit does not exist.');
         }
     }
+    
+    /* imprimir requsitos observados de: postulante */
+    function imprimir($postulante_id)
+    {
+        if($this->acceso(36)) {
+            $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
+            $this->load->model('Formulario_autentificacion_model');
+            $data["requisitos"] = $this->Formulario_autentificacion_model->get_all_formulario_postulante($postulante_id);
+            //$this->load->model('Gestion_model');
+            //$data['all_gestion'] = $this->Gestion_model->get_all_gestion();
+
+            //$this->load->model('Estado_model');
+            //$tipo = 2;
+            //$data['all_estado'] = $this->Estado_model->get_tipo_estado($tipo);
+            $data['_view'] = 'postulante/imprimir';
+            $this->load->view('layouts/main',$data);
+        }
+    }
 }

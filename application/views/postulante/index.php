@@ -71,6 +71,7 @@
                         <td class="text-center"><?php echo $p['estado_descripcion']; ?></td>
                         <td>
                             <a href="<?php echo site_url('postulante/edit/'.$p['postulante_id']); ?>" class="btn btn-info btn-xs" title="Modificar postulante"><span class="fa fa-pencil"></span></a>
+                            <a href="<?php echo site_url('postulante/imprimir/'.$p['postulante_id']); ?>" class="btn btn-success btn-xs" title="Imprimir requisitos del postulante"><span class="fa fa-print"></span></a>
                             <?php if($p["estado_id"] == 3){ ?>
                                 <a href="<?php echo site_url('postulante/cumplir/'.$p['postulante_id']); ?>" class="btn btn-success btn-xs" title="Calificar requisitos"><i class="fa fa-file-text-o"></i></a>
                             <?php }elseif($p["estado_id"] == 5){
