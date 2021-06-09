@@ -1,3 +1,65 @@
+$(document).on("ready",inicio);
+function inicio(){
+    buscar_postulantes();
+}
+function buscar_postulantes(){
+    var base_url    = document.getElementById('base_url').value;
+    var ver_requisitos = document.getElementById('ver_requisitos').value;
+    var controlador = base_url+"postulante/get_postulantes";
+    $.ajax({url: controlador,
+            type:"POST",
+            data:{},
+            success:function(respuesta){
+                var datos= JSON.parse(respuesta);
+                if (datos != null){
+                    var n = datos.length;
+                    $("#numpostulantes").html(n);
+                    html = "";
+                    for (var i = 0; i < n ; i++){
+                        html += "<tr style='background:"+datos[i].estado_color+" '>";
+                        html += "<td align='center' style='width:5px;'>"+(i+1)+"</td>";
+                        html += "<td> "+datos[i].estudiante_apellidos+" "+datos[i].estudiante_nombre+" </td>";
+                        html += "<td> "+datos[i].gestion_descripcion+" </td>";
+                        html += "<td> "+datos[i].convocatoria_titulo+" </td>";
+                        html += "<td> "+datos[i].beca_nombre+" </td>";
+                        html += "<td> "+datos[i].padres_tutores+" </td>";
+                        html += "<td> "+datos[i].postulante_observacion+" </td>";
+                        html += "<td> "+datos[i].postulante_correccion+" </td>";
+                        html += "<td class='text-center'> "+datos[i].estado_descripcion+" </td>";
+                        html += "<td> ";
+                        html += "<a href='"+base_url+"postulante/edit/"+datos[i].postulante_id+"' class='btn btn-info btn-xs' title='Modificar postulante'><span class='fa fa-pencil'></span></a>";
+                        html += "<a href='"+base_url+"postulante/imprimir/"+datos[i].postulante_id+"' class='btn btn-success btn-xs' title='Imprimir requisitos del postulante'><span class='fa fa-print'></span></a>";
+                        if(datos[i].estado_id == 3){
+                        html += "<a href='"+base_url+"postulante/cumplir/"+datos[i].postulante_id+"' class='btn btn-success btn-xs' title='Calificar requisitos'><i class='fa fa-file-text-o'></i></a>";
+                        }else if(datos[i].estado_id == 5){
+                            html += "<a href='"+base_url+"seguimiento/seguimiento/"+datos[i].postulante_id+"' class='btn btn-xs' title='Seguimiento a postulante' style='background: #8accdb' ><i class='fa fa-binoculars'></i></a>";
+                            if(datos[i].beca_id == 9){
+                                if(datos[i].solunidad_id != 'undefined' && datos[i].solunidad_id >0){
+                        html += "<a href='"+base_url+"postulante/modif_solunidad/"+datos[i].solunidad_id+"' class='btn btn-warning btn-xs' title='Modificar unidad solicitante'><i class='fa fa-briefcase'></i></a>";
+                                }
+                                else{
+                        html += "<a href='"+base_url+"postulante/solunidad/"+datos[i].postulante_id+"' class='btn btn-warning btn-xs' title='Elegir unidad solicitante'><i class='fa fa-briefcase'></i></a>";
+                                }
+                            }else{
+                        html += "<a href='"+base_url+"postulante/modelocontrato/"+datos[i].postulante_id+"' class='btn btn-warning btn-xs' title='Generar contrato'><i class='fa fa-list'></i></a>";
+                            }
+                        }else if(datos[i].estado_id == 4 || datos[i].estado_id == 11){
+                        html += "<a href='"+base_url+"postulante/modificar/"+datos[i].postulante_id+"' class='btn btn-soundcloud btn-xs' title='Modificar requisitos'><i class='fa fa-file-text-o'></i></a>";
+                            if(ver_requisitos == 1){
+                        html += "<a onclick='formulario_requisitos("+datos[i].postulante_id+")' class='btn btn-facebook btn-xs' title='Ver requisitos calificados'><i class='fa fa-list-ol'></i></a>";
+                            }
+                        }
+                        html += " </td>";
+                        html += "</tr>";
+                    }
+                   $("#tablapostulantes").html(html);
+                   //$('#modalrequisito').modal('show');
+                }else{
+                    alert("Esta convocatoria no tiene Requisitos");
+                }
+        }
+    })
+}
 function formulario_requisitos(postulante_id){
     var base_url    = document.getElementById('base_url').value;
     var controlador = base_url+"postulante/get_formulariorequisitos";

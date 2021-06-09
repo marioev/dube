@@ -16,7 +16,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="convocatoria_id" class="control-label">Convocatoria:</label>
-                            <span><?php echo $postulante['convocatoria_descripcion']; ?></span>
+                            <span><?php echo $postulante['convocatoria_titulo']; ?></span>
                         </div>
                         <div class="col-md-7">
                             <label for="solicitud_id" class="control-label">Seleccionar Unidad Solicitante</label>

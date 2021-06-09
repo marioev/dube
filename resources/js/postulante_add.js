@@ -78,7 +78,7 @@ function mostrar_convocatoria(gestion_id){
                     html += "<option value='' selected>Seleccione una convocatoria</option>";
                     for (var i = 0; i < n ; i++){
                         html += "<option value='"+registros[i]["convocatoria_id"]+"'>";
-                        html += registros[i]["convocatoria_descripcion"];
+                        html += registros[i]["convocatoria_titulo"];
                         html += "</option>";
                     }
                     html += "</select>";

@@ -27,7 +27,7 @@ function mostrar_convocatoria(gestion_id){
                             mostrar_beca(estepostulante['convocatoria_id']);
                         }else{ selected = ""; }
                         html += "<option value='"+registros[i]["convocatoria_id"]+"' "+selected+">";
-                        html += registros[i]["convocatoria_descripcion"];
+                        html += registros[i]["convocatoria_titulo"];
                         html += "</option>";
                     }
                     html += "</select>";

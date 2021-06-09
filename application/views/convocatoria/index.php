@@ -46,6 +46,7 @@
                 <table class="table table-striped" id="mitabla">
                     <tr>
                         <th>#</th>
+                        <th>Título</th>
                         <th>Descripción</th>
                         <th>Gestion</th>
                         <th>Fecha</th>
@@ -62,6 +63,7 @@
                     foreach($convocatoria as $c){ ?>
                     <tr>
                         <td class="text-center"><?php echo $i+1; ?></td>
+                        <td><?php echo $c['convocatoria_titulo']; ?></td>
                         <td><?php echo $c['convocatoria_descripcion']; ?></td>
                         <td class="text-center"><?php echo $c['gestion_descripcion']; ?></td>
                         <td class="text-center"><?php echo date("d/m/Y", strtotime($c['convocatoria_fecha'])); ?></td>

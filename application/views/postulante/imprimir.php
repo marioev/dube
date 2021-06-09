@@ -49,7 +49,7 @@
         </tr>
         <tr>
             <td class="text-bold text-right">Convocatoria:&nbsp;&nbsp;&nbsp;</td>
-            <td><?php echo $postulante["convocatoria_descripcion"]?></td>
+            <td><?php echo $postulante["convocatoria_titulo"]?></td>
         </tr>
         <tr>
             <td class="text-bold text-right">Tipo de Beca:&nbsp;&nbsp;&nbsp;</td>

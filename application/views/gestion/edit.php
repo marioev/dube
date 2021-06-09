@@ -8,7 +8,7 @@
             <div class="box-body">
                 <div class="row clearfix">
                     <div class="col-md-6">
-                        <label for="gestion_descripcion" class="control-label"><span class="text-danger">*</span>Descripción</label>
+                        <label for="gestion_descripcion" class="control-label"><span class="text-danger">*</span>Nombre</label>
                         <div class="form-group">
                             <input type="text" name="gestion_descripcion" value="<?php echo ($this->input->post('gestion_descripcion') ? $this->input->post('gestion_descripcion') : $gestion['gestion_descripcion']); ?>" class="form-control" id="gestion_descripcion" autofocus autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                             <span class="text-danger"><?php echo form_error('gestion_descripcion');?></span>

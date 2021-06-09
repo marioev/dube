@@ -19,7 +19,7 @@ function buscar_becas(){
                         num_plazas += Number(datos[i].plaza_cantidad);
                         html += "<tr>";
                         html += "<td align='center' style='width:5px;'>"+(i+1)+"</td>";
-                        html += "<td> "+datos[i].convocatoria_descripcion+" </td>";
+                        html += "<td> "+datos[i].convocatoria_titulo+" </td>";
                         html += "<td> "+datos[i].beca_nombre+" </td>";
                         html += "<td> "+datos[i].gestion_descripcion+" </td>";
                         html += "<td class='text-right'> "+datos[i].plaza_cantidad+" </td>";

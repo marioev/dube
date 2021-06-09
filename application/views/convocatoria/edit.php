@@ -17,9 +17,15 @@ function toggle(source) {
             <div class="box-body">
                 <div class="row clearfix">
                     <div class="col-md-12">
+                        <label for="convocatoria_titulo" class="control-label"><span class="text-danger">*</span>Título</label>
+                        <div class="form-group">
+                            <input type="text" name="convocatoria_titulo" value="<?php echo ($this->input->post('convocatoria_titulo') ? $this->input->post('convocatoria_titulo') : $convocatoria['convocatoria_titulo']); ?>" class="form-control" id="convocatoria_titulo" autofocus autocomplete="off" required onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
                         <label for="convocatoria_descripcion" class="control-label"><span class="text-danger">*</span>Descripción</label>
                         <div class="form-group">
-                            <input type="text" name="convocatoria_descripcion" value="<?php echo ($this->input->post('convocatoria_descripcion') ? $this->input->post('convocatoria_descripcion') : $convocatoria['convocatoria_descripcion']); ?>" class="form-control" id="convocatoria_descripcion"  autofocus autocomplete="off" required onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                            <input type="text" name="convocatoria_descripcion" value="<?php echo ($this->input->post('convocatoria_descripcion') ? $this->input->post('convocatoria_descripcion') : $convocatoria['convocatoria_descripcion']); ?>" class="form-control" id="convocatoria_descripcion" autocomplete="off" required onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                         </div>
                     </div>
                     <!--<div class="col-md-9">

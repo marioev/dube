@@ -51,7 +51,7 @@
                 foreach($all_convocatoria as $convocatoria)
                 {
                     $selected = ($convocatoria['convocatoria_id'] == $convoc) ? ' selected="selected"' : "";
-                    echo '<option value="'.$convocatoria['convocatoria_id'].'" '.$selected.'>'.$convocatoria['convocatoria_descripcion'].'</option>';
+                    echo '<option value="'.$convocatoria['convocatoria_id'].'" '.$selected.'>'.$convocatoria['convocatoria_titulo'].'</option>';
                 } 
                 ?>
             </select>

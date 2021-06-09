@@ -33,7 +33,7 @@ class Postulante extends CI_Controller{
         if($this->acceso(14)) {
             $rolusuario = $this->session_data['rol'];
             $data['ver_requisitos'] = $rolusuario[19-1]['rolusuario_asignado'];
-            $data['postulante'] = $this->Postulante_model->get_all_postulante_estudiante();
+            //$data['postulante'] = $this->Postulante_model->get_all_postulante_estudiante();
 
             $data['_view'] = 'postulante/index';
             $this->load->view('layouts/main',$data);
@@ -431,4 +431,21 @@ class Postulante extends CI_Controller{
             $this->load->view('layouts/main',$data);
         }
     }
+    
+    /* busca postulantes */
+    function get_postulantes()
+    {
+        //if($this->acceso(103)) {
+            if ($this->input->is_ajax_request()) {
+                //$postulante_id = $this->input->post('postulante_id');
+                //$this->load->model('Formulario_autentificacion_model');
+                $datos = $this->Postulante_model->get_all_postulante_estudiante();
+                //$datos = $this->Formulario_autentificacion_model->get_all_formulario_postulante($postulante_id);
+                echo json_encode($datos);
+            }else{                 
+                show_404();
+            }
+        //}
+    }
+    
 }

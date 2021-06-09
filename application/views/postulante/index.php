@@ -28,9 +28,10 @@
 </script>
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
+<input type="hidden" name="ver_requisitos" id="ver_requisitos" value="<?php echo $ver_requisitos; ?>" />
 <div class="box-header">
     <font size='4' face='Arial'><b>Postulante</b></font>
-    <br><font size='2' face='Arial'>Registros Encontrados: <?php echo sizeof($postulante); ?></font>
+    <br><font size='2' face='Arial'>Registros Encontrados: <span id="numpostulantes"></span></font>
     <div class="box-tools no-print">
         <a href="<?php echo site_url('postulante/add'); ?>" class="btn btn-success btn-sm"><fa class='fa fa-pencil-square-o'></fa> Registrar Postulante</a>
     </div>
@@ -55,9 +56,9 @@
                         <th>Estado</th>
                         <th></th>
                     </tr>
-                    <tbody class="buscar">
+                    <tbody class="buscar" id="tablapostulantes">
                     <?php
-                    $i = 0;
+                    /*$i = 0;
                     foreach($postulante as $p){ ?>
                     <tr style="background: <?php echo $p["estado_color"]; ?>">
                         <td class="text-center"><?php echo $i+1; ?></td>
@@ -102,7 +103,7 @@
                     </tr>
                     <?php
                     $i++;
-                    } ?>
+                    }*/ ?>
                     </tbody>
                 </table>
                                 

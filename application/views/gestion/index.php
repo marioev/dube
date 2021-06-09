@@ -31,7 +31,7 @@
                 <table class="table table-striped" id="mitabla">
                     <tr>
                         <th>#</th>
-                        <th>Descripción</th>
+                        <th>Nombre</th>
                         <th>Fecha inicio</th>
                         <th>Fecha fin</th>
                         <th></th>

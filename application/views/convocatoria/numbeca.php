@@ -12,7 +12,7 @@ function toggle(source) {
       	<div class="box box-info">
             <div class="box-header with-border">
               	<h3 class="box-title">Becas de la Convocatoria</h3>
-              	<h3 class="box-title"><?php echo $convocatoria["convocatoria_descripcion"]; ?></h3>
+              	<br><br><h3 class="box-title"><?php echo $convocatoria["convocatoria_titulo"]; ?></h3>
             </div>
             <?php echo form_open('convocatoria/reg_numbeca/'.$convocatoria['convocatoria_id']); ?>
           	<div class="box-body">

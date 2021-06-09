@@ -109,6 +109,7 @@ class Convocatoria extends CI_Controller{
                 $params = array(
                     'gestion_id' => $this->input->post('gestion_id'),
                     'estado_id' => $estado_id,
+                    'convocatoria_titulo' => $this->input->post('convocatoria_titulo'),
                     'convocatoria_fecha' => $fecha_res,
                     'convocatoria_hora' => $hora_res,
                     'convocatoria_descripcion' => $this->input->post('convocatoria_descripcion'),
@@ -243,6 +244,7 @@ class Convocatoria extends CI_Controller{
                     $params = array(
                         'gestion_id' => $this->input->post('gestion_id'),
                         'estado_id' => $this->input->post('estado_id'),
+                        'convocatoria_titulo' => $this->input->post('convocatoria_titulo'),
                         'convocatoria_fecha' => $this->input->post('convocatoria_fecha'),
                         'convocatoria_hora' => $this->input->post('convocatoria_hora'),
                         'convocatoria_descripcion' => $this->input->post('convocatoria_descripcion'),

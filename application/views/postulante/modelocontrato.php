@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="convocatoria_id" class="control-label">Convocatoria:</label>
-                            <span><?php echo $postulante['convocatoria_descripcion']; ?></span>
+                            <span><?php echo $postulante['convocatoria_titulo']; ?></span>
                         </div>
                         <!--<div class="col-md-5">
                             <label for="plaza_id" class="control-label">Seleccionar Tipo de Beca</label>
