@@ -73,9 +73,9 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="padres_tutores" class="control-label">Padres Tutores</label>
+                            <label for="padres_tutores" class="control-label"><span class="text-danger">*</span>Padres Tutores</label>
                             <div class="form-group">
-                                <input type="text" name="padres_tutores" value="<?php echo $this->input->post('padres_tutores'); ?>" class="form-control" id="padres_tutores" autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                                <input type="text" name="padres_tutores" value="<?php echo $this->input->post('padres_tutores'); ?>" class="form-control" id="padres_tutores" required autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                             </div>
                         </div>
                         <div class="col-md-6">

@@ -31,7 +31,7 @@
 <!--<input type="hidden" name="ver_requisitos" id="ver_requisitos" value="<?php //echo $ver_requisitos; ?>" />-->
 <div class="box-header">
     <font size='4' face='Arial'><b>Seguimiento</b></font>
-    <br><font size='2' face='Arial'>Registros Encontrados: <span id="numseguimientos"></span></font>
+    <br><font size='2' face='Arial'>Registros Encontrados: <?php echo sizeof($seguimientos); ?></font>
     <div class="box-tools no-print">
         <a href="<?php echo site_url('seguimiento/add/'.$postulante["postulante_id"]); ?>" class="btn btn-success btn-sm"><fa class='fa fa-pencil-square-o'></fa> Registrar Seguimiento</a>
     </div><br><br>

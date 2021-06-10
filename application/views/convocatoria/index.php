@@ -54,6 +54,7 @@
                         <th>Total Plazas</th>
                         <th>Fecha limite</th>
                         <th>Documento</th>
+                        <th>Documento Upsi</th>
                         <th>Estado</th>
                         <th></th>
                     </tr>
@@ -73,11 +74,20 @@
                         <td>
                             <a href="<?php echo site_url('/resources/images/convocatoria/'.$c['convocatoria_dcto']) ?>" target="_blank"><?php echo $c['convocatoria_dcto']; ?></a>
                         </td>
+                        <td>
+                            <a href="<?php echo site_url('/resources/images/convocatoriaupsi/'.$c['convocatoria_docupsi']) ?>" target="_blank"><?php echo $c['convocatoria_docupsi']; ?></a>
+                        </td>
                         <td class="text-center"><?php echo $c['estado_descripcion']; ?></td>
                         <td>
                             <a href="<?php echo site_url('convocatoria/edit/'.$c['convocatoria_id']); ?>" class="btn btn-info btn-xs" title="Modificar convocatoria"><span class="fa fa-pencil"></span></a>
                             <a href="<?php echo site_url('convocatoria/numbeca/'.$c['convocatoria_id']); ?>" class="btn btn-facebook btn-xs" title="Modificar numero de becas"><span class="fa fa-list-ol"></span></a>
                             <a href="<?php echo site_url('convocatoria/beca_requisito/'.$c['convocatoria_id']); ?>" class="btn btn-primary btn-xs" title="Ver, modificar requisitos"><span class="fa fa-list"></span></a>
+                            <?php if( $c['convocatoria_docupsi'] != null && $c['convocatoria_docupsi'] != ""){ ?>
+                            <a href="<?php echo site_url('convocatoria/modifdocupsi/'.$c['convocatoria_id']); ?>" class="btn btn-soundcloud btn-xs" title="Modificar documento upsi"><span class="fa fa-file-archive-o"></span></a>
+                            <?php }else{ ?>
+                            <a href="<?php echo site_url('convocatoria/docupsi/'.$c['convocatoria_id']); ?>" class="btn btn-soundcloud btn-xs" title="Subir documento upsi"><span class="fa fa-file-archive-o"></span></a>
+                            <?php } ?>
+                            
                             <!--<a href="<?php //echo site_url('convocatoria/modif_requisito/'.$c['convocatoria_id']); ?>" class="btn btn-success btn-xs" title="Modificar requisitos"><span class="fa fa-check-square-o"></span></a>
                             <a onclick="mostrar_requisitos(<?php //echo $c['convocatoria_id']; ?>)" class="btn btn-facebook btn-xs" title="Ver requisitos">
                                 <i class="fa fa-list-ol"></i>

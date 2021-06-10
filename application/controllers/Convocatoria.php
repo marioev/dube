@@ -159,7 +159,7 @@ class Convocatoria extends CI_Controller{
                 $this->load->view('layouts/main',$data);
             }
         }
-    }  
+    }
 
     /*
      * Editing a convocatoria
@@ -305,7 +305,7 @@ class Convocatoria extends CI_Controller{
             else
                 show_error('The convocatoria you are trying to edit does not exist.');
         }
-    } 
+    }
 
     /*
      * Deleting convocatoria
@@ -472,4 +472,174 @@ class Convocatoria extends CI_Controller{
         //}
     }
     
+    /*
+     * Adding a new documento upsi
+     */
+    function docupsi($convocatoria_id)
+    {
+        if($this->acceso(5)) {
+            $data['convocatoria'] = $this->Convocatoria_model->get_convocatoria($convocatoria_id);
+            if(isset($_POST) && count($_POST) > 0)     
+            {
+                /* *********************INICIO imagen***************************** */
+                $foto="";
+                if (!empty($_FILES['convocatoria_docupsi']['name'])){
+
+                    $this->load->library('image_lib');
+                    $config['upload_path'] = './resources/images/convocatoriaupsi/';
+                    $img_full_path = $config['upload_path'];
+
+                    //$config['allowed_types'] = 'gif|jpeg|jpg|png';
+                    $config['allowed_types'] = '*';
+                    $config['image_library'] = 'gd2';
+                    $config['max_size'] = 0;
+                    $config['max_width'] = 0;
+                    $config['max_height'] = 0;
+
+                    $new_name = time(); //str_replace(" ", "_", $this->input->post('proveedor_nombre'));
+                    $config['file_name'] = $new_name; //.$extencion;
+                    $config['file_ext_tolower'] = TRUE;
+
+                    $this->load->library('upload', $config);
+                    $this->upload->do_upload('convocatoria_docupsi');
+
+                    $img_data = $this->upload->data();
+                    $extension = $img_data['file_ext'];
+                    /* ********************INICIO para resize***************************** */
+                    if ($img_data['file_ext'] == ".jpg" || $img_data['file_ext'] == ".png" || $img_data['file_ext'] == ".jpeg" || $img_data['file_ext'] == ".gif") {
+                        $conf['image_library'] = 'gd2';
+                        $conf['source_image'] = $img_data['full_path'];
+                        $conf['new_image'] = './resources/images/convocatoriaupsi/';
+                        $conf['maintain_ratio'] = TRUE;
+                        $conf['create_thumb'] = FALSE;
+                        $conf['width'] = 800;
+                        $conf['height'] = 600;
+                        $this->image_lib->clear();
+                        $this->image_lib->initialize($conf);
+                        if(!$this->image_lib->resize()){
+                            echo $this->image_lib->display_errors('','');
+                        }
+                        $confi['image_library'] = 'gd2';
+                        $confi['source_image'] = './resources/images/convocatoriaupsi/'.$new_name.$extension;
+                        $confi['new_image'] = './resources/images/convocatoriaupsi/'."thumb_".$new_name.$extension;
+                        $confi['create_thumb'] = FALSE;
+                        $confi['maintain_ratio'] = TRUE;
+                        $confi['width'] = 100;
+                        $confi['height'] = 100;
+
+                        $this->image_lib->clear();
+                        $this->image_lib->initialize($confi);
+                        $this->image_lib->resize();
+                    }
+                    /* ********************F I N  para resize***************************** */
+
+
+                    $foto = $new_name.$extension;
+                }
+                /* *********************FIN imagen***************************** */
+                $params = array(
+                    'convocatoria_docupsi' => $foto,
+                );
+                $this->Convocatoria_model->update_convocatoria($convocatoria_id,$params);
+                
+                redirect('convocatoria');
+            }else{
+                $data['_view'] = 'convocatoria/docupsi';
+                $this->load->view('layouts/main',$data);
+            }
+        }
+    }
+    
+    /*
+     * Editing a convocatoria
+     */
+    function modifdocupsi($convocatoria_id)
+    {
+        if($this->acceso(6)) {
+            // check if the convocatoria exists before trying to edit it
+            $data['convocatoria'] = $this->Convocatoria_model->get_convocatoria($convocatoria_id);
+            if(isset($data['convocatoria']['convocatoria_id']))
+            {
+                if(isset($_POST) && count($_POST) > 0)     
+                {
+                    /* *********************INICIO imagen***************************** */
+                    $foto="";
+                        $foto1= $this->input->post('convocatoria_docupsi1');
+                    if (!empty($_FILES['convocatoria_docupsi']['name']))
+                    {
+                        $this->load->library('image_lib');
+                        $config['upload_path'] = './resources/images/convocatoriaupsi/';
+                        //$config['allowed_types'] = 'gif|jpeg|jpg|png';
+                        $config['allowed_types'] = '*';
+                        $config['max_size'] = 0;
+                        $config['max_width'] = 0;
+                        $config['max_height'] = 0;
+
+                        $new_name = time();
+                        $config['file_name'] = $new_name; //.$extencion;
+                        $config['file_ext_tolower'] = TRUE;
+
+                        $this->load->library('upload', $config);
+                        $this->upload->do_upload('convocatoria_docupsi');
+
+                        $img_data = $this->upload->data();
+                        $extension = $img_data['file_ext'];
+                        /* ********************INICIO para resize***************************** */
+                        if($img_data['file_ext'] == ".jpg" || $img_data['file_ext'] == ".png" || $img_data['file_ext'] == ".jpeg" || $img_data['file_ext'] == ".gif") {
+                            $conf['image_library'] = 'gd2';
+                            $conf['source_image'] = $img_data['full_path'];
+                            $conf['new_image'] = './resources/images/convocatoriaupsi/';
+                            $conf['maintain_ratio'] = TRUE;
+                            $conf['create_thumb'] = FALSE;
+                            $conf['width'] = 800;
+                            $conf['height'] = 600;
+                            $this->image_lib->clear();
+                            $this->image_lib->initialize($conf);
+                            if(!$this->image_lib->resize()){
+                                echo $this->image_lib->display_errors('','');
+                            }
+
+                            $confi['image_library'] = 'gd2';
+                            $confi['source_image'] = './resources/images/convocatoriaupsi/'.$new_name.$extension;
+                            $confi['new_image'] = './resources/images/convocatoriaupsi/'."thumb_".$new_name.$extension;
+                            $confi['create_thumb'] = FALSE;
+                            $confi['maintain_ratio'] = TRUE;
+                            $confi['width'] = 100;
+                            $confi['height'] = 100;
+
+                            $this->image_lib->clear();
+                            $this->image_lib->initialize($confi);
+                            $this->image_lib->resize();
+                        }
+                        /* ********************F I N  para resize***************************** */
+                        $directorio = FCPATH.'resources\images\convocatoriaupsi\\';
+                        if(isset($foto1) && !empty($foto1)){
+                          if(file_exists($directorio.$foto1)){
+                              unlink($directorio.$foto1);
+                              $mimagenthumb = "thumb_".$foto1;
+                              //$mimagenthumb = str_replace(".", "_thumb.", $foto1);
+                              if($img_data['file_ext'] == ".jpg" || $img_data['file_ext'] == ".png" || $img_data['file_ext'] == ".jpeg" || $img_data['file_ext'] == ".gif") {
+                                  unlink($directorio.$mimagenthumb);
+                              }
+                          }
+                      }
+                        $foto = $new_name.$extension;
+                    }else{
+                        $foto = $foto1;
+                    }
+                    $params = array(
+                        'convocatoria_docupsi' => $foto,
+                    );
+                    $this->Convocatoria_model->update_convocatoria($convocatoria_id,$params);
+                    
+                    redirect('convocatoria');
+                }else{
+                    $data['_view'] = 'convocatoria/modifdocupsi';
+                    $this->load->view('layouts/main',$data);
+                }
+            }
+            else
+                show_error('The convocatoria you are trying to edit does not exist.');
+        }
+    }
 }
