@@ -78,7 +78,7 @@ class Reporte_model extends CI_Model
         }
         $postulante = $this->db->query("
             SELECT
-                p.*, e.`estudiante_nombre`, e.`estudiante_apellidos`,
+                p.*, e.`estudiante_nombre`, e.`estudiante_apellidos`, e.estudiante_carrera,
                 e.`estudiante_celular`, e.`estudiante_telefono`, e.`estudiante_email`,
                 es.`estado_descripcion`, es.`estado_color`, b.beca_nombre
             FROM

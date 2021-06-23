@@ -44,8 +44,10 @@
         <select id="gestion_id" name="gestion_id" class="btn btn-primary btn-sm form-control" >
             <option value="0">-TODOS-</option>
             <?php
-                foreach($all_gestion as $gestion){ ?>
-                    <option value="<?php echo $gestion['gestion_id']; ?>"><?php echo $gestion['gestion_descripcion']; ?></option>                                                   
+                foreach($all_gestion as $gestion){
+                    $selected = ($gestion['estado_id'] == 9) ? ' selected="selected"' : "";
+            ?>
+                    <option value="<?php echo $gestion['gestion_id']; ?>" <?php echo $selected; ?>><?php echo $gestion['gestion_descripcion']; ?></option>                                                   
             <?php } ?>
          </select>
     </div>

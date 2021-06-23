@@ -34,16 +34,18 @@
                         <th>Nombre</th>
                         <th>Fecha inicio</th>
                         <th>Fecha fin</th>
+                        <th>Estado</th>
                         <th></th>
                     </tr>
                     <?php
                     $i= 0;
                     foreach($gestion as $g){ ?>
-                    <tr>
+                    <tr style="background: <?php echo $g['estado_color']; ?>">
                         <td class="text-center"><?php echo $i+1; ?></td>
                         <td><?php echo $g['gestion_descripcion']; ?></td>
                         <td class="text-center"><?php echo date("d/m/Y", strtotime($g['gestion_fechainicio'])); ?></td>
                         <td class="text-center"><?php if(strtotime($g['gestion_fechafin']) > 0){ echo date("d/m/Y", strtotime($g['gestion_fechafin']));} ?></td>
+                        <td class="text-center"><?php echo $g['estado_descripcion'] ?></td>
                         <td>
                             <a href="<?php echo site_url('gestion/edit/'.$g['gestion_id']); ?>" class="btn btn-info btn-xs" title="Modificar gestión"><span class="fa fa-pencil"></span></a> 
                             <!--<a href="<?php //echo site_url('gestion/remove/'.$g['gestion_id']); ?>" class="btn btn-danger btn-xs" title="Eliminar gestión"><span class="fa fa-trash"></span> Delete</a>-->

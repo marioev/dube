@@ -49,14 +49,16 @@ class Gestion extends CI_Controller{
             $this->form_validation->set_rules('gestion_fechainicio','Gestion Fechainicio','required');
             if($this->form_validation->run())     
             {
+                $estado_id = 1;
                 $params = array(
+                    'estado_id' => $estado_id,
                     'gestion_fechainicio' => $this->input->post('gestion_fechainicio'),
                     'gestion_descripcion' => $this->input->post('gestion_descripcion'),
                     'gestion_fechafin' => $this->input->post('gestion_fechafin'),
                 );
                 $gestion_id = $this->Gestion_model->add_gestion($params);
                 redirect('gestion/index');
-            }else{       
+            }else{
                 $data['_view'] = 'gestion/add';
                 $this->load->view('layouts/main',$data);
             }
@@ -75,16 +77,15 @@ class Gestion extends CI_Controller{
             if(isset($data['gestion']['gestion_id']))
             {
                 $this->load->library('form_validation');
-
-                            $this->form_validation->set_rules('gestion_fechainicio','Gestion Fechainicio','required');
-                            $this->form_validation->set_rules('gestion_descripcion','Gestion Descripcion','required');
-
-                            if($this->form_validation->run())     
-                {   
+                $this->form_validation->set_rules('gestion_fechainicio','Gestion Fechainicio','required');
+                $this->form_validation->set_rules('gestion_descripcion','Gestion Descripcion','required');
+                if($this->form_validation->run())
+                {
                     $params = array(
-                                            'gestion_fechainicio' => $this->input->post('gestion_fechainicio'),
-                                            'gestion_descripcion' => $this->input->post('gestion_descripcion'),
-                                            'gestion_fechafin' => $this->input->post('gestion_fechafin'),
+                        'estado_id' => $this->input->post('estado_id'),
+                        'gestion_fechainicio' => $this->input->post('gestion_fechainicio'),
+                        'gestion_descripcion' => $this->input->post('gestion_descripcion'),
+                        'gestion_fechafin' => $this->input->post('gestion_fechafin'),
                     );
 
                     $this->Gestion_model->update_gestion($gestion_id,$params);            
@@ -92,6 +93,10 @@ class Gestion extends CI_Controller{
                 }
                 else
                 {
+                    $this->load->model('Estado_model');
+                    $tipo = 4;
+                    $data['all_estado'] = $this->Estado_model->get_tipo_estado($tipo);
+                    
                     $data['_view'] = 'gestion/edit';
                     $this->load->view('layouts/main',$data);
                 }

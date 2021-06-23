@@ -36,6 +36,7 @@
         <a href="<?php echo site_url('seguimiento/add/'.$postulante["postulante_id"]); ?>" class="btn btn-success btn-sm"><fa class='fa fa-pencil-square-o'></fa> Registrar Seguimiento</a>
     </div><br><br>
     <font size='4' face='Arial'><b>Becario: </b><?php echo $postulante["estudiante_apellidos"]." ".$postulante["estudiante_nombre"]; ?></font>
+    <br><span><b>C.I.: </b><?php echo $postulante["estudiante_ci"] ?></span>
     <br><span><b>Gestión: </b><?php echo $postulante["gestion_descripcion"] ?></span>
     <br><span><b>Convocatoria: </b><?php echo $postulante["convocatoria_titulo"] ?></span>
     <br><span><b>Tipo de Beca: </b><?php echo $postulante["beca_nombre"] ?></span>

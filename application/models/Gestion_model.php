@@ -24,8 +24,16 @@ class Gestion_model extends CI_Model
      */
     function get_all_gestion()
     {
-        $this->db->order_by('gestion_id', 'desc');
-        return $this->db->get('gestion')->result_array();
+        $gestion = $this->db->query("
+            SELECT
+                g.*, e.estado_descripcion, e.estado_color
+            FROM
+                `gestion` g
+            left join estado e on g.estado_id = e.estado_id
+            ORDER BY g.`gestion_id` DESC
+        ")->result_array();
+
+        return $gestion;
     }
         
     /*

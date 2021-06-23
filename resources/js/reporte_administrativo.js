@@ -1,3 +1,7 @@
+$(document).on("ready",inicio);
+function inicio(){
+    buscar_administrativos();
+}
 function buscar_administrativos(){
     var base_url   = document.getElementById('base_url').value;
     var cargo_id = document.getElementById('cargo_id').value;

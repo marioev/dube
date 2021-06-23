@@ -14,17 +14,17 @@
     });
 </script>
 <script type="text/javascript">
-        $(document).ready(function () {
-            (function ($) {
-                $('#buscarrequisito').keyup(function () {
-                    var rex = new RegExp($(this).val(), 'i');
-                    $('.buscarreq tr').hide();
-                    $('.buscarreq tr').filter(function () {
-                        return rex.test($(this).text());
-                    }).show();
-                })
-            }(jQuery));
-        });
+    $(document).ready(function () {
+        (function ($) {
+            $('#buscarrequisito').keyup(function () {
+                var rex = new RegExp($(this).val(), 'i');
+                $('.buscarreq tr').hide();
+                $('.buscarreq tr').filter(function () {
+                    return rex.test($(this).text());
+                }).show();
+            })
+        }(jQuery));
+    });
 </script>
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
@@ -36,10 +36,54 @@
         <a href="<?php echo site_url('postulante/add'); ?>" class="btn btn-success btn-sm"><fa class='fa fa-pencil-square-o'></fa> Registrar Postulante</a>
     </div>
 </div>
+<div class="row no-print" >
+    <div class="col-md-3">
+        Gestión:
+        <select id="gestion_id" name="gestion_id" class="btn btn-primary btn-sm form-control" onchange="mostrar_convocatoria(this.value)" >
+            <option value="0">-TODOS-</option>
+            <?php
+                foreach($all_gestion as $gestion){
+                    $selected = ($gestion['estado_id'] == 9) ? ' selected="selected"' : "";
+            ?>
+            <option value="<?php echo $gestion['gestion_id']; ?>" <?php echo $selected; ?>><?php echo $gestion['gestion_descripcion']; ?></option>                                                   
+            <?php } ?>
+         </select>
+    </div>
+    <div class="col-md-3">
+        Convocatoria:
+        <select name="convocatoria_id" class="btn-primary btn-sm btn-block form-control" id="convocatoria_id" onchange="mostrar_beca(this.value)">
+            <option value="0" disabled selected >-TODAS-</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        Beca:
+        <select name="beca_id" class="btn-primary btn-sm btn-block form-control" id="beca_id">
+            <option value="0" disabled selected >-TODAS-</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        Estado:
+        <select id="estado_id" name="estado_id" class="btn btn-primary btn-sm form-control" >
+            <option value="0">-TODOS-</option>
+            <?php
+                foreach($all_estado as $estado){ ?>
+                    <option value="<?php echo $estado['estado_id']; ?>"><?php echo $estado['estado_descripcion']; ?></option>                                                   
+            <?php } ?>
+         </select>
+    </div>
+    <div class="col-md-2">
+        &nbsp;
+        <a class="btn btn-facebook btn-sm form-control" onclick="buscar_apostulantes()"><i class="fa fa-search"> Buscar</i></a>
+    </div>
+    <!--<div class="col-md-2">
+        &nbsp;
+        <a class="btn btn-success btn-sm form-control" onclick="imprimir_postulantes()" title="Imprimir"><i class="fa fa-print"></i> Imprimir</a>
+    </div>-->
+</div>
 <div class="row">
     <div class="col-md-12">
         <div class="input-group no-print"> <span class="input-group-addon">Buscar</span>
-            <input id="filtrar" type="text" class="form-control" placeholder="Ingrese nombre, apellido..">
+            <input id="filtrar" name="filtrar" type="text" class="form-control" placeholder="Ingrese nombre, apellido, ci..." onclick="buscarelpostulante(event)" autofocus autocomplete="off">
         </div>
         <div class="box">
             <div class="box-body table-responsive">
@@ -47,6 +91,7 @@
                     <tr>
                         <th>#</th>
                         <th>Estudiante</th>
+                        <th>Carrera</th>
                         <th>Gestión</th>
                         <th>Convocatoria</th>
                         <th>Tipo de Beca</th>

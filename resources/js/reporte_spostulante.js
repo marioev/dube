@@ -1,3 +1,7 @@
+$(document).on("ready",inicio);
+function inicio(){
+    buscar_reporte();
+}
 function buscar_reporte(){
     var base_url   = document.getElementById('base_url').value;
     var gestion_id = document.getElementById('gestion_id').value;

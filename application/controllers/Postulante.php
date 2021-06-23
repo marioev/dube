@@ -33,6 +33,13 @@ class Postulante extends CI_Controller{
         if($this->acceso(14)) {
             $rolusuario = $this->session_data['rol'];
             $data['ver_requisitos'] = $rolusuario[19-1]['rolusuario_asignado'];
+            
+            $this->load->model('Gestion_model');
+            $data['all_gestion'] = $this->Gestion_model->get_all_gestion();
+
+            $this->load->model('Estado_model');
+            $tipo = 2;
+            $data['all_estado'] = $this->Estado_model->get_tipo_estado($tipo);
             //$data['postulante'] = $this->Postulante_model->get_all_postulante_estudiante();
 
             $data['_view'] = 'postulante/index';
@@ -436,10 +443,27 @@ class Postulante extends CI_Controller{
     function get_postulantes()
     {
         //if($this->acceso(103)) {
-            if ($this->input->is_ajax_request()) {
-                //$postulante_id = $this->input->post('postulante_id');
+            if($this->input->is_ajax_request()){
+                $filtrar = $this->input->post('filtrar');
+                $gestion_id = $this->input->post('gestion_id');
+                $convocatoria_id = $this->input->post('convocatoria_id');
+                $beca_id = $this->input->post('beca_id');
+                $estado_id = $this->input->post('estado_id');
+                $filtro = "";
+                if($gestion_id != 0){
+                    $filtro = " and c.gestion_id = ".$gestion_id;
+                }
+                if($convocatoria_id != 0){
+                    $filtro = $filtro." and pl.convocatoria_id = ".$convocatoria_id;
+                }
+                if($beca_id != 0){
+                    $filtro = $filtro." and b.beca_id = ".$beca_id;
+                }
+                if($estado_id != 0){
+                    $filtro = $filtro." and p.estado_id = ".$estado_id;
+                }
                 //$this->load->model('Formulario_autentificacion_model');
-                $datos = $this->Postulante_model->get_all_postulante_estudiante();
+                $datos = $this->Postulante_model->get_all_postulante_estudiante($filtrar, $filtro);
                 //$datos = $this->Formulario_autentificacion_model->get_all_formulario_postulante($postulante_id);
                 echo json_encode($datos);
             }else{                 

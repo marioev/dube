@@ -1,3 +1,9 @@
+$(document).on("ready",inicio);
+function inicio(){
+    var gestion_id = document.getElementById('gestion_id').value;
+    mostrar_convocatoria(gestion_id)
+    buscar_postulantes();
+}
 function buscar_postulantes(){
     var base_url   = document.getElementById('base_url').value;
     var gestion_id = document.getElementById('gestion_id').value;
@@ -22,12 +28,13 @@ function buscar_postulantes(){
                         html += "<tr style='background: "+datos[i].estado_color+"'>";
                         html += "<td style='padding-top: 0; padding-bottom: 0px; width:5px;' align='center'>"+(i+1)+"</td>";
                         html += "<td style='padding-top: 0; padding-bottom: 0px;'> "+datos[i].estudiante_apellidos+" "+datos[i].estudiante_nombre+" </td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px;'> "+datos[i].estudiante_carrera+" </td>";
                         html += "<td style='padding-top: 0; padding-bottom: 0px;' class='text-right'> "+datos[i].estudiante_telefono+" </td>";
                         html += "<td style='padding-top: 0; padding-bottom: 0px;' class='text-right'> "+datos[i].estudiante_celular+" </td>";
                         html += "<td style='padding-top: 0; padding-bottom: 0px;' class='text-right'> "+datos[i].estudiante_email+" </td>";
                         html += "<td style='padding-top: 0; padding-bottom: 0px;'> "+datos[i].beca_nombre+" </td>";
                         html += "<td style='padding-top: 0; padding-bottom: 0px;' class='text-right'> "+datos[i].postulante_observacion+" </td>";
-                        html += "<td style='padding-top: 0; padding-bottom: 0px;' class='text-right'> "+datos[i].estado_descripcion+" </td>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px;' class='text-center'> "+datos[i].estado_descripcion+" </td>";
                         html += "</tr>";
                     }
                     /*html += "<tr>";
