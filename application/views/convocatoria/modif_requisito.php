@@ -11,7 +11,16 @@ function toggle(source) {
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Modificar Requisitos de la Beca:</h3>
+              	<h3 class="box-title">
+                    <?php
+                    if(sizeof($los_requisitos)>0){
+                        $titulo = "Modificar";
+                    }else{
+                        $titulo = "Registrar";
+                    }
+                    echo "<b>".$titulo."</b>";
+                    ?>
+                     Requisitos de la Beca:</h3>
                 <div class="col-md-12 text-center">
                     <h3 class="box-title"><?php echo $beca['beca_nombre']; ?></h3>
                 </div>

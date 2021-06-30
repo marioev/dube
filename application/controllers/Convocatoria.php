@@ -130,18 +130,6 @@ class Convocatoria extends CI_Controller{
                     $plaza_id = $this->Plazas_beca_model->add_plazas_beca($paramsplaz);
                 }
                 
-                $los_requisitos = $this->input->post('requisitos');
-                $this->load->model('Convocatoria_requisito_model');
-                foreach ($all_becas as $beca) {
-                    foreach ($los_requisitos as $requisito) {
-                        $paramsreq = array(
-                            'requisito_id' => $requisito,
-                            'convocatoria_id' => $convocatoria_id,
-                            'beca_id' => $beca['beca_id'],
-                        );
-                        $convoreq_id = $this->Convocatoria_requisito_model->add_convocatoria_requisito($paramsreq);
-                    }
-                }
                 redirect('convocatoria/numbeca/'.$convocatoria_id);
             }
             else
@@ -149,8 +137,8 @@ class Convocatoria extends CI_Controller{
                 $this->load->model('Gestion_model');
                 $data['all_gestion'] = $this->Gestion_model->get_all_gestion();
 
-                $this->load->model('Requisito_model');
-                $data['all_requisito'] = $this->Requisito_model->get_all_requisito();
+                //$this->load->model('Requisito_model');
+                //$data['all_requisito'] = $this->Requisito_model->get_all_requisito();
 
                 $this->load->model('Beca_model');
                 $data['all_beca'] = $this->Beca_model->get_all_beca();

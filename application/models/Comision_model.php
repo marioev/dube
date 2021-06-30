@@ -22,19 +22,20 @@ class Comision_model extends CI_Model
     /*
      * Get all comision
      */
-    function get_all_comision()
+    function get_all_comision($filtrar, $filtro)
     {
         $comision = $this->db->query("
             SELECT
-                c.*, a.admin_nombre, a.admin_apellido, g.gestion_descripcion, e.estado_color, e.estado_descripcion
+                c.*, co.convocatoria_titulo, g.gestion_descripcion, e.estado_color, e.estado_descripcion
             FROM
                 `comision` c
             left join gestion g on c.gestion_id = g.gestion_id
-            left join administrativo a on c.admin_id = a.admin_id
+            left join convocatoria co on c.convocatoria_id = co.convocatoria_id
             left join estado e on c.estado_id = e.estado_id
             WHERE
                 1 = 1
-
+                and(c.comision_nombre like '%".$filtrar."%' or c.comision_descripcion like '%".$filtrar."%')
+                ".$filtro." 
             ORDER BY `c`.`comision_nombre` asc
         ")->result_array();
 

@@ -1,4 +1,5 @@
 <script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('resources/js/comision_index.js'); ?>" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         (function ($) {
@@ -13,34 +14,60 @@
     });
 </script>
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
+<input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
 <div class="box-header">
     <font size='4' face='Arial'><b>Comisión</b></font>
-    <br><font size='2' face='Arial'>Registros Encontrados: <?php echo sizeof($comision); ?></font>
+    <br><font size='2' face='Arial'>Registros Encontrados: <span id="numcomisiones"></span></font>
     <div class="box-tools no-print">
         <a href="<?php echo site_url('comision/add'); ?>" class="btn btn-success btn-sm"><fa class='fa fa-pencil-square-o'></fa> Registrar Comisión</a>
+    </div>
+</div>
+<div class="row no-print" >
+    <div class="col-md-3">
+        Gestión:
+        <select id="gestion_id" name="gestion_id" class="btn btn-primary btn-sm form-control" onchange="mostrar_convocatoria(this.value)" >
+            <option value="0">-TODOS-</option>
+            <?php
+                foreach($all_gestion as $gestion){
+                    $selected = ($gestion['estado_id'] == 9) ? ' selected="selected"' : "";
+            ?>
+            <option value="<?php echo $gestion['gestion_id']; ?>" <?php echo $selected; ?>><?php echo $gestion['gestion_descripcion']; ?></option>                                                   
+            <?php } ?>
+         </select>
+    </div>
+    <div class="col-md-3">
+        Convocatoria:
+        <select name="convocatoria_id" class="btn-primary btn-sm btn-block form-control" id="convocatoria_id" onchange="mostrar_beca(this.value)">
+            <option value="0" disabled selected >-TODAS-</option>
+        </select>
+    </div>
+    <div class="col-md-2">
+        &nbsp;
+        <a class="btn btn-facebook btn-sm form-control" onclick="buscar_comision()"><i class="fa fa-search"> Buscar</i></a>
     </div>
 </div>
 <div class="row">
     <div class="col-md-12">
         <div class="input-group no-print"> <span class="input-group-addon">Buscar</span>
-            <input id="filtrar" type="text" class="form-control" placeholder="Ingrese nombre, apellido..">
+            <input id="filtrar" name="filtrar" type="text" class="form-control" placeholder="Ingrese nombre.." onclick="buscarlacomision(event)" autofocus autocomplete="off">
         </div>
         <div class="box">
-            <div class="box-body">
+            <div class="box-body table-responsive">
                 <table class="table table-striped" id="mitabla">
                     <tr>
                         <th>#</th>
                         <th>Nombre</th>
                         <th>Gestión</th>
-                        <th>Administrativo</th>
+                        <th>Convocatoria</th>
+                        <th>Miembros (Comisión)</th>
                         <th>Descripción</th>
                         <th>F. de Creacion</th>
                         <th>Estado</th>
                         <th></th>
                     </tr>
-                    <tbody class="buscar">
+                    <tbody class="buscar" id="tablacomision">
                     <?php
-                    $i =0;
+                    /*$i =0;
                     foreach($comision as $c){ ?>
                     <tr>
                         <td class="text-center"><?php echo $i+1; ?></td>
@@ -57,7 +84,7 @@
                     </tr>
                     <?php
                     $i++;
-                    } ?>
+                    }*/ ?>
                     </tbody>
                 </table>
                                 

@@ -35,7 +35,7 @@ class Administrativo_model extends CI_Model
             WHERE
                 1 = 1
 
-            ORDER BY `admin_id` DESC
+            ORDER BY a.`admin_apellido` ASC, a.`admin_nombre` ASC
         ")->result_array();
 
         return $administrativo;

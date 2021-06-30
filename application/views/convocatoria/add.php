@@ -28,27 +28,6 @@ function toggle(source) {
                                 <input type="text" name="convocatoria_descripcion" value="<?php echo $this->input->post('convocatoria_descripcion'); ?>" class="form-control" id="convocatoria_descripcion" autocomplete="off" required onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                             </div>
                         </div>
-                        <!--
-                        <div class="col-md-9">
-                            <label for="beca_id" class="control-label"><span class="text-danger">*</span>Beca</label>
-                            <div class="form-group">
-                                <select name="beca_id" class="form-control" required>
-                                    <?php 
-                                    /*foreach($all_beca as $beca)
-                                    {
-                                        echo '<option value="'.$beca['beca_id'].'">'.$beca['beca_nombre'].'</option>';
-                                    } 
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="plaza_cantidad" class="control-label"><span class="text-danger">*</span>Plazas</label>
-                            <div class="form-group">
-                                <input type="number" name="plaza_cantidad" value="<?php echo ($this->input->post('plaza_cantidad') ? $this->input->post('plaza_cantidad') : "0");*/ ?>" class="form-control" id="plaza_cantidad"  autocomplete="off" required />
-                            </div>
-                        </div>
-                        -->
                         <div class="col-md-4">
                             <label for="gestion_id" class="control-label">Gestion</label>
                             <div class="form-group">
@@ -74,25 +53,6 @@ function toggle(source) {
                                 <input type="file" name="convocatoria_dcto" value="<?php echo $this->input->post('convocatoria_dcto'); ?>" class="form-control" id="convocatoria_dcto" required/>
                             </div>
                         </div>
-                        <div class="col-md-12 text-bold text-center"><u>REQUISITOS</u></div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="control-label">
-                                <input type="checkbox" id="select_all" onclick="toggle(this)" checked />Seleccionar Todos</label>
-                            </div>
-                        </div>
-                        <?php
-                        foreach ($all_requisito as $requisito) {
-                            ?>
-                        <div class="col-md-6 text-left">
-                            <label class="normal" title="<?php //echo $requisito['requisisto_nombre']; ?>">
-                                <u><input style="display: inline" class="checkbox" type="checkbox" name="requisitos[]" id="requisisto_id<?php echo $requisito['requisito_id']; ?>" value="<?php echo $requisito['requisito_id']; ?>" checked />
-                                    <?php echo $requisito['requisito_nombre']; ?>
-                                </u>
-                            </label>
-                            <!--<input type="hidden" name="id_rol_usuario<?php //echo $i; ?>" id="id_rol_usuario<?php //echo $i; ?>" value="<?php //echo $rolhijo['id_rol_usuario']; ?>" />-->
-                        </div>
-                        <?php } ?>
                     </div>
                 </div>
           	<div class="box-footer">

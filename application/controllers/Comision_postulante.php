@@ -57,7 +57,7 @@ class Comision_postulante extends CI_Controller{
             else
             {
                 $this->load->model('Postulante_model');
-                $data['all_postulante'] = $this->Postulante_model->get_all_postulante_estudiante();
+                $data['all_postulante'] = $this->Postulante_model->get_all_postulante_estudiante("","");
 
                 $this->load->model('Comision_model');
                 $data['all_comision'] = $this->Comision_model->get_all_comision();

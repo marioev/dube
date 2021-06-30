@@ -81,7 +81,7 @@
                         <td>
                             <a href="<?php echo site_url('convocatoria/edit/'.$c['convocatoria_id']); ?>" class="btn btn-info btn-xs" title="Modificar convocatoria"><span class="fa fa-pencil"></span></a>
                             <a href="<?php echo site_url('convocatoria/numbeca/'.$c['convocatoria_id']); ?>" class="btn btn-facebook btn-xs" title="Modificar numero de becas"><span class="fa fa-list-ol"></span></a>
-                            <a href="<?php echo site_url('convocatoria/beca_requisito/'.$c['convocatoria_id']); ?>" class="btn btn-primary btn-xs" title="Ver, modificar requisitos"><span class="fa fa-list"></span></a>
+                            <a href="<?php echo site_url('convocatoria/beca_requisito/'.$c['convocatoria_id']); ?>" class="btn btn-primary btn-xs" title="Registrar, ver, modificar requisitos"><span class="fa fa-list"></span></a>
                             <?php if( $c['convocatoria_docupsi'] != null && $c['convocatoria_docupsi'] != ""){ ?>
                             <a href="<?php echo site_url('convocatoria/modifdocupsi/'.$c['convocatoria_id']); ?>" class="btn btn-soundcloud btn-xs" title="Modificar documento upsi"><span class="fa fa-file-archive-o"></span></a>
                             <?php }else{ ?>
