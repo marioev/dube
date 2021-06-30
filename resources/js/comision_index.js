@@ -61,9 +61,34 @@ function buscar_administrativo(comision_id){
                 if (datos != null){
                     var n = datos.length;
                     html = "";
-                    html += "<table>";
+                    html += "<table style='font-size: 10px'>";
+                    html += "<tr>";
+                    html += "<th style='padding: 0'>Administrativo</th>";
+                    html += "<th style='padding: 0'>Cargo</th>";
+                    html += "<th style='padding: 0'>Cargo Comision</th>";
+                    html += "<th style='padding: 0'></th>";
+                    html += "</tr>";
                     for (var i = 0; i < n ; i++){
-                        html += "-"+datos[i].admin_apellido+" "+datos[i].admin_nombre+" ("+datos[i].cargo_nombre+")<br>";
+                        html += "<tr>";
+                        html += "<td style='padding: 0'>";
+                        html += "-"+datos[i].admin_apellido+" "+datos[i].admin_nombre;
+                        html += "</td>";
+                        html += "<td style='padding: 0'>";
+                        html += datos[i].cargo_nombre;
+                        html += "</td>";
+                        html += "<td style='padding: 0'>";
+                        if(datos[i].cargocomision_id >0){
+                            html += datos[i].cargocomision_descripcion;
+                        }
+                        html += "</td>";
+                        html += "<td style='padding: 0'>";
+                        if(datos[i].cargocomision_id >0){
+                            html += "<a onclick='mostrar_modalcargoc("+datos[i].comisionadmin_id+", "+datos[i].cargocomision_id+")' class='btn btn-facebook btn-xs' title='Modificar cargo comisión'><i class='fa fa-list-ol'></i></a>";
+                        }else{
+                            html += "<a onclick='mostrar_modalcargoc("+datos[i].comisionadmin_id+", 0)' class='btn btn-facebook btn-xs' title='Añadir cargo comisión'><i class='fa fa-list-ol'></i></a>";
+                        }
+                        html += "</td>";
+                        html += "</tr>";
                     }
                     html += "</table>";
                    $("#admin"+comision_id).html(html);
@@ -103,4 +128,78 @@ function mostrar_convocatoria(gestion_id){
            //$("#producto_nombreenvase").html(html);
         }
     });   
+}
+
+/* mostrar modal cargo comision */
+function mostrar_modalcargoc(comisionadmin_id, cargocomision_id){
+    var base_url    = document.getElementById('base_url').value;
+    var controlador = base_url+"cargo_comision/get_cargo_comision";
+    $.ajax({url: controlador,
+            type:"POST",
+            data:{},
+            success:function(respuesta){
+                var datos= JSON.parse(respuesta);
+                if (datos != null){
+                    var n = datos.length;
+                    var selected = "";
+                    $("#lacomisionadmin_id").val("");
+                    $("#tablacargo").html("");
+                    html = "";
+                    html += "<select class='form-control' name='elcargo' id='elcargo' required>";
+                    for (var i = 0; i < n ; i++){
+                        if(cargocomision_id >0){
+                            if(datos[i].cargocomision_id == cargocomision_id){
+                                selected = "selected";
+                            }else{ selected = ""; }
+                        }
+                        html += "<option value='"+datos[i].cargocomision_id+"' "+selected+">"+datos[i].cargocomision_descripcion+"</option>";
+                    }
+                    html += "</select>";
+                    $("#lacomisionadmin_id").val(comisionadmin_id);
+                    $("#tablacargo").html(html);
+                    $('#modal_cargocomision').modal('show');
+                }else{
+                    alert("Esta convocatoria no tiene Requisitos");
+                }
+        }
+    })
+}
+
+/* registrar cargo comision en comision administrativo */
+function registrarcargocomision(){
+    var base_url    = document.getElementById('base_url').value;
+    var cargocomision_id = document.getElementById('elcargo').value;
+    var comisionadmin_id = document.getElementById('lacomisionadmin_id').value;
+    $('#modal_cargocomision').modal('hide');
+    var controlador = base_url+"cargo_comision/registrar_cargo_comision";
+    $.ajax({url: controlador,
+            type:"POST",
+            data:{comisionadmin_id:comisionadmin_id, cargocomision_id:cargocomision_id},
+            success:function(respuesta){
+                var datos= JSON.parse(respuesta);
+                if (datos != null){
+                    buscar_comision();
+                    /*var n = datos.length;
+                    var required = "";
+                    $("#lacomisionadmin_id").val("");
+                    $("#tablacargo").html("");
+                    html = "";
+                    html += "<select class='form-control' name='elcargo' id='elcargo' required>";
+                    for (var i = 0; i < n ; i++){
+                        if(cargocomision_id >0){
+                            if(datos[i].cargocomision_id == cargocomision_id){
+                                required = "required";
+                            }else{ required = ""; }
+                        }
+                        html += "<option value='"+datos[i].cargocomision_id+"' "+required+">"+datos[i].cargocomision_descripcion+"</option>";
+                    }
+                    html += "</select>";
+                    $("#lacomisionadmin_id").val(comisionadmin_id);
+                    $("#tablacargo").html(html);
+                    $('#modal_cargocomision').modal('show');*/
+                }else{
+                    alert("Esta convocatoria no tiene Requisitos");
+                }
+        }
+    })
 }

@@ -1,5 +1,4 @@
 <script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
-<!--<script src="<?php //echo base_url('resources/js/reporte_postulante.js'); ?>" type="text/javascript"></script>-->
 <script type="text/javascript">
     $(document).ready(function () {
         (function ($) {
@@ -90,6 +89,32 @@
                     $i++;
                     } ?>
                     </tbody>
+                </table>
+                <br><br>
+                <table class="table table-striped" id="mitabla">
+                    <?php
+                    $cont = 1;
+                    $band = true;
+                    foreach($comision_administrativo as $comadmin){
+                        if($band == true){
+                            echo "<tr>";
+                            $band = false;
+                        }
+                        ?>
+                    <td class="text-center" style="line-height: 1.3; width: 50%">
+                            <br>------------------------------------<br>
+                            <?php echo $comadmin['admin_apellido']." ".$comadmin['admin_nombre']; ?><br>
+                            <?php echo $comadmin['cargo_nombre']; ?><br>
+                            <b><?php echo $comadmin['cargocomision_descripcion']; ?></b><br>
+                    </td>
+                    <?php
+                        if($cont == 2){
+                            $cont = 0;
+                            echo "</tr>";
+                            $band = true;
+                        }
+                    $cont ++;
+                    } ?>
                 </table>
             </div>
             <div class="text-center no-print">

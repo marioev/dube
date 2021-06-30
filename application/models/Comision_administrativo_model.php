@@ -27,15 +27,18 @@ class Comision_administrativo_model extends CI_Model
     {
         $comision = $this->db->query("
             SELECT
-                ca.admin_id, a.admin_nombre, a.admin_apellido, c.cargo_nombre, du.direccionuniv_nombre
+                ca.admin_id, a.admin_nombre, a.admin_apellido, c.cargo_nombre,
+                du.direccionuniv_nombre, cc.cargocomision_descripcion, cc.cargocomision_id,
+                ca.comisionadmin_id
             FROM
                 `comision_administrativo` ca
             left join administrativo a on ca.admin_id = a.admin_id
             left join cargo c on a.cargo_id = c.cargo_id
             left join direccion_universitaria du on a.direccionuniv_id = du.direccionuniv_id
+            left join cargo_comision cc on ca.cargocomision_id = cc.cargocomision_id
             WHERE
                 ca.comision_id = $comision_id
-            ORDER BY a.`admin_apellido` ASC, a.`admin_nombre` ASC
+            ORDER BY cc.`cargocomision_nivel` ASC
         ")->result_array();
 
         return $comision;
@@ -46,5 +49,39 @@ class Comision_administrativo_model extends CI_Model
     function delete_comision_administrativo($comision_id)
     {
         return $this->db->delete('comision_administrativo',array('comision_id'=>$comision_id));
+    }
+    
+    /*
+     * function to update comision_administrativo
+     */
+    function update_comisionadmin_decargocomision($comisionadmin_id,$params)
+    {
+        $this->db->where('comisionadmin_id',$comisionadmin_id);
+        return $this->db->update('comision_administrativo',$params);
+    }
+    
+    /*
+     * Get all adminsitrativos de una comisión que pertenecen a una convocatoria
+     */
+    function get_all_comadmin_deconvocatoria($convocatoria_id)
+    {
+        $comision = $this->db->query("
+            SELECT
+                ca.admin_id, a.admin_nombre, a.admin_apellido, c.cargo_nombre,
+                du.direccionuniv_nombre, cc.cargocomision_descripcion, cc.cargocomision_id,
+                ca.comisionadmin_id
+            FROM
+                `comision_administrativo` ca
+            left join administrativo a on ca.admin_id = a.admin_id
+            left join cargo c on a.cargo_id = c.cargo_id
+            left join direccion_universitaria du on a.direccionuniv_id = du.direccionuniv_id
+            left join cargo_comision cc on ca.cargocomision_id = cc.cargocomision_id
+            left join comision co on ca.comision_id = co.comision_id
+            WHERE
+                co.convocatoria_id = $convocatoria_id
+            ORDER BY cc.`cargocomision_nivel` ASC
+        ")->result_array();
+
+        return $comision;
     }
 }

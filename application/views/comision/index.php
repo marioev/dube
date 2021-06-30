@@ -15,6 +15,7 @@
 </script>
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
+<input type="hidden" name="lacomisionadmin_id" id="lacomisionadmin_id" />
 <div class="box-header">
     <font size='4' face='Arial'><b>Comisión</b></font>
     <br><font size='2' face='Arial'>Registros Encontrados: <span id="numcomisiones"></span></font>
@@ -92,3 +93,28 @@
         </div>
     </div>
 </div>
+<!------------------------ INICIO modal para ver cargos  de la comision ------------------->
+<div class="modal fade" id="modal_cargocomision" tabindex="-1" role="dialog" aria-labelledby="modalrequisitolabel">
+    <div class="modal-dialog" role="document">
+        <br><br>
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+                <span class="text-bold">CARGOS</span>
+            </div>
+            <div class="modal-body">
+                <!------------------------------------------------------------------->
+                <div class="box-body table-responsive">
+                    <span id="tablacargo"></span>
+                </div>
+                <!------------------------------------------------------------------->
+            </div>
+            <div class="modal-footer" style="text-align: center">
+                <a class="btn btn-success" onclick="registrarcargocomision()"><span class="fa fa-check"></span> Aceptar</a>
+                <a class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times"></span> Cancelar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------ F I N  modal para ver cargos  de la comision ------------------->
+

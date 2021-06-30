@@ -428,6 +428,10 @@ class Postulante extends CI_Controller{
             $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
             $this->load->model('Formulario_autentificacion_model');
             $data["requisitos"] = $this->Formulario_autentificacion_model->get_all_formulario_postulante($postulante_id);
+            
+            $this->load->model('Comision_administrativo_model');
+            $data["comision_administrativo"] = $this->Comision_administrativo_model->get_all_comadmin_deconvocatoria($data['postulante']['convocatoria_id']);
+            
             //$this->load->model('Gestion_model');
             //$data['all_gestion'] = $this->Gestion_model->get_all_gestion();
 
