@@ -46,23 +46,23 @@
                                     Seleccione el/los administrativo(s) que conformaran la comisión<br>
                                     </p>
                                 </h4>
-                                <div class="col-md-4 no-print">
+                                <div class="col-md-5 no-print">
                                     <label for="admin_pasar" class="control-label">Administrativo(s):</label>
                                     <select name="admin_pasar[]" style="width: 100%;" id="admin_pasar" size="6" class="no-print" multiple>
                                         <?php 
                                         foreach($all_administrativo as $administrativo)
                                         {
                                             $selected = ($administrativo['admin_id'] == $this->input->post('admin_id')) ? ' selected="selected"' : "";
-                                            echo '<option value="'.$administrativo['admin_id'].'" '.$selected.'>'.$administrativo['admin_apellido']." ".$administrativo['admin_nombre'].'</option>';
+                                            echo '<option value="'.$administrativo['admin_id'].'" '.$selected.'>'.$administrativo['admin_apellido']." ".$administrativo['admin_nombre']." (".$administrativo['cargo_nombre'].')</option>';
                                         } 
                                         ?>
                                     </select>
                                 </div>
-                                <div class="col-md-4 no-print" align="center">
+                                <div class="col-md-2 no-print" align="center">
                                     <input type="button" class="btn btn-primary btn-sm" name="agregar" onclick="aniadir()" value="A&ntilde;adir -->>" style="margin:  11px;"><br>
                                     <input type="button" class="btn btn-primary btn-sm" name="sacar" onclick="quitar()" value="<<-- Quitar" style="margin:  11px;">
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-5">
                                     <label for="admin_quitar" class="control-label">Administrativo(s) seleccionados:</label>
                                     <select name="admin_quitar[]" style="width: 100%;" id="admin_quitar" size="6" class="no-print" multiple required >
                                         <!--<option value="-" >-</option>-->

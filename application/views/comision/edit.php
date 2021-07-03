@@ -47,7 +47,7 @@
                                     Seleccione el/los administrativo(s) que conformaran la comisión<br>
                                     </p>
                                 </h4>
-                                <div class="col-md-4 no-print">
+                                <div class="col-md-5 no-print">
                                     <label for="admin_pasar" class="control-label">Administrativo(s):</label>
                                     <select name="admin_pasar[]" style="width: 100%;" id="admin_pasar" size="6" class="no-print" multiple>
                                         <?php 
@@ -61,23 +61,23 @@
                                                 }
                                             }
                                             if($band == true){
-                                                echo '<option value="'.$administrativo['admin_id'].'" >'.$administrativo['admin_apellido']." ".$administrativo['admin_nombre'].'</option>';
+                                                echo '<option value="'.$administrativo['admin_id'].'" >'.$administrativo['admin_apellido']." ".$administrativo['admin_nombre']." (".$administrativo['cargo_nombre'].')</option>';
                                             }
                                         }
                                         ?>
                                     </select>
                                 </div>
-                                <div class="col-md-4 no-print" align="center">
+                                <div class="col-md-2 no-print" align="center">
                                     <input type="button" class="btn btn-primary btn-sm" name="agregar" onclick="aniadir()" value="A&ntilde;adir -->>" style="margin:  11px;"><br>
                                     <input type="button" class="btn btn-primary btn-sm" name="sacar" onclick="quitar()" value="<<-- Quitar" style="margin:  11px;">
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-5">
                                     <label for="admin_quitar" class="control-label">Administrativo(s) seleccionados:</label>
                                     <select name="admin_quitar[]" style="width: 100%;" id="admin_quitar" size="6" class="no-print" multiple required >
                                         <?php 
                                         foreach($all_comision_administrativo as $cadministrativo)
                                         {
-                                            echo '<option value="'.$cadministrativo['admin_id'].'">'.$cadministrativo['admin_apellido']." ".$cadministrativo['admin_nombre'].'</option>';
+                                            echo '<option value="'.$cadministrativo['admin_id'].'">'.$cadministrativo['admin_apellido']." ".$cadministrativo['admin_nombre']." (".$administrativo['cargo_nombre'].')</option>';
                                         } 
                                         ?>
                                     </select>
