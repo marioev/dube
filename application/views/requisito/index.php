@@ -32,6 +32,8 @@
                     <tr>
                         <th>#</th>
                         <th>Nombre</th>
+                        <th>Beca</th>
+                        <th>Estado</th>
                         <th></th>
                     </tr>
                     <tbody class="buscar">
@@ -41,6 +43,8 @@
                     <tr>
                         <td class="text-center"><?php echo $i+1; ?></td>
                         <td><?php echo $r['requisito_nombre']; ?></td>
+                        <td><?php echo $r['beca_nombre']; ?></td>
+                        <td><?php echo $r['estado_descripcion']; ?></td>
                         <td>
                             <a href="<?php echo site_url('requisito/edit/'.$r['requisito_id']); ?>" class="btn btn-info btn-xs" title="Modificar requisito"><span class="fa fa-pencil"></span></a> 
                             <!--<a href="<?php //echo site_url('requisito/remove/'.$r['requisito_id']); ?>" class="btn btn-danger btn-xs" title="Elimiar requisito"><span class="fa fa-trash"></span></a>-->

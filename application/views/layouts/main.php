@@ -201,12 +201,12 @@
                                 </li>
                                 <?php } ?>
                                 <?php
-                                if($rolusuario[42-1]['rolusuario_asignado'] == 1){
+                                /*if($rolusuario[42-1]['rolusuario_asignado'] == 1){
                                 ?>
                                 <li>
                                     <a href="<?php echo site_url('comision_postulante');?>"><i class="fa fa-creative-commons"></i> Comisión Postualnte</a>
                                 </li>
-                                <?php } ?>
+                                <?php }*/ ?>
                                 <?php
                                 if($rolusuario[34-1]['rolusuario_asignado'] == 1){
                                 ?>

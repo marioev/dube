@@ -355,7 +355,7 @@ class Convocatoria extends CI_Controller{
                     $data['beca'] = $this->Beca_model->get_beca($beca_id);
                     
                     $this->load->model('Requisito_model');
-                    $data['all_requisito'] = $this->Requisito_model->get_all_requisito();
+                    $data['all_requisito'] = $this->Requisito_model->get_all_requisito_beca($beca_id);
 
                     $this->load->model('Convocatoria_requisito_model');
                     $data['los_requisitos'] = $this->Convocatoria_requisito_model->get_all_requisitos($convocatoria_id, $beca_id);

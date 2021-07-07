@@ -14,6 +14,20 @@
                             <span class="text-danger"><?php echo form_error('requisito_nombre');?></span>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <label for="beca_id" class="control-label">Beca</label>
+                        <div class="form-group">
+                            <select name="beca_id" class="form-control" id="beca_id">
+                                <option value="0">REQUISITO GENERAL (TODAS LAS BECAS)</option>
+                                <?php 
+                                foreach($all_beca as $beca)
+                                {
+                                    echo '<option value="'.$beca['beca_id'].'">'.$beca['beca_nombre'].'</option>';
+                                } 
+                                ?>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="box-footer">

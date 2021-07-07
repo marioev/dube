@@ -14,6 +14,35 @@
                             <span class="text-danger"><?php echo form_error('requisito_nombre');?></span>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <label for="beca_id" class="control-label">Beca</label>
+                        <div class="form-group">
+                            <select name="beca_id" class="form-control" id="beca_id">
+                                <option value="0">REQUISITO GENERAL (TODAS LAS BECAS)</option>
+                                <?php 
+                                foreach($all_beca as $beca)
+                                {
+                                    $selected = ($beca['beca_id'] == $requisito['beca_id']) ? ' selected="selected"' : "";
+                                    echo '<option value="'.$beca['beca_id'].'" '.$selected.'>'.$beca['beca_nombre'].'</option>';
+                                } 
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="estado_id" class="control-label">Estado</label>
+                        <div class="form-group">
+                            <select name="estado_id" class="form-control" id="estado_id">
+                                <?php 
+                                foreach($all_estado as $estado)
+                                {
+                                    $selected = ($estado['estado_id'] == $requisito['estado_id']) ? ' selected="selected"' : "";
+                                    echo '<option value="'.$estado['estado_id'].'" '.$selected.'>'.$estado['estado_descripcion'].'</option>';
+                                } 
+                                ?>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="box-footer">

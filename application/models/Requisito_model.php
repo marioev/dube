@@ -24,8 +24,17 @@ class Requisito_model extends CI_Model
      */
     function get_all_requisito()
     {
-        $this->db->order_by('requisito_nombre', 'asc');
-        return $this->db->get('requisito')->result_array();
+        $requisito = $this->db->query("
+            SELECT
+                r.*, b.beca_nombre, e.estado_descripcion, e.estado_color
+            FROM
+                `requisito` r
+            left join beca b on r.beca_id = b.beca_id
+            left join estado e on r.estado_id = e.estado_id
+            ORDER BY `requisito_nombre` ASC
+        ")->result_array();
+        
+        return $requisito;
     }
         
     /*
@@ -52,5 +61,24 @@ class Requisito_model extends CI_Model
     function delete_requisito($requisito_id)
     {
         return $this->db->delete('requisito',array('requisito_id'=>$requisito_id));
+    }
+    /*
+     * Get all requisitos de una Beca
+     */
+    function get_all_requisito_beca($beca_id)
+    {
+        $requisito = $this->db->query("
+            SELECT
+                r.*, b.beca_nombre, e.estado_descripcion, e.estado_color
+            FROM
+                `requisito` r
+            left join beca b on r.beca_id = b.beca_id
+            left join estado e on r.estado_id = e.estado_id
+            WHERE
+                r.beca_id = 0 or r.beca_id = $beca_id
+            ORDER BY `requisito_nombre` ASC
+        ")->result_array();
+        
+        return $requisito;
     }
 }

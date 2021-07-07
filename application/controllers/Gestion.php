@@ -49,7 +49,7 @@ class Gestion extends CI_Controller{
             $this->form_validation->set_rules('gestion_fechainicio','Gestion Fechainicio','required');
             if($this->form_validation->run())     
             {
-                $estado_id = 1;
+                $estado_id = 9;
                 $params = array(
                     'estado_id' => $estado_id,
                     'gestion_fechainicio' => $this->input->post('gestion_fechainicio'),
