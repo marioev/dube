@@ -130,6 +130,20 @@ class Convocatoria extends CI_Controller{
                     $plaza_id = $this->Plazas_beca_model->add_plazas_beca($paramsplaz);
                 }
                 
+                $this->load->model('Requisito_model');
+                $this->load->model('Convocatoria_requisito_model');
+                foreach ($all_becas as $beca) {
+                    $all_requisito = $this->Requisito_model->get_all_requisito_beca($beca['beca_id']);
+                    foreach ($all_requisito as $requisito) {
+                        $paramsreq = array(
+                            'requisito_id' => $requisito['requisito_id'],
+                            'convocatoria_id' => $convocatoria_id,
+                            'beca_id' => $beca['beca_id'],
+                        );
+                        $convoreq_id = $this->Convocatoria_requisito_model->add_convocatoria_requisito($paramsreq);
+                    }
+                }
+                
                 redirect('convocatoria/numbeca/'.$convocatoria_id);
             }
             else
@@ -349,7 +363,7 @@ class Convocatoria extends CI_Controller{
                         );
                         $convoreq_id = $this->Convocatoria_requisito_model->add_convocatoria_requisito($paramsreq);
                     }
-                    redirect('convocatoria/beca_requisito');
+                    redirect('convocatoria/beca_requisito/'.$convocatoria_id);
                 }else{
                     $this->load->model('Beca_model');
                     $data['beca'] = $this->Beca_model->get_beca($beca_id);
@@ -421,11 +435,11 @@ class Convocatoria extends CI_Controller{
     /*
      * muestra los requisitos de las diferentes becas de una convocatoria
      */
-    function beca_requisito($convocatoria_id = null)
+    function beca_requisito($convocatoria_id)
     {
         if($this->acceso(5)) {
-            $data['all_convocatoria'] = $this->Convocatoria_model->get_all_convocatoria();
-            $data['convocatoria_id'] = $convocatoria_id;
+            $data['convocatoria'] = $this->Convocatoria_model->get_convocatoria($convocatoria_id);
+            //$data['convocatoria_id'] = $convocatoria_id;
             //$this->load->model('Beca_model');
             //$data['all_beca'] = $this->Beca_model->get_all_becaconvocatoria($convocatoria_id);
 

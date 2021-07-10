@@ -476,4 +476,13 @@ class Postulante extends CI_Controller{
         //}
     }
     
+    /* contrato internado rotatorio */
+    function contratointernadorot($postulante_id)
+    {
+        if($this->acceso(14)){
+            $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
+            $data['_view'] = 'postulante/contratointernadorot';
+            $this->load->view('layouts/main',$data);
+        }
+    }
 }

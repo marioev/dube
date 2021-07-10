@@ -48,7 +48,7 @@
     <br><span><b>Unidad: </b><?php echo $solicitud_unidadpostulante["unidad_nombre"]."/".$solicitud_unidadpostulante["unidad_dependencia"]; ?></span>
     <?php
     }
-    if($postulante["beca_id"] == 5){ // 5 => BECA DEPORTE
+    if($postulante["beca_nombre"] == "BECA DEPORTE"){
         if($postulante["postulante_caracteristica"] != "" || $postulante["postulante_caracteristica"] != null){
     ?>
             <br><span><b>Caracteristica: </b><?php echo $postulante["postulante_caracteristica"]; ?></span>
@@ -66,7 +66,7 @@
         <?php
         }
     }
-    if($postulante["beca_nombre"] == 6){ // 6 => BECA CULTURA
+    if($postulante["beca_nombre"] == "BECA CULTURA"){
         if($postulante["postulante_caracteristica"] != "" || $postulante["postulante_caracteristica"] != null){
     ?>
             <br><span><b>Caracteristica: </b><?php echo $postulante["postulante_caracteristica"]; ?></span>

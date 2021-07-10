@@ -26,7 +26,7 @@ class Solicitud_unidad_model extends CI_Model
     {
         $solicitud_unidad = $this->db->query("
             SELECT
-                s.*, g.gestion_descripcion, u.unidad_nombre
+                s.*, g.gestion_descripcion, u.unidad_nombre, u.unidad_dependencia, u.unidad_responsable
             FROM
                 `solicitud_unidades` s
             left join gestion g on s.gestion_id = g.gestion_id

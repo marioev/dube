@@ -28,12 +28,17 @@ class Seguimiento extends CI_Controller{
     /* seguimiento a postulante */
     function seguimiento($postulante_id)
     {
-        if($this->acceso(14)) {
+        if($this->acceso(14)){
             //$rolusuario = $this->session_data['rol'];
             //$data['ver_requisitos'] = $rolusuario[19-1]['rolusuario_asignado'];
             $this->load->model('Postulante_model');
             $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
-            
+            if($data['postulante']['beca_id'] == 9){
+                $this->load->model('Solunidad_postulante_model');
+                $data['solicitud_unidadpostulante'] = $this->Solunidad_postulante_model->esreg_solunidad_postulante($postulante_id);
+            }else{
+                $data['solicitud_unidadpostulante'] = "";
+            }
             $data['seguimientos'] = $this->Seguimiento_model->get_seguimientos($postulante_id);
 
             $data['_view'] = 'seguimiento/seguimiento';
@@ -42,7 +47,7 @@ class Seguimiento extends CI_Controller{
     }
     function add($postulante_id)
     {
-        if($this->acceso(15)) {
+        if($this->acceso(15)){
             $data['postulante_id'] = $postulante_id;
             $this->load->model('Postulante_model');
             $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
@@ -134,7 +139,7 @@ class Seguimiento extends CI_Controller{
      */
     function edit($seguimiento_id)
     {
-        if($this->acceso(16)) {
+        if($this->acceso(16)){
             // check if the postulante exists before trying to edit it
             $data['seguimiento'] = $this->Seguimiento_model->get_seguimiento($seguimiento_id);
             /*print_r($data['seguimiento']);
@@ -237,6 +242,32 @@ class Seguimiento extends CI_Controller{
             }
             else
                 show_error('The postulante you are trying to edit does not exist.');
+        }
+    }
+    
+    /*
+     * guardar caracterisitca del postualnte que postulo a beca (deporte o cultura)
+     */
+    function guardarcarac($postulante_id)
+    {
+        if($this->acceso(16)){
+            $this->load->model('Postulante_model');
+            $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
+            if(isset($data['postulante']['postulante_id']))
+            {
+                if(isset($_POST) && count($_POST) > 0)     
+                {
+                    $params = array(
+                        'postulante_caracteristica' => $this->input->post('postulante_caracteristica'),
+                    );
+                    $this->Postulante_model->update_postulante($postulante_id,$params);            
+                    redirect('seguimiento/seguimiento/'.$postulante_id);
+                }else{
+                    redirect('seguimiento/seguimiento/'.$postulante_id);
+                }
+            }
+            else
+                show_error('El postulante que intentas registrar no existe');
         }
     }
 }

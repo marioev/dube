@@ -25,7 +25,7 @@ function buscar_becas(){
                         html += "<td class='text-right'> "+datos[i].plaza_cantidad+" </td>";
                         html += "<td class='text-center'> "+datos[i].estado_descripcion+" </td>";
                         html += "<td>";
-                        html += "<a href='"+base_url+"convocatoria/modif_requisito/"+convocatoria_id+"/"+datos[i]["beca_id"]+"' target='_blank' class='btn btn-facebook btn-xs' title='Modificar Requisitos'><span class='fa fa-list-ul'></span></a>";
+                        html += "<a href='"+base_url+"convocatoria/modif_requisito/"+convocatoria_id+"/"+datos[i]["beca_id"]+"' class='btn btn-facebook btn-xs' title='Modificar Requisitos'><span class='fa fa-list-ul'></span></a>";
                         html += "</td>";
                         html += "</tr>";
                     }

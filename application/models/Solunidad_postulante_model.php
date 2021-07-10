@@ -24,9 +24,11 @@ class Solunidad_postulante_model extends CI_Model
     {
         $esregistrado = $this->db->query("
             SELECT
-                sp.*
+                sp.*, u.unidad_nombre, u.unidad_dependencia, u.unidad_responsable, su.solicitud_unidad
             FROM
                 `solunidad_postulante` sp
+            left join solicitud_unidades su on sp.solicitud_id = su.solicitud_id
+            left join unidad u on su.unidad_id = u.unidad_id
             WHERE
                 sp.`postulante_id` = $postulante_id
         ")->row_array();

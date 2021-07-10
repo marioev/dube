@@ -14,7 +14,7 @@
 </script>
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 <div class="box-header">
-    <font size='4' face='Arial'><b>Solicitud Unidades</b></font>
+    <font size='4' face='Arial'><b>Unidades Solicitantes</b></font>
     <br><font size='2' face='Arial'>Registros Encontrados: <?php echo sizeof($solicitud_unidades); ?></font>
     <div class="box-tools no-print">
         <a href="<?php echo site_url('solicitud_unidad/add'); ?>" class="btn btn-success btn-sm"><fa class='fa fa-pencil-square-o'></fa> Registrar Solicitud Unidades</a>
@@ -30,10 +30,11 @@
                 <table class="table table-striped" id="mitabla">
                     <tr>
                         <th>#</th>
-                        <th>Solicitud Unidad</th>
-                        <th>Gestión</th>
+                        <th>Unidad Solicitante</th>
                         <th>Unidad</th>
+                        <th>Dependencia</th>
                         <th>Modalidad</th>
+                        <th>Gestión</th>
                         <th>Cantidad Becarios</th>
                         <th>Requiremiento</th>
                         <th>Actividad</th>
@@ -46,9 +47,10 @@
                     <tr>
                         <td class="text-center"><?php echo $i+1; ?></td>
                         <td><?php echo $s['solicitud_unidad']; ?></td>
-                        <td class="text-center"><?php echo $s['gestion_descripcion']; ?></td>
                         <td><?php echo $s['unidad_nombre']; ?></td>
+                        <td><?php echo $s['unidad_dependencia']; ?></td>
                         <td><?php echo $s['solicitud_modalidad']; ?></td>
+                        <td class="text-center"><?php echo $s['gestion_descripcion']; ?></td>
                         <td class="text-center"><?php echo $s['solicitud_cantidad_becarios']; ?></td>
                         <td><?php echo $s['solicitud_carreras_requiremiento']; ?></td>
                         <td><?php echo $s['solicitud_actividad']; ?></td>

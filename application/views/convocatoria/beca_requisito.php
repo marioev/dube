@@ -1,36 +1,14 @@
 <script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('resources/js/beca_requisito.js'); ?>" type="text/javascript"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        (function ($) {
-            $('#filtrar').keyup(function () {
-                var rex = new RegExp($(this).val(), 'i');
-                $('.buscar tr').hide();
-                $('.buscar tr').filter(function () {
-                    return rex.test($(this).text());
-                }).show();
-            })
-        }(jQuery));
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        (function ($) {
-            $('#buscarrequisito').keyup(function () {
-                var rex = new RegExp($(this).val(), 'i');
-                $('.buscarreq tr').hide();
-                $('.buscarreq tr').filter(function () {
-                    return rex.test($(this).text());
-                }).show();
-            })
-        }(jQuery));
-    });
-</script>
+
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
+<input type="hidden" name="convocatoria_id" id="convocatoria_id" value="<?php echo $convocatoria["convocatoria_id"]; ?>" />
 
 <div class="box-header">
-    <font size='4' face='Arial'><b>Requisitos Asignados a Becas</b></font>
+    <font size='4' face='Arial'><b>Convocatoria: </b><?php echo $convocatoria['convocatoria_titulo'] ?></font>
+    <br>
+    <font size='2' face='Arial'><b>Ver, Modificar Requisitos Asignados a Becas</b></font>
     <!--<br><font size='2' face='Arial'>Registros Encontrados: <?php //echo sizeof($convocatoria); ?></font>-->
     
     <!--<div class="box-tools no-print">
@@ -38,9 +16,9 @@
     </div>-->
 </div>
 <div class="row">
-    <div class="col-md-4">
+    <!--<div class="col-md-4">
         <?php
-        $convoc = 0;
+        /*$convoc = 0;
         if(isset($convocatoria_id)){
             $convoc = $convocatoria_id;
         }
@@ -52,15 +30,14 @@
                 {
                     $selected = ($convocatoria['convocatoria_id'] == $convoc) ? ' selected="selected"' : "";
                     echo '<option value="'.$convocatoria['convocatoria_id'].'" '.$selected.'>'.$convocatoria['convocatoria_titulo'].'</option>';
-                } 
+                }*/
                 ?>
-            </select>
          </select>
     </div>
     <div class="col-md-2">
         &nbsp;
         <a class="btn btn-facebook btn-sm form-control" onclick="buscar_becas()"><i class="fa fa-search"> Buscar</i></a>
-    </div>
+    </div>-->
     <div class="col-md-12">
         <!--<div class="input-group no-print"> <span class="input-group-addon">Buscar</span>
             <input id="filtrar" type="text" class="form-control" placeholder="Ingrese la descripción de la convocatoria..">
@@ -84,7 +61,10 @@
         </div>
     </div>
 </div>
-
+<a href="<?php echo site_url('convocatoria'); ?>" class="btn btn-danger">
+    <i class="fa fa-times"></i> Salir
+</a>
+            
 <!------------------------ INICIO modal para ver requisitos ------------------->
 <div class="modal fade" id="modalrequisito" tabindex="-1" role="dialog" aria-labelledby="modalrequisitolabel">
     <div class="modal-dialog" role="document">

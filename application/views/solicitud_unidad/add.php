@@ -37,7 +37,7 @@
                                     foreach($all_unidad as $unidad)
                                     {
                                         $selected = ($unidad['unidad_id'] == $this->input->post('unidad_id')) ? ' selected="selected"' : "";
-                                        echo '<option value="'.$unidad['unidad_id'].'" '.$selected.'>'.$unidad['unidad_nombre'].'</option>';
+                                        echo '<option value="'.$unidad['unidad_id'].'" '.$selected.'>'.$unidad['unidad_nombre']."/".$unidad['unidad_dependencia'].'</option>';
                                     } 
                                     ?>
                                 </select>
@@ -46,7 +46,7 @@
                         <div class="col-md-6">
                             <label for="solicitud_modalidad" class="control-label">Modalidad</label>
                             <div class="form-group">
-                                <input type="text" name="solicitud_modalidad" value="<?php echo $this->input->post('solicitud_modalidad'); ?>" class="form-control" id="solicitud_modalidad" autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                                <input type="text" name="solicitud_modalidad" value="BECA TRABAJO" class="form-control" id="solicitud_modalidad" autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                             </div>
                         </div>
                         <div class="col-md-6">

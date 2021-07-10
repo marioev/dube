@@ -43,7 +43,12 @@
                     <tr>
                         <td class="text-center"><?php echo $i+1; ?></td>
                         <td><?php echo $r['requisito_nombre']; ?></td>
-                        <td><?php echo $r['beca_nombre']; ?></td>
+                        <td><?php
+                            if($r['beca_nombre'] == "" || $r['beca_nombre'] == null){
+                                echo "REQUISITO GENERAL";
+                            }else{ echo $r['beca_nombre'];}
+                            ?>
+                        </td>
                         <td><?php echo $r['estado_descripcion']; ?></td>
                         <td>
                             <a href="<?php echo site_url('requisito/edit/'.$r['requisito_id']); ?>" class="btn btn-info btn-xs" title="Modificar requisito"><span class="fa fa-pencil"></span></a> 

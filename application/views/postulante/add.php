@@ -35,8 +35,8 @@
                                     <?php 
                                     foreach($all_gestion as $gestion)
                                     {
-                                        //$selected = ($plazas_beca['plaza_id'] == $this->input->post('plaza_id')) ? ' selected="selected"' : "";
-                                        echo '<option value="'.$gestion['gestion_id'].'">'.$gestion['gestion_descripcion'].'</option>';
+                                        $selected = ($gestion['estado_id'] == 9) ? ' selected="selected"' : "";
+                                        echo '<option value="'.$gestion['gestion_id'].'"'.$selected.'>'.$gestion['gestion_descripcion'].'</option>';
                                     } 
                                     ?>
                                 </select>
