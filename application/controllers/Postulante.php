@@ -485,4 +485,44 @@ class Postulante extends CI_Controller{
             $this->load->view('layouts/main',$data);
         }
     }
+    
+    /* contrato elaboracion de Tesis */
+    function contratoelabtesis($postulante_id)
+    {
+        if($this->acceso(14)){
+            $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
+            $data['_view'] = 'postulante/contratoelabtesis';
+            $this->load->view('layouts/main',$data);
+        }
+    }
+    
+    /* contrato proyecto de grado */
+    function contratoproygrado($postulante_id)
+    {
+        if($this->acceso(14)){
+            $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
+            $data['_view'] = 'postulante/contratoproygrado';
+            $this->load->view('layouts/main',$data);
+        }
+    }
+    
+    /* contrato adscripcion */
+    function contratoadscripcion($postulante_id)
+    {
+        if($this->acceso(14)){
+            $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
+            $data['_view'] = 'postulante/contratoadscripcion';
+            $this->load->view('layouts/main',$data);
+        }
+    }
+    
+    /* contrato beca deporte */
+    function contratodeporte($postulante_id)
+    {
+        if($this->acceso(14)){
+            $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
+            $data['_view'] = 'postulante/contratodeporte';
+            $this->load->view('layouts/main',$data);
+        }
+    }
 }
