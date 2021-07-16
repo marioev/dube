@@ -43,9 +43,9 @@ function buscar_apostulantes(){
                         html += "<td> ";
                         html += "<a href='"+base_url+"postulante/edit/"+datos[i].postulante_id+"' class='btn btn-info btn-xs' title='Modificar postulante'><span class='fa fa-pencil'></span></a>";
                         html += "<a href='"+base_url+"postulante/imprimir/"+datos[i].postulante_id+"' class='btn btn-success btn-xs' title='Imprimir requisitos del postulante'><span class='fa fa-print'></span></a>";
-                        if(datos[i].estado_id == 3){
+                        /*if(datos[i].estado_id == 3){
                         html += "<a href='"+base_url+"postulante/cumplir/"+datos[i].postulante_id+"' class='btn btn-success btn-xs' title='Calificar requisitos'><i class='fa fa-file-text-o'></i></a>";
-                        }else if(datos[i].estado_id == 5){
+                        }else*/ if(datos[i].estado_id == 5){
                             html += "<a href='"+base_url+"seguimiento/seguimiento/"+datos[i].postulante_id+"' class='btn btn-xs' title='Seguimiento a postulante' style='background: #8accdb' ><i class='fa fa-binoculars'></i></a>";
                             if(datos[i].beca_id == 9){
                                 if(datos[i].solunidad_id != 'undefined' && datos[i].solunidad_id >0){
@@ -64,20 +64,21 @@ function buscar_apostulantes(){
                         html += "<a href='"+base_url+"postulante/contratoadscripcion/"+datos[i].postulante_id+"' class='btn btn-warning btn-xs' title='Generar contrato'><i class='fa fa-list'></i></a>";
                             }else if(datos[i].beca_id == 5){
                         html += "<a href='"+base_url+"postulante/contratodeporte/"+datos[i].postulante_id+"' class='btn btn-warning btn-xs' title='Generar contrato'><i class='fa fa-list'></i></a>";
-                            }else if(datos[i].beca_id == 6){
+                        html += "<a href='"+base_url+"postulante/compromisopdeporte/"+datos[i].postulante_id+"' class='btn btn-soundcloud btn-xs' title='Compromiso de pago'><i class='fa fa-list'></i></a>";
+                            }else /*if(datos[i].beca_id == 6){
                         html += "<a href='"+base_url+"postulante/contratocultura/"+datos[i].postulante_id+"' class='btn btn-warning btn-xs' title='Generar contrato'><i class='fa fa-list'></i></a>";
-                            }else if(datos[i].beca_id == 7){
+                            }else*/ if(datos[i].beca_id == 7){
                         html += "<a href='"+base_url+"postulante/contratoextenuniv/"+datos[i].postulante_id+"' class='btn btn-warning btn-xs' title='Generar contrato'><i class='fa fa-list'></i></a>";
-                            }else if(datos[i].beca_id == 8){
+                            }else /*if(datos[i].beca_id == 8){
                         html += "<a href='"+base_url+"postulante/contratovivalbergue/"+datos[i].postulante_id+"' class='btn btn-warning btn-xs' title='Generar contrato'><i class='fa fa-list'></i></a>";
-                            }else if(datos[i].beca_id == 10){
+                            }else*/ if(datos[i].beca_id == 10){
                         html += "<a href='"+base_url+"postulante/contratotrabdirigido/"+datos[i].postulante_id+"' class='btn btn-warning btn-xs' title='Generar contrato'><i class='fa fa-list'></i></a>";
                             }
-                        }else if(datos[i].estado_id == 4 || datos[i].estado_id == 11){
+                        }else if(datos[i].estado_id == 3 || datos[i].estado_id == 4 || datos[i].estado_id == 11){
                         html += "<a href='"+base_url+"postulante/modificar/"+datos[i].postulante_id+"' class='btn btn-soundcloud btn-xs' title='Modificar requisitos'><i class='fa fa-file-text-o'></i></a>";
-                            if(ver_requisitos == 1){
-                        html += "<a onclick='formulario_requisitos("+datos[i].postulante_id+")' class='btn btn-facebook btn-xs' title='Ver requisitos calificados'><i class='fa fa-list-ol'></i></a>";
-                            }
+                        }
+                        if(ver_requisitos == 1){
+                            html += "<a onclick='formulario_requisitos("+datos[i].postulante_id+")' class='btn btn-facebook btn-xs' title='Ver requisitos calificados'><i class='fa fa-list-ol'></i></a>";
                         }
                         html += " </td>";
                         html += "</tr>";
@@ -105,6 +106,7 @@ function formulario_requisitos(postulante_id){
                         html += "<tr>";
                         html += "<td align='center' style='width:5px;'>"+(i+1)+"</td>";
                         html += "<td> "+datos[i].requisito_nombre+" </td>";
+                        html += "<td> "+datos[i].formulario_observacion+" </td>";
                         html += "<td class='text-center'> ";
                         if(datos[i].estado_id == 7){
                             esteestado = "CUMPLE";

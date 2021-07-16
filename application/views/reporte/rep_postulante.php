@@ -91,7 +91,7 @@
                 <table class="table table-striped" id="mitabla">
                     <tr>
                         <th>#</th>
-                        <th>Postulante</th>
+                        <th>Estudiante</th>
                         <th>Carrera</th>
                         <th>Teléfono</th>
                         <th>Celular</th>

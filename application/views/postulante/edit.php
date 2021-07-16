@@ -6,7 +6,15 @@
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Modificar Postulante</h3>
+              	<h3 class="box-title">Modificar
+                    <?php
+                    if($postulante["estado_id"] == 5){
+                        echo " Becario";
+                    }else{
+                        echo " Postulante";
+                    }
+                    ?>
+                    </h3>
             </div>
             <?php echo form_open('postulante/edit/'.$postulante['postulante_id']); ?>
                 <div class="box-body">

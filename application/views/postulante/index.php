@@ -179,6 +179,7 @@
                         <tr>
                             <th>#</th>
                             <th>Requisito</th>
+                            <th>Observación</th>
                             <th>Estado</th>
                         </tr>
                         <tbody class="buscarreq" id="tablaresultados"></tbody>

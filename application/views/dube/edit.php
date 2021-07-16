@@ -4,19 +4,20 @@
             <div class="box-header with-border">
               	<h3 class="box-title">Modificar Dube</h3>
             </div>
-            <?php echo form_open('dube/edit/'.$dube['dube_id']); ?>
+            <?php echo form_open_multipart('dube/edit/'.$dube['dube_id']); ?>
                 <div class="box-body">
                     <div class="row clearfix">
                         <div class="col-md-6">
-                            <label for="dube_organigrama" class="control-label"><span class="text-danger">*</span>Organigrama</label>
+                            <label for="dube_autoridadades" class="control-label">Autoridades</label>
                             <div class="form-group">
-                                <input type="text" name="dube_organigrama" value="<?php echo ($this->input->post('dube_organigrama') ? $this->input->post('dube_organigrama') : $dube['dube_organigrama']); ?>" class="form-control" id="dube_organigrama" required autofocus autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                                <input type="text" name="dube_autoridadades" value="<?php echo ($this->input->post('dube_autoridadades') ? $this->input->post('dube_autoridadades') : $dube['dube_autoridadades']); ?>" class="form-control" id="dube_autoridadades" autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="dube_autoridadades" class="control-label">Autoridadades</label>
+                            <label for="dube_organigrama" class="control-label"><span class="text-danger">*</span>Organigrama</label>
                             <div class="form-group">
-                                <input type="text" name="dube_autoridadades" value="<?php echo ($this->input->post('dube_autoridadades') ? $this->input->post('dube_autoridadades') : $dube['dube_autoridadades']); ?>" class="form-control" id="dube_autoridadades" autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                                <input type="file" name="dube_organigrama" value="<?php echo $this->input->post('dube_organigrama'); ?>" class="form-control" id="dube_organigrama" />
+                                <input type="hidden" name="dube_organigrama1" value="<?php echo ($this->input->post('dube_organigrama') ? $this->input->post('dube_organigrama') : $dube['dube_organigrama']); ?>" class="form-control" id="dube_organigrama1" />
                             </div>
                         </div>
                         <div class="col-md-6">

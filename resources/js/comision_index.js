@@ -31,15 +31,16 @@ function buscar_comision(){
                         html += "<td> "+datos[i].comision_nombre+" </td>";
                         html += "<td> "+datos[i].gestion_descripcion+" </td>";
                         html += "<td> "+datos[i].convocatoria_titulo+" </td>";
-                        html += "<td> <span id='admin"+datos[i].comision_id+"'></span></td>";
+                        //html += "<td> <span id='admin"+datos[i].comision_id+"'></span></td>";
                         html += "<td> "+datos[i].comision_descripcion+" </td>";
                         html += "<td class='text-center'> "+moment(datos[i].comision_fechacreacion).format("DD/MM/YYYY")+" </td>";
                         html += "<td class='text-center'> "+datos[i].estado_descripcion+" </td>";
                         html += "<td> ";
                         html += "<a href='"+base_url+"comision/edit/"+datos[i].comision_id+"' class='btn btn-info btn-xs' title='Modificar comision'><span class='fa fa-pencil'></span></a>";
+                        html += "<a onclick='buscar_administrativo("+datos[i].comision_id+")' class='btn btn-facebook btn-xs' title='Ver miembros; modificar cargos de la comisión'><span class='fa fa-list'></span></a>";
                         html += " </td>";
                         html += "</tr>";
-                        buscar_administrativo(datos[i].comision_id);
+                        //buscar_administrativo(datos[i].comision_id);
                     }
                    $("#tablacomision").html(html);
                    //$('#modalrequisito').modal('show');
@@ -61,7 +62,7 @@ function buscar_administrativo(comision_id){
                 if (datos != null){
                     var n = datos.length;
                     html = "";
-                    html += "<table style='font-size: 10px'>";
+                    html += "<table id='mitabla'>";
                     html += "<tr>";
                     html += "<th style='padding: 0'>Administrativo</th>";
                     html += "<th style='padding: 0'>Cargo</th>";
@@ -71,7 +72,7 @@ function buscar_administrativo(comision_id){
                     for (var i = 0; i < n ; i++){
                         html += "<tr>";
                         html += "<td style='padding: 0'>";
-                        html += "-"+datos[i].admin_apellido+" "+datos[i].admin_nombre;
+                        html += datos[i].admin_apellido+" "+datos[i].admin_nombre;
                         html += "</td>";
                         html += "<td style='padding: 0'>";
                         html += datos[i].cargo_nombre;
@@ -91,7 +92,9 @@ function buscar_administrativo(comision_id){
                         html += "</tr>";
                     }
                     html += "</table>";
-                   $("#admin"+comision_id).html(html);
+                   $("#escomision_id").html(comision_id);
+                   $("#tablamiembrocomision").html(html);
+                   $("#modal_administrativocomision").modal("show");
                 }else{
                     alert("Esta comisión no tiene Administrativos");
                 }
@@ -170,6 +173,7 @@ function registrarcargocomision(){
     var base_url    = document.getElementById('base_url').value;
     var cargocomision_id = document.getElementById('elcargo').value;
     var comisionadmin_id = document.getElementById('lacomisionadmin_id').value;
+    var comision_id = $("#escomision_id").html();
     $('#modal_cargocomision').modal('hide');
     var controlador = base_url+"cargo_comision/registrar_cargo_comision";
     $.ajax({url: controlador,
@@ -178,25 +182,9 @@ function registrarcargocomision(){
             success:function(respuesta){
                 var datos= JSON.parse(respuesta);
                 if (datos != null){
-                    buscar_comision();
-                    /*var n = datos.length;
-                    var required = "";
-                    $("#lacomisionadmin_id").val("");
-                    $("#tablacargo").html("");
-                    html = "";
-                    html += "<select class='form-control' name='elcargo' id='elcargo' required>";
-                    for (var i = 0; i < n ; i++){
-                        if(cargocomision_id >0){
-                            if(datos[i].cargocomision_id == cargocomision_id){
-                                required = "required";
-                            }else{ required = ""; }
-                        }
-                        html += "<option value='"+datos[i].cargocomision_id+"' "+required+">"+datos[i].cargocomision_descripcion+"</option>";
-                    }
-                    html += "</select>";
-                    $("#lacomisionadmin_id").val(comisionadmin_id);
-                    $("#tablacargo").html(html);
-                    $('#modal_cargocomision').modal('show');*/
+                    buscar_administrativo(comision_id);
+                    //buscar_comision();
+                    
                 }else{
                     alert("Esta convocatoria no tiene Requisitos");
                 }

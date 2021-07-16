@@ -51,11 +51,11 @@
     if($postulante["beca_id"] == 5){ // 5 => BECA DEPORTE
         if($postulante["postulante_caracteristica"] != "" || $postulante["postulante_caracteristica"] != null){
     ?>
-            <br><span><b>Caracteristica: </b><?php echo $postulante["postulante_caracteristica"]; ?></span>
+            <br><span><b>Disciplina: </b><?php echo $postulante["postulante_caracteristica"]; ?></span>
     <?php
         }else{
         ?>
-            <br><span><b>Caracteristica: </b>
+            <br><span><b>Disciplina: </b>
                 <?php echo form_open_multipart('seguimiento/guardarcarac/'.$postulante['postulante_id']); ?>
                     <input type="text" name="postulante_caracteristica" class="form-control" id="postulante_caracteristica" autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                     <button type="submit" class="btn btn-success">
@@ -66,14 +66,14 @@
         <?php
         }
     }
-    if($postulante["beca_nombre"] == 6){ // 6 => BECA CULTURA
+    if($postulante["beca_id"] == 6){ // 6 => BECA CULTURA
         if($postulante["postulante_caracteristica"] != "" || $postulante["postulante_caracteristica"] != null){
     ?>
-            <br><span><b>Caracteristica: </b><?php echo $postulante["postulante_caracteristica"]; ?></span>
+            <br><span><b>Aptitud Artistica o Destreza: </b><?php echo $postulante["postulante_caracteristica"]; ?></span>
     <?php
         }else{
         ?>
-            <br><span><b>Caracteristica: </b>
+            <br><span><b>Aptitud Artistica o Destreza: </b>
                 <?php echo form_open_multipart('seguimiento/guardarcarac/'.$postulante['postulante_id']); ?>
                     <input type="text" name="postulante_caracteristica" class="form-control" id="postulante_caracteristica" autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                     <button type="submit" class="btn btn-success">

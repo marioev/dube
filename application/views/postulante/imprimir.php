@@ -34,7 +34,15 @@
     </div>-->
     <div class="columna_central">
         <center>
-            <h3 class="box-title"><u>POSTULANTE</u></h3>
+            <h3 class="box-title"><u>
+                    <?php
+                    if($postulante["estado_id"] == 5){
+                        echo "BECARIO";
+                    }else{
+                        echo "POSTULANTE";
+                    }
+                    ?>
+                    </u></h3>
             <h3 class="box-title"><u><?php echo $postulante["estudiante_apellidos"]." ".$postulante["estudiante_nombre"] ?></u></h3>
             <?php echo date('d/m/Y H:i:s'); ?><br>
         </center>

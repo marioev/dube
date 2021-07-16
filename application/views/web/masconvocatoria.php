@@ -77,7 +77,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="small-box <?php echo $color; ?>">
                     <div class="inner" style="font-size: ">
                         <h3><b><fa class="fa fa-file-text-o"></fa></b></h3>
-                        <h5><b><p><?php echo $convocatoria['convocatoria_descripcion']; echo "<br><span style='font-size: 10px;'>Fecha LImite: ".date("d/m/Y", strtotime($convocatoria['convocatoria_fechalimite']))."</span>"; ?></p><sup style="font-size: 20px"></sup></b></h5>
+                        <h5><b><p><?php
+                        echo $convocatoria['convocatoria_titulo'];
+                        echo "<br><span style='font-size: 12px;'>Descripción: ".$convocatoria['convocatoria_descripcion']."</span>";
+                        echo "<br><span style='font-size: 10px;'>Fecha Limite: ".date("d/m/Y", strtotime($convocatoria['convocatoria_fechalimite']))."</span>";
+                        ?></p><sup style="font-size: 20px"></sup></b></h5>
                     </div>
                     <div class="icon">
                         <i class="fa fa-file-text-o"></i>              

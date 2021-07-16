@@ -60,7 +60,7 @@
                         <th>Nombre</th>
                         <th>Gestión</th>
                         <th>Convocatoria</th>
-                        <th>Miembros (Comisión)</th>
+                        <!--<th>Miembros (Comisión)</th>-->
                         <th>Descripción</th>
                         <th>F. de Creacion</th>
                         <th>Estado</th>
@@ -93,6 +93,31 @@
         </div>
     </div>
 </div>
+<!------------------------ INICIO modal para ver administrativos  de la comision ------------------->
+<div class="modal fade" id="modal_administrativocomision" tabindex="-1" role="dialog" aria-labelledby="modal_administrativocomisionlabel">
+    <div class="modal-dialog" role="document">
+        <br><br>
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+                <span><h4><b>MIEMBROS (COMISION)</b></h4></span>
+            </div>
+            <div class="modal-body">
+                <!------------------------------------------------------------------->
+                <div class="box-body table-responsive">
+                    <span id="tablamiembrocomision"></span>
+                    <span id="escomision_id" hidden></span>
+                </div>
+                <!------------------------------------------------------------------->
+            </div>
+            <div class="modal-footer" style="text-align: center">
+                <a class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times"></span> Cerrar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------ F I N  modal para ver administrativos  de la comision ------------------->
+
 <!------------------------ INICIO modal para ver cargos  de la comision ------------------->
 <div class="modal fade" id="modal_cargocomision" tabindex="-1" role="dialog" aria-labelledby="modalrequisitolabel">
     <div class="modal-dialog" role="document">
@@ -100,7 +125,7 @@
         <div class="modal-content">
             <div class="modal-header text-center">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
-                <span class="text-bold">CARGOS</span>
+                <span><h4><b>CARGOS</b></h4></span>
             </div>
             <div class="modal-body">
                 <!------------------------------------------------------------------->
@@ -117,4 +142,3 @@
     </div>
 </div>
 <!------------------------ F I N  modal para ver cargos  de la comision ------------------->
-

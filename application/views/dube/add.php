@@ -4,19 +4,19 @@
             <div class="box-header with-border">
               	<h3 class="box-title">Añadir Dube</h3>
             </div>
-            <?php echo form_open('dube/add'); ?>
+            <?php echo form_open_multipart('dube/add'); ?>
           	<div class="box-body">
                     <div class="row clearfix">
                         <div class="col-md-6">
-                            <label for="dube_organigrama" class="control-label"><span class="text-danger">*</span>Organigrama</label>
+                            <label for="dube_autoridadades" class="control-label">Autoridades</label>
                             <div class="form-group">
-                                <input type="text" name="dube_organigrama" value="<?php echo $this->input->post('dube_organigrama'); ?>" class="form-control" id="dube_organigrama" required autofocus autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                                <input type="text" name="dube_autoridadades" value="<?php echo $this->input->post('dube_autoridadades'); ?>" class="form-control" id="dube_autoridadades" autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="dube_autoridadades" class="control-label">Autoridadades</label>
+                            <label for="dube_organigrama" class="control-label"><span class="text-danger">*</span>Organigrama</label>
                             <div class="form-group">
-                                <input type="text" name="dube_autoridadades" value="<?php echo $this->input->post('dube_autoridadades'); ?>" class="form-control" id="dube_autoridadades" autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                                <input type="file" name="dube_organigrama" value="<?php echo $this->input->post('dube_organigrama'); ?>" class="form-control" id="dube_organigrama" required/>
                             </div>
                         </div>
                         <div class="col-md-6">

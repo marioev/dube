@@ -525,4 +525,34 @@ class Postulante extends CI_Controller{
             $this->load->view('layouts/main',$data);
         }
     }
+    
+    /* compromiso depago beca deporte */
+    function compromisopdeporte($postulante_id)
+    {
+        if($this->acceso(14)){
+            $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
+            $data['_view'] = 'postulante/compromisopdeporte';
+            $this->load->view('layouts/main',$data);
+        }
+    }
+    
+    /* contrato beca extension universitaria */
+    function contratoextenuniv($postulante_id)
+    {
+        if($this->acceso(14)){
+            $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
+            $data['_view'] = 'postulante/contratoextenuniv';
+            $this->load->view('layouts/main',$data);
+        }
+    }
+    
+    /* contrato beca trabajo dirigido */
+    function contratotrabdirigido($postulante_id)
+    {
+        if($this->acceso(14)){
+            $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
+            $data['_view'] = 'postulante/contratotrabdirigido';
+            $this->load->view('layouts/main',$data);
+        }
+    }
 }

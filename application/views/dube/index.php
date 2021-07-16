@@ -30,8 +30,8 @@
                 <table class="table table-striped" id="mitabla">
                     <tr>
                         <th>#</th>
-                        <th>Organigrama</th>
                         <th>Autoridadades</th>
+                        <th>Organigrama</th>
                         <th>Misión</th>
                         <th>Visión</th>
                         <th>Objetivo</th>
@@ -43,8 +43,8 @@
                     foreach($dube as $d){ ?>
                     <tr>
                         <td class="text-center"><?php echo $i+1; ?></td>
-                        <td><?php echo $d['dube_organigrama']; ?></td>
                         <td><?php echo $d['dube_autoridadades']; ?></td>
+                        <td><a href="<?php echo site_url('/resources/images/organigrama/'.$d['dube_organigrama']) ?>" target="_blank"><?php echo $d['dube_organigrama']; ?></a></td>
                         <td><?php echo $d['dube_mision']; ?></td>
                         <td><?php echo $d['dube_vision']; ?></td>
                         <td><?php echo $d['dube_objetivo']; ?></td>

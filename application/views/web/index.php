@@ -122,14 +122,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <!--<h1>Collegiate</h1>-->
                 </a>
             </div>
-            <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <ul class="social-icons1">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="<?php echo base_url("login"); ?>"><i class="fa fa-lock"></i></a></li>
+                    <!--<li><a href="#"><i class="fa fa-facebook"></i></a></li>
                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>-->
                 </ul>
-            </div>-->
+            </div>
         </div>
     </div>
 </section>
@@ -155,7 +156,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <li><a href="#curriculum">Publicaciones</a></li>
                         <li><a href="#gallery">D.U.B.E.</a></li>
                         <li><a href="#contact">Contactos</a></li>
-                        <li><a href="<?php echo base_url("login"); ?>">Ingresar</a></li>
+                        <!--<li><a href="<?php //echo base_url("login"); ?>">Ingresar</a></li>-->
                     </ul>
                 </div>
             </div>
@@ -229,7 +230,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                         <div class="col-sm-10 col-xs-12">
                             <div class="about-info slideanim text-justify" tooltip="<?php echo "Fecha Límite: ".date("d/m/Y", strtotime($las_convocatorias[$cont]['convocatoria_fechalimite'])); ?>" flow="left">
-                                <p><?php echo $las_convocatorias[$cont]['convocatoria_descripcion']; ?></p>
+                                <p><?php echo $las_convocatorias[$cont]['convocatoria_titulo']; ?></p>
                                 <a href="<?php echo site_url('/resources/images/convocatoria/'.$las_convocatorias[$cont]['convocatoria_dcto']) ?>" target="_blank"><?php echo $las_convocatorias[$cont]['convocatoria_dcto']; ?></a>
                             </div>
                         </div>
@@ -246,7 +247,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>	
                         <div class="col-sm-10 col-xs-12">
                             <div class="about-info slideanim" tooltip="<?php echo "Fecha Límite: ".date("d/m/Y", strtotime($las_convocatorias[$cont]['convocatoria_fechalimite'])); ?>" flow="left">
-                                <p><?php echo $las_convocatorias[$cont]['convocatoria_descripcion']; ?></p>
+                                <p><?php echo $las_convocatorias[$cont]['convocatoria_titulo']; ?></p>
                                 <a href="<?php echo site_url('/resources/images/convocatoria/'.$las_convocatorias[$cont]['convocatoria_dcto']) ?>" target="_blank"><?php echo $las_convocatorias[$cont]['convocatoria_dcto']; ?></a>
                             </div>
                         </div>
@@ -279,7 +280,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                         <div class="col-sm-10 col-xs-12">
                             <div class="about-info slideanim" tooltip="<?php echo "Fecha Límite: ".date("d/m/Y", strtotime($las_convocatorias[$cont]['convocatoria_fechalimite'])); ?>" flow="left">
-                                <p><?php echo $las_convocatorias[$cont]['convocatoria_descripcion']; ?></p>
+                                <p><?php echo $las_convocatorias[$cont]['convocatoria_titulo']; ?></p>
                                 <a href="<?php echo site_url('/resources/images/convocatoria/'.$las_convocatorias[$cont]['convocatoria_dcto']) ?>" target="_blank"><?php echo $las_convocatorias[$cont]['convocatoria_dcto']; ?></a>
                             </div>
                         </div>
@@ -296,7 +297,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                         <div class="col-sm-10 col-xs-12">
                             <div class="about-info slideanim" tooltip="<?php echo "Fecha Límite: ".date("d/m/Y", strtotime($las_convocatorias[$cont]['convocatoria_fechalimite'])); ?>" flow="left">
-                                <p><?php echo $las_convocatorias[$cont]['convocatoria_descripcion']; ?></p>
+                                <p><?php echo $las_convocatorias[$cont]['convocatoria_titulo']; ?></p>
                                 <a href="<?php echo site_url('/resources/images/convocatoria/'.$las_convocatorias[$cont]['convocatoria_dcto']) ?>" target="_blank"><?php echo $las_convocatorias[$cont]['convocatoria_dcto']; ?></a>
                             </div>
                         </div>
@@ -348,12 +349,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="col-md-6">
                     <div class="serv-details">
                         <div class="serv-img-details slideanim">
-                            <h4><?php echo $beca['beca_nombre']; ?></h4>
+                            <h4><a style="color: #fff; cursor: pointer" onclick="mostrarbeca(JSON.stringify(<?php echo "'".$beca['beca_nombre']."'"; ?>), JSON.stringify(<?php echo "'".$beca['beca_descripcion']."'"; ?>))"><?php echo $beca['beca_nombre']; ?></a></h4>
                             <!--<p>Lorem Ipsum</p>-->
                         </div>
-                        <div class="serv-info slideanim text-justify">
-                            <p><?php echo $beca['beca_descripcion']; ?></p>
-                        </div>
+                        <!--<div class="serv-info slideanim text-justify">
+                            <p><?php //echo $beca['beca_descripcion']; ?></p>
+                        </div>-->
                     </div>
                 </div>
                 <?php } ?>
@@ -548,7 +549,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 ?>
                 <div class="col-md-12" style="padding-bottom: 20px">
                     <h4 class="text-center">ORGANIGRAMA</h4>
-                    <p class="text-justify"><?php echo $dube['dube_organigrama']; ?></p>
+                    <p class="text-center">
+                        <a style="color: #fff !important; font-size: 14px;" href="<?php echo site_url('/resources/images/organigrama/'.$dube['dube_organigrama']) ?>" target="_blank"><?php echo $dube['dube_organigrama']; ?></a></p>
+                    <!--<p class="text-justify"><?php //echo $dube['dube_organigrama']; ?></p>-->
                 </div>
                 <?php } ?>
                 <?php
@@ -650,6 +653,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="copyright">
 		<p>© 2016 Collegiate. All Rights Reserved | Design by <a href="http://w3layouts.com" target="_blank">W3layouts</a></p>
 	</div>
+        <!------------------------ INICIO modal para mostar beca ------------------->
+        <div class="modal fade" id="modalmostrarbeca" tabindex="-1" role="dialog" aria-labelledby="modalmostrarbecalabel" style="color: #000;">
+            <div class="modal-dialog" role="document">
+                <br><br>
+                <div class="modal-content">
+                    <div class="modal-header text-center"  style="background: #a6a6a6;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+                        <b><span id="nombrebeca" style="font-size: 15px"></span></b>
+                    </div>
+                    <div class="modal-body"  style="background: #a6a6a6;">
+                        <div class="box-body table-responsive">
+                            <table class="table table-striped" id="mitabla">
+                                <tbody id="descripcionbeca" style="text-align: justify; text-justify: inter-word"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="text-align: center; background: #a6a6a6;">
+                        <a href="#" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times"></span> Cerrar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!------------------------ FIN modal para mostrar beca ------------------->
 </section>
 <!-- /Footer Section -->
 <!-- Back To Top -->
@@ -702,6 +728,15 @@ $(window).scroll(function() {
     }
   });
 });
+
+function mostrarbeca(beca_nombre, beca_descripcion){
+    var labeca_nombre = JSON.parse(beca_nombre);
+    var labeca_descripcion = JSON.parse(beca_descripcion);
+    $('#nombrebeca').html(labeca_nombre);
+    $('#descripcionbeca').html(labeca_descripcion);
+    $("#modalmostrarbeca").modal("show");
+    
+}
 </script>
 <!-- /js files -->
 </body>
