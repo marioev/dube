@@ -516,7 +516,7 @@ section.our-gallery p.text-center {
 /*-- Our Curriculum --*/
 section.curriculum {
 	    padding: 100px 0;
-    background: #fff;
+    background: #DAD8D8;
 }
 section.curriculum h3.text-center {
 	    color: #222;
@@ -834,7 +834,7 @@ section.footer .footer-right ul.social-icons2 li a i.fa.fa-twitter {
 	-ms-transition:0.5s all;
 }
 section.footer .footer-right ul.social-icons2 li a i.fa.fa-linkedin {
-	background-color:#e68523;
+	background-color:#3d32ad;
 	border-radius:50%;
 	-webkit-border-radius:50%;
 	-moz-border-radius:50%;
@@ -855,6 +855,46 @@ section.footer .footer-right ul.social-icons2 li a i.fa.fa-linkedin {
 }
 section.footer .footer-right ul.social-icons2 li a i.fa.fa-google-plus {
 	background-color:#dc4e41;
+	width:42px;
+    height:42px;
+    line-height:44px;
+	border-radius:50%;
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	-o-border-radius:50%;
+	-ms-border-radius:50%;
+	font-size:16px;
+	color:#fff;
+	text-align: center;
+    vertical-align: middle;
+	 transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+section.footer .footer-right ul.social-icons2 li a i.fa.fa-instagram {
+	background-color:#ed6868;
+	width:42px;
+    height:42px;
+    line-height:44px;
+	border-radius:50%;
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	-o-border-radius:50%;
+	-ms-border-radius:50%;
+	font-size:16px;
+	color:#fff;
+	text-align: center;
+    vertical-align: middle;
+	 transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+section.footer .footer-right ul.social-icons2 li a i.fa.fa-youtube {
+	background-color:#ed251a;
 	width:42px;
     height:42px;
     line-height:44px;

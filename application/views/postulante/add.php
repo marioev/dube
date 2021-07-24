@@ -19,7 +19,7 @@
                                     foreach($all_estudiante as $estudiante)
                                     {
                                         $selected = ($estudiante['estudiante_id'] == $this->input->post('estudiante_id')) ? ' selected="selected"' : "";
-                                        echo '<option value="'.$estudiante['estudiante_id'].'" '.$selected.'>'.$estudiante['estudiante_apellidos']." ".$estudiante['estudiante_nombre'].'</option>';
+                                        echo '<option value="'.$estudiante['estudiante_id'].'" '.$selected.'>'.$estudiante['estudiante_apellidos']." ".$estudiante['estudiante_nombre']." (".$estudiante['estudiante_carrera'].')</option>';
                                     } 
                                     ?>
                                 </select>

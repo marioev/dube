@@ -241,7 +241,8 @@ class Postulante extends CI_Controller{
                         );
                         $formulario_id = $this->Formulario_autentificacion_model->add_formulario_autentificacion($params);
                         if($this->input->post('formulario_observacion'.$req["requisito_id"]) != ""){
-                            $mas_observacion = $mas_observacion." ".$this->input->post('formulario_observacion'.$req["requisito_id"]);
+                            $inciso = substr($req["requisito_nombre"], 0, 3);
+                            $mas_observacion = $mas_observacion." ".$inciso.$this->input->post('formulario_observacion'.$req["requisito_id"]);
                         }
                     }
                     $estado_id = 4; // 4 ==> estado REVISADO

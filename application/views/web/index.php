@@ -26,6 +26,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- js files -->
 <script src="<?php echo $raiz;?>js/modernizr.custom.js"></script>
 <!-- /js files -->
+<input type="hidden" name="los_requisitos" id="los_requisitos" value='<?php echo json_encode($los_requisitos); ?>' />
 <style type="text/css">
     [tooltip] {
       position: relative;
@@ -151,7 +152,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <!--<li class="active"><a href="#">Inicio</a></li>-->
-                        <li class="active"><a href="#about">Convocatorias</a></li>
+                        <li class="active"><a href="#about">Convocatoria</a></li>
                         <li><a href="#services">Becas</a></li>
                         <li><a href="#curriculum">Publicaciones</a></li>
                         <li><a href="#gallery">D.U.B.E.</a></li>
@@ -208,8 +209,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div><!-- /.carousel -->
 <!-- /Banner Section -->
 <!-- About Section -->
-<section class="about-us" id="about">
-    <h3 class="text-center slideanim">Convocatorias</h3>
+<section class="about-us" id="about" style="background: #DAD8D8">
+    <h3 class="text-center slideanim">Convocatoria</h3>
     <p class="text-center slideanim"><!--Lorem Ipsum is simply dummy text of the printing and typesetting industry.--></p>
     <div class="container">
         <?php
@@ -218,7 +219,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <?php
         //foreach($las_convocatorias as $convocatoria){
             $cont = 0;
-            while($cont <=1 && count($las_convocatorias) >$cont){
+            while($cont <=0 && count($las_convocatorias) >$cont){
         ?>
         
             <?php if($cont == 0){ ?>
@@ -238,7 +239,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
             </div>
             <?php }
-            if($cont == 1){?>
+            /*if($cont == 1){?>
             <div class="col-lg-6 col-md-6">
                 <div class="about-details">
                     <div class="row">
@@ -256,13 +257,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
             <?php
             break;
-            } ?>
+            }*/ ?>
         
         <?php
         $cont ++;
             }
         ?>
         </div>
+        <?php /* ?>
         <div class="row below">
             <?php
             if(count($las_convocatorias) > 1){ ?>
@@ -312,7 +314,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <?php } ?>
         </div>
         <?php
-        if(count($num_convocatorias)> 4){ ?>
+        */
+        //if(count($num_convocatorias)> 4){
+        if(count($num_convocatorias)> 0){ ?>
             
             <div class="row below">
             <div class="col-lg-6 col-md-6">
@@ -349,7 +353,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="col-md-6">
                     <div class="serv-details">
                         <div class="serv-img-details slideanim">
-                            <h4><a style="color: #fff; cursor: pointer" onclick="mostrarbeca(JSON.stringify(<?php echo "'".$beca['beca_nombre']."'"; ?>), JSON.stringify(<?php echo "'".$beca['beca_descripcion']."'"; ?>))"><?php echo $beca['beca_nombre']; ?></a></h4>
+                            <h4><a style="color: #fff; cursor: pointer" onclick="mostrarbeca(JSON.stringify(<?php echo "'".$beca['beca_nombre']."'"; ?>), JSON.stringify(<?php echo "'".$beca['beca_descripcion']."'"; ?>), <?php echo $beca['beca_id']; ?>)"><?php echo $beca['beca_nombre']; ?></a></h4>
                             <!--<p>Lorem Ipsum</p>-->
                         </div>
                         <!--<div class="serv-info slideanim text-justify">
@@ -592,32 +596,55 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <!-- Footer Section -->
 <section class="footer" id="contact">
-	<h2 class="text-center">THANKS FOR VISITING US</h2>
-	<hr>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-4 footer-left">
-				<h4>Contact Information</h4>
-				<div class="contact-info">
-					<div class="address">	
-						<i class="glyphicon glyphicon-globe"></i>
-						<p class="p3">77 Jack Street</p>
-						<p class="p3">Chicago, USA</p>
-					</div>
-					<div class="phone">
-						<i class="glyphicon glyphicon-phone-alt"></i>
-						<p class="p4">+591 4 4233926</p>
-					</div>
-					<div class="email-info">
-						<i class="glyphicon glyphicon-envelope"></i>
-						<p class="p4"><a href="mailto:email2@example.com">email2@example.com</a></p>
-					</div>
-				</div>
-			</div><!-- col -->
-			<div class="col-lg-4 footer-center">
-				<h4>Newsletter</h4>
-				<p>Register to our newsletter and be updated with the latests information regarding our services, offers and much more.</p>
-				<form class="form-horizontal" role="form">
+    <h2 class="text-center">GRACIAS POR SU VISITA</h2>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 footer-left">
+                <h4>Contacanos</h4>
+                <div class="contact-info">
+                    <!--<div class="address">	
+                        <i class="glyphicon glyphicon-globe"></i>
+                        <p class="p3">77 Jack Street</p>
+                        <p class="p3">Chicago, USA</p>
+                    </div>-->
+                    <div class="phone">
+                        <i class="glyphicon glyphicon-phone-alt"></i>
+                        <p class="p4">Teléfono-Fax: (591) 4 - 4233926 Internos: 191-194 - Casilla 911</p>
+                    </div>
+                    <div class="email-info">
+                        <i class="glyphicon glyphicon-envelope"></i>
+                        <p class="p4"><a href="mailto:info.dube@umss.edu">info.dube@umss.edu</a></p>
+                    </div>
+                </div>
+            </div><!-- col -->
+            <div class="col-lg-4 footer-center">
+                <h4>Dirección</h4>
+                <div class="contact-info">
+                    <div class="address">	
+                        <i class="glyphicon glyphicon-globe"></i>
+                        <p class="p4">Campus Universitario, Bloque Central
+                            Edificio Multi académico, Tercer piso, Lado Este.
+                            Prolongación Calle Jordán y Oquendo.
+                        </p>
+                        <!--<p class="p4">, Lado Este.</p>
+                        <p class="p4">Prolongación Calle Jordán y Oquendo.</p>-->
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-lg-4 footer-center">
+                <h4>Dirección</h4>
+                <div class="contact-info">
+                    <div class="address">
+                        <i class="glyphicon glyphicon-globe"></i>
+                        <p class="p3">Campus Universitario, Bloque Central
+                            Edificio Multi académico, Tercer piso, Lado Este.<br>
+                            Prolongación Calle Jordán y Oquendo.
+                        </p>
+                    </div>
+                </div>
+				<!--<p>Register to our newsletter and be updated with the latests information regarding our services, offers and much more.</p>-->
+				<!--<form class="form-horizontal" role="form">
 					<div class="form-group">
 						<label for="inputEmail1" class="col-lg-4 control-label"></label>
 						<div class="col-lg-10">
@@ -635,23 +662,43 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<button type="submit" class="btn-outline">Sign in</button>
 						</div>
 					</div>
-				</form><!-- form -->
-			</div><!-- col -->
-			<div class="col-lg-4 footer-right">
-				<h4>Support Us</h4>
-				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-				<ul class="social-icons2">
-                                    <li><a href="https://www.facebook.com/UmssDube/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-					<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-					<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-				</ul>
-			</div><!-- col -->
-		</div><!-- row -->
-	</div><!-- container -->
-	<hr>
+				</form>--><!-- form -->
+			<!--</div><!-- col -->
+            <div class="col-lg-4 footer-right">
+                <h4>Atención</h4>
+                <p>8:00 a.m. - 12:00 a.m.<br>
+                    2:00 p.m. - 6:00 p.m.<br>
+                    Horario Continuo:
+                    7:00 a.m. - 4:00 p.m.
+                </p>
+                <!--<h4>Redes Sociales</h4>-->
+                <ul class="social-icons2">
+                    <li><a href="https://www.facebook.com/UmssDube" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/UmssBolOficial"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/school/universidad-mayor-de-san-simon/"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="https://www.instagram.com/umssboloficial/"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCe91rHUSEpxXgkz0Cojt3MA"><i class="fa fa-youtube"></i></a></li>
+                </ul>
+            </div><!-- col -->
+            <!--<div class="col-lg-4 footer-right">
+                <h4>Atención</h4>
+                <p>8:00 a.m. - 12:00 a.m.
+                    2:00 p.m. - 6:00 p.m.
+                    Horario Continuo:
+                    7:00 a.m. - 4:00 p.m.
+                </p>
+                <ul class="social-icons2">
+                    <li><a href="https://www.facebook.com/UmssDube/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
+            </div>-->
+        </div><!-- row -->
+    </div><!-- container -->
+    <hr>
 	<div class="copyright">
-		<p>© 2016 Collegiate. All Rights Reserved | Design by <a href="http://w3layouts.com" target="_blank">W3layouts</a></p>
+		<p>© 2021 Derechos reservados <!--| Design by <a href="http://w3layouts.com" target="_blank">W3layouts</a>--></p>
 	</div>
         <!------------------------ INICIO modal para mostar beca ------------------->
         <div class="modal fade" id="modalmostrarbeca" tabindex="-1" role="dialog" aria-labelledby="modalmostrarbecalabel" style="color: #000;">
@@ -729,11 +776,23 @@ $(window).scroll(function() {
   });
 });
 
-function mostrarbeca(beca_nombre, beca_descripcion){
+function mostrarbeca(beca_nombre, beca_descripcion, beca_id){
     var labeca_nombre = JSON.parse(beca_nombre);
     var labeca_descripcion = JSON.parse(beca_descripcion);
+    var requisitos = JSON.parse(document.getElementById('los_requisitos').value);
+    var n = requisitos.length;
+    var html = "";
+    for(var i = 0; i < n ; i++){
+        if(requisitos[i]['beca_id'] == beca_id){
+            html += requisitos[i]['requisito_nombre']+"<br>";
+        }
+    }
     $('#nombrebeca').html(labeca_nombre);
-    $('#descripcionbeca').html(labeca_descripcion);
+    if(html != ""){
+        $('#descripcionbeca').html(labeca_descripcion+"<div style='font-weight: bold; text-align: center'>REQUISITOS</div>"+html);
+    }else{
+        $('#descripcionbeca').html(labeca_descripcion);
+    }
     $("#modalmostrarbeca").modal("show");
     
 }

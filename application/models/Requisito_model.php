@@ -81,4 +81,23 @@ class Requisito_model extends CI_Model
         
         return $requisito;
     }
+    /*
+     * Get all requisito activo
+     */
+    function get_all_requisitoactivo()
+    {
+        $requisito = $this->db->query("
+            SELECT
+                r.*, b.beca_nombre, e.estado_descripcion, e.estado_color
+            FROM
+                `requisito` r
+            left join beca b on r.beca_id = b.beca_id
+            left join estado e on r.estado_id = e.estado_id
+            WHERE
+            r.estado_id = 9
+            ORDER BY `requisito_nombre` ASC
+        ")->result_array();
+        
+        return $requisito;
+    }
 }

@@ -15,6 +15,8 @@ class Website extends CI_Controller{
         $this->load->model('Convocatoria_model');
         $data['las_convocatorias'] = $this->Convocatoria_model->getall_convocatoria_abierto();
         $data['num_convocatorias'] = $this->Convocatoria_model->getall_convocatorias_abiertas();
+        $this->load->model('Requisito_model');
+        $data['los_requisitos'] = $this->Requisito_model->get_all_requisitoactivo();
         $this->load->model('Beca_model');
         $data['las_becas'] = $this->Beca_model->getall_becas_abiertas();
         $this->load->model('Publicacion_model');
