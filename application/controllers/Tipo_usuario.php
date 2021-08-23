@@ -32,7 +32,7 @@ class Tipo_usuario extends CI_Controller{
     {
         if($this->acceso(46)){
             $data['tipo_usuario'] = $this->Tipo_usuario_model->get_all_tipo_usuario();
-            $data['page_title'] = "Tipo Usuario";
+            $data['page_title'] = "Tipo Rol";
             $data['_view'] = 'tipo_usuario/index';
             $this->load->view('layouts/main',$data);
         }
@@ -74,7 +74,7 @@ class Tipo_usuario extends CI_Controller{
                 $this->load->model('Rol_model');
                 $data['all_rolpadre'] = $this->Rol_model->get_allrol_padre();
                 $data['all_rolhijo'] = $this->Rol_model->get_allrol_hijo();
-                $data['page_title'] = "Tipo Usuario";
+                $data['page_title'] = "Tipo Rol";
                 $data['_view'] = 'tipo_usuario/add';
                 $this->load->view('layouts/main',$data);
             }
@@ -122,7 +122,7 @@ class Tipo_usuario extends CI_Controller{
                 {
                     $data['all_rolasignadopadre'] = $this->Rol_usuario_model->get_allrol_tipousuariopadre($tipousuario_id);
                     $data['all_rolasignadohijo'] = $this->Rol_usuario_model->get_allrol_tipousuariohijo($tipousuario_id);
-                    $data['page_title'] = "Tipo Usuario";
+                    $data['page_title'] = "Tipo Rol";
                     $data['_view'] = 'tipo_usuario/edit';
                     $this->load->view('layouts/main',$data);
                 }
@@ -166,5 +166,21 @@ class Tipo_usuario extends CI_Controller{
             }
             redirect('tipo_usuario/edit/'.$tipousuario_id);
        }
+    }
+    /*
+     * Deleting dube
+     */
+    function remove($tipousuario_id)
+    {
+        $tipo_usuario = $this->Tipo_usuario_model->get_tipo_usuario($tipousuario_id);
+
+        // check if the dube exists before trying to delete it
+        if(isset($tipo_usuario['tipousuario_id']))
+        {
+            $this->Tipo_usuario_model->delete_tipo_usuario($tipousuario_id);
+            redirect('tipo_usuario/index');
+        }
+        else
+            show_error('The dube you are trying to delete does not exist.');
     }
 }

@@ -16,10 +16,10 @@
 <link href="<?php echo base_url('resources/css/mitabla.css'); ?>" rel="stylesheet">
 <!-- ---------------------------------------------------- -->
 <div class="box-header">
-    <font size='4' face='Arial'><b>Tipo Usuario</b></font>
+    <font size='4' face='Arial'><b>Tipo Rol</b></font>
     <br><font size='2' face='Arial'>Registros Encontrados: <?php echo sizeof($tipo_usuario); ?></font>
     <div class="box-tools no-print">
-        <a href="<?php echo site_url('tipo_usuario/add'); ?>" class="btn btn-success btn-sm"><fa class='fa fa-pencil-square-o'></fa> Registrar Tipo Usuario</a> 
+        <a href="<?php echo site_url('tipo_usuario/add'); ?>" class="btn btn-success btn-sm"><fa class='fa fa-pencil-square-o'></fa> Registrar Tipo Rol</a> 
     </div>
 </div>
 <div class="row">
@@ -46,10 +46,10 @@
                         <td><?php echo $cont; ?></td>
                         <td><?php echo $t['tipousuario_descripcion']; ?></td>
                         <td class="no-print">
-                            <a href="<?php echo site_url('tipo_usuario/edit/'.$t['tipousuario_id']); ?>" class="btn btn-info btn-xs" title="Modificar tipo de usuario"><span class="fa fa-pencil"></span></a> 
+                            <a href="<?php echo site_url('tipo_usuario/edit/'.$t['tipousuario_id']); ?>" class="btn btn-info btn-xs" title="Modificar tipo rol"><span class="fa fa-pencil"></span></a> 
                             <!--<a href="<?php //echo site_url('tipo_usuario/editrol/'.$t['tipousuario_id']); ?>" class="btn btn-warning btn-xs" title=""><span class="fa fa-list-ol"></span></a>--> 
-                            <!--<a href="<?php //echo site_url('tipo_usuario/inactivar/'.$t['tipousuario_id']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-ban"  title="Inactivar"></span></a>
-                            <a href="<?php //echo site_url('tipo_usuario/remove/'.$t['tipousuario_id']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span></a>-->
+                            <!--<a href="<?php //echo site_url('tipo_usuario/inactivar/'.$t['tipousuario_id']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-ban"  title="Inactivar"></span></a>-->
+                            <a href="<?php echo site_url('tipo_usuario/remove/'.$t['tipousuario_id']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span></a>
                         </td>
                     </tr>
                     <?php } ?>

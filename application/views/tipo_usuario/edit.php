@@ -15,7 +15,7 @@ function toggle(source) {
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Editar Tipo Usuario</h3>
+              	<h3 class="box-title">Editar Tipo Rol</h3>
             </div>
             <?php echo form_open('tipo_usuario/edit/'.$tipo_usuario['tipousuario_id']); ?>
             <div class="box-body">

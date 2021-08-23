@@ -74,6 +74,7 @@ class Tipo_usuario_model extends CI_Model
      */
     function delete_tipo_usuario($tipousuario_id)
     {
+        $this->db->delete('rol_usuario',array('tipousuario_id'=>$tipousuario_id));
         return $this->db->delete('tipo_usuario',array('tipousuario_id'=>$tipousuario_id));
     }
 
