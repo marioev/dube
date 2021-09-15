@@ -74,7 +74,10 @@ class Administrativo extends CI_Controller{
 
                 $this->load->model('Direccion_universitaria_model');
                 $data['all_direccion_universitaria'] = $this->Direccion_universitaria_model->get_all_direccion_universitaria();
-
+                
+                $this->load->model('Tipo_usuario_model');
+                $data['all_tipo_usuario'] = $this->Tipo_usuario_model->get_all_tipo_usuario();
+                
                 $this->load->model('Estado_model');
                 $data['all_estado'] = $this->Estado_model->get_all_estado();
 

@@ -38,7 +38,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="login-main">
         <p class="center-block">
             <?php
-          //echo   $this->session->flashdata('msg');
+          echo   $this->session->flashdata('msg');
             ?>
         </p>
         <div class="login-head">
@@ -56,7 +56,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
 </div>
-<div class="footer" style="background-color: #000">
+<!--<div class="footer" style="background-color: #000">
     
         <div class="container"> <br> </div>
     
@@ -92,4 +92,4 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
         
         <div class="container"> <br> </div>
-    </div>  
+    </div>-->

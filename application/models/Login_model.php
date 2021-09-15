@@ -23,11 +23,17 @@ class Login_model extends CI_Model {
     }
 
     public function login2($usuario_login,$usuario_clave){
-         $login = $this->db->query("SELECT usuario_login as loguear from usuario WHERE usuario_login='".$usuario_login."' ")->row_array();
+         $login = $this->db->query("SELECT admin_login as loguear from administrativo WHERE admin_login='".$usuario_login."' ")->row_array();
          if(!empty($login)){
          if ($login['loguear']==$usuario_login){
 
-        $query = $this->db->query("SELECT * from usuario WHERE usuario_login='".$usuario_login."' AND usuario_clave = '".md5($usuario_clave)."' and estado_id=1 ");
+        $query = $this->db->query("SELECT
+                                                    admin_id as usuario_id, tipousuario_id, estado_id,
+                                                    concat(admin_nombre,' ', admin_apellido) as usuario_nombre,
+                                                    admin_email as usuario_email, admin_login as usuario_login,
+                                                    admin_clave as usuario_clave, admin_imagen as usuario_imagen
+                                                    from administrativo
+                                                    WHERE admin_login='".$usuario_login."' AND admin_clave = '".md5($usuario_clave)."' and estado_id=9 ");
        return $query->row(); 
     } } }
 

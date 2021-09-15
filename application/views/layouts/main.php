@@ -276,6 +276,13 @@
                             </a>
                             <ul class="treeview-menu">
                                 <?php
+                                if($rolusuario[47-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('administrativo');?>"><i class="fa fa-users"></i>Administrativos</a>
+                                </li>
+                                <?php } ?>
+                                <?php
                                 if($rolusuario[45-1]['rolusuario_asignado'] == 1){
                                 ?>
                                 <li class="active">
@@ -290,12 +297,12 @@
                                 </li>
                                 <?php } ?>
                                 <?php
-                                if($rolusuario[47-1]['rolusuario_asignado'] == 1){
+                                /*if($rolusuario[47-1]['rolusuario_asignado'] == 1){
                                 ?>
                                 <li>
                                     <a href="<?php echo site_url('usuario');?>"><i class="fa fa-users"></i>Usuarios</a>
                                 </li>
-                                <?php } ?>
+                                <?php }*/ ?>
                             </ul>
                         </li>
                     </ul>

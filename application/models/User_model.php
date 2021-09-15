@@ -174,9 +174,9 @@ class User_model extends CI_Model
 
     public function hay_login1($login)
     {
-        $this->db->select('usuario_id');
-        $this->db->from('usuario');
-        $this->db->where('usuario_login', $login);
+        $this->db->select('admin_id');
+        $this->db->from('administrativo');
+        $this->db->where('admin_login', $login);
         //$var = $this->db->last_query();
         //return $var;
         $query = $this->db->get();
