@@ -286,7 +286,8 @@ class Dashb extends CI_Controller
 
     public function hay_login2($login_field)
     {
-        $idu = $this->input->post('userid');
+        $idu = $this->input->post('uid');
+        $login_field = $this->input->post('login');
         if ($this->user_model->login_repeat2($login_field, $idu)) {
             return FALSE;
         } else {
@@ -300,16 +301,16 @@ class Dashb extends CI_Controller
 
             $session_data = $this->session->userdata('logged_in');
 
-            if ($session_data['tipousuario_id'] == 1) {
+            //if ($session_data['tipousuario_id'] == 1) {
 
                 $login = $this->input->post('login');
 
                 $res = $this->user_model->hay_login1($login);
                 echo $res;
 
-            } else {
+            /*} else {
                 redirect('alerta');
-            }
+            }*/
         } else {
             redirect('', 'refresh');
         }

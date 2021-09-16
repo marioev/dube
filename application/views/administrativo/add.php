@@ -1,4 +1,4 @@
-<script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
+<script src="<?php //echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
 <link href="<?php echo base_url('resources/css/formValidation.css')?>" rel="stylesheet">
 <div class="row">
     <div class="col-md-12">
@@ -6,7 +6,7 @@
             <div class="box-header with-border">
               	<h3 class="box-title">Añadir Administrativo</h3>
             </div>
-            <?php $attributes = array("name" => "usuarioForm", "id"=>"usuarioForm");
+            <?php $attributes = array("name" => "administrativoForm", "id"=>"administrativoForm");
             echo form_open_multipart("administrativo/add", $attributes);?>
           	<div class="box-body">
                     <div class="row clearfix">
@@ -154,7 +154,7 @@
 <script>
     $(document).ready(function() {
 
-        $('#usuarioForm').formValidation({
+        $('#administrativoForm').formValidation({
             message: 'This value is not valid',
             icon: {
                 valid: 'glyphicon glyphicon-ok',
@@ -170,7 +170,7 @@
                     }
                 },
 
-                usuario_nombre: {
+                admin_nombre: {
                     validators: {
                         notEmpty: {
                             message: 'Nombre es un campo requerido'
@@ -186,7 +186,7 @@
                         }
                     }
                 },
-                usuario_email: {
+                adamin_email: {
                     validators: {
                         notEmpty: {
                             message: 'Email es un campo requerido'
@@ -196,30 +196,30 @@
                         }
                     }
                 },
-                usuario_imagen: {
+                admin_imagen: {
                     validators: {
                         file: {
                             extension: 'jpeg,jpg,png',
                             type: 'image/jpeg,image/png',
-                            maxSize: 360800,   // 2048 * 1024
-                            message: 'El archivo seleccionado no es valido, Tamaño Maximo 350 Kb'
+                            maxSize: 26214400,   // 3:4
+                            message: 'El archivo seleccionado no es valido, Tamaño Maximo 25 Mb'
                         }
                     }
                 },
-                usuario_clave:{
+                admin_clave:{
                     validators:{
                         notEmpty: {
                             message: 'Password es obligatorio'
                         }
                     }
                 },
-                rusuario_clave: {
+                radmin_clave: {
                     validators: {
                         notEmpty: {
                             message: 'Repetir Password es obligatorio'
                         },
                         identical: {
-                            field: 'usuario_clave',
+                            field: 'admin_clave',
                             message: 'Los campos no son iguales, vuelva a intentar'
                         }
                     }
@@ -229,7 +229,7 @@
 
 
         $(function() {
-            $("#usuario_imagen").change(function() {
+            $("#admin_imagen").change(function() {
 
                 $("#message").empty(); // To remove the previous error message
                 var file = this.files[0];
@@ -251,7 +251,7 @@
         });
 
         function imageIsLoaded(e) {
-            $("#usuario_imagen").css("color","green");
+            $("#admin_imagen").css("color","green");
             $('#image_preview').css("display", "block");
             $('#previewing').attr('src', e.target.result);
             $('#previewing').attr('width', '50%');
@@ -259,7 +259,7 @@
         };
 
         var x_timer;
-        $("#usuario_login").keyup(function (e){
+        $("#admin_login").keyup(function (e){
             clearTimeout(x_timer);
             var user_login = $(this).val();
             //if(  isNaN(user_numero) ){
@@ -288,12 +288,12 @@
                     console.log(response);
                     if(response=='1'){
                         $("#user-result").html('<small style="color: #f0120a;" class="help-block"><i class="fa fa-close"></i> El login: '+userlogin+' Ya esta en uso, elija otro</small>');
-                        $("#usuarioForm").attr('class', 'form-group has-feedback has-error');
+                        $("#administrativoForm").attr('class', 'form-group has-feedback has-error');
                         $("#boton").attr( "disabled","disabled" );
                     }
                     if(response=='0'){
                         $("#user-result").html('<i class="fa fa-check" style="color: #00CC00;"></i>');
-                        $("#usuarioForm").attr('class', 'form-group');
+                        $("#administrativoForm").attr('class', 'form-group');
                         $("#boton").removeAttr("disabled");
                     }
                 }

@@ -21,7 +21,7 @@ class Verificar extends CI_Controller
         $result = $this->login_model->login2($username,$clave );
         
         if ($result) {
-            if ($result->tipousuario_id == 1 or $result->tipousuario_id == 2 ) {
+            if ($result->tipousuario_id >= 1 or $result->tipousuario_id <= 5 ) {
                 $this->load->model('Rol_usuario_model');
                 $this->load->model('Tipo_usuario_model');
                 $thumb = "thumb_default.jpg";

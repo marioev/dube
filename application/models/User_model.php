@@ -158,10 +158,10 @@ class User_model extends CI_Model
 
     public function login_repeat2($login, $uid)
     {
-        $this->db->select('usuario_id');
-        $this->db->from('usuario');
-        $this->db->where('usuario_id !=', $uid);
-        $this->db->where('usuario_login', $login);
+        $this->db->select('admin_id');
+        $this->db->from('administrativo');
+        $this->db->where('admin_id !=', $uid);
+        $this->db->where('admin_login', $login);
         //$var = $this->db->last_query();
         //return $var;
         $query = $this->db->get();

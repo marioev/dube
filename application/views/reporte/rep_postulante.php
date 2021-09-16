@@ -1,4 +1,4 @@
-<script src="<?php echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>
+<!--<script src="<?php //echo base_url('resources/js/jquery-2.2.3.min.js'); ?>" type="text/javascript"></script>-->
 <script src="<?php echo base_url('resources/js/reporte_postulante.js'); ?>" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -87,7 +87,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="box">
-            <div class="box-body">
+            <div class="box-body table-responsive">
                 <table class="table table-striped" id="mitabla">
                     <tr>
                         <th>#</th>

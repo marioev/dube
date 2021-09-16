@@ -26,7 +26,7 @@
             <input id="filtrar" type="text" class="form-control" placeholder="Ingrese nombre, descrición..">
         </div>
         <div class="box">
-            <div class="box-body">
+            <div class="box-body table-responsive">
                 <table class="table table-striped" id="mitabla">
                     <tr>
                         <th>#</th>
