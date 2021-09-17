@@ -188,9 +188,9 @@
                 },
                 adamin_email: {
                     validators: {
-                        notEmpty: {
+                        /*notEmpty: {
                             message: 'Email es un campo requerido'
-                        },
+                        },*/
                         emailAddress: {
                             message: 'Entrada no es un email valido'
                         }
