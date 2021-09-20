@@ -102,4 +102,18 @@ class Beca_model extends CI_Model
 
         return $beca;
     }
+    /* obtiene las beca que tengan contrato (campo beca_contrato) */
+    function get_all_becacontrato()
+    {
+        $beca = $this->db->query("
+            SELECT
+                b.*
+            FROM
+                `beca` b
+            WHERE
+                b.beca_contrato = 'SI'
+            ORDER BY `beca_nombre` ASC
+        ")->result_array();
+        return $beca;
+    }
 }
