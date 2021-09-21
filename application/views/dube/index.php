@@ -16,15 +16,15 @@
 <div class="box-header">
     <font size='4' face='Arial'><b>Dube</b></font>
     <br><font size='2' face='Arial'>Registros Encontrados: <?php echo sizeof($dube); ?></font>
-    <div class="box-tools no-print">
+    <!-- <div class="box-tools no-print">
         <a href="<?php echo site_url('dube/add'); ?>" class="btn btn-success btn-sm"><fa class='fa fa-pencil-square-o'></fa> Registrar Dube</a>
-    </div>
+    </div> -->
 </div>
 <div class="row">
     <div class="col-md-12">
-        <div class="input-group no-print"> <span class="input-group-addon">Buscar</span>
+        <!-- <div class="input-group no-print"> <span class="input-group-addon">Buscar</span>
             <input id="filtrar" type="text" class="form-control" placeholder="Ingrese organigrama..">
-        </div>
+        </div> -->
         <div class="box">
             <div class="box-body table-responsive">
                 <table class="table table-striped" id="mitabla">
