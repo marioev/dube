@@ -44,32 +44,11 @@ class Modelo_contrato extends CI_Controller{
     function add()
     {
         if($this->acceso(12)) {
-            $this->load->library('form_validation');
-            $this->form_validation->set_rules('modeloc_parte1','Modelo Contrato parte1','trim|required', array('required' => 'Este Campo no debe ser vacio'));
-            $this->form_validation->set_rules('modeloc_parte2','Modelo Contrato parte2','trim|required', array('required' => 'Este Campo no debe ser vacio'));
-            if($this->form_validation->run())     
-            {
-                $params = array(
-                    'modeloc_parte1' => $this->input->post('modeloc_parte1'),
-                    'modeloc_parte2' => $this->input->post('modeloc_parte2'),
-                    'modeloc_parte3' => $this->input->post('modeloc_parte3'),
-                    'modeloc_parte4' => $this->input->post('modeloc_parte4'),
-                    'modeloc_parte5' => $this->input->post('modeloc_parte5'),
-                    'modeloc_parte6' => $this->input->post('modeloc_parte6'),
-                    'modeloc_parte7' => $this->input->post('modeloc_parte7'),
-                    'modeloc_parte8' => $this->input->post('modeloc_parte8'),
-                    'modeloc_parte9' => $this->input->post('modeloc_parte9'),
-                    'modeloc_parte10' => $this->input->post('modeloc_parte10'),
-                );
-                $modeloc_id = $this->Modelo_contrato_model->add_modelo_contrato($params);
-                redirect('modelo_contrato/index');
-            }else{
-                $this->load->model('Beca_model');
-                $data['all_beca'] = $this->Beca_model->get_all_becacontrato();
-                
-                $data['_view'] = 'modelo_contrato/add';
-                $this->load->view('layouts/main',$data);
-            }
+            $this->load->model('Beca_model');
+            $data['all_beca'] = $this->Beca_model->get_all_becacontrato();
+
+            $data['_view'] = 'modelo_contrato/add';
+            $this->load->view('layouts/main',$data);
         }
     }  
 
@@ -84,35 +63,12 @@ class Modelo_contrato extends CI_Controller{
 
             if(isset($data['modelo_contrato']['modeloc_id']))
             {
-                $this->load->library('form_validation');
-                $this->form_validation->set_rules('modeloc_parte1','Modelo Contrato parte1','trim|required', array('required' => 'Este Campo no debe ser vacio'));
-                $this->form_validation->set_rules('modeloc_parte2','Modelo Contrato parte2','trim|required', array('required' => 'Este Campo no debe ser vacio'));
-                if($this->form_validation->run())
-                {
-                    $params = array(
-                        'modeloc_parte1' => $this->input->post('modeloc_parte1'),
-                        'modeloc_parte2' => $this->input->post('modeloc_parte2'),
-                        'modeloc_parte3' => $this->input->post('modeloc_parte3'),
-                        'modeloc_parte4' => $this->input->post('modeloc_parte4'),
-                        'modeloc_parte5' => $this->input->post('modeloc_parte5'),
-                        'modeloc_parte6' => $this->input->post('modeloc_parte6'),
-                        'modeloc_parte7' => $this->input->post('modeloc_parte7'),
-                        'modeloc_parte8' => $this->input->post('modeloc_parte8'),
-                        'modeloc_parte9' => $this->input->post('modeloc_parte9'),
-                        'modeloc_parte10' => $this->input->post('modeloc_parte10'),
-                        );
-
-                    $this->Modelo_contrato_model->update_modelo_contrato($modeloc_id,$params);            
-                    redirect('modelo_contrato/index');
-                }
-                else
-                {
                     $this->load->model('Beca_model');
                     $data['all_beca'] = $this->Beca_model->get_all_becacontrato();
                     
                     $data['_view'] = 'modelo_contrato/edit';
                     $this->load->view('layouts/main',$data);
-                }
+                //}
             }
             else
                 show_error('The modelo_contrato you are trying to edit does not exist.');
@@ -139,6 +95,33 @@ class Modelo_contrato extends CI_Controller{
                 );
                 $modeloc_id = $this->Modelo_contrato_model->add_modelo_contrato($params);
                 
+                echo json_encode("ok");
+            }else{                 
+                show_404();
+            }
+        //}
+    }
+    /* modificar modelo de contrato */
+    function modificar_modelocontrato()
+    {
+        //if($this->acceso(103)) {
+            if($this->input->is_ajax_request()){
+                $params = array(
+                    'beca_id'        => $this->input->post('beca_id'),
+                    'modeloc_parte1' => $this->input->post('modeloc_parte1'),
+                    'modeloc_parte2' => $this->input->post('modeloc_parte2'),
+                    'modeloc_parte3' => $this->input->post('modeloc_parte3'),
+                    'modeloc_parte4' => $this->input->post('modeloc_parte4'),
+                    'modeloc_parte5' => $this->input->post('modeloc_parte5'),
+                    'modeloc_parte6' => $this->input->post('modeloc_parte6'),
+                    'modeloc_parte7' => $this->input->post('modeloc_parte7'),
+                    'modeloc_parte8' => $this->input->post('modeloc_parte8'),
+                    'modeloc_parte9' => $this->input->post('modeloc_parte9'),
+                    'modeloc_parte10' => $this->input->post('modeloc_parte10'),
+                    'modeloc_parte11' => $this->input->post('modeloc_parte11'),
+                );
+                $modeloc_id = $this->input->post('modeloc_id');
+                $this->Modelo_contrato_model->update_modelo_contrato($modeloc_id,$params);
                 echo json_encode("ok");
             }else{                 
                 show_404();
