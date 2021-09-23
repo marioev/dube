@@ -537,11 +537,14 @@ class Postulante extends CI_Controller{
         }
     }
     
-    /* contrato beca extension universitaria */
+    /* MODELO CCONTRATO beca extension universitaria */
     function contratoextenuniv($postulante_id)
     {
         if($this->acceso(14)){
             $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
+            $beca_id = $data['postulante']['beca_id'];
+            $this->load->model('Modelo_contrato_model');
+            $data['contrato'] = $this->Modelo_contrato_model->get_modelocontrato_beca($beca_id);
             $data['_view'] = 'postulante/contratoextenuniv';
             $this->load->view('layouts/main',$data);
         }
