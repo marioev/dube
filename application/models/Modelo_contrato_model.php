@@ -61,4 +61,11 @@ class Modelo_contrato_model extends CI_Model
     {
         return $this->db->delete('modelo_contrato',array('modeloc_id'=>$modeloc_id));
     }*/
+    /*
+     * Get modelo_contrato de una beca
+     */
+    function get_modelocontrato_beca($beca_id)
+    {
+        return $this->db->get_where('modelo_contrato',array('beca_id'=>$beca_id))->row_array();
+    }
 }

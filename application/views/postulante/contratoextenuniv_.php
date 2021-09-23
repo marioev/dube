@@ -38,9 +38,6 @@ $tamanio = "15cm";
             <table class="table" style="width: <?php echo $tamanio;?>;">
                 <tr>
                     <td>
-                        <?php
-                        echo $contrato['modeloc_parte1'];
-                        ?>
                         <span>
                             UNIVERSIDAD MAYOR DE SAN SIMON
                             <br>DEPARTAMENTO LEGAL

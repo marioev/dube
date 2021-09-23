@@ -67,8 +67,13 @@ function buscar_apostulantes(){
                         html += "<a href='"+base_url+"postulante/compromisopdeporte/"+datos[i].postulante_id+"' class='btn btn-soundcloud btn-xs' title='Compromiso de pago'><i class='fa fa-list'></i></a>";
                             }else /*if(datos[i].beca_id == 6){
                         html += "<a href='"+base_url+"postulante/contratocultura/"+datos[i].postulante_id+"' class='btn btn-warning btn-xs' title='Generar contrato'><i class='fa fa-list'></i></a>";
-                            }else*/ if(datos[i].beca_id == 7){
-                        html += "<a href='"+base_url+"postulante/contratoextenuniv/"+datos[i].postulante_id+"' class='btn btn-warning btn-xs' title='Generar contrato'><i class='fa fa-list'></i></a>";
+                            }else*/
+                            if(datos[i].beca_id == 7){
+                                if(datos[i].contrato_id >0){
+                                    html += "<a href='"+base_url+"contrato/mostrarcontrato/"+datos[i].contrato_id+"' class='btn btn-warning btn-xs' title='Mostrar contrato'><i class='fa fa-list'></i></a>";
+                                }else{
+                                    html += "<a href='"+base_url+"postulante/contratoextenuniv/"+datos[i].postulante_id+"' class='btn btn-warning btn-xs' title='Generar contrato'><i class='fa fa-list'></i></a>";
+                                }
                             }else /*if(datos[i].beca_id == 8){
                         html += "<a href='"+base_url+"postulante/contratovivalbergue/"+datos[i].postulante_id+"' class='btn btn-warning btn-xs' title='Generar contrato'><i class='fa fa-list'></i></a>";
                             }else*/ if(datos[i].beca_id == 10){
