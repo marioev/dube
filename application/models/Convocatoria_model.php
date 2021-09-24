@@ -119,6 +119,7 @@ class Convocatoria_model extends CI_Model
      */
     function getall_convocatorias_degetion($gestion_id)
     {
+        $estado = 1;//convocatoria abierta
         $convocatoria = $this->db->query("
             SELECT
                 c.*
@@ -126,6 +127,7 @@ class Convocatoria_model extends CI_Model
                 convocatoria as c
             where
                 c.gestion_id = $gestion_id
+            AND c.estado_id = $estado
             ORDER BY c.convocatoria_id desc
         ")->result_array();
         return $convocatoria;

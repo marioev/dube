@@ -149,7 +149,7 @@ class Convocatoria extends CI_Controller{
             else
             {
                 $this->load->model('Gestion_model');
-                $data['all_gestion'] = $this->Gestion_model->get_all_gestion();
+                $data['all_gestion'] = $this->Gestion_model->get_all_gestion_active();
 
                 //$this->load->model('Requisito_model');
                 //$data['all_requisito'] = $this->Requisito_model->get_all_requisito();

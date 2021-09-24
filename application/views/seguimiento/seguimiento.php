@@ -120,7 +120,7 @@
                             <a href="<?php echo site_url('/resources/images/seguimiento/'.$s['seguimiento_respaldo']) ?>" target="_blank"><?php echo $s['seguimiento_respaldo']; ?></a>
                         </td>
                         <td>
-                            <a href="<?php echo site_url('seguimiento/edit/'.$s['seguimiento_id']); ?>" class="btn btn-info btn-xs" title="Modificar postulante"><span class="fa fa-pencil"></span></a>
+                            <a href="<?php echo site_url('seguimiento/edit/'.$s['seguimiento_id']); ?>" class="btn btn-info btn-xs" title="Modificar seguimiento"><span class="fa fa-pencil"></span></a>
                         </td>
                     </tr>
                     <?php
