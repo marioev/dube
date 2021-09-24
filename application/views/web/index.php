@@ -554,7 +554,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="col-md-12" style="padding-bottom: 20px">
                     <h4 class="text-center">ORGANIGRAMA</h4>
                     <p class="text-center">
-                        <a style="color: #fff !important; font-size: 14px;" href="<?php echo site_url('/resources/images/organigrama/'.$dube['dube_organigrama']) ?>" target="_blank"><?php echo $dube['dube_organigrama']; ?></a></p>
+                        <img class="img-responsibe mt-4" src="<?php echo site_url('/resources/images/organigrama/'.$dube['dube_organigrama']) ?>" alt="">
+                        <!-- <a style="color: #fff !important; font-size: 14px;" href="<?php echo site_url('/resources/images/organigrama/'.$dube['dube_organigrama']) ?>" target="_blank"><?php echo $dube['dube_organigrama']; ?></a> -->
+                    </p>
                     <!--<p class="text-justify"><?php //echo $dube['dube_organigrama']; ?></p>-->
                 </div>
                 <?php } ?>
