@@ -478,54 +478,54 @@ class Postulante extends CI_Controller{
     }
     
     /* contrato internado rotatorio */
-    function contratointernadorot($postulante_id)
+    /*function contratointernadorot($postulante_id)
     {
         if($this->acceso(14)){
             $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
             $data['_view'] = 'postulante/contratointernadorot';
             $this->load->view('layouts/main',$data);
         }
-    }
+    }*/
     
     /* contrato elaboracion de Tesis */
-    function contratoelabtesis($postulante_id)
+    /*function contratoelabtesis($postulante_id)
     {
         if($this->acceso(14)){
             $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
             $data['_view'] = 'postulante/contratoelabtesis';
             $this->load->view('layouts/main',$data);
         }
-    }
+    }*/
     
     /* contrato proyecto de grado */
-    function contratoproygrado($postulante_id)
+    /*function contratoproygrado($postulante_id)
     {
         if($this->acceso(14)){
             $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
             $data['_view'] = 'postulante/contratoproygrado';
             $this->load->view('layouts/main',$data);
         }
-    }
+    }*/
     
     /* contrato adscripcion */
-    function contratoadscripcion($postulante_id)
+    /*function contratoadscripcion($postulante_id)
     {
         if($this->acceso(14)){
             $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
             $data['_view'] = 'postulante/contratoadscripcion';
             $this->load->view('layouts/main',$data);
         }
-    }
+    }*/
     
     /* contrato beca deporte */
-    function contratodeporte($postulante_id)
+    /*function contratodeporte($postulante_id)
     {
         if($this->acceso(14)){
             $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
             $data['_view'] = 'postulante/contratodeporte';
             $this->load->view('layouts/main',$data);
         }
-    }
+    }*/
     
     /* compromiso depago beca deporte */
     function compromisopdeporte($postulante_id)
@@ -538,24 +538,63 @@ class Postulante extends CI_Controller{
     }
     
     /* MODELO CCONTRATO beca extension universitaria */
-    function contratoextenuniv($postulante_id)
+    /*function contratoextenuniv($postulante_id)
     {
         if($this->acceso(14)){
             $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
             $beca_id = $data['postulante']['beca_id'];
             $this->load->model('Modelo_contrato_model');
             $data['contrato'] = $this->Modelo_contrato_model->get_modelocontrato_beca($beca_id);
+            $this->load->model('Autoridad_contrato_model');
+            $data['rector'] = $this->Autoridad_contrato_model->get_autoridad_orden(1);
+            $data['administrativo'] = $this->Autoridad_contrato_model->get_autoridad_orden(2);
+            $data['dube'] = $this->Autoridad_contrato_model->get_autoridad_orden(3);
+            
             $data['_view'] = 'postulante/contratoextenuniv';
             $this->load->view('layouts/main',$data);
         }
-    }
+    }*/
     
     /* contrato beca trabajo dirigido */
-    function contratotrabdirigido($postulante_id)
+    /*function contratotrabdirigido($postulante_id)
     {
         if($this->acceso(14)){
             $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
             $data['_view'] = 'postulante/contratotrabdirigido';
+            $this->load->view('layouts/main',$data);
+        }
+    }*/
+    /* generar contrato */
+    function generar_contrato($postulante_id)
+    {
+        if($this->acceso(14)){
+            $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
+            $beca_id = $data['postulante']['beca_id'];
+            $this->load->model('Modelo_contrato_model');
+            $data['contrato'] = $this->Modelo_contrato_model->get_modelocontrato_beca($beca_id);
+            $this->load->model('Autoridad_contrato_model');
+            $data['rector'] = $this->Autoridad_contrato_model->get_autoridad_orden(1);
+            $data['administrativo'] = $this->Autoridad_contrato_model->get_autoridad_orden(2);
+            $data['dube'] = $this->Autoridad_contrato_model->get_autoridad_orden(3);
+            
+            $data['_view'] = 'postulante/generar_contrato';
+            $this->load->view('layouts/main',$data);
+        }
+    }
+    /* generar compromiso */
+    function generar_compromiso($postulante_id)
+    {
+        if($this->acceso(14)){
+            $data['postulante'] = $this->Postulante_model->get_thispostulante($postulante_id);
+            $beca_id = $data['postulante']['beca_id'];
+            $this->load->model('Modelo_contrato_model');
+            $data['contrato'] = $this->Modelo_contrato_model->get_modelocontrato_beca($beca_id);
+            $this->load->model('Autoridad_contrato_model');
+            $data['rector'] = $this->Autoridad_contrato_model->get_autoridad_orden(1);
+            $data['administrativo'] = $this->Autoridad_contrato_model->get_autoridad_orden(2);
+            $data['dube'] = $this->Autoridad_contrato_model->get_autoridad_orden(3);
+            
+            $data['_view'] = 'postulante/generar_compromiso';
             $this->load->view('layouts/main',$data);
         }
     }

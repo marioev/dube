@@ -24,81 +24,11 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <label for="modeloc_parte1" class="control-label">Parte 1</label>
+                    <div class="col-md-12">
+                        <label for="modeloc_parte1" class="control-label">Modelo</label>
                         <div class="form-group">
                             <div id="modeloc_parte1"></div>
                             <span class="text-danger"><?php echo form_error('modeloc_parte1');?></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="modeloc_parte2" class="control-label">Parte 2</label>
-                        <div class="form-group">
-                            <div id="modeloc_parte2"></div>
-                            <span class="text-danger"><?php echo form_error('modeloc_parte2');?></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="modeloc_parte3" class="control-label">Parte 3</label>
-                        <div class="form-group">
-                            <div id="modeloc_parte3"></div>
-                            <span class="text-danger"><?php echo form_error('modeloc_parte3');?></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="modeloc_parte4" class="control-label">Parte 4</label>
-                        <div class="form-group">
-                            <div id="modeloc_parte4"></div>
-                            <span class="text-danger"><?php echo form_error('modeloc_parte4');?></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="modeloc_parte5" class="control-label">Parte 5</label>
-                        <div class="form-group">
-                            <div id="modeloc_parte5"></div>
-                            <span class="text-danger"><?php echo form_error('modeloc_parte5');?></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="modeloc_parte6" class="control-label">Parte 6</label>
-                        <div class="form-group">
-                            <div id="modeloc_parte6"></div>
-                            <span class="text-danger"><?php echo form_error('modeloc_parte6');?></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="modeloc_parte7" class="control-label">Parte 7</label>
-                        <div class="form-group">
-                            <div id="modeloc_parte7"></div>
-                            <span class="text-danger"><?php echo form_error('modeloc_parte7');?></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="modeloc_parte8" class="control-label">Parte 8</label>
-                        <div class="form-group">
-                            <div id="modeloc_parte8"></div>
-                            <span class="text-danger"><?php echo form_error('modeloc_parte8');?></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="modeloc_parte9" class="control-label">Parte 9</label>
-                        <div class="form-group">
-                            <div id="modeloc_parte9"></div>
-                            <span class="text-danger"><?php echo form_error('modeloc_parte9');?></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="modeloc_parte10" class="control-label">Parte 10</label>
-                        <div class="form-group">
-                            <div id="modeloc_parte10"></div>
-                            <span class="text-danger"><?php echo form_error('modeloc_parte10');?></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="modeloc_parte11" class="control-label">Parte 11</label>
-                        <div class="form-group">
-                            <div id="modeloc_parte11"></div>
-                            <span class="text-danger"><?php echo form_error('modeloc_parte11');?></span>
                         </div>
                     </div>
                 </div>

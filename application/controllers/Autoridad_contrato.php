@@ -54,6 +54,7 @@ class Autoridad_contrato extends CI_Controller{
                     'gestion_id' => $this->input->post('gestion_id'),
                     'estado_id' => $estado_id,
                     'autoridadc_nombre' => $this->input->post('autoridadc_nombre'),
+                    'autoridadc_ci' => $this->input->post('autoridadc_ci'),
                     'autoridadc_cargo' => $this->input->post('autoridadc_cargo'),
                     'autoridadc_orden' => $this->input->post('autoridadc_orden'),
                 );
@@ -88,6 +89,7 @@ class Autoridad_contrato extends CI_Controller{
                         'gestion_id' => $this->input->post('gestion_id'),
                         'estado_id' => $this->input->post('estado_id'),
                         'autoridadc_nombre' => $this->input->post('autoridadc_nombre'),
+                        'autoridadc_ci' => $this->input->post('autoridadc_ci'),
                         'autoridadc_cargo' => $this->input->post('autoridadc_cargo'),
                         'autoridadc_orden' => $this->input->post('autoridadc_orden'),
                     );

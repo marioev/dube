@@ -4,11 +4,11 @@
  * www.crudigniter.com
  */
  
-class Gestion extends CI_Controller{
+class Contrato extends CI_Controller{
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Gestion_model');
+        $this->load->model('Contrato_model');
         if ($this->session->userdata('logged_in')) {
             $this->session_data = $this->session->userdata('logged_in');
         }else {
@@ -26,70 +26,70 @@ class Gestion extends CI_Controller{
     }
 
     /*
-     * Listing of gestion
+     * Listing of contrato
      */
     function index()
     {
         if($this->acceso(11)) {
-            $data['gestion'] = $this->Gestion_model->get_all_gestion();
+            $data['contrato'] = $this->Contrato_model->get_all_contrato();
 
-            $data['_view'] = 'gestion/index';
+            $data['_view'] = 'contrato/index';
             $this->load->view('layouts/main',$data);
         }
     }
 
     /*
-     * Adding a new gestion
+     * Adding a new contrato
      */
-    function add()
+    /*function add()
     {
         if($this->acceso(12)) {
             $this->load->library('form_validation');
-            $this->form_validation->set_rules('gestion_descripcion','Gestion Descripcion','trim|required', array('required' => 'Este Campo no debe ser vacio'));
-            $this->form_validation->set_rules('gestion_fechainicio','Gestion Fechainicio','required');
+            $this->form_validation->set_rules('contrato_descripcion','Gestion Descripcion','trim|required', array('required' => 'Este Campo no debe ser vacio'));
+            $this->form_validation->set_rules('contrato_fechainicio','Gestion Fechainicio','required');
             if($this->form_validation->run())     
             {
                 $estado_id = 9;
                 $params = array(
                     'estado_id' => $estado_id,
-                    'gestion_fechainicio' => $this->input->post('gestion_fechainicio'),
-                    'gestion_descripcion' => $this->input->post('gestion_descripcion'),
-                    'gestion_fechafin' => $this->input->post('gestion_fechafin'),
+                    'contrato_fechainicio' => $this->input->post('contrato_fechainicio'),
+                    'contrato_descripcion' => $this->input->post('contrato_descripcion'),
+                    'contrato_fechafin' => $this->input->post('contrato_fechafin'),
                 );
-                $gestion_id = $this->Gestion_model->add_gestion($params);
-                redirect('gestion/index');
+                $contrato_id = $this->Contrato_model->add_contrato($params);
+                redirect('contrato/index');
             }else{
-                $data['_view'] = 'gestion/add';
+                $data['_view'] = 'contrato/add';
                 $this->load->view('layouts/main',$data);
             }
         }
-    }  
+    }*/
 
     /*
-     * Editing a gestion
+     * Editing a contrato
      */
-    function edit($gestion_id)
+    /*function edit($contrato_id)
     {
         if($this->acceso(13)) {
-            // check if the gestion exists before trying to edit it
-            $data['gestion'] = $this->Gestion_model->get_gestion($gestion_id);
+            // check if the contrato exists before trying to edit it
+            $data['contrato'] = $this->Contrato_model->get_contrato($contrato_id);
 
-            if(isset($data['gestion']['gestion_id']))
+            if(isset($data['contrato']['contrato_id']))
             {
                 $this->load->library('form_validation');
-                $this->form_validation->set_rules('gestion_fechainicio','Gestion Fechainicio','required');
-                $this->form_validation->set_rules('gestion_descripcion','Gestion Descripcion','required');
+                $this->form_validation->set_rules('contrato_fechainicio','Gestion Fechainicio','required');
+                $this->form_validation->set_rules('contrato_descripcion','Gestion Descripcion','required');
                 if($this->form_validation->run())
                 {
                     $params = array(
                         'estado_id' => $this->input->post('estado_id'),
-                        'gestion_fechainicio' => $this->input->post('gestion_fechainicio'),
-                        'gestion_descripcion' => $this->input->post('gestion_descripcion'),
-                        'gestion_fechafin' => $this->input->post('gestion_fechafin'),
+                        'contrato_fechainicio' => $this->input->post('contrato_fechainicio'),
+                        'contrato_descripcion' => $this->input->post('contrato_descripcion'),
+                        'contrato_fechafin' => $this->input->post('contrato_fechafin'),
                     );
 
-                    $this->Gestion_model->update_gestion($gestion_id,$params);            
-                    redirect('gestion/index');
+                    $this->Contrato_model->update_contrato($contrato_id,$params);            
+                    redirect('contrato/index');
                 }
                 else
                 {
@@ -97,30 +97,79 @@ class Gestion extends CI_Controller{
                     $tipo = 4;
                     $data['all_estado'] = $this->Estado_model->get_tipo_estado($tipo);
                     
-                    $data['_view'] = 'gestion/edit';
+                    $data['_view'] = 'contrato/edit';
                     $this->load->view('layouts/main',$data);
                 }
             }
             else
-                show_error('The gestion you are trying to edit does not exist.');
+                show_error('The contrato you are trying to edit does not exist.');
         }
-    } 
+    }*/
 
     /*
-     * Deleting gestion
+     * Deleting contrato
      */
-    /*function remove($gestion_id)
+    /*function remove($contrato_id)
     {
-        $gestion = $this->Gestion_model->get_gestion($gestion_id);
+        $contrato = $this->Contrato_model->get_contrato($contrato_id);
 
-        // check if the gestion exists before trying to delete it
-        if(isset($gestion['gestion_id']))
+        // check if the contrato exists before trying to delete it
+        if(isset($contrato['contrato_id']))
         {
-            $this->Gestion_model->delete_gestion($gestion_id);
-            redirect('gestion/index');
+            $this->Contrato_model->delete_contrato($contrato_id);
+            redirect('contrato/index');
         }
         else
-            show_error('The gestion you are trying to delete does not exist.');
+            show_error('The contrato you are trying to delete does not exist.');
     }*/
+    
+    /* registrar contrato */
+    function registrar_contrato()
+    {
+        //if($this->acceso(103)) {
+            if($this->input->is_ajax_request()){
+                $para_guardar = $this->input->post('para_guardar');
+                $params = array(
+                    'postulante_id' => $this->input->post('postulante_id'),
+                    'contrato_contrato' => $this->input->post('para_guardar'),
+                );
+                $contrato_id = $this->Contrato_model->add_contrato($params);
+                echo json_encode("ok");
+            }else{                 
+                show_404();
+            }
+        //}
+    }
+    /*
+     * muestra un contrato
+     */
+    function mostrarcontrato($contrato_id)
+    {
+        if($this->acceso(11)) {
+            $data['contrato'] = $this->Contrato_model->get_contrato($contrato_id);
+
+            $data['_view'] = 'contrato/mostrarcontrato';
+            $this->load->view('layouts/main',$data);
+        }
+    }
+    
+    /* registrar compromiso */
+    function registrar_compromiso()
+    {
+        //if($this->acceso(103)) {
+            if($this->input->is_ajax_request()){
+                $para_guardar = $this->input->post('para_guardar');
+                $params = array(
+                    'postulante_id' => $this->input->post('postulante_id'),
+                    'contrato_contrato' => $this->input->post('para_guardar'),
+                    'contrato_compromiso' => 1,
+                );
+                $contrato_id = $this->Contrato_model->add_contrato($params);
+                echo json_encode("ok");
+            }else{                 
+                show_404();
+            }
+        //}
+    }
     
 }

@@ -70,4 +70,16 @@ class Autoridad_contrato_model extends CI_Model
     {
         return $this->db->delete('autoridad_contrato',array('autoridadc_id'=>$autoridadc_id));
     }
+        function get_autoridad_orden($orden)
+    {
+        $autoridad_contrato = $this->db->query("
+            SELECT
+                ac.*
+            FROM
+                `autoridad_contrato` ac
+            WHERE ac.autoridadc_orden = $orden
+                and ac.estado_id = 9
+        ")->row_array();
+        return $autoridad_contrato;
+    }
 }

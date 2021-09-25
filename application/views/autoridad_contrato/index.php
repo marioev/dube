@@ -32,6 +32,7 @@
                     <tr>
                         <th>#</th>
                         <th>Nombre</th>
+                        <th class="text-center">C.I.</th>
                         <th>Cargo</th>
                         <th>Gestion</th>
                         <th>Orden</th>
@@ -44,6 +45,7 @@
                     <tr style="background: <?php echo $ac['estado_color']; ?>">
                         <td class="text-center"><?php echo $i+1; ?></td>
                         <td><?php echo $ac['autoridadc_nombre']; ?></td>
+                        <td  class="text-center"><?php echo $ac['autoridadc_ci']; ?></td>
                         <td><?php echo $ac['autoridadc_cargo']; ?></td>
                         <td><?php echo $ac['gestion_descripcion']; ?></td>
                         <td><?php echo $ac['autoridadc_orden']; ?></td>

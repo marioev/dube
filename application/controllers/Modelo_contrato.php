@@ -82,21 +82,11 @@ class Modelo_contrato extends CI_Controller{
                 $params = array(
                     'beca_id'        => $this->input->post('beca_id'),
                     'modeloc_parte1' => $this->input->post('modeloc_parte1'),
-                    'modeloc_parte2' => $this->input->post('modeloc_parte2'),
-                    'modeloc_parte3' => $this->input->post('modeloc_parte3'),
-                    'modeloc_parte4' => $this->input->post('modeloc_parte4'),
-                    'modeloc_parte5' => $this->input->post('modeloc_parte5'),
-                    'modeloc_parte6' => $this->input->post('modeloc_parte6'),
-                    'modeloc_parte7' => $this->input->post('modeloc_parte7'),
-                    'modeloc_parte8' => $this->input->post('modeloc_parte8'),
-                    'modeloc_parte9' => $this->input->post('modeloc_parte9'),
-                    'modeloc_parte10' => $this->input->post('modeloc_parte10'),
-                    'modeloc_parte11' => $this->input->post('modeloc_parte11'),
                 );
                 $modeloc_id = $this->Modelo_contrato_model->add_modelo_contrato($params);
                 
                 echo json_encode("ok");
-            }else{                 
+            }else{
                 show_404();
             }
         //}
@@ -109,16 +99,6 @@ class Modelo_contrato extends CI_Controller{
                 $params = array(
                     'beca_id'        => $this->input->post('beca_id'),
                     'modeloc_parte1' => $this->input->post('modeloc_parte1'),
-                    'modeloc_parte2' => $this->input->post('modeloc_parte2'),
-                    'modeloc_parte3' => $this->input->post('modeloc_parte3'),
-                    'modeloc_parte4' => $this->input->post('modeloc_parte4'),
-                    'modeloc_parte5' => $this->input->post('modeloc_parte5'),
-                    'modeloc_parte6' => $this->input->post('modeloc_parte6'),
-                    'modeloc_parte7' => $this->input->post('modeloc_parte7'),
-                    'modeloc_parte8' => $this->input->post('modeloc_parte8'),
-                    'modeloc_parte9' => $this->input->post('modeloc_parte9'),
-                    'modeloc_parte10' => $this->input->post('modeloc_parte10'),
-                    'modeloc_parte11' => $this->input->post('modeloc_parte11'),
                 );
                 $modeloc_id = $this->input->post('modeloc_id');
                 $this->Modelo_contrato_model->update_modelo_contrato($modeloc_id,$params);

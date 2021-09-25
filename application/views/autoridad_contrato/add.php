@@ -7,7 +7,7 @@
             <?php echo form_open('autoridad_contrato/add'); ?>
             <div class="box-body">
                 <div class="row clearfix">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="gestion_id" class="control-label">Gestión</label>
                         <div class="form-group">
                             <select id="gestion_id" name="gestion_id" class="form-control" required autofocus>
@@ -21,11 +21,18 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <label for="autoridadc_nombre" class="control-label"><span class="text-danger">*</span>Nombre</label>
                         <div class="form-group">
                             <input type="text" name="autoridadc_nombre" value="<?php echo $this->input->post('autoridadc_nombre'); ?>" class="form-control" id="autoridadc_nombre" required autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                             <span class="text-danger"><?php echo form_error('autoridadc_nombre');?></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="autoridadc_ci" class="control-label"><span class="text-danger">*</span>C.I.</label>
+                        <div class="form-group">
+                            <input type="text" name="autoridadc_ci" value="<?php echo $this->input->post('autoridadc_ci'); ?>" class="form-control" id="autoridadc_ci" required autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                            <span class="text-danger"><?php echo form_error('autoridadc_ci');?></span>
                         </div>
                     </div>
                     <div class="col-md-10">

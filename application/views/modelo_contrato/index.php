@@ -32,17 +32,7 @@
                     <tr>
                         <th>#</th>
                         <th>Beca</th>
-                        <th>Parte 1</th>
-                        <th>Parte 2</th>
-                        <th>Parte 3</th>
-                        <th>Parte 4</th>
-                        <th>Parte 5</th>
-                        <th>Parte 6</th>
-                        <th>Parte 7</th>
-                        <th>Parte 8</th>
-                        <th>Parte 9</th>
-                        <th>Parte 10</th>
-                        <th>Parte 11</th>
+                        <th>Modelo</th>
                         <th></th>
                     </tr>
                     <?php
@@ -52,16 +42,6 @@
                         <td class="text-center"><?php echo $i+1; ?></td>
                         <td><?php echo $mc['beca_nombre']; ?></td>
                         <td><?php echo $mc['modeloc_parte1']; ?></td>
-                        <td><?php echo $mc['modeloc_parte2']; ?></td>
-                        <td><?php echo $mc['modeloc_parte3']; ?></td>
-                        <td><?php echo $mc['modeloc_parte4']; ?></td>
-                        <td><?php echo $mc['modeloc_parte5']; ?></td>
-                        <td><?php echo $mc['modeloc_parte6']; ?></td>
-                        <td><?php echo $mc['modeloc_parte7']; ?></td>
-                        <td><?php echo $mc['modeloc_parte8']; ?></td>
-                        <td><?php echo $mc['modeloc_parte9']; ?></td>
-                        <td><?php echo $mc['modeloc_parte10']; ?></td>
-                        <td><?php echo $mc['modeloc_parte11']; ?></td>
                         <td>
                             <a href="<?php echo site_url('modelo_contrato/edit/'.$mc['modeloc_id']); ?>" class="btn btn-info btn-xs" title="Modificar modelo contrato"><span class="fa fa-pencil"></span></a> 
                         </td>

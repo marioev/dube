@@ -4,7 +4,7 @@
  * www.crudigniter.com
  */
  
-class Gestion_model extends CI_Model
+class Contrato_Model extends CI_Model
 {
     function __construct()
     {
@@ -12,53 +12,53 @@ class Gestion_model extends CI_Model
     }
     
     /*
-     * Get gestion by gestion_id
+     * Get contrato by contrato_id
      */
-    function get_gestion($gestion_id)
+    function get_contrato($contrato_id)
     {
-        return $this->db->get_where('gestion',array('gestion_id'=>$gestion_id))->row_array();
+        return $this->db->get_where('contrato',array('contrato_id'=>$contrato_id))->row_array();
     }
         
     /*
-     * Get all gestion
+     * Get all contrato
      */
-    function get_all_gestion()
+    function get_all_contrato()
     {
-        $gestion = $this->db->query("
+        $contrato = $this->db->query("
             SELECT
-                g.*, e.estado_descripcion, e.estado_color
+                c.*, e.estado_descripcion, e.estado_color
             FROM
-                `gestion` g
-            left join estado e on g.estado_id = e.estado_id
-            ORDER BY g.`gestion_id` DESC
+                `contrato` c
+            left join estado e on c.estado_id = e.estado_id
+            ORDER BY c.`contrato_id` DESC
         ")->result_array();
 
-        return $gestion;
+        return $contrato;
     }
         
     /*
-     * function to add new gestion
+     * function to add new contrato
      */
-    function add_gestion($params)
+    function add_contrato($params)
     {
-        $this->db->insert('gestion',$params);
+        $this->db->insert('contrato',$params);
         return $this->db->insert_id();
     }
     
     /*
-     * function to update gestion
+     * function to update contrato
      */
-    function update_gestion($gestion_id,$params)
+    function update_contrato($contrato_id,$params)
     {
-        $this->db->where('gestion_id',$gestion_id);
-        return $this->db->update('gestion',$params);
+        $this->db->where('contrato_id',$contrato_id);
+        return $this->db->update('contrato',$params);
     }
     
     /*
-     * function to delete gestion
+     * function to delete contrato
      */
-    function delete_gestion($gestion_id)
+    function delete_contrato($contrato_id)
     {
-        return $this->db->delete('gestion',array('gestion_id'=>$gestion_id));
+        return $this->db->delete('contrato',array('contrato_id'=>$contrato_id));
     }
 }
