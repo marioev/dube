@@ -35,6 +35,24 @@ class Gestion_model extends CI_Model
 
         return $gestion;
     }
+
+    /*
+    * Get all gestion where gestion is active
+    */
+    function get_all_gestion_active(){
+        $activo = 9;
+        $gestion = $this->db->query("
+            SELECT
+                g.*
+            FROM
+                `gestion` g
+            left join estado e on g.estado_id = e.estado_id
+            where e.estado_id = $activo
+            ORDER BY g.`gestion_id` DESC
+        ")->result_array();
+
+        return $gestion;
+    }
         
     /*
      * function to add new gestion

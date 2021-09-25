@@ -119,7 +119,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <a href="http://www.umss.edu.bo/" class="logo" target="_blank">
-                    <img src="<?php echo $raiz;?>images/logoumss.png" width="50%" height="50%">
+                    <img src="<?php echo $raiz;?>images/logoumss.png" width="40%" height="40%">
                     <!--<h1>Collegiate</h1>-->
                 </a>
             </div>
@@ -139,16 +139,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- Navigation Bar -->
 <div class="navbar-wrapper" style="margin-top: 100px">
     <div class="container">
-        <nav class="navbar navbar-inverse navbar-static-top cl-effect-21">
+        <nav class="navbar navbar-inverse navbar-static-top cl-effect-21" style="background-color: rgba(0, 0, 0, 0.35);">
             <div class="container">
-                <div class="navbar-header">
+                <!-- <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                </div>
+                </div> -->
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <!--<li class="active"><a href="#">Inicio</a></li>-->
@@ -157,7 +157,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <li><a href="#curriculum">Publicaciones</a></li>
                         <li><a href="#gallery">D.U.B.E.</a></li>
                         <li><a href="#contact">Contactos</a></li>
-                        <!--<li><a href="<?php //echo base_url("login"); ?>">Ingresar</a></li>-->
+                        <!-- <li><a href="<?php //echo base_url("login"); ?>">Ingresar</a></li> -->
                     </ul>
                 </div>
             </div>
@@ -452,7 +452,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="row">
             <?php foreach ($las_publicaciones as $publicacion) {
             ?>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="cur-details slideanim">
                     <h4><?php echo $publicacion['beca_nombre']; ?></h4>
                     <h5>
@@ -463,7 +463,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         }
                         ?>
                     </h5>
-                    <p class="cur1" style="padding-bottom: 1px !important"><?php echo $publicacion['publicacion_texto']; ?></p>
+                    <p class="cur1" style="padding-bottom: 1px !important"><?php echo (substr($publicacion['publicacion_texto'], 0, 100)); ?></p>
                     <h5>
                         <?php
                         if($publicacion['publicacion_enlace'] !="" || $publicacion['publicacion_enlace'] !=null){
@@ -554,7 +554,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="col-md-12" style="padding-bottom: 20px">
                     <h4 class="text-center">ORGANIGRAMA</h4>
                     <p class="text-center">
-                        <a style="color: #fff !important; font-size: 14px;" href="<?php echo site_url('/resources/images/organigrama/'.$dube['dube_organigrama']) ?>" target="_blank"><?php echo $dube['dube_organigrama']; ?></a></p>
+                        <img class="img-responsibe mt-4" src="<?php echo site_url('/resources/images/organigrama/'.$dube['dube_organigrama']) ?>" alt="">
+                        <!-- <a style="color: #fff !important; font-size: 14px;" href="<?php echo site_url('/resources/images/organigrama/'.$dube['dube_organigrama']) ?>" target="_blank"><?php echo $dube['dube_organigrama']; ?></a> -->
+                    </p>
                     <!--<p class="text-justify"><?php //echo $dube['dube_organigrama']; ?></p>-->
                 </div>
                 <?php } ?>

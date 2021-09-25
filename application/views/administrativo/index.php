@@ -40,9 +40,9 @@
             <input id="filtrar" type="text" class="form-control" placeholder="Ingrese nombre, apellido, login, email..">
         </div>
         <div class="box">
-            <?php if($this->session->flashdata('msg')): ?>
+            <!-- <?php if($this->session->flashdata('msg')): ?>
                 <p><?php echo $this->session->flashdata('msg'); ?></p>
-            <?php endif; ?>
+            <?php endif; ?> --> 
             <div class="box-body table-responsive">
                 <table class="table table-striped table-condensed" id="mitabla">
                     <tr>
