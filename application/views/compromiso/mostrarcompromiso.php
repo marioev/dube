@@ -49,6 +49,6 @@ $tamanio = "15cm";
 </div>
 <div class="no-print">
     <a href="<?php echo site_url('postulante'); ?>" class="btn btn-danger">
-        <i class="fa fa-times"></i> Cancelar</a>
+        <i class="fa fa-times"></i> Regresar</a>
 </div>
 
