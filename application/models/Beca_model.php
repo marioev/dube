@@ -116,4 +116,12 @@ class Beca_model extends CI_Model
         ")->result_array();
         return $beca;
     }
+
+    function get_cant_beca(){
+        $sql = $this->db->query(
+            "SELECT COUNT(b.beca_id) as cant_beca
+            FROM beca AS b            
+            ")->row_array();
+        return $sql;
+    }
 }

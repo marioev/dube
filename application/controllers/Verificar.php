@@ -49,9 +49,11 @@ class Verificar extends CI_Controller
                 $session_data = $this->session->userdata('logged_in');
                 
                 if ($session_data['tipousuario_id'] == 1) {// admin page
-                    redirect('postulante'); 
+                    // redirect('postulante'); 
+                    redirect('dashboard'); 
                 }else{  // En caso de otro usuario no administrador 
-                    redirect('postulante'); 
+                    // redirect('postulante'); 
+                    redirect('dashboard'); 
                 }
             } else {
                 $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">USUARIO no es valido' . $result . '</div>');
