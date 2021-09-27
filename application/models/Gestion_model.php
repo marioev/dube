@@ -79,4 +79,13 @@ class Gestion_model extends CI_Model
     {
         return $this->db->delete('gestion',array('gestion_id'=>$gestion_id));
     }
+    /*
+    * Obtiene una gestion activa
+    */
+    function get_gestion_activa(){
+        return $this->db->query(
+            "SELECT g.gestion_id, g.gestion_descripcion
+            from gestion as g
+            where g.`estado_id` = 9")->row_array();
+    }
 }

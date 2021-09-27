@@ -79,12 +79,24 @@ class Publicacion_model extends CI_Model
             left join dube d on p.dube_id = d.dube_id
             left join beca b on p.beca_id = b.beca_id
             left join estado e on p.estado_id = e.estado_id
-            WHERE
+            WHERE   
                 p.estado_id = 1
 
             ORDER BY `publicacion_id` DESC
         ")->result_array();
 
         return $publicacion;
+    }
+
+    /*
+    * Obtener la cantidad de publicaciones de una gestion
+    */
+    function get_cant_publicacion(){
+        return $this->db->query(
+            "SELECT COUNT(p.publicacion_id) as cant_publicacion
+            FROM publicacion as p 
+            WHERE p.estado_id = 1
+            "
+        )->row_array();
     }
 }

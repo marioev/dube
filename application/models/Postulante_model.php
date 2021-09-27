@@ -108,4 +108,20 @@ class Postulante_model extends CI_Model
         ")->row_array();
         return $postulante;
     }
+    /*
+    * Obtiene la cantidad de postulantes de una gestion
+    */
+    function get_cant_postulante($gestion){
+        return $this->db->query(
+            "SELECT 
+                COUNT(p.`postulante_id`) AS cant_postulante
+            FROM
+                postulante as p
+            left join plazas_becas as pb on p.`plaza_id` = pb.`plaza_id`
+            left join `convocatoria` as c on c.`convocatoria_id` = pb.`convocatoria_id`
+            left join gestion as g on g.`gestion_id` = c.`gestion_id`
+            WHERE
+                g.gestion_id = $gestion 
+        ")->row_array();
+    }
 }

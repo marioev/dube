@@ -93,11 +93,11 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li class="header">MENU</li>
-                        <!--<li>
-                            <a href="<?php //echo site_url("admin/dashb");?>">
+                        <li>
+                            <a href="<?= site_url('dashboard');?>">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
-                        </li>-->
+                        </li>
                         <li>
                             <a href="#">
                                 <i class="fa fa-book"></i> <span>Registro</span>

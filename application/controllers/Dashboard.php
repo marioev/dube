@@ -8,12 +8,28 @@ class Dashboard extends CI_Controller{
     function __construct()
     {
         parent::__construct();
-        
+        $this->load->model('Postulante_model');
+        $this->load->model('Beca_model');
+        $this->load->model('Unidad_model');
+        $this->load->model('Convocatoria_model');
+        $this->load->model('Publicacion_model');
+        $this->load->model('Gestion_model');
     }
 
     function index()
     {
-        $data['_view'] = 'dashboard';
+        $gestion_actual = $this->Gestion_model->get_gestion_activa();
+        $cant_unidad = $this->Unidad_model->get_cant_unidad();
+        $cant_beca = $this->Beca_model->get_cant_beca();
+        $cant_postulante = $this->Postulante_model->get_cant_postulante($gestion_actual['gestion_id']);
+        $cant_publicacion = $this->Publicacion_model->get_cant_publicacion();
+
+        // $data['gestion_actual'] = $gestion_actual;
+        $data['cant_unidad'] = $cant_unidad;
+        $data['cant_beca'] = $cant_beca;
+        $data['cant_postulante'] = $cant_postulante;
+        $data['cant_publicacion'] = $cant_publicacion;
+        $data['_view'] = 'dashboard/index';
         $this->load->view('layouts/main',$data);
     }
 }

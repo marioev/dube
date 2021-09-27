@@ -53,4 +53,14 @@ class Unidad_model extends CI_Model
     {
         return $this->db->delete('unidad',array('unidad_id'=>$unidad_id));
     }
+    /*
+    * Obtiene la cantidad de unidades solicitantes una gestion
+    */
+    function get_cant_unidad(){
+        return $this->db->query(
+            "SELECT COUNT(u.`unidad_id`) as cant_unidad
+            from `unidad` as u
+
+        ")->row_array();
+    }
 }
