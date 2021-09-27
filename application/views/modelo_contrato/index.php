@@ -32,7 +32,8 @@
                     <tr>
                         <th>#</th>
                         <th>Beca</th>
-                        <th>Modelo</th>
+                        <th>Modelo Contrato</th>
+                        <th>Modelo Compromiso</th>
                         <th></th>
                     </tr>
                     <?php
@@ -42,6 +43,7 @@
                         <td class="text-center"><?php echo $i+1; ?></td>
                         <td><?php echo $mc['beca_nombre']; ?></td>
                         <td><?php echo $mc['modeloc_parte1']; ?></td>
+                        <td><?php echo $mc['modeloc_parte2']; ?></td>
                         <td>
                             <a href="<?php echo site_url('modelo_contrato/edit/'.$mc['modeloc_id']); ?>" class="btn btn-info btn-xs" title="Modificar modelo contrato"><span class="fa fa-pencil"></span></a> 
                         </td>

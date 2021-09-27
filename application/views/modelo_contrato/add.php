@@ -14,7 +14,7 @@
                     <div class="col-md-6">
                         <label for="beca_id" class="control-label">Beca</label>
                         <div class="form-group">
-                            <select id="beca_id" name="beca_id" class="form-control" required>
+                            <select id="beca_id" name="beca_id" class="form-control" required onchange="mostrar_compromiso()">
                                 <?php 
                                 foreach($all_beca as $beca)
                                 {
@@ -25,10 +25,17 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <label for="modeloc_parte1" class="control-label">Modelo</label>
+                        <label for="modeloc_parte1" class="control-label">Modelo Contrato</label>
                         <div class="form-group">
                             <div id="modeloc_parte1"></div>
                             <span class="text-danger"><?php echo form_error('modeloc_parte1');?></span>
+                        </div>
+                    </div>
+                    <div class="col-md-12" id="elmodelo" style="display: none">
+                        <label for="modeloc_parte2" class="control-label">Modelo Compromiso</label>
+                        <div class="form-group">
+                            <div id="modeloc_parte2"></div>
+                            <span class="text-danger"><?php echo form_error('modeloc_parte2');?></span>
                         </div>
                     </div>
                 </div>

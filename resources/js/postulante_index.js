@@ -85,8 +85,8 @@ function buscar_apostulantes(){
                                     html += "<a href='"+base_url+"postulante/generar_contrato/"+datos[i].postulante_id+"' class='btn btn-warning btn-xs' title='Generar contrato'><i class='fa fa-list'></i></a>";
                                 }
                                 /* para contratos */
-                                if(datos[i].contrato_compromiso == 1){
-                                    html += "<a href='"+base_url+"contrato/mostrarcompromiso/"+datos[i].contrato_id+"' class='btn btn-soundcloud btn-xs' title='Mostrar compromiso'><i class='fa fa-list'></i></a>";
+                                if(datos[i].compromiso_id >0){
+                                    html += "<a href='"+base_url+"compromiso/mostrarcompromiso/"+datos[i].compromiso_id+"' class='btn btn-soundcloud btn-xs' title='Mostrar compromiso'><i class='fa fa-list'></i></a>";
                                 }else{
                                     html += "<a href='"+base_url+"postulante/generar_compromiso/"+datos[i].postulante_id+"' class='btn btn-soundcloud btn-xs' title='Generar compromiso'><i class='fa fa-list'></i></a>";
                                 }

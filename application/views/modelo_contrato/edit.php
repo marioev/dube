@@ -3,6 +3,7 @@
 <script src="<?php echo base_url('resources/js/modeloc_edit.js'); ?>" type="text/javascript"></script>
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>" />
 <input type="hidden" name="elmodelo_contrato1" id="elmodelo_contrato1" value='<?php echo $modelo_contrato['modeloc_parte1']; ?>' />
+<input type="hidden" name="elmodelo_contrato2" id="elmodelo_contrato2" value='<?php echo $modelo_contrato['modeloc_parte2']; ?>' />
 <div class="row">
     <div class="col-md-12">
       	<div class="box box-info">
@@ -15,7 +16,7 @@
                     <div class="col-md-6">
                         <label for="beca_id" class="control-label">Beca</label>
                         <div class="form-group">
-                            <select id="beca_id" name="beca_id" class="form-control" required>
+                            <select id="beca_id" name="beca_id" class="form-control" required onchange="mostrar_compromiso()">
                                 <?php 
                                 foreach($all_beca as $beca)
                                 {
@@ -27,10 +28,17 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <label for="modeloc_parte1" class="control-label">Parte 1</label>
+                        <label for="modeloc_parte1" class="control-label">Modelo Contrato</label>
                         <div class="form-group">
                             <div id="modeloc_parte1"></div>
                             <span class="text-danger"><?php echo form_error('modeloc_parte1');?></span>
+                        </div>
+                    </div>
+                    <div class="col-md-12" id="elmodelo" style="display: none">
+                        <label for="modeloc_parte2" class="control-label">Modelo Compromiso</label>
+                        <div class="form-group">
+                            <div id="modeloc_parte2"></div>
+                            <span class="text-danger"><?php echo form_error('modeloc_parte2');?></span>
                         </div>
                     </div>
                 </div>

@@ -82,6 +82,7 @@ class Modelo_contrato extends CI_Controller{
                 $params = array(
                     'beca_id'        => $this->input->post('beca_id'),
                     'modeloc_parte1' => $this->input->post('modeloc_parte1'),
+                    'modeloc_parte2' => $this->input->post('modeloc_parte2'),
                 );
                 $modeloc_id = $this->Modelo_contrato_model->add_modelo_contrato($params);
                 
@@ -99,6 +100,7 @@ class Modelo_contrato extends CI_Controller{
                 $params = array(
                     'beca_id'        => $this->input->post('beca_id'),
                     'modeloc_parte1' => $this->input->post('modeloc_parte1'),
+                    'modeloc_parte2' => $this->input->post('modeloc_parte2'),
                 );
                 $modeloc_id = $this->input->post('modeloc_id');
                 $this->Modelo_contrato_model->update_modelo_contrato($modeloc_id,$params);

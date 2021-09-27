@@ -55,7 +55,7 @@ $tamanio = "15cm";
                         $el_contrato = str_replace("*autoridad_dube*", $ladube, $el_contrato);
                         /* *****inicio para firmar****** */
                         $nombre_becario = $postulante['estudiante_apellidos']." ".$postulante['estudiante_nombre'];
-                        $el_contrato = str_replace("*nombre_becario*", $nombre_becario, $el_contrato);
+                        $el_contrato = str_replace("*nombre_univ*", $nombre_becario, $el_contrato);
                         $nombre_rector = $rector['autoridadc_nombre'];
                         $cargo_rector  = $rector['autoridadc_cargo'];
                         $el_contrato = str_replace("*nombre_rector*", $nombre_rector, $el_contrato);

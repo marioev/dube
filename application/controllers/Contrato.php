@@ -152,24 +152,4 @@ class Contrato extends CI_Controller{
             $this->load->view('layouts/main',$data);
         }
     }
-    
-    /* registrar compromiso */
-    function registrar_compromiso()
-    {
-        //if($this->acceso(103)) {
-            if($this->input->is_ajax_request()){
-                $para_guardar = $this->input->post('para_guardar');
-                $params = array(
-                    'postulante_id' => $this->input->post('postulante_id'),
-                    'contrato_contrato' => $this->input->post('para_guardar'),
-                    'contrato_compromiso' => 1,
-                );
-                $contrato_id = $this->Contrato_model->add_contrato($params);
-                echo json_encode("ok");
-            }else{                 
-                show_404();
-            }
-        //}
-    }
-    
 }
