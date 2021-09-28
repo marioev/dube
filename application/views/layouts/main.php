@@ -188,6 +188,13 @@
                             </a>
                             <ul class="treeview-menu">
                                 <?php
+                                if($rolusuario[42-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('autoridad_contrato');?>"><i class="fa fa-file-text" aria-hidden="true"></i> Autoridad Contrato</a>
+                                </li>
+                                <?php } ?>
+                                <?php
                                 /*if($rolusuario[28-1]['rolusuario_asignado'] == 1){
                                 ?>
                                 <li class="active">
@@ -240,7 +247,7 @@
                                 if($rolusuario[42-1]['rolusuario_asignado'] == 1){
                                 ?>
                                 <li>
-                                    <a href="<?php echo site_url('modelo_contrato');?>"><i class="fa fa-file-text-o" aria-hidden="true"></i> Modelo contrato</a>
+                                    <a href="<?php echo site_url('modelo_contrato');?>"><i class="fa fa-file-text-o" aria-hidden="true"></i> Modelo Contrato</a>
                                 </li>
                                 <?php } ?>
                             </ul>
