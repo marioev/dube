@@ -67,6 +67,12 @@
                                 <textarea name="solicitud_actividad" class="form-control" id="solicitud_actividad"><?php echo ($this->input->post('solicitud_actividad') ? $this->input->post('solicitud_actividad') : $solicitud_unidad['solicitud_actividad']); ?></textarea>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <label for="solicitud_fechaentrevista" class="control-label">Fecha de Entrevista</label>
+                            <div class="form-group">
+                                <input type="text" name="solicitud_fechaentrevista" value="<?php echo ($this->input->post('solicitud_fechaentrevista') ? $this->input->post('solicitud_fechaentrevista') : $solicitud_unidad['solicitud_fechaentrevista']); ?>" class="form-control" id="solicitud_fechaentrevista" autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="box-footer">

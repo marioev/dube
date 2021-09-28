@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label for="solicitud_carreras_requiremiento" class="control-label">Requiremiento</label>
+                            <label for="solicitud_carreras_requiremiento" class="control-label">Requerimiento</label>
                             <div class="form-group">
                                 <input type="text" name="solicitud_carreras_requiremiento" value="<?php echo $this->input->post('solicitud_carreras_requiremiento'); ?>" class="form-control" id="solicitud_carreras_requiremiento" autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                             </div>
@@ -65,6 +65,12 @@
                             <label for="solicitud_actividad" class="control-label">Actividad</label>
                             <div class="form-group">
                                 <textarea name="solicitud_actividad" class="form-control" id="solicitud_actividad"><?php echo $this->input->post('solicitud_actividad'); ?></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="solicitud_fechaentrevista" class="control-label">Fecha de Entrevista</label>
+                            <div class="form-group">
+                                <input type="text" name="solicitud_fechaentrevista" value="<?php echo $this->input->post('solicitud_fechaentrevista'); ?>" class="form-control" id="solicitud_fechaentrevista" autocomplete="off" onkeyup="var start = this.selectionStart; var end = this.selectionEnd; this.value = this.value.toUpperCase(); this.setSelectionRange(start, end);" />
                             </div>
                         </div>
                     </div>

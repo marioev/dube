@@ -54,6 +54,7 @@ class Solicitud_unidad extends CI_Controller{
                     'solicitud_cantidad_becarios' => $this->input->post('solicitud_cantidad_becarios'),
                     'solicitud_carreras_requiremiento' => $this->input->post('solicitud_carreras_requiremiento'),
                     'solicitud_actividad' => $this->input->post('solicitud_actividad'),
+                    'solicitud_fechaentrevista' => $this->input->post('solicitud_fechaentrevista'),
                 );
 
                 $solicitud_unidad_id = $this->Solicitud_unidad_model->add_solicitud_unidad($params);
@@ -94,6 +95,7 @@ class Solicitud_unidad extends CI_Controller{
                         'solicitud_cantidad_becarios' => $this->input->post('solicitud_cantidad_becarios'),
                         'solicitud_carreras_requiremiento' => $this->input->post('solicitud_carreras_requiremiento'),
                         'solicitud_actividad' => $this->input->post('solicitud_actividad'),
+                        'solicitud_fechaentrevista' => $this->input->post('solicitud_fechaentrevista'),
                     );
 
                     $this->Solicitud_unidad_model->update_solicitud_unidad($solicitud_id,$params);            

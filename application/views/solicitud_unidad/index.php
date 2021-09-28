@@ -38,6 +38,7 @@
                         <th>Cantidad Becarios</th>
                         <th>Requiremiento</th>
                         <th>Actividad</th>
+                        <th>Fecha Entrevista</th>
                         <th></th>
                     </tr>
                     <tbody class="buscar">
@@ -54,6 +55,7 @@
                         <td class="text-center"><?php echo $s['solicitud_cantidad_becarios']; ?></td>
                         <td><?php echo $s['solicitud_carreras_requiremiento']; ?></td>
                         <td><?php echo $s['solicitud_actividad']; ?></td>
+                        <td><?php echo $s['solicitud_fechaentrevista']; ?></td>
                         <td>
                             <a href="<?php echo site_url('solicitud_unidad/edit/'.$s['solicitud_id']); ?>" class="btn btn-info btn-xs" title="Modificar solcitud unidad"><span class="fa fa-pencil"></span></a> 
                             <!--<a href="<?php //echo site_url('solicitud_unidad/remove/'.$s['solicitud_id']); ?>" class="btn btn-danger btn-xs" title="Elimiar solicitud unidad"><span class="fa fa-trash"></span></a>-->
