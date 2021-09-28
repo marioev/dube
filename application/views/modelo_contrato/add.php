@@ -11,7 +11,7 @@
             <?php //echo form_open('modelo_contrato/add'); ?>
             <div class="box-body">
                 <div class="row clearfix">
-                    <div class="col-md-6">
+                    <div class="col-md-10">
                         <label for="beca_id" class="control-label">Beca</label>
                         <div class="form-group">
                             <select id="beca_id" name="beca_id" class="form-control" required onchange="mostrar_compromiso()">
@@ -23,6 +23,45 @@
                                 ?>
                             </select>
                         </div>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="text-red">*la_beca*</span><span> => Nombre de la beca</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="text-red">*autoridad_rector*</span><span> => Nombre completo y C.I. del Rector</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="text-red">*autoridad_admin*</span><span> => Nombre completo y C.I. del Director Admin.</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="text-red">*autoridad_dube*</span><span> => Nombre completo y C.I. del Director de la DUBE</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="text-red">*univ_becario*</span><span> => Nombre completo y C.I. del Becario</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="text-red">*nombre_rector*</span><span> => Nombre del Rector</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="text-red">*cargo_rector*</span><span> => Cargo del Rector</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="text-red">*nombre_admin*</span><span> => Nombre Director Admin. F.</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="text-red">*cargo_admin*</span><span> => Cargo del Director Admin. F.</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="text-red">*nombre_dube*</span><span> => Nombre del Director de la DUBE</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="text-red">*cargo_dube*</span><span> => Cargo del Director de la Dube</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="text-red">*nombre_becario*</span><span> => Nombre completo del becario</span>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="text-red">*ci_univ*</span><span> => C.I. del Becario</span>
                     </div>
                     <div class="col-md-12">
                         <label for="modeloc_parte1" class="control-label">Modelo Contrato</label>
