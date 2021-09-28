@@ -236,6 +236,13 @@
                                     <a href="<?php echo site_url('unidad');?>"><i class="fa fa-vimeo"></i> Unidad</a>
                                 </li>
                                 <?php } ?>
+                                <?php
+                                if($rolusuario[42-1]['rolusuario_asignado'] == 1){
+                                ?>
+                                <li>
+                                    <a href="<?php echo site_url('modelo_contrato');?>"><i class="fa fa-file-text-o" aria-hidden="true"></i> Modelo contrato</a>
+                                </li>
+                                <?php } ?>
                             </ul>
                         </li>
                         <li>
