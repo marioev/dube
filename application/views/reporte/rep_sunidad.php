@@ -87,6 +87,7 @@
                         <th>Becarios Aceptados</th>
                         <th>Disponibilidad de Becas</th>
                         <th>Resp. Unidad</th>
+                        <th></th>
                     </tr>
                     <tbody class="buscar" id="mostrarsolicitudes"></tbody>
                 </table>
@@ -94,3 +95,28 @@
         </div>
     </div>
 </div>
+<!------------------------ INICIO modal para ver Becarios ------------------->
+<div class="modal fade" id="modalverbecarios" tabindex="-1" role="dialog" aria-labelledby="modalverbecarioslabel">
+    <div class="modal-dialog" role="document">
+        <br><br>
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+                <span class="text-bold" id="eltitulo">Becarios</span>
+            </div>
+            <div class="modal-body">
+                <!------------------------------------------------------------------->
+                <div class="box-body table-responsive">
+                    <table class="table table-striped" id="mitabla">
+                        <tbody id="losbecarios"></tbody>
+                    </table>
+                </div>
+                <!------------------------------------------------------------------->
+            </div>
+            <div class="modal-footer" style="text-align: center">
+                <a href="#" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times"></span> Cerrar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------ FIN modal para ver Becarios ------------------->

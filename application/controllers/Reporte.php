@@ -125,4 +125,15 @@ class Reporte extends CI_Controller{
             show_404();
         }
     }
+    /* buscar becarios en solicitud de unidades */
+    function buscar_becariosunidad()
+    {
+        if ($this->input->is_ajax_request()) {
+            $solicitud_id = $this->input->post('solicitud_id');
+            $datos = $this->Reporte_model->get_all_becariosolicitud_unidad($solicitud_id);
+            echo json_encode($datos);
+        }else{
+            show_404();
+        }
+    }
 }

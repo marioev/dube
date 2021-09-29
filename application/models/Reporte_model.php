@@ -152,5 +152,23 @@ class Reporte_model extends CI_Model
 
         return $solicitud_unidad;
     }
+    /*
+     * Get all becarios de una unidad solicitante
+     */
+    function get_all_becariosolicitud_unidad($solicitud_id)
+    {
+        $solicitud_unidad = $this->db->query("
+            SELECT
+                sp.*, e.estudiante_nombre, e.estudiante_apellidos
+            FROM
+                `solunidad_postulante` sp
+            left join postulante p on sp.postulante_id = p.postulante_id
+            left join `estudiante` e on p.estudiante_id = e.estudiante_id
+            WHERE
+                sp.solicitud_id = $solicitud_id
+            ORDER BY e.`estudiante_apellidos` asc, e.`estudiante_nombre` asc
+        ")->result_array();
+        return $solicitud_unidad;
+    }
     
 }

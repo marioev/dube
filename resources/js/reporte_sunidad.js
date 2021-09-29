@@ -34,6 +34,7 @@ function buscar_reporte(){
                         html += "<td style='padding-top: 0; padding-bottom: 0px' class='text-right'> "+datos[i].becarios_aceptados+" </td>";
                         html += "<td style='padding-top: 0; padding-bottom: 0px' class='text-right'> "+datos[i].cantidad_disponible+" </td>";
                         html += "<td style='padding-top: 0; padding-bottom: 0px'> "+datos[i].unidad_responsable+" </td>";
+                        html += "<td><a onclick='modal_modelocontrato("+datos[i].solicitud_id+")' class='btn btn-info btn-xs' title='Ver becarios'><span class='fa fa-file-text'></span></a></d>";
                         html += "</tr>";
                     }
                     html += "<tr>";
@@ -54,4 +55,30 @@ function buscar_reporte(){
 }
 function imprimir_reporte(){
     window.print();
+}
+/* mostrar los becarios */
+function modal_modelocontrato(solicitud_id){
+    var base_url   = document.getElementById('base_url').value;
+    var controlador = base_url+"reporte/buscar_becariosunidad";
+    $.ajax({url: controlador,
+            type:"POST",
+            data:{solicitud_id:solicitud_id},
+            success:function(respuesta){
+                var datos= JSON.parse(respuesta);
+                if (datos != null){
+                    var n = datos.length;;
+                    html = "";
+                    for (var i = 0; i < n ; i++){
+                        html += "<tr>";
+                        html += "<td style='padding-top: 0; padding-bottom: 0px'> "+datos[i].estudiante_apellidos+" "+datos[i].estudiante_nombre+" </td>";
+                        html += "</tr>";
+                    }
+                   $("#losbecarios").html(html);
+                   $("#modalverbecarios").modal("show");
+                }else{
+                    $("#losbecarios").html("");
+                    alert("No se encontraron Becarios");
+                }
+        }
+    })
 }
