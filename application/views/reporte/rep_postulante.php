@@ -20,7 +20,7 @@
 <div class="cuerpo">
     <div class="columna_derecha">
         <center> 
-            <img src="<?php echo base_url('resources/images/logo/logoumss.png'); ?>"  style="width:60%;height:60px">
+            <img src="<?php echo base_url('resources/images/logo/logoumss.png'); ?>"  style="width:12%; height:70px">
         </center>
     </div>
     <!--<div class="columna_izquierda">
