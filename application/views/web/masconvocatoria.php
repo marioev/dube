@@ -34,8 +34,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <a href="http://www.umss.edu.bo/" class="logo" target="_blank">
-                    <img src="<?php echo $raiz;?>images/logoumss.png" width="50%" height="50%">
+                <a href="#" class="logo">
+                    <img src="<?php echo $raiz;?>images/logoumssn.png" width="100%" height="100px" >
                     <!--<h1>Collegiate</h1>-->
                 </a>
             </div>

@@ -118,7 +118,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                <a href="http://www.umss.edu.bo/" class="logo" target="_blank">
+                <a href="#" class="logo">
                     <img src="<?php echo $raiz;?>images/logoumss.png" width="6%" height="6%">
                     <!--<h1>Collegiate</h1>-->
                 </a>
@@ -209,13 +209,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div><!-- /.carousel -->
 <!-- /Banner Section -->
 <!-- About Section -->
-<section class="about-us" id="about" style="background: #DAD8D8">
-    <h3 class="text-center slideanim">Convocatoria</h3>
+<section class="about-us text-center" id="about" style="background: #DAD8D8">
+    <div class="col-md-4 hidden-xs">
+        <a href="#" class="logo">
+            <img src="<?php echo $raiz;?>images/logoumssn.png" width="12%" height="80px" style="position: absolute">
+        </a>
+    </div>
+    <div class="col-md-12">
+        <h3 class="text-center slideanim">Convocatoria</h3>
+    </div>
+    
     <p class="text-center slideanim"><!--Lorem Ipsum is simply dummy text of the printing and typesetting industry.--></p>
     <div class="container">
         <?php
         if(count($las_convocatorias) > 0){ ?>
-        <div class="row">
+        <!--<div class="row">-->
         <?php
         //foreach($las_convocatorias as $convocatoria){
             $cont = 0;
@@ -223,21 +231,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         ?>
         
             <?php if($cont == 0){ ?>
-            <div class="col-lg-6 col-md-6">
+            <!--<div class="col-lg-12 col-md-12 text-center">
                 <div class="about-details">
-                    <div class="row">
-                        <div class="col-sm-2 col-xs-12">
+                    <div class="row">--<
+                        <!--<div class="col-sm-2 col-xs-12">-->
                             <!--<img src="<?php //echo $raiz;?>images/about-img1.png" class="img-responsive slideanim" alt="about-img">-->
-                        </div>
-                        <div class="col-sm-10 col-xs-12">
-                            <div class="about-info slideanim text-justify" tooltip="<?php echo "Fecha Límite: ".date("d/m/Y", strtotime($las_convocatorias[$cont]['convocatoria_fechalimite'])); ?>" flow="left">
-                                <p><?php echo $las_convocatorias[$cont]['convocatoria_titulo']; ?></p>
-                                <a href="<?php echo site_url('/resources/images/convocatoria/'.$las_convocatorias[$cont]['convocatoria_dcto']) ?>" target="_blank"><?php echo $las_convocatorias[$cont]['convocatoria_dcto']; ?></a>
+                        <!--</div>-->
+                        <div class="text-center">
+                            <div class="text-bold about-info slideanim" title="<?php echo "Fecha Límite: ".date("d/m/Y", strtotime($las_convocatorias[$cont]['convocatoria_fechalimite'])); ?>" flow="left">
+                                <p style="color: #000; font-size: 15pt; font-weight: bold"><?php echo $las_convocatorias[$cont]['convocatoria_titulo']; ?></p>
+                                Descargue<a href="<?php echo site_url('/resources/images/convocatoria/'.$las_convocatorias[$cont]['convocatoria_dcto']) ?>" target="_blank"><?php echo " </b><u>aqui</u></b>";  //echo $las_convocatorias[$cont]['convocatoria_dcto']; ?></a>
                             </div>
                         </div>
-                    </div>						
+                    <!--</div>						
                 </div>
-            </div>
+            </div>-->
             <?php }
             /*if($cont == 1){?>
             <div class="col-lg-6 col-md-6">
@@ -263,7 +271,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         $cont ++;
             }
         ?>
-        </div>
+        <!--</div>-->
         <?php /* ?>
         <div class="row below">
             <?php
@@ -342,8 +350,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </section>
 <!-- /About Section -->	
 <!-- Our Services -->
-<section class="our-services" id="services">
+<section class="our-services text-center" id="services">
+    <div class="col-md-4 hidden-xs">
+        <a href="#" class="logo">
+            <img src="<?php echo $raiz;?>images/logoumss.png" width="12%" height="80px" style="position: absolute">
+        </a>
+    </div>
+    <div class="col-md-12">
 	<h3 class="text-center slideanim">BECAS</h3>
+    </div>
 	<p class="text-center slideanim"><!--Lorem Ipsum is simply dummy text of the printing and typesetting industry.--></p>
         <div class="container">
             <div class="row">
@@ -445,8 +460,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </section>
 <!-- /Our Services -->
 <!-- Our Curriculum -->
-<section class="curriculum" id="curriculum">
-    <h3 class="text-center slideanim">Publicaciones</h3>
+<section class="curriculum text-center" id="curriculum">
+    <div class="col-md-4 hidden-xs">
+        <a href="#" class="logo">
+            <img src="<?php echo $raiz;?>images/logoumssn.png" width="12%" height="80px" style="position: absolute">
+        </a>
+    </div>
+    <div class="col-md-12">
+        <h3 class="text-center slideanim">Publicaciones</h3>
+    </div>
     <p class="text-center slideanim"><!--Lorem Ipsum is simply dummy text of the printing and typesetting industry.--></p>
     <div class="container">
         <div class="row">
@@ -519,11 +541,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- /Our Curriculum -->
 
 <!-- Our Gallery -->
-<section class="our-gallery" id="gallery">
+<section class="our-gallery text-center" id="gallery">
+    <div class="col-md-4 hidden-xs">
+        <a href="#" class="logo">
+            <img src="<?php echo $raiz;?>images/logoumss.png" width="12%" height="80px" style="position: absolute">
+        </a>
+    </div>
+    <div class="col-md-12">
 	<h3 class="text-center slideanim">D.U.B.E.</h3>
+    </div>
 	<p class="text-center slideanim"><!--Lorem Ipsum is simply dummy text of the printing and typesetting industry.--></p> 
 	<div class="container">
             <div class="row" style="color: white !important">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <?php
                 if($dube['dube_mision'] != "" || $dube['dube_mision'] != null) {
                 ?>
@@ -549,17 +579,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 <?php } ?>
                 <?php
-                if($dube['dube_organigrama'] != "" || $dube['dube_organigrama'] != null) {
+                /*if($dube['dube_organigrama'] != "" || $dube['dube_organigrama'] != null) {
                 ?>
-                <div class="col-md-12" style="padding-bottom: 20px">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-bottom: 20px">
                     <h4 class="text-center">ORGANIGRAMA</h4>
                     <p class="text-center">
-                        <img class="img-responsibe mt-4" src="<?php echo site_url('/resources/images/organigrama/'.$dube['dube_organigrama']) ?>" alt="">
-                        <!-- <a style="color: #fff !important; font-size: 14px;" href="<?php echo site_url('/resources/images/organigrama/'.$dube['dube_organigrama']) ?>" target="_blank"><?php echo $dube['dube_organigrama']; ?></a> -->
+                        <img class="img-responsibe mt-4" src="<?php echo site_url('/resources/images/organigrama/'.$dube['dube_organigrama']) ?>" alt="" width="100%" height="100%">
                     </p>
-                    <!--<p class="text-justify"><?php //echo $dube['dube_organigrama']; ?></p>-->
                 </div>
-                <?php } ?>
+                <?php }*/ ?>
                 <?php
                 if($dube['dube_autoridadades'] != "" || $dube['dube_autoridadades'] != null) {
                 ?>
@@ -568,6 +596,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <p class="text-justify"><?php echo $dube['dube_autoridadades']; ?></p>
                 </div>
                 <?php } ?>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <aside style="margin-top: 20px">
+                    <!--<video width="420" height="315" controls loop autoplay>-->
+                    <video width="100%" height="100%" controls loop autoplay>
+                        <source src="<?php echo $raiz ?>video/dube.webm" type="video/webm">
+                        </source>           
+                    </video>
+            	</aside>
+                
+            </div>
             </div>
 		<!--<div class="content slideanim">
 			<div class="chroma-gallery mygallery">
